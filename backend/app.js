@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/students', studentsRouter);
+//app.use('/users', usersRouter);
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {
