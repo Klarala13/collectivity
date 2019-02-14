@@ -1,7 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
-import Header from "./components/Header";
 
+//components
+import Router from "./components/Router";
+
+//style shits
 import "./sass/style.scss";
 
-render(<Header />, document.querySelector("#main"));
+render(<Router />, document.querySelector("#main"));
