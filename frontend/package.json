@@ -4,12 +4,16 @@
   "description": "Front End of Project",
   "main": "index.js",
   "dependencies": {
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "npm-watch": "^0.6.0",
+    "react": "^16.8",
+    "react-dom": "^16.8",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "react-scripts start"
   },
   "keywords": [
     "Collectivity",
