@@ -1,3 +1,7 @@
+To initialize: 
+- open frontend folder on terminal and run npm start
+- open backend folder on terminal and run node index.js
+
 # collectivity
 Platform for giving and sharing. Inspired on ebaykleinanzeigen, free your stuff and time banks. 
 
