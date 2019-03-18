@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "./Header";
-import Nav from "./Nav";
-import './assets/css/fonts.css';
+import NavBar from "./NavBar";
+//import './assets/css/fonts.css';
+
 
 class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Nav />
+        <NavBar />
         <Header />
         <button className="btn btn-outline-dark">Share</button>
         <button className="btn btn-outline-dark">Find</button>

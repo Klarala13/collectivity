@@ -1,10 +1,8 @@
-@import "../../node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi');
 
 body {
   margin: 1rem;
 }
-
 .header {
   margin-bottom: 1rem;
 }

@@ -5,6 +5,7 @@ import { render } from "react-dom";
 import Router from "./components/Router";
 
 //style shits
-import "./sass/style.scss";
+import "./css/style.css";
+//import "/node_modules/bootstrap/scss/bootstrap";
 
 render(<Router />, document.querySelector("#main"));
