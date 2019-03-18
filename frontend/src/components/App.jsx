@@ -9,6 +9,9 @@ class App extends React.Component {
       <div className="container">
         <Nav />
         <Header />
+        <button className="btn btn-outline-dark">Share</button>
+        <button className="btn btn-outline-dark">Find</button>
+        <button className="btn btn-outline-dark">Login</button>
       </div>
     );
   }
