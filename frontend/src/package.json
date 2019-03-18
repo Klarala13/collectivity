@@ -1,7 +1,7 @@
 {
   "name": "react-collectivity",
   "version": "1.0.0",
-  "description": "A collective platform",
+  "description": "A collective platform for sharing",
   "watch": {
     "test": "{src,test}/*.js"
   },
