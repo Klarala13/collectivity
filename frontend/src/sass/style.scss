@@ -1,5 +1,5 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi');
 
 body {
   margin: 1rem;
@@ -7,4 +7,15 @@ body {
 
 .header {
   margin-bottom: 1rem;
+}
+h1{
+  font-family: 'Srisakdi', cursive;
+  margin: 5%;
+}
+p{
+  font-family:'Josefin Slab', serif;
+}
+.btn{
+ padding: 5%;
+ margin: 2%;
 }
