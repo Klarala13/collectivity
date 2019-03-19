@@ -4,11 +4,15 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="container">
-        <a>Home</a>
-        <a>About</a>
-        <a>Freebies</a>
-        <a>Timebank</a>
-        <a>Login</a>
+        <div 
+          role="navigation" 
+          className="navbar-expand{-sm|-md|-lg|-xl}">
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Hey!</a>
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Timebank</a>
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Freebies</a>
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Login</a>
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >About</a>
+        </div>
       </div>
     );
   }
