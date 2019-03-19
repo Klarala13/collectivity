@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "./Header";
 
 class NotFound extends React.Component {
   componentDidMount() {
@@ -9,7 +8,7 @@ class NotFound extends React.Component {
   render() {
     return (
       <div className="container">
-        <Header tagline="404 -  Page not found!" />
+        <h1>"404 -  Page not found!"</h1>
         <div className="alert alert-warning">
           <strong>
             Ooops .... sorry!<br />
