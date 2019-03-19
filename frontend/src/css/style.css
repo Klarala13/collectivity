@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi');
+@import '/frontend/node_modules/bootstrap/dist/css/bootstrap.css';
 
 body {
   margin: 1rem;
@@ -14,6 +15,7 @@ p{
   font-family:'Josefin Slab', serif;
 }
 .btn{
- padding: 5%;
  margin: 2%;
+ padding-left: 2%;
+ padding-right: 2%;
 }

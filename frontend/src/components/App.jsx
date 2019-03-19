@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import NavBar from "./NavBar";
-//import './assets/css/fonts.css';
-
 
 class App extends React.Component {
   render() {
@@ -10,9 +8,9 @@ class App extends React.Component {
       <div className="container">
         <NavBar />
         <Header />
-        <button className="btn btn-outline-dark">Share</button>
-        <button className="btn btn-outline-dark">Find</button>
-        <button className="btn btn-outline-dark">Login</button>
+        <button className="btn col-lg-3 btn-outline-dark">Share</button>
+        <button className="btn col-lg-3 btn-outline-dark">Find</button>
+        <button className="btn col-lg-3 btn-outline-dark">Login</button>
       </div>
     );
   }
