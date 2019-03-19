@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 
 class About extends React.Component {
   componentDidMount() {
-    document.title = "Abput Us";
+    document.title = "About Us";
   }
 
   render() {
