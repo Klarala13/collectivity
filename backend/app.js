@@ -10,13 +10,6 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 
-/**
- * ROOM FOR IMPROVEMENT
- * TODO:
- * - Create a middleware to handle setting headers on all responses and
- *   place it in a separate directory dedicated to middleware
- */
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
