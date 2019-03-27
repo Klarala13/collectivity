@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const MessageSchema = new mongoose.Schema({
   messageContent: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 200 
   },
   fromUserId: {
     type: mongoose.Schema.Types.ObjectId,

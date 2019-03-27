@@ -3,11 +3,15 @@ const mongoose = require('mongoose');
 const ItemSchema = new mongoose.Schema({
   name: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 20 
   },
   location: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 20 
   },
   lnglat: { 
     type: String, 
@@ -15,7 +19,9 @@ const ItemSchema = new mongoose.Schema({
   },
   type: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 20 
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +32,17 @@ const ItemSchema = new mongoose.Schema({
   time: String,
   active: Boolean,
   category: String,
-  tags: Array,
+  tags: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return v.length > 1
+      },
+      message: 'You must provide more than 1 tag.'
+    },
+    enum: ['xxxx', 'xxxx', 'xxxx', 'xxx']
+  },
   imageUrl: String,
   date: { 
     type: Date, 

@@ -3,31 +3,46 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   firstName: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 20
   },
   lastName: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 4,
+    maxlength: 20
   },
   email: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 8,
+    maxlength: 20 
   },
   password: { 
     type: String, 
-    required: true 
+    required: true,
+    minlength: 8,
+    maxlength: 20
   },
   about: String,
   country: {
     type:String,
-    required: true
+    required: true,
+    minlength: 4,
+    maxlength: 20
   },
   city: {
     type: String,
-    required: true
+    required: true,
+    minlength: 3,
+    maxlength: 20
   },
-  zip: String,
-  phone: String,
+  zip: Number,
+  phone: {
+    type: String,
+    minlength: 6
+  },
   registrationDate: { 
     type: Date,
     default: Date.now
