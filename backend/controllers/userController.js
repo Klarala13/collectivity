@@ -46,7 +46,6 @@ exports.getUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
   const { id } = req.params;
-
   const user = db
     .get("users")
     .find({ id })
@@ -58,7 +57,6 @@ exports.updateUser = (req, res) => {
 
 exports.deleteUser = (req, res) => {
   const { id } = req.params;
-
   const user = db
     .get("users")
     .remove({ id })
