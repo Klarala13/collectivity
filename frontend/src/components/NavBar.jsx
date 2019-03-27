@@ -1,5 +1,5 @@
 import React from "react";
-
+import TimeBank from "./TimeBank";
 class NavBar extends React.Component {
   render() {
     return (
@@ -9,7 +9,8 @@ class NavBar extends React.Component {
           className="col-lg-12 navbar-expand{-sm|-md|-lg|-xl}"
         >
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Hey!</a>
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Timebank</a>
+            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Timebank </a>
+            <TimeBank/>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Freebies</a>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Login</a>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >About</a>
