@@ -28,7 +28,10 @@ const UserSchema = new mongoose.Schema({
   },
   zip: String,
   phone: String,
-  registrationDate: Date
+  registrationDate: { 
+    type: Date,
+    default: Date.now
+  },
 });
 
 // userSchema.pre('save', function(next) {
