@@ -30,13 +30,6 @@ app.use((req, res, next) => {
   next(error);
 });
 
-/**
- * ROOM FOR IMPROVEMENT
- * TODO:
- * - Create a new controller file dedicated for messages (or add a function to
- *   it if it already exists) and move the error handling middleware to
- *   that controller
- */
 
 // Generic error handler
 app.use(genericErrors);
