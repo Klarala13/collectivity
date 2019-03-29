@@ -3,7 +3,13 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 
 class TimeBank extends React.Component {
-  render() {
+  
+    handleSubmit(event){
+      event.preventDefault();
+      console.log("I've been clicked!")
+    }
+
+    render() {
     return (
       <div className="container">
         <NavBar />
@@ -41,14 +47,15 @@ class TimeBank extends React.Component {
                   <button 
                     type="submit" 
                     className="btn btn-outline-dark"
+                    onSubmit={this.handleSubmit}
                   >Submit
                   </button>
             </div>
           </form>
         </div>
 <div className="col-lg-1"></div>
-        <div className="skill-board col-lg-6">
-        <table style="width:100%">
+        {/* <div className="skill-board col-lg-6">
+        <table>
         <p>Listing of Skills Offered</p>
           <tr>
             <th>Action</th>
@@ -59,7 +66,7 @@ class TimeBank extends React.Component {
             <td>2Hrs/Week</td> 
           </tr>
         </table>
-        </div>
+        </div> */}
       </div>
     );
   }
