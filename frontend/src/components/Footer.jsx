@@ -6,10 +6,11 @@ class Footer extends React.Component {
   componentDidMount() {
     document.title = "Footer";
   }
-
   render() {
     return (
       <div className="container">
+        <Header />
+        <NavBar />
       </div>
     );
   }
