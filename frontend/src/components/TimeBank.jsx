@@ -2,10 +2,8 @@ import React from "react";
 import NavBar from "./NavBar"
 import Header from "./Header";
 
-class Timebank extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+class TimeBank extends React.Component {
+
   render() {
     return (
       <div className="container">
@@ -20,7 +18,8 @@ class Timebank extends React.Component {
           We all have something to contribute in this world and can help each other out. We all count.
           We are all worth something, no matter what our CV and bank account says ;)
         </p>  
-        <div className="container-halfpage">
+        <div className="container-halfpages">
+        {/* Half left of page */}
           <div className="skill-post col-lg-4">
             <form>
               <div className="form-group">
@@ -52,7 +51,22 @@ class Timebank extends React.Component {
             </form>
           </div>
         </div>  
+        <div className="col-lg-1"></div>
+        {/* Page divider (blank space) */}
+        <div className="skill-board col-lg-4">
+        <table>
+        <p>Listing of Skills Offered</p>
+          <tr>
+            <th>Action</th>
+           <th>Time offered</th> 
+          </tr>
+          <tr>
+            <td>Translation</td>
+            <td>2Hrs/Week</td> 
+          </tr>
+        </table>
+        </div>
       </div>
     )}
 };
-export default Timebank;
+export default TimeBank;
