@@ -3,9 +3,7 @@ import Header from "./Header"
 import Timebank from "./Timebank";
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     return (
       <div className="container">
