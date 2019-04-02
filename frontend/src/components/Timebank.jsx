@@ -1,18 +1,15 @@
 import React from "react";
+import NavBar from "./NavBar"
 import Header from "./Header";
-import NavBar from "./NavBar";
 
-class TimeBank extends React.Component {
-  
-    handleSubmit(event){
-      event.preventDefault();
-      console.log("I've been clicked!")
-    }
-
-    render() {
+class Timebank extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
     return (
       <div className="container">
-        <NavBar />
+        <NavBar/>
         <Header />
         <h1>Timebank</h1>
         <h2>What is a TimeBank? It is a place where you can offer your skills/knowhow/time.</h2>
@@ -22,16 +19,18 @@ class TimeBank extends React.Component {
           This platform recognizes that we all have something to give. Something that makes us worth wile.
           We all have something to contribute in this world and can help each other out. We all count.
           We are all worth something, no matter what our CV and bank account says ;)
-        </p>
-        <div className="skill-post col-lg-4">
-          <form>
-            <div className="form-group">
-              <h3>Insert your Skill here</h3>
-                <label>My know-how</label>
-                <p>Listing of Activities you Offer</p>
+        </p>  
+        <div className="container-halfpage">
+        {/* Half left of page */}
+          <div className="skill-post col-lg-4">
+            <form>
+              <div className="form-group">
+                <h3>Insert your Skill here</h3>
+                  <label>My know-how</label>
+                  <p>Listing of Activities you Offer</p>
                   <input 
                     type="text" 
-                    className="form-control" 
+                    className="form-control" im
                     id="skill" 
                     placeholder="What can you do?"
                   >
@@ -50,11 +49,13 @@ class TimeBank extends React.Component {
                     onSubmit={this.handleSubmit}
                   >Submit
                   </button>
-            </div>
-          </form>
-        </div>
-<div className="col-lg-1"></div>
-        {/* <div className="skill-board col-lg-6">
+              </div>
+            </form>
+          </div>
+        </div>  
+        <div className="col-lg-1"></div>
+        {/* Page divider (blank space) */}
+        <div className="skill-board col-lg-4">
         <table>
         <p>Listing of Skills Offered</p>
           <tr>
@@ -66,9 +67,8 @@ class TimeBank extends React.Component {
             <td>2Hrs/Week</td> 
           </tr>
         </table>
-        </div> */}
+        </div>
       </div>
-    );
-  }
-}
-export default TimeBank;
+    )}
+};
+export default Timebank;
