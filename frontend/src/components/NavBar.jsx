@@ -1,6 +1,10 @@
 import React from "react";
-import TimeBank from "./TimeBank";
+import Header from "./Header"
+
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="container">
@@ -10,11 +14,11 @@ class NavBar extends React.Component {
         >
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Hey!</a>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Timebank </a>
-            <TimeBank/>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Freebies</a>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Login</a>
             <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >About</a>
         </div>
+        <Header />
       </div>
     );
   }
