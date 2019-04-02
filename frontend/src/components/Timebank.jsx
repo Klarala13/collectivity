@@ -21,7 +21,6 @@ class Timebank extends React.Component {
           We are all worth something, no matter what our CV and bank account says ;)
         </p>  
         <div className="container-halfpage">
-        {/* Half left of page */}
           <div className="skill-post col-lg-4">
             <form>
               <div className="form-group">
@@ -53,21 +52,6 @@ class Timebank extends React.Component {
             </form>
           </div>
         </div>  
-        <div className="col-lg-1"></div>
-        {/* Page divider (blank space) */}
-        <div className="skill-board col-lg-4">
-        <table>
-        <p>Listing of Skills Offered</p>
-          <tr>
-            <th>Action</th>
-           <th>Time offered</th> 
-          </tr>
-          <tr>
-            <td>Translation</td>
-            <td>2Hrs/Week</td> 
-          </tr>
-        </table>
-        </div>
       </div>
     )}
 };
