@@ -19,7 +19,7 @@ class NavBar extends React.Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav nav  justify-content-center">
+            <ul className="navbar-nav nav justify-content-center">
               <li className="nav-item">
                 <a className="nav-link active" href="#">
                   Hey!
