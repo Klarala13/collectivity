@@ -2,6 +2,8 @@ To initialize:
 - open frontend folder on terminal and run npm start
 - open backend folder on terminal and run node index.js
 
+TO MAKE A SMALL DONATION TO OUR PLATFORM, FOLLOW THE LINK https://klarala13.github.io/collectivity/
+
 # collectivity
 Platform for giving and sharing. Inspired on ebaykleinanzeigen, free your stuff and time banks. 
 
