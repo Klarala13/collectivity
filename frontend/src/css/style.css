@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi");
 
 body {
   margin: 1rem;
@@ -6,27 +6,24 @@ body {
 .header {
   margin-bottom: 1rem;
 }
-h1{
-  font-family: 'Srisakdi', cursive;
+h1 {
+  font-family: "Srisakdi", cursive;
   margin: 5%;
 }
-p, 
-.nav{
-  font-family:'Josefin Slab', serif;
+p,
+.nav {
+  font-family: "Josefin Slab", serif;
 }
-.btn{
- margin: 2%;
- padding-left: 2%;
- padding-right: 2%;
+.btn {
+  margin: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
-.nav{
-  display: inline-block;
-  padding: 1%;
-  margin: 2%;
-  margin-left: 1%;
+.nav {
   font-size: 2rem;
 }
-p{
+
+p {
   font-size: 16px;
 }
