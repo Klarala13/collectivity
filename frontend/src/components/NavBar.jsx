@@ -1,25 +1,63 @@
 import React from "react";
-// import Header from "./Header"
-// import TimeBank from "./TimeBank";
+import Router from "./Router";
+import Header from "./Header";
+import TimeBank from "./TimeBank";
 
 class NavBar extends React.Component {
-
   render() {
+    console.log(this.props.navigation);
     return (
-      <div className="container">
-        <div 
-          role="navigation" 
-          className="col-lg-12 navbar-expand{-sm|-md|-lg|-xl}"
-        >
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Hey!</a>
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >TimeBank </a>
-            {/* <TimeBank /> */}
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Freebies</a>
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >Login</a>
-            <a className="nav navbar-expand{-sm|-md|-lg|-xl}" >About</a>
-        </div>
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav nav justify-content-center">
+              <li className="nav-item">
+                <a className="nav-link active" href="http://localhost:3000/">
+                  <i className="fas fa-home" />
+                </a>
+                {/* <a
+                  className="active nav"
+                  // className={true ? "active nav-link" : "nav-link"}
+                  href="http://localhost:3000/"
+                >
+                  Hey!
+                </a> */}
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="http://localhost:3000/about">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="http://localhost:3000/timebank">
+                  TimeBank
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="http://localhost:3000/freebies">
+                  Freebies
+                </a>
+              </li>
+              <li className="nav-item ml-auto">
+                <a className="nav-link" href="http://localhost:3000/login">
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
         {/* <Header /> */}
-
       </div>
     );
   }
