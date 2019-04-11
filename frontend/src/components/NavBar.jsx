@@ -24,7 +24,7 @@ class NavBar extends React.Component {
             <ul className="navbar-nav nav justify-content-center">
               <li className="nav-item">
                 <a className="nav-link active" href="http://localhost:3000/">
-                  Hey!
+                  <i className="fas fa-home" />
                 </a>
                 {/* <a
                   className="active nav"
@@ -33,6 +33,11 @@ class NavBar extends React.Component {
                 >
                   Hey!
                 </a> */}
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="http://localhost:3000/about">
+                  About
+                </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="http://localhost:3000/timebank">
@@ -44,14 +49,9 @@ class NavBar extends React.Component {
                   Freebies
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ml-auto">
                 <a className="nav-link" href="http://localhost:3000/login">
                   Login
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="http://localhost:3000/about">
-                  About
                 </a>
               </li>
             </ul>
