@@ -6,9 +6,9 @@ const mongopath = process.env.MONGOPATH || `localhost`;
 const port = process.env.PORT || 8080;
 
 const app = require("./app");
-const jwtMW = exjwt({
-  secret: 'keyboard cat 4 ever'
-});
+// const jwtMW = exjwt({
+//   secret: 'keyboard cat 4 ever'
+// });
 
 mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
   useNewUrlParser: true,
@@ -16,26 +16,9 @@ mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
 });
 
 (async () => {
-  const locations = await Location.find({});
-  if (locations.length == 0) {
-    console.log(`No locations in database, lets create some`);
-    const titles = [
-      "Oranienburg",
-      "Potsdam",
-      "Eisenhuettenstadt",
-      "Stuttgart",
-      "Rostock",
-      "Hamburg"
-    ];
-    for (let i = 0; i < titles.length; i++) {
-      Location.create({
-        name: titles[i]
-      });
-    }
-  }
   const users = await User.find({});
   if (users.length == 0) {
-    console.log(`No user in database, lets create some`);
+    console.log(`This user seems to not exist, please SignUp`);
     const user = new User({
       name: "alice",
       password: "$2b$10$h/rbnvKp1KuAdTv3ZgE6JeFC5le51MwJKFGSnSZwP5nnDqSB1EpBW", // "password"
