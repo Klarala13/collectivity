@@ -1,30 +1,38 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Slab|Srisakdi");
-
+/* Global Styles */
 body {
   margin: 1rem;
 }
-.header {
-  margin-bottom: 1rem;
-}
-h1 {
+h1,
+h2 {
   font-family: "Srisakdi", cursive;
   margin: 5%;
 }
 p,
 .nav {
   font-family: "Josefin Slab", serif;
-  font-size: 16px;
+}
+p{
+  font-size: 2em;
+}
+/* header */
+.header {
+  margin-bottom: 1rem;
+}
+/* navigation */
+.nav {
+  font-size: 2rem;
 }
 .btn {
   margin: 2%;
   padding-left: 2%;
   padding-right: 2%;
 }
-
-.nav {
-  font-size: 2rem;
+/* About */
+.team-link{
+  display: block;
+  width: 80%;
 }
-
-p {
-  font-size: 16px;
+h2 {
+  text-decoration: underline;
 }
