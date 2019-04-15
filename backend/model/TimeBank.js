@@ -45,9 +45,4 @@ const TimeBankSchema = new mongoose.Schema({
   },
 });
 
-userSchema.pre('save', function(next) {
-  this.date = new Date();
-  next();
-});
-
 module.exports = mongoose.model('User', UserSchema);
