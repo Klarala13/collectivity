@@ -26,6 +26,7 @@ const ItemSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
+    //ASK ITAMAR
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

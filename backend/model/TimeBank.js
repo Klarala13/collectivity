@@ -14,35 +14,57 @@ const TimeBankSchema = new mongoose.Schema({
     minlength: 4,
     maxlength: 20
   },
-  //About Skill
+  header:{
+    type: String,
+    required: true,
+    maxlength: 20
+  },
   description:{
     type: String,
     required: true,
     minlength: 5,
-    maxlength: 4000
+    maxlength: 400
   },
- about: String,
-  country: {
+  location: {
     type:String,
     required: true,
     minlength: 4,
     maxlength: 20
   },
-  city: {
+  lnglat: { 
+    type: String, 
+    required: true 
+  },
+
+    userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  comment: String,
+  active: Boolean,
+  category: String,
+  tags: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 20
+    validate: {
+      validator: function (v) {
+        return v.length > 1
+      },
+      message: 'You must provide more than 1 tag.'
+    },
+    enum: ['House&Garden', 'Fashion', 'Motors', 'Entreteinment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
   },
-  zip: Number,
-  phone: {
-    type: String,
-    minlength: 6
-  },
+  imageUrl: String,
   registrationDate: { 
     type: Date,
     default: Date.now
-  },
+  }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+TimeBankSchema.pre('save', function(next) {
+  this.date = new Date();
+  next();
+});
+
+module.exports = mongoose.model('TimeBank', TimeBankSchema);
