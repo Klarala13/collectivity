@@ -30,16 +30,16 @@ mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
 })();
 
 const baseRoutes = require("./routes/index");
-const apiRoutes = require("./routes/user");
-app.use(baseRoutes);
-apiRoutes.use(validateToken);
-const privateRoutes = require("./routes/location");
-apiRoutes.use(privateRoutes);
+const backendRoutes = require("./routes/user");
+// app.use(baseRoutes);
+// apiRoutes.use(validateToken);
+// const privateRoutes = require("./routes/location");
+// apiRoutes.use(privateRoutes);
 
-app.use("/api", apiRoutes);
+// app.use("/collectivityBackend", apiRoutes);
 
-app.listen(port);
-console.log("The api-url is localhost:" + port);
-console.log(
-  `A user is in the database with name: alice and password: password`
-);
+// app.listen(port);
+// console.log("The api-url is localhost:" + port);
+// console.log(
+//   `A user is in the database with name: alice and password: password`
+// );
