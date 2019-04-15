@@ -8,9 +8,14 @@ class App extends React.Component {
       <div className="container">
         <NavBar />
         <Header />
-        <button className="btn col-lg-3 btn-outline-dark">Share</button>
-        <button className="btn col-lg-3 btn-outline-dark">Find</button>
-        <button className="btn col-lg-3 btn-outline-dark">Login</button>
+
+        <button className="btn col-lg-3 btn-outline-dark">
+          Login/Register
+        </button>
+        <p>OR</p>
+        <button className="btn col-lg-3 btn-outline-dark">
+          go to Freebies
+        </button>
       </div>
     );
   }

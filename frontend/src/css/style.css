@@ -36,3 +36,12 @@ p{
 h2 {
   text-decoration: underline;
 }
+
+.active {
+  font-weight: bold;
+}
+
+.nav a {
+  color: grey;
+  text-decoration: none;
+}
