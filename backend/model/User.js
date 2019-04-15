@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//This is the registration schema, the things you need to be able to have an account
 const UserSchema = new mongoose.Schema({
   firstName: { 
     type: String, 
@@ -49,9 +49,9 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-// userSchema.pre('save', function(next) {
-//   this.date = new Date();
-//   next();
-// });
+userSchema.pre('save', function(next) {
+  this.date = new Date();
+  next();
+});
 
 module.exports = mongoose.model('User', UserSchema);
