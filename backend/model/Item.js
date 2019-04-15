@@ -7,6 +7,15 @@ const ItemSchema = new mongoose.Schema({
     minlength: 4,
     maxlength: 20 
   },
+  header:{
+    type: String,
+    required: true,
+    maxlength: 20
+  },
+  description:{
+    type: String,
+    required: true,
+  },
   location: { 
     type: String, 
     required: true,
@@ -17,19 +26,12 @@ const ItemSchema = new mongoose.Schema({
     type: String, 
     required: true 
   },
-  type: { 
-    type: String, 
-    required: true,
-    minlength: 4,
-    maxlength: 20 
-  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
   comment: String,
-  time: String,
   active: Boolean,
   category: String,
   tags: {
@@ -41,13 +43,9 @@ const ItemSchema = new mongoose.Schema({
       },
       message: 'You must provide more than 1 tag.'
     },
-    enum: ['xxxx', 'xxxx', 'xxxx', 'xxx']
+    enum: ['House+Garden', 'Fashion', 'Motors', 'Entretainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
   },
   imageUrl: String,
-  date: { 
-    type: Date, 
-    default: Date.now 
-  },
 });
 
 ItemSchema.pre('save', function(next) {
