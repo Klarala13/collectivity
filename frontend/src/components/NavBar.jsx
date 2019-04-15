@@ -5,10 +5,10 @@ import TimeBank from "./TimeBank";
 
 class NavBar extends React.Component {
   render() {
-    console.log(this.props.navigation);
+    console.log(window.location.pathname);
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar nav navbar-expand-lg navbar-light bg-light justify-content-center">
           <button
             className="navbar-toggler"
             type="button"
@@ -21,43 +21,50 @@ class NavBar extends React.Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav nav justify-content-center">
-              <li className="nav-item">
-                <a className="nav-link active" href="http://localhost:3000/">
-                  <i className="fas fa-home" />
-                </a>
-                {/* <a
-                  className="active nav"
-                  // className={true ? "active nav-link" : "nav-link"}
-                  href="http://localhost:3000/"
-                >
-                  Hey!
-                </a> */}
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="http://localhost:3000/about">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="http://localhost:3000/timebank">
-                  TimeBank
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="http://localhost:3000/freebies">
-                  Freebies
-                </a>
-              </li>
-              <li className="nav-item ml-auto">
-                <a className="nav-link" href="http://localhost:3000/login">
-                  Login
-                </a>
-              </li>
-            </ul>
+            <nav className="nav">
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/" ? "active" : ""
+                }`}
+                href="http://localhost:3000/"
+              >
+                <i className="fas fa-home" />
+              </a>
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/about" ? "active" : ""
+                }`}
+                href="http://localhost:3000/about"
+              >
+                About
+              </a>
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/timebank" ? "active" : ""
+                }`}
+                href="http://localhost:3000/timebank"
+              >
+                TimeBank
+              </a>
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/freebies" ? "active" : ""
+                }`}
+                href="http://localhost:3000/freebies"
+              >
+                Freebies
+              </a>
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/login" ? "active" : ""
+                }`}
+                href="http://localhost:3000/login"
+              >
+                Login
+              </a>
+            </nav>
           </div>
         </nav>
-        {/* <Header /> */}
       </div>
     );
   }
