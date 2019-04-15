@@ -1,19 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import Router from "./Router";
 import Header from "./Header";
 import TimeBank from "./TimeBank";
+import { NavLink } from "react-router-dom";
 
-class NavBar extends React.Component {
+class NavBar extends Component {
   render() {
     console.log(window.location.pathname);
     return (
       <div>
-        <nav className="navbar nav navbar-expand-lg navbar-light bg-light justify-content-center">
+        <nav className="navbar nav navbar-expand-md navbar-light bg-light justify-content-center">
           <button
             className="navbar-toggler"
             type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -22,6 +21,9 @@ class NavBar extends React.Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <nav className="nav">
+              <NavLink to="/" activeClassName="active">
+                <i className="fas fa-home" />
+              </NavLink>
               <a
                 className={`nav-link ${
                   window.location.pathname === "/" ? "active" : ""
@@ -30,13 +32,16 @@ class NavBar extends React.Component {
               >
                 <i className="fas fa-home" />
               </a>
+              <NavLink to="/freebies" activeClassName="active">
+                Freebies
+              </NavLink>
               <a
                 className={`nav-link ${
-                  window.location.pathname === "/about" ? "active" : ""
+                  window.location.pathname === "/freebies" ? "active" : ""
                 }`}
-                href="http://localhost:3000/about"
+                href="http://localhost:3000/freebies"
               >
-                About
+                Freebies
               </a>
               <a
                 className={`nav-link ${
@@ -48,11 +53,11 @@ class NavBar extends React.Component {
               </a>
               <a
                 className={`nav-link ${
-                  window.location.pathname === "/freebies" ? "active" : ""
+                  window.location.pathname === "/about" ? "active" : ""
                 }`}
-                href="http://localhost:3000/freebies"
+                href="http://localhost:3000/about"
               >
-                Freebies
+                About
               </a>
               <a
                 className={`nav-link ${
