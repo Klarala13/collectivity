@@ -9,7 +9,7 @@ class NavBar extends Component {
     console.log(window.location.pathname);
     return (
       <div>
-        <nav className="navbar nav navbar-expand-md navbar-light bg-light justify-content-center">
+        <nav className="navbar navbar-expand-md navbar-light bg-light">
           <button
             className="navbar-toggler"
             type="button"
@@ -20,53 +20,22 @@ class NavBar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <nav className="nav">
-              <NavLink to="/" activeClassName="active">
+            <nav className="nav d-flex">
+              <NavLink to="/" activeClassName="active" className="mr-3">
                 <i className="fas fa-home" />
               </NavLink>
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/" ? "active" : ""
-                }`}
-                href="http://localhost:3000/"
-              >
-                <i className="fas fa-home" />
-              </a>
-              <NavLink to="/freebies" activeClassName="active">
+              <NavLink to="/freebies" activeClassName="active" className="mr-3">
                 Freebies
               </NavLink>
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/freebies" ? "active" : ""
-                }`}
-                href="http://localhost:3000/freebies"
-              >
-                Freebies
-              </a>
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/timebank" ? "active" : ""
-                }`}
-                href="http://localhost:3000/timebank"
-              >
-                TimeBank
-              </a>
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/about" ? "active" : ""
-                }`}
-                href="http://localhost:3000/about"
-              >
+              <NavLink to="/timebank" activeClassName="active" className="mr-3">
+                Timebanks
+              </NavLink>
+              <NavLink to="/about" activeClassName="active" className="mr-3">
                 About
-              </a>
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/login" ? "active" : ""
-                }`}
-                href="http://localhost:3000/login"
-              >
+              </NavLink>
+              <NavLink to="/login" activeClassName="active" className="ml-auto">
                 Login
-              </a>
+              </NavLink>
             </nav>
           </div>
         </nav>
