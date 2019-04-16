@@ -6,9 +6,10 @@ const mongopath = process.env.MONGOPATH || `localhost`;
 const port = process.env.PORT || 8080;
 
 const app = require("./app");
-// const jwtMW = exjwt({
-//   secret: 'keyboard cat 4 ever'
-// });
+const jwtMW = exjwt({
+  secret: 'keyboard cat 4 ever'
+});
+//Not sure how we should use this
 
 mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
   useNewUrlParser: true,
@@ -20,26 +21,24 @@ mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
   if (users.length == 0) {
     console.log(`This user seems to not exist, please SignUp`);
     const user = new User({
-      name: "alice",
-      password: "$2b$10$h/rbnvKp1KuAdTv3ZgE6JeFC5le51MwJKFGSnSZwP5nnDqSB1EpBW", // "password"
+      name: "admin",
+      password: "$BestProjectEver", // "password"
       admin: true
     });
     await user.save();
-    console.log("User saved successfully");
+    console.log("Admin saved successfully");
   }
 })();
 
 const baseRoutes = require("./routes/index");
 const backendRoutes = require("./routes/user");
-// app.use(baseRoutes);
-// apiRoutes.use(validateToken);
-// const privateRoutes = require("./routes/location");
-// apiRoutes.use(privateRoutes);
+app.use(baseRoutes);
+backendRoutes.use(validateToken);
 
-// app.use("/collectivityBackend", apiRoutes);
+app.use("/collectivityBackend", apiRoutes);
 
-// app.listen(port);
-// console.log("The api-url is localhost:" + port);
-// console.log(
-//   `A user is in the database with name: alice and password: password`
-// );
+app.listen(port);
+console.log("The api-url is localhost:" + port);
+console.log(
+  `A user is in the database with name: admin and password: $BestProjectEver`
+);
