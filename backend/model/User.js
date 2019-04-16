@@ -47,6 +47,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  rating: {
+    type: Number,
+    // required: true
+  }
 });
 
 userSchema.pre('save', function(next) {
