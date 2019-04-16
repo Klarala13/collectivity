@@ -29,8 +29,7 @@ const ItemSchema = new mongoose.Schema({
     //ASK ITAMAR
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    ref: 'User'
   },
   comment: String,
   active: Boolean,

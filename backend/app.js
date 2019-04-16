@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {
@@ -29,7 +29,6 @@ app.use((req, res, next) => {
   error.statusCode = 404;
   next(error);
 });
-
 
 // Generic error handler
 app.use(genericErrors);
