@@ -44,7 +44,7 @@ const ItemSchema = new mongoose.Schema({
       },
       message: 'You must provide more than 1 tag.'
     },
-    enum: ['House+Garden', 'Fashion', 'Motors', 'Entretainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
+    enum: ['House+Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
   },
   imageUrl: String,
 });

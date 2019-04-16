@@ -2,17 +2,11 @@ const mongoose = require('mongoose');
 
 const TimeBankSchema = new mongoose.Schema({
   //About user
-  firstName: { 
+  name: { 
     type: String, 
     required: true,
     minlength: 4,
-    maxlength: 20
-  },
-  lastName: { 
-    type: String, 
-    required: true,
-    minlength: 4,
-    maxlength: 20
+    maxlength: 20 
   },
   header:{
     type: String,
@@ -22,8 +16,6 @@ const TimeBankSchema = new mongoose.Schema({
   description:{
     type: String,
     required: true,
-    minlength: 5,
-    maxlength: 400
   },
   location: {
     type:String,
@@ -53,7 +45,7 @@ const TimeBankSchema = new mongoose.Schema({
       },
       message: 'You must provide more than 1 tag.'
     },
-    enum: ['House&Garden', 'Fashion', 'Motors', 'Entreteinment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
+    enum: ['House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Others', 'Pets']
   },
   imageUrl: String,
   registrationDate: { 
