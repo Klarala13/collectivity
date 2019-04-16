@@ -9,7 +9,8 @@ const app = require("./app");
 const jwtMW = exjwt({
   secret: 'keyboard cat 4 ever'
 });
-//Not sure how we should use this
+//This is to be used when i look for the user in DB, if the hashed passwords match, then give them JWT and send it back
+//Use password hash to store passwords in DB safely
 
 mongoose.connect(`mongodb://${mongopath}:27017/DCI6jsonwebtoken`, {
   useNewUrlParser: true,
