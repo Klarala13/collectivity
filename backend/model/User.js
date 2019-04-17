@@ -32,10 +32,14 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 20
   },
-  zip: Number,
+  zip: {
+    type: Number,
+    maxlength: 9
+  },
   registrationDate: { 
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
   rating: {
     type: Number,
