@@ -41,11 +41,11 @@ export const logOut = () => async dispatch => {
   }
 };
 
-export const signUp = (signUpUser, routeTo) => async dispatch => {
+export const register = (signUpUser, routeTo) => async dispatch => {
   try {
-    const result = await axios(window.collectivityBackend + "/register", {
+    const result = await axios(window.collectivityBackend + "/login-signup", {
       method: "post",
-      data: signUpUser,
+      data: register,
       withCredentials: true
     });
     if (result.data.error === 0) {

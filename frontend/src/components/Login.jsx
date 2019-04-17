@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
+import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
@@ -22,7 +23,7 @@ function Login(props) {
             type="text"
             id="name"
             className="form-control"
-            placeholder="Name"
+            placeholder="User Name"
             required
             autoFocus
           />
@@ -48,6 +49,7 @@ function Login(props) {
 
           <span className="text-muted" onClick={() => setSignin(!isSignin)}>
             {!isSignin ? "Already account? Sign in" : "Register"}
+            < Register />
           </span>
         </form>
       </div>
