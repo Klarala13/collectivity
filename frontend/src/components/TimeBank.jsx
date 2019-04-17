@@ -23,26 +23,24 @@ class TimeBank extends React.Component {
           and can help each other out. We all count. We are all worth something,
           no matter what our CV and bank account says ;)
         </p>
-        <div className="container-halfpages">
           {/* Half left of page */}
-          <div className="skill-post col-lg-4">
+          <div className = "row">
+          <section className="skill-post col-lg-5">
             <form>
               <div className="form-group">
-                <h3>Insert your Skill here</h3>
-                <label>My know-how</label>
-                <p>Listing of Activities you Offer</p>
+                <h2>Insert your Skill here</h2>
+                <p>What would you like to offer?</p>
                 <input
                   type="text"
                   className="form-control"
                   id="skill"
                   placeholder="What can you do?"
                 />
-                <label>Availabilty</label>
                 <input
                   type="text"
                   className="form-control"
                   id="time-offered"
-                  placeholder="Hrs/Week"
+                  placeholder="Hrs per Week"
                 />
                 <button
                   type="submit"
@@ -53,16 +51,17 @@ class TimeBank extends React.Component {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-        <div className="col-lg-1" />
+          </section>
+        <section className="col-lg-2" />
         {/* Page divider (blank space) */}
-        <div className="skill-board col-lg-4">
+        <section className="skill-board col-lg-5">
           <table>
             <thead>
-              <tr>
-                <th>Listing of Skills Offered</th>
-              </tr>
+              <h2>
+                <tr>
+                  <th>Listing of Skills Offered</th>
+                </tr>
+              </h2>
             </thead>
             <tbody>
               <tr>
@@ -75,6 +74,7 @@ class TimeBank extends React.Component {
               </tr>
             </tbody>
           </table>
+        </section>
         </div>
       </div>
     );
