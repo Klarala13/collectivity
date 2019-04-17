@@ -30,6 +30,7 @@ class About extends React.Component {
             href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
             className ="btn btn-outline-dark"
             alt="donate money"
+            rel="noopener noreferrer"
             target="_blank">Donate</a>
              <div className="mr-btm btn"></div>   
         <h2>Rules</h2>
@@ -58,8 +59,8 @@ class About extends React.Component {
               className="btn btn-dark"
               href=""
               alt="Portfolio"
-             target="_blank"
-             rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
             >
              Contact
             </a>
