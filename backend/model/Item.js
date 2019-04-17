@@ -45,7 +45,7 @@ exports.ItemSchema = new mongoose.Schema({
   imageUrl: String,
 });
 
-ItemSchema.pre('save', function(next) {
-  this.date = new Date();
-  next();
-});
+// itemSchema.pre('save', function(next) {
+//   this.date = new Date();
+//   next();
+// });
