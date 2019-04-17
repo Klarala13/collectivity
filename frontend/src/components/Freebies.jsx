@@ -8,7 +8,16 @@ class Freebies extends React.Component {
       <div className="container">
         <NavBar />
         <Header />
-        <h1>Freebies</h1>
+        <div className="row">
+          <div className="col-6">
+            <h1>Post Freebies</h1>
+          </div>
+          <div className="col-6" />
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+          </ul>
+        </div>
       </div>
     );
   }
