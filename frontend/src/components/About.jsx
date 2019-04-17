@@ -46,7 +46,8 @@ class About extends React.Component {
               className="btn btn-dark"
               href="https://elisemaschke.de/"
               alt="Portfolio"
-              target="_blank">
+              target="_blank"
+              rel="noopener noreferrer">
               Contact
             </a>
           </p>
@@ -57,7 +58,9 @@ class About extends React.Component {
               className="btn btn-dark"
               href=""
               alt="Portfolio"
-             target="_blank">
+             target="_blank"
+             rel="noopener noreferrer"
+            >
              Contact
             </a>
           </p>
@@ -75,7 +78,8 @@ class About extends React.Component {
             className="btn btn-dark"
             href="https://clarasanchez.de/"
             alt="Portfolio"
-            target="_blank">
+            target="_blank"
+            rel="noopener noreferrer">
             Contact
             </a>
           </p>
