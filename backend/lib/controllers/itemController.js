@@ -1,14 +1,15 @@
 const shortid = require("shortid");
 const db = require("../db");
-const Item = require("../model/Item");
+const item = require("../model/Item");
 
 exports.items = (req, res) => {
-  const items = db.get("items").sortBy("itemname");
+  const items = db.get("items").sortBy("itemName");
   if (isEmpty(req.query)) {
     res.json(items.value());
   } else {
     res.json(items.filter(filterBy(req.query)).value());
   }
+  console.log(item);
 };
 
 exports.addItem = (req, res) => {

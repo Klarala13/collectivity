@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //This is the user schema, the things you need to be able to have an account
 //and be a user. These are the things we require in registrationSchema
-const UserSchema = new mongoose.Schema({
+exports.UserSchema = new mongoose.Schema({
   firstName: { 
     type: String, 
     required: true,
@@ -51,5 +51,3 @@ userSchema.pre('save', function(next) {
   this.date = new Date();
   next();
 });
-
-module.exports = mongoose.model('User', UserSchema);
