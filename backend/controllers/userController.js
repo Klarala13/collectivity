@@ -9,6 +9,7 @@ exports.users = (req, res) => {
   } else {
     res.json(users.filter(filterBy(req.query)).value());
   }
+  console.log(user);
 };
 
 exports.addUser = (req, res) => {
@@ -31,6 +32,7 @@ exports.getUser = (req, res) => {
     .value();
 
   res.json(user);
+
 };
 
 exports.updateUser = (req, res) => {
