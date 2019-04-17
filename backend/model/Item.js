@@ -13,8 +13,7 @@ exports.ItemSchema = new mongoose.Schema({
     maxlength: 20
   },
   description:{
-    type: String,
-    required: true,
+    type: String
   },
   location: { 
     type: String, 
