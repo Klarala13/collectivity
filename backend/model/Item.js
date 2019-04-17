@@ -23,9 +23,7 @@ exports.ItemSchema = new mongoose.Schema({
   },
   lnglat: { 
     type: String, 
-    required: true 
   },
-    //ASK ITAMAR
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
