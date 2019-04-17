@@ -17,6 +17,9 @@ exports.newItem = [
   check("header")
     .isString()
     .withMessage("An item header must be a string")
+    .not()
+    .withMessage("An item header must be provided")
+    .isEmpty()
     .trim(),
   check("description")
     .isString()
@@ -26,8 +29,9 @@ exports.newItem = [
   check("location")
     .isString()
     .trim()
+    .not()
     .isEmpty()
-    .withMessage("Please provide a valid location"),
+    .withMessage("Please provide a location"),
   check("language")
     .isIn(LANGUAGES)
     .withMessage("Only allowed languages")
@@ -37,20 +41,23 @@ exports.newItem = [
     .withMessage("Language is required"),
   check("comment")
     .isString()
+    .withMessage("We need your comment to be a string")
     .trim()
-    .optional()
-    .withMessage("We need your comment to be a string"),
+    .optional(),
   check("active")
     .isBoolean()
     .optional(),
   check("category")
     .isString()
+    .withMessage("category must be formatted as a string")
     .trim()
     .optional(),
   check("tags")
     .isString()
     .trim()
-    .required()
+    .not()
+    .isEmpty()
+    .withMessage("a tag must be provided for the Item")
     .isIn(TAGS)
     .withMessage("Please, provide a valid tag from the ones included"),
   check("img")
@@ -59,7 +66,7 @@ exports.newItem = [
     .withMessage("Please provide image URL as string")
 ];
 exports.editItem = [
-  check("name")
+check("name")
   .isString()
   .withMessage("An item's name must be formatted as a string")
   .trim()
@@ -69,6 +76,9 @@ exports.editItem = [
 check("header")
   .isString()
   .withMessage("An item header must be a string")
+  .not()
+  .withMessage("An item header must be provided")
+  .isEmpty()
   .trim(),
 check("description")
   .isString()
@@ -78,8 +88,9 @@ check("description")
 check("location")
   .isString()
   .trim()
+  .not()
   .isEmpty()
-  .withMessage("Please provide a valid location"),
+  .withMessage("Please provide a location"),
 check("language")
   .isIn(LANGUAGES)
   .withMessage("Only allowed languages")
@@ -89,24 +100,27 @@ check("language")
   .withMessage("Language is required"),
 check("comment")
   .isString()
+  .withMessage("We need your comment to be a string")
   .trim()
-  .optional()
-  .withMessage("We need your comment to be a string"),
+  .optional(),
 check("active")
   .isBoolean()
   .optional(),
 check("category")
   .isString()
+  .withMessage("category must be formatted as a string")
   .trim()
   .optional(),
 check("tags")
   .isString()
   .trim()
-  .required()
+  .not()
+  .isEmpty()
+  .withMessage("a tag must be provided for the Item")
   .isIn(TAGS)
   .withMessage("Please, provide a valid tag from the ones included"),
 check("img")
   .isString()
   .trim()
   .withMessage("Please provide image URL as string")
-];
+]
