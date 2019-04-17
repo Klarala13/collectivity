@@ -1,5 +1,6 @@
 const shortid = require("shortid");
 const db = require("../db");
+const Item = require("../model/Item");
 
 exports.items = (req, res) => {
   const items = db.get("items").sortBy("itemname");
