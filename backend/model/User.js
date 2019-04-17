@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-//This is the registration schema, the things you need to be able to have an account
+//This is the user schema, the things you need to be able to have an account
+//and be a user. These are the things we require in registrationSchema
 const UserSchema = new mongoose.Schema({
   firstName: { 
     type: String, 
@@ -25,13 +26,6 @@ const UserSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 20
   },
-  about: String,
-  country: {
-    type:String,
-    required: true,
-    minlength: 4,
-    maxlength: 20
-  },
   city: {
     type: String,
     required: true,
@@ -39,10 +33,6 @@ const UserSchema = new mongoose.Schema({
     maxlength: 20
   },
   zip: Number,
-  phone: {
-    type: String,
-    minlength: 6
-  },
   registrationDate: { 
     type: Date,
     default: Date.now
