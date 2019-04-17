@@ -36,10 +36,10 @@ const backendRoutes = require("./routes/user");
 app.use(baseRoutes);
 backendRoutes.use(validateToken);
 
-app.use("/collectivityBackend", apiRoutes);
+app.use("/collectivityBackend", backendRoutes);
 
 app.listen(port);
-console.log("The api-url is localhost:" + port);
+console.log("The backend-url is localhost:" + port);
 console.log(
   `A user is in the database with name: admin and password: $BestProjectEver`
 );
