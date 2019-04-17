@@ -22,7 +22,7 @@ class About extends React.Component {
             To participate in TimeBanks you must be registered. 
             To be rated and boost the confidence other users have in you, you must be registered. 
             To better distribute the goodies, we geo-locate our users to facilitate your access. </p>
-        <h2>Donations</h2>
+        {/* <h2>Donations</h2>
           <p>You can also collaborate in the project by making a small donation to our crowdfunding, so we can 
             pay for libraries, servers and other technologies that allow our project to move forward!
           </p>
@@ -32,7 +32,7 @@ class About extends React.Component {
             alt="donate money"
             rel="noopener noreferrer"
             target="_blank">Donate</a>
-             <div className="mr-btm btn"></div>   
+             <div className="mr-btm btn"></div>    */}
         <h2>Rules</h2>
          <p>Once the transaction is done and the service was provided or item returned, please rate the user according to 
            punctuality, state of the item returned, etc. 
