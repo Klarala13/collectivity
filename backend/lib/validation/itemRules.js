@@ -105,4 +105,8 @@ check("tags")
   .required()
   .isIn(TAGS)
   .withMessage("Please, provide a valid tag from the ones included"),
+check("img")
+  .isString()
+  .trim()
+  .withMessage("Please provide image URL as string")
 ];

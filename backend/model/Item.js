@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ItemSchema = new mongoose.Schema({
+exports.ItemSchema = new mongoose.Schema({
   name: { 
     type: String, 
     required: true,
@@ -52,5 +52,3 @@ ItemSchema.pre('save', function(next) {
   this.date = new Date();
   next();
 });
-
-module.exports = mongoose.model('Item', ItemSchema);
