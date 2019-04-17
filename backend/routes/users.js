@@ -7,13 +7,15 @@ const {
   getUser,
   updateUser,
   deleteUser
-} = require("../controllers/usersController");
+} = require("../lib/controllers/usersController");
 
-router.route("/")
+router
+  .route("/")
   .get(listUsers)
   .post(addUser);
 
-router.route("/:id")
+router
+  .route("/:id")
   .get(getUser)
   .put(updateUser)
   .delete(deleteUser);
