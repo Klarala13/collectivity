@@ -98,8 +98,17 @@ class RegisterPage extends React.Component {
           </form>
         </span>
       </div>
-    );
-  }
-}
-
+              );
+            }
+        }
+        
+//         function mapStateToProps(state) {
+//             const { registering } = state.registration;
+//             return {
+//                 registering
+//             };
+//         }
+// const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
+  
 export default RegisterPage;
+// export { connectedRegisterPage as RegisterPage };
