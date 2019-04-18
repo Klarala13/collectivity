@@ -21,8 +21,14 @@ Technologies
 -MongoDB
 -NodeJS
 -Bootstrap
--Google Maps (new Technology)
+-Geolocation services
+	API https://developer.here.com/lp/mapAPIs?cid=Other-Google-MM-T2-Dev-Generic-BMM&utm_source=Google&utm_medium=ppc&utm_campaign=Dev_PaidSearch_DevPortal_AlwaysOn
+	NPM package for React https://www.npmjs.com/package/react-geolocated
+	VANILLA JS methods https://stackoverflow.com/questions/42259456/passing-geolocation-from-parent-to-child-in-react
 -Messaging service
+	LIBRARY + API http://www.squaremobius.net/rabbit.js/
+	FRAMEWORK https://socket.io/#examples
+	API chat https://talkjs.com/
 
 maybe you are familiar with a group called "Free your Stuff"? It's a place where people post things they dont want/need anymore and whoever reads it and wants it can ask for it. The problem with this page is that a lot of people with free time were just waiting by the computer for someone to post and directly ask fro the things... so they were all going to the same people.
 I would like to create a page with the same concept, but geolocated. That is: I post whatever I am offering (and it doesnt have to be metrial things, it can be my knowledge, sbhan ticket, minutes on my phone, whatever...) and people can search items by name or vecinity. That way, the items will go to those that find them first or are closer to them or ask for them first..
