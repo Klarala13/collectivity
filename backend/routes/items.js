@@ -7,13 +7,15 @@ const {
   getItem,
   updateItem,
   deleteItem
-} = require("../controllers/itemController");
+} = require("../lib/controllers/itemController");
 
-router.route("/")
+router
+  .route("/")
   .get(listItems)
   .post(addItem);
 
-router.route("/:id")
+router
+  .route("/:id")
   .get(getItem)
   .put(updateItem)
   .delete(deleteItem);
