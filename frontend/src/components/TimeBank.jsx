@@ -32,7 +32,7 @@ class TimeBank extends React.Component {
             </p>
           </div>
 
-          <div className="p-2 flex-item">
+          <div className="p-2 bg-light flex-item ">
             {/* Half left of page */}
             <form>
               <div className="form-group">

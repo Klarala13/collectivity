@@ -66,8 +66,10 @@ h2 {
 }
 
 /* header */
-.header {
+.header,
+.about {
   padding: 6em;
+  text-align: center;
 }
 
 /* TimeBank */
