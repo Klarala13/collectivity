@@ -2,12 +2,14 @@
 /* Global Styles */
 body {
   margin: 1rem;
-  height: 100%;
+  height: 100vh;
   font-family: 'Questrial', sans-serif;
 }
 .container {
   width: 100%;
   height: 100%;
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 h3,
 h2 {
@@ -18,13 +20,7 @@ h2 {
   color: #276fbf;
   text-decoration: none !important;
 }
-.timeBank {
-  background-color: #f6f4f3;
-  color: #183059;
-  font-size: 1.5em;
-  padding-top: 5%;
-  padding-bottom: 5%;
-}
+
 p,
 .nav {
   /* font-family: "Josefin Slab", serif; */
@@ -73,6 +69,13 @@ h2 {
 }
 
 /* TimeBank */
+.timeBank {
+  background-color: #f6f4f3;
+  color: #183059;
+  font-size: 1.5em;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
 
 .flex-container {
   height: 100%;
