@@ -3,7 +3,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className='container'>
-        <div className='header'>
+        <div id='header'>
           <h3> Welcome to Collectivity</h3>
           <p className='text-center'>
             Collectivity is a platform that tries to promote a collective

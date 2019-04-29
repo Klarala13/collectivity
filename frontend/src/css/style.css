@@ -8,8 +8,6 @@ body {
 .container {
   width: 100%;
   height: 100%;
-  overflow: scroll;
-  scroll-behavior: smooth;
 }
 h3,
 h2 {
@@ -21,10 +19,6 @@ h2 {
   text-decoration: none !important;
 }
 
-p,
-.nav {
-  /* font-family: "Josefin Slab", serif; */
-}
 p {
   font-size: 1.5em;
 }
@@ -62,14 +56,19 @@ h2 {
 }
 
 /* header */
-.header,
-.about {
+#header,
+#about,
+#timeBanks,
+#header {
   padding: 6em;
   text-align: center;
+  height: 100vh;
+  width: 100%;
+  /* scroll-snap-align: center; */
 }
 
 /* TimeBank */
-.timeBank {
+#timeBank {
   background-color: #f6f4f3;
   color: #183059;
   font-size: 1.5em;
@@ -98,4 +97,18 @@ p.text-left {
   font-size: 1.2rem;
   padding: 1rem;
   color: #183059;
+}
+
+/* form-signin */
+#form-signin {
+  padding: 1rem;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+}
+.mb-3 {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 1rem;
 }

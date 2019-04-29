@@ -7,14 +7,15 @@ function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
   return (
-    <div className="h-100">
-    < NavBar />
-    < Header />
+    <div className="container">
+      <NavBar />
+      <Header />
       <div className="App">
-        <form onSubmit={(event) => props.onSubmit(event, isSignin)} className="form-signin">
-          <h1 className="h3 my-5 font-weight-normal">
-            {isSignin ? "Signin" : "Register"}
-          </h1>
+        <form
+          onSubmit={event => props.onSubmit(event, isSignin)}
+          id="form-signin"
+        >
+          <h2 className=" my-5 ">{isSignin ? "Sign in" : "Register"}</h2>
           <label htmlFor="name" className="sr-only">
             Name
           </label>
@@ -48,9 +49,9 @@ function Login(props) {
           </button>
 
           <span className="text-muted" onClick={() => setSignin(!isSignin)}>
-  {!isSignin ? "Already account? Sign in" : "Register" }
-  {/* Gotta manage to make Register inside a span  */}
-  < Register />
+            {!isSignin ? "Already account? Sign in" : "Register"}
+            {/* Gotta manage to make Register inside a span  */}
+            <Register />
           </span>
         </form>
       </div>
