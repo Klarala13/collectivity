@@ -13,7 +13,7 @@ h3,
 h2 {
   text-align: center;
   font-weight: bold;
-  padding-top: 10%;
+  padding-top: 5%;
   padding-bottom: 2%;
   color: #276fbf;
   text-decoration: none !important;
@@ -58,7 +58,6 @@ h2 {
 /* header */
 #header,
 #about,
-#timeBanks,
 #header {
   padding: 6em;
   text-align: center;
@@ -72,8 +71,10 @@ h2 {
   background-color: #f6f4f3;
   color: #183059;
   font-size: 1.5em;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  height: 100vh;
+  width: 100%;
 }
 
 .flex-container {
@@ -90,12 +91,12 @@ h2.timeBank {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.5rem;
-  padding: 1rem;
+  padding: 1.5rem;
   color: #276fbf;
 }
 p.text-left {
   font-size: 1.2rem;
-  padding: 1rem;
+  padding: 1.5rem;
   color: #183059;
 }
 
@@ -104,7 +105,7 @@ p.text-left {
   padding: 1rem;
   width: 100%;
   height: 100vh;
-  text-align: center;
+  /* text-align: center; */
   justify-content: center;
 }
 .mb-3 {

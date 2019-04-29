@@ -31,23 +31,26 @@ function Login(props) {
           <label htmlFor="password" className="sr-only">
             Password
           </label>
-          <input
-            onChange={props.onChange}
-            type="password"
-            id="password"
-            className="form-control"
-            placeholder="Password"
-            required
-          />
-          <button
-            disabled={props.loading}
-            className={`${
-              isSignin ? "btn-outline-primary" : "btn-primary"
-            } mb-3 btn btn-lg  btn-block`}
-          >
-            {!props.loading ? (isSignin ? "Signin" : "Register") : "Loading"}
-          </button>
-
+          <div className=" mb-3">
+            <input
+              onChange={props.onChange}
+              type="password"
+              id="password"
+              className="form-control"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className=" mb-3">
+            <button
+              disabled={props.loading}
+              className={`${
+                isSignin ? "btn-outline-primary" : "btn-primary"
+              } mb-3 btn btn-lg  btn-block`}
+            >
+              {!props.loading ? (isSignin ? "Signin" : "Register") : "Loading"}
+            </button>
+          </div>
           <span className="text-muted" onClick={() => setSignin(!isSignin)}>
             {!isSignin ? "Already account? Sign in" : "Register"}
             {/* Gotta manage to make Register inside a span  */}
