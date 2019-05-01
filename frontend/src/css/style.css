@@ -101,11 +101,12 @@ p.text-left {
 }
 
 /* form-signin */
+
 #form-signin {
   padding: 1rem;
   width: 100%;
   height: 100vh;
-  /* text-align: center; */
+  text-align: center;
   justify-content: center;
 }
 .mb-3 {
