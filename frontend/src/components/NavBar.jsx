@@ -14,7 +14,12 @@ class NavBar extends Component {
         <nav className='navbar navbar-expand-lg fixed-top nav-main'>
           <div className='container'>
             <NavLink to='/' activeClassName='active' className='navbar-brand'>
-              LOGO
+              <img
+                src='/image.png'
+                width='50'
+                height='30'
+                className='d-inline-block align-top'
+              />
             </NavLink>
             <button
               className='navbar-toggler'
