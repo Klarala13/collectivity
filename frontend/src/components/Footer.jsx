@@ -1,16 +1,11 @@
-import React from "react";
-
+import React from 'react';
 
 class Footer extends React.Component {
   componentDidMount() {
-    document.title = "Footer";
+    document.title = 'Footer';
   }
   render() {
-    return (
-      <div className="container">
-
-      </div>
-    );
+    return <div className='container'>Footer</div>;
   }
 }
 

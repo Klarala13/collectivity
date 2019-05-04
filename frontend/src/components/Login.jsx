@@ -8,8 +8,6 @@ function Login(props) {
 
   return (
     <div className="container">
-      <NavBar />
-      <Header />
       <div className="App">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}

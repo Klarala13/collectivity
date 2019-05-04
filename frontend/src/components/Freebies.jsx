@@ -43,8 +43,6 @@ class Freebies extends React.Component {
 
     return (
       <div className="container">
-        <NavBar />
-        <Header />
         <div className="row">
           <div className="col-6">
             <h1>Freebies near you</h1>
