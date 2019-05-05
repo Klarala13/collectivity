@@ -9,7 +9,7 @@ const indexRouter = require("./routes/index");
 const itemsRouter = require("./routes/items");
 const usersRouter = require("./routes/users");
 
-const { genericErrors } = require("./controllers/messageController");
+const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
 
