@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+/* Global Styles */
+/* body {
+  margin: 1rem;
+  height: 100vh;
+  font-family: 'Questrial', sans-serif;
+} */
+.container {
+  width: 100%;
+  height: 100%;
+}
+h3,
+h2 {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  color: #276fbf;
+  text-decoration: none !important;
+}
+
+.team-link {
+  display: block;
+  width: 80%;
+}
+h2 {
+  text-decoration: underline;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.nav a {
+  color: #183059 !important;
+  text-decoration: none;
+}

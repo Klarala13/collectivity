@@ -23,6 +23,36 @@ class About extends React.Component {
             take.{" "}
           </p>
           <h2>How It Works</h2>
+        <p>
+          There are two main sections: Freebees (sharing of items) and TimeBanks
+          (sharing of skills). To participate in TimeBanks you must be
+          registered. To be rated and boost the confidence other users have in
+          you, you must be registered. To better distribute the goodies, we
+          geo-locate our users to facilitate your access.{' '}
+        </p>
+          <a 
+            href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
+            className ="btn btn-outline-dark"
+            alt="donate money"
+            rel="noopener noreferrer"
+            target="_blank">Donate</a>
+             <div className="mr-btm btn"></div>    */}
+        <h2>Rules</h2>
+        <p>
+          Once the transaction is done and the service was provided or item
+          returned, please rate the user according to punctuality, state of the
+          item returned, etc.
+        </p>
+        <h2>Safety</h2>
+        <p>
+          Please, keep in mind that we cannot control who you meet or where. If
+          you are not sure about a user, try to meet in public places or ensure
+          a safe situation. If you encounter any problems, contact our team and
+          we will try to find a solution together.{' '}
+        </p>
+        <h2>Who made it</h2>
+        <h3>Our awesome team</h3>
+        <div className='team-link'>
           <p>
             There are two main sections: Freebees (sharing of items) and
             TimeBanks (sharing of skills). To participate in TimeBanks you must
@@ -30,85 +60,42 @@ class About extends React.Component {
             in you, you must be registered. To better distribute the goodies, we
             geo-locate our users to facilitate your access.{" "}
           </p>
-          <h2>Donations</h2>
+        </div>
+        <div className='team-link'>
           <p>
-            You can also collaborate in the project by making a small donation
-            to our crowdfunding, so we can pay for libraries, servers and other
-            technologies that allow our project to move forward!
+            Leen (designer)
+            <a
+              className='btn btn-dark'
+              href=''
+              alt='Portfolio'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Contact
+            </a>
           </p>
-          <a
-            href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
-            className="btn btn-outline-dark"
-            alt="donate money"
-            target="_blank"
-          >
-            Donate
-          </a>
-          <div className="mr-btm btn" />
-          <h2>Rules</h2>
+        </div>
+        <div>
           <p>
-            Once the transaction is done and the service was provided or item
-            returned, please rate the user according to punctuality, state of
-            the item returned, etc.
+            {' '}
+            Max
+            <a />
           </p>
-          <h2>Safety</h2>
+        </div>
+        <div>
           <p>
-            Please, keep in mind that we cannot control who you meet or where.
-            If you are not sure about a user, try to meet in public places or
-            ensure a safe situation. If you encounter any problems, contact our
-            team and we will try to find a solution together.{" "}
+            {' '}
+            Clara Sanchez (Team leader, front and backend developer)
+            <a
+              className='btn btn-dark'
+              href='https://clarasanchez.de/'
+              alt='Portfolio'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Contact
+            </a>
           </p>
-          <h2>Who made it</h2>
-          <h3>Our awesome team</h3>
-          <div className="team-link">
-            <p>
-              {" "}
-              Elise Maschke (Front and Backend developer)
-              <a
-                className="btn btn-dark"
-                href="https://elisemaschke.de/"
-                alt="Portfolio"
-                target="_blank"
-              >
-                Contact
-              </a>
-            </p>
-          </div>
-          <div className="team-link">
-            <p>
-              {" "}
-              Leena (designer)
-              <a
-                className="btn btn-dark"
-                href=""
-                alt="Portfolio"
-                target="_blank"
-              >
-                Contact
-              </a>
-            </p>
-          </div>
-          <div>
-            <p>
-              {" "}
-              Max
-              <a />
-            </p>
-          </div>
-          <div>
-            <p>
-              {" "}
-              Clara Sanchez (Team leader, front and backend developer)
-              <a
-                className="btn btn-dark"
-                href="https://clarasanchez.de/"
-                alt="Portfolio"
-                target="_blank"
-              >
-                Contact
-              </a>
-            </p>
-          </div>
         </div>
       </div>
     );

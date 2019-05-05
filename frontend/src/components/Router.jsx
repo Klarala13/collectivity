@@ -1,31 +1,25 @@
-import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Router,
-  Switch,
-  withRouter
-} from 'react-router-dom';
-import App from './App';
-import TimeBank from './TimeBank';
-import Login from './Login';
-import About from './About';
-import Freebies from './Freebies';
-import Help from './Help';
-import NotFound from './NotFound';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import App from "./App";
+import TimeBank from "./TimeBank";
+import Login from "./Login";
+import About from "./About";
+import Freebies from "./Freebies";
+import Help from "./Help";
+import NotFound from "./NotFound";
 
-const Root = () => (
-  <Switch>
-    <Route exact component={App} path='/' />
-    <Route component={TimeBank} path='/timebank' />
-    <Route component={Freebies} path='/freebies' />
-    <Route component={Login} path='/login' />
-    <Route component={About} path='/about' />
-    <Route component={Help} path='/help' />
-    <Route component={NotFound} />
-  </Switch>
+const Router = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route path="/timebank" component={TimeBank} />
+      <Route path="/freebies" component={Freebies} />
+      <Route path="/login" component={Login} />
+      <Route path="/about" component={About} />
+      <Route path="/help" component={Help} />
+      <Route component={NotFound} />
+    </Switch>
+  </BrowserRouter>
 );
 
-const RootwithAut = withRouter(Root);
-
-export default RootwithAut;
+export default Router;
