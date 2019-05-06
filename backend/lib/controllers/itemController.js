@@ -1,8 +1,8 @@
 const shortid = require("shortid");
-const db = require("../db");
-const item = require("../model/Item");
+const db = require("../../middleware/db");
+const item = require("../../model/Item");
 
-exports.items = (req, res) => {
+exports.listItems = (req, res) => {
   const items = db.get("items").sortBy("itemName");
   if (isEmpty(req.query)) {
     res.json(items.value());

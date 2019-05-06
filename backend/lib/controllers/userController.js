@@ -1,8 +1,8 @@
 const shortid = require("shortid");
-const db = require("../db");
-const user = require("../model/User");
+const db = require("../../middleware/db");
+const user = require("../../model/User");
 
-exports.users = (req, res) => {
+exports.listUsers = (req, res) => {
   const users = db.get("users").sortBy("username");
   if (isEmpty(req.query)) {
     res.json(users.value());
