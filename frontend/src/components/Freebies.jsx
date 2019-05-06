@@ -1,6 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
-import Header from "./Header";
 import FreebieList from "./FreebieList";
 import FreebieFilter from "./FreebieFilter";
 

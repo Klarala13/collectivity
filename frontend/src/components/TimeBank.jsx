@@ -1,14 +1,9 @@
 import React from "react";
-import NavBar from "./NavBar";
-import Header from "./Header";
-import TimeSkills from "./Skills";
 
 class TimeBank extends React.Component {
   render() {
     return (
       <div className="container">
-        <NavBar />
-        <Header />
         <h1>Timebank</h1>
         <h2>
           What is a TimeBank? It is a place where you can offer your
@@ -24,8 +19,8 @@ class TimeBank extends React.Component {
           and can help each other out. We all count. We are all worth something,
           no matter what our CV and bank account says ;)
         </p>
-          {/* Half left of page */}
-          <div className = "row">
+        {/* Half left of page */}
+        <div className="row">
           <section className="skill-post col-lg-5">
             <form>
               <div className="form-group">
@@ -53,14 +48,21 @@ class TimeBank extends React.Component {
               </div>
             </form>
           </section>
-        <section className="col-lg-2" />
-        {/* Page divider (blank space) */}
-        <section className="skill-board col-lg-5">
-          <table>
-            <thead>
-              <h2>
+          <section className="col-lg-2" />
+          {/* Page divider (blank space) */}
+          <section className="skill-board col-lg-5">
+            <table>
+              <thead>
+                <h2>
+                  <tr>
+                    <th>Listing of Skills Offered</th>
+                  </tr>
+                </h2>
+              </thead>
+              <tbody>
                 <tr>
-                  <th>Listing of Skills Offered</th>
+                  <th>Action</th>
+                  <th>Time offered</th>
                 </tr>
               </h2>
               <p className='text-left'>

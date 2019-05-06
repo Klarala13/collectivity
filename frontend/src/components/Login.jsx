@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import NavBar from "./NavBar";
 import Header from "./Header";
-import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
   return (
     <div className="container">
+      <Header />
       <div className="App">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}
@@ -17,15 +16,17 @@ function Login(props) {
           <label htmlFor="name" className="sr-only">
             Name
           </label>
-          <input
-            onChange={props.onChange}
-            type="text"
-            id="name"
-            className="form-control"
-            placeholder="User Name"
-            required
-            autoFocus
-          />
+          <div className="mb-3">
+            <input
+              onChange={props.onChange}
+              type="text"
+              id="name"
+              className="form-control"
+              placeholder="Name"
+              required
+              autoFocus
+            />
+          </div>
           <label htmlFor="password" className="sr-only">
             Password
           </label>
@@ -39,7 +40,7 @@ function Login(props) {
               required
             />
           </div>
-          <div className=" mb-3">
+          <div className="mb-3">
             <button
               disabled={props.loading}
               className={`${
@@ -51,8 +52,6 @@ function Login(props) {
           </div>
           <span className="text-muted" onClick={() => setSignin(!isSignin)}>
             {!isSignin ? "Already account? Sign in" : "Register"}
-            {/* Gotta manage to make Register inside a span  */}
-            <Register />
           </span>
         </form>
       </div>
