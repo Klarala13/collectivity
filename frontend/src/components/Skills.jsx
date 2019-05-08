@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
-import TimeBank from "./TimeBank";
+import TimeBankItem from "./TimeBankItem";
 
-class TimeBankItems extends React.Component {
+class Skills extends React.Component {
   render() {
 const skills = [ 
     {
@@ -29,10 +29,10 @@ const skills = [
             <h1>Get help!</h1>
           </div>
           <div className="col-6" />
-          <TimeBank items={skills}/>
+          <TimeBankItem items={skills}/>
         </div>
       </div>
     );
   }
 }
-export default TimeBankItems
+export default Skills
