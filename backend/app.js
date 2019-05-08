@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const logger = require("morgan");
 const createError = require("http-errors");
 
@@ -13,16 +12,41 @@ const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
 
-/**
- * Connect to DB
- */
-mongoose.connect("mongodb://localhost:27017/collectivity", {
-  useNewUrlParser: true,
-  useCreateIndex: true
-});
+const postgres = require("pg");
+const { Client } = require("pg");
 
-// eslint-disable-next-line no-console
-mongoose.connection.on("error", console.error);
+require('dotenv').config({ path: './.env' })
+console.log(process.env.DBUSER);
+
+const client = new Client({
+  user: process.env.DBUSER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.DBPORT
+});
+client.connect();
+
+// promise
+client
+  .query("select * from public.user")
+  .then(res => {
+    if (
+      res.rowCount >= 1 &&
+      res.rows.filter(user => user.email === "admin@dci.de").length > 0
+    ) {
+      console.log("All users:", res.rows);
+    } else {
+      client.query(
+        `INSERT INTO public.user("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
+      );
+      console.log("Admin seeded");
+    }
+  })
+  .catch(e => console.error(e.stack));
+
+console.log("Hello from postgres"); 
 
 app.use(setCorsHeaders);
 
