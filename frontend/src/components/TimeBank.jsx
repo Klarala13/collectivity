@@ -65,9 +65,9 @@ class TimeBank extends React.Component {
             </tr>
          </thead>
          <tbody>
-                {Object.keys(this.props.skills).map(id => (
+                {/* {Object.keys(this.props.skills).map(id => (
                 <TimeSkills key={this.props.skills.id} data={this.props.skills[id]}/>
-                ))}
+                ))} */}
                 </tbody>
           </table>
         </section>
