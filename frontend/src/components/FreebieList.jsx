@@ -24,3 +24,5 @@ class FreebieList extends Component{
 }
 
 export default FreebieList
+
+
