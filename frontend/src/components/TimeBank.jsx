@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
-import TimeBankItem from "./TimeBankItem";
+import TimeSkills from "./Skills";
 
 class TimeBank extends React.Component {
   render() {
@@ -11,8 +11,8 @@ class TimeBank extends React.Component {
         <Header />
         <h1>TimeBank</h1>
         <h2>
-          What is a TimeBank? It is a place where you can offer your
-          skills/knowhow/time.
+          This is a place where you can offer your
+          skills/know-how/time.
         </h2>
         <p>
           We all have abilities, things we like to do, special skills... and you
@@ -66,7 +66,7 @@ class TimeBank extends React.Component {
          </thead>
          <tbody>
                 {Object.keys(this.props.skills).map(id => (
-                <Item key={this.props.skills.id} data={this.props.skills[id]}/>
+                <TimeSkills key={this.props.skills.id} data={this.props.skills[id]}/>
                 ))}
                 </tbody>
           </table>

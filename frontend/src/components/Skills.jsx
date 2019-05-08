@@ -1,9 +1,10 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
-import TimeBankItem from "./TimeBankItem";
+import TimeBank from "./TimeBank";
+//import TimeBankItem from "./TimeBankItem";
 
-class Skills extends React.Component {
+class TimeSkills extends React.Component {
   render() {
 const skills = [ 
     {
@@ -19,7 +20,6 @@ const skills = [
       time: "12", 
     }
   ]
-
     return (
       <div className="container">
         <NavBar />
@@ -29,10 +29,11 @@ const skills = [
             <h1>Get help!</h1>
           </div>
           <div className="col-6" />
-          <TimeBankItem items={skills}/>
+          <TimeBank  data={skills}/>
+          {/* <TimeBankItem  data={skills}/> */}
         </div>
       </div>
     );
   }
 }
-export default Skills
+export default TimeSkills;
