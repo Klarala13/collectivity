@@ -9,7 +9,7 @@ class TimeBank extends React.Component {
       <div className="container">
         <NavBar />
         <Header />
-        <h1>Timebank</h1>
+        <h1>TimeBank</h1>
         <h2>
           What is a TimeBank? It is a place where you can offer your
           skills/knowhow/time.
@@ -65,8 +65,8 @@ class TimeBank extends React.Component {
             </tr>
          </thead>
          <tbody>
-                {Object.keys(this.props.items).map(id => (
-                <Item key={this.props.items.id} data={this.props.items[id]}/>
+                {Object.keys(this.props.skills).map(id => (
+                <Item key={this.props.skills.id} data={this.props.skills[id]}/>
                 ))}
                 </tbody>
           </table>
