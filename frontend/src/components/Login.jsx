@@ -10,9 +10,9 @@ function Login(props) {
       <div className="App">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}
-          id="form-signin"
+          className="form-signin"
         >
-          <h2 className=" my-5 ">{isSignin ? "Sign in" : "Register"}</h2>
+          <h2 className="mb-2">{isSignin ? "Sign in" : "Register"}</h2>
           <label htmlFor="name" className="sr-only">
             Name
           </label>
@@ -50,7 +50,7 @@ function Login(props) {
               {!props.loading ? (isSignin ? "Signin" : "Register") : "Loading"}
             </button>
           </div>
-          <span className="text-muted" onClick={() => setSignin(!isSignin)}>
+          <span className="text-muted " onClick={() => setSignin(!isSignin)}>
             {!isSignin ? "Already account? Sign in" : "Register"}
           </span>
         </form>
