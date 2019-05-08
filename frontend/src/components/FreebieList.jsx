@@ -2,6 +2,23 @@ import React, { Component } from 'react';
 import Item from "./FreebieItem";
 
 class FreebieList extends Component{
+    filteredItems = () => {
+        const filtered = [];
+    
+        for (const id in this.props.items) {
+          const item = this.props.items[id];
+    
+          if (
+            this.props.filter === "all" ||
+            (this.props.filter === "Motors" && item.tags === "Motors") ||
+            (this.props.filter === "Fashion" && item.tags === "Fashion")
+          ) {
+            filtered.push(item);
+          }
+        }
+    
+        return filtered;
+    };
     render() {
         return(
             <table class="table">
@@ -14,9 +31,11 @@ class FreebieList extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                {Object.keys(this.props.items).map(id => (
-                <Item key={this.props.items.id} data={this.props.items[id]}/>
-                ))}
+                    {this.filteredItems().map(item => (
+                        <Item 
+                        key={this.props.items.id} 
+                        data={item}/>
+                    ))}
                 </tbody>
             </table>
         )
