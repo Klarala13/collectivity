@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
+import TimeBankItem from "./TimeBankItem";
 
 class TimeBank extends React.Component {
   render() {
@@ -56,23 +57,18 @@ class TimeBank extends React.Component {
         {/* Page divider (blank space) */}
         <section className="skill-board col-lg-5">
           <table>
-            <thead>
-              <h2>
-                <tr>
-                  <th>Listing of Skills Offered</th>
-                </tr>
-              </h2>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Action</th>
-                <th>Time offered</th>
-              </tr>
-              <tr>
-                <td>Translation</td>
-                <td>2Hrs/Week</td>
-              </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Time Offered</th>
+            </tr>
+         </thead>
+         <tbody>
+                {Object.keys(this.props.items).map(id => (
+                <Item key={this.props.items.id} data={this.props.items[id]}/>
+                ))}
+                </tbody>
           </table>
         </section>
         </div>
