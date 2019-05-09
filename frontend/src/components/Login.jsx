@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "./Header";
 import Register from "./Register";
 
 function Login(props) {
@@ -10,7 +9,6 @@ function Login(props) {
   }
   return (
     <div className="container">
-      <Header />
       <div className="App">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}
@@ -55,7 +53,7 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? "Already account? Sign in" : <Register />}
+            {!isSignin ? "Already account? Sign in" : < Register />}
           </span>
         </form>
       </div>
