@@ -18,7 +18,6 @@ h2 {
   color: #276fbf;
   text-decoration: none !important;
 }
-
 p {
   font-size: 1.5em;
 }
@@ -71,9 +70,6 @@ h2 {
   font-size: 1.5em;
   padding-top: 5rem;
   padding-bottom: 5rem;
-  width: 100%;
-}
-.w-100{
   width: 100%;
 }
 .flex-container {
