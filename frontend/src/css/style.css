@@ -109,3 +109,16 @@ p.text-left {
   padding-right: 10rem;
   padding-bottom: 1rem;
 }
+/* app */
+.app {
+  padding: 1rem;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-bottom: 1rem;
+}
+
+
