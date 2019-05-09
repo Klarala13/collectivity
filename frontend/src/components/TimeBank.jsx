@@ -53,20 +53,39 @@ class TimeBank extends React.Component {
                   </button>
                 </div>
               </form>
-              <table className="table table-borderless">
+              <table>
                 <thead>
+                  {/* ToDo link each user to it's offering so that when they click on the user, the messaging 
+opens up directly and they can set up a meeting */}
                   <tr>
-                    <th scope="col">Listing of Skills Offered</th>
+                    <th scope="col">User</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Time Offered</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {/* complains that Object is undefined... but we should get the data from TimeBankItem...no? */}
+                  {/* {Object.keys(this.props.items).map(id => (
+                <TimeBankItem key={this.props.items.id} data={this.props.items[id]}/>
+                ))} */}
                   <tr>
-                    <th scope="row">Action</th>
-                    <th scope="row">Time offered</th>
+                    <td>Ashley</td>
+                    <td>32</td>
+                    <td>Pluming</td>
+                    <td>2</td>
                   </tr>
                   <tr>
-                    <td>Translation</td>
-                    <td>2Hrs/Week</td>
+                    <td>Mark</td>
+                    <td>3</td>
+                    <td>Sewing</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Thomas</td>
+                    <td>6</td>
+                    <td>Cleaning</td>
+                    <td>5</td>
                   </tr>
                 </tbody>
               </table>
