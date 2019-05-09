@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //ToDo : function for if password === repassword password confirm
-//       implement the diff fields from User controller
+
 class Register extends React.Component {
   constructor(props) {
     super(props);

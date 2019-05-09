@@ -53,7 +53,7 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? "Already account? Sign in" : < Register />}
+            {!isRegister ? "Already account? Sign in" : < Register />}
           </span>
         </form>
       </div>
