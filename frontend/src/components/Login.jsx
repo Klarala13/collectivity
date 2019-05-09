@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
+  function Register(props) {
+    const [isRegister, setRegister] = useState(true);
+  }
   return (
     <div className="container">
       <Header />
@@ -51,7 +55,7 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? "Already account? Sign in" : "Register"}
+            {!isSignin ? "Already account? Sign in" : <Register />}
           </span>
         </form>
       </div>
