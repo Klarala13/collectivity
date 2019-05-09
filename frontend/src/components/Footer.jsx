@@ -5,6 +5,7 @@ class Footer extends React.Component {
     document.title = "Footer";
   }
   render() {
+    hello
     return <div className="container" />;
   }
 }
