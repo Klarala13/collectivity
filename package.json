@@ -1,0 +1,19 @@
+{
+  "name": "collectivity",
+  "version": "1.0.0",
+  "description": "Final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Klarala13/collectivity.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Klarala13/collectivity/issues"
+  },
+  "homepage": "https://github.com/Klarala13/collectivity#readme"
+}
