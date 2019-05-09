@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Header from "./Header";
+import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
+  
   return (
     <div className="container">
-      <Header />
-      <div className="App">
+      <div className="Login">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}
           className="form-signin"
@@ -51,7 +51,7 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? "Already account? Sign in" : "Register"}
+            {!isSignin ? "Already account? Sign in" : < Register />}
           </span>
         </form>
       </div>

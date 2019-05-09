@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //ToDo : function for if password === repassword password confirm
-//       implement the diff fields from User controller
-class RegisterPage extends React.Component {
+
+class Register extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,6 +22,7 @@ class RegisterPage extends React.Component {
   }
 
   handleChange(event) {
+    event.preventDefault();
     const { name, value } = event.target;
     const { user } = this.state;
     this.setState({
@@ -31,7 +32,6 @@ class RegisterPage extends React.Component {
       }
     });
   }
-
   handleSubmit(event) {
     event.preventDefault();
 
@@ -50,9 +50,10 @@ class RegisterPage extends React.Component {
       <div className="container">
         <span className="text-muted">
           <form
+            onSubmit={event => props.onSubmit(event, isRegister)}
+            className="form-register"
             className="col-lg-10"
             name="form-group"
-            onSubmit={this.handleSubmit}
           >
             <h2>Register Here for a life full of Freestuff :) </h2>
             <label htmlFor="firstName">First Name</label>
@@ -93,7 +94,8 @@ class RegisterPage extends React.Component {
               className="btn btn-secondary"
               label="Submit"
               primary={true}
-              onClick={event => this.handleSubmit(event)}
+              onClick={event => props.onSubmit(event, isRegister)}
+              className="form-register"
             />
           </form>
         </span>
@@ -110,5 +112,5 @@ class RegisterPage extends React.Component {
 //         }
 // const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
   
-export default RegisterPage;
+export default Register;
 // export { connectedRegisterPage as RegisterPage };
