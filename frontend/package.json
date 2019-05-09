@@ -24,7 +24,6 @@
   "author": "Klara",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Klarala13/collectivity/tree/master/frontend"
+    "type": "git"
   }
 }

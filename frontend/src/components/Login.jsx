@@ -4,12 +4,10 @@ import Register from "./Register";
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
-  function Register(props) {
-    const [isRegister, setRegister] = useState(true);
-  }
+  
   return (
     <div className="container">
-      <div className="App">
+      <div className="Login">
         <form
           onSubmit={event => props.onSubmit(event, isSignin)}
           className="form-signin"
@@ -53,7 +51,7 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isRegister ? "Already account? Sign in" : < Register />}
+            {!isSignin ? "Already account? Sign in" : < Register />}
           </span>
         </form>
       </div>
