@@ -1,19 +1,17 @@
 import React from "react";
 import NavBar from "./NavBar";
 import Header from "./Header";
-import TimeSkills from "./Skills";
+import TimeBankItem from "./TimeBankItem";
 
 class TimeBank extends React.Component {
   render() {
+
     return (
       <div className="container">
         <NavBar />
         <Header />
         <h1>TimeBank</h1>
-        <h2>
-          This is a place where you can offer your
-          skills/know-how/time.
-        </h2>
+        <h2>This is a place where you can offer your skills/know-how/time.</h2>
         <p>
           We all have abilities, things we like to do, special skills... and you
           don't need to have material things to be able to share with people.
@@ -24,8 +22,8 @@ class TimeBank extends React.Component {
           and can help each other out. We all count. We are all worth something,
           no matter what our CV and bank account says ;)
         </p>
-          {/* Half left of page */}
-          <div className = "row">
+        {/* Half left of page */}
+        <div className="row">
           <section className="skill-post col-lg-5">
             <form>
               <div className="form-group">
@@ -53,24 +51,49 @@ class TimeBank extends React.Component {
               </div>
             </form>
           </section>
-        <section className="col-lg-2" />
-        {/* Page divider (blank space) */}
-        <section className="skill-board col-lg-5">
+          <section className="col-lg-2" />
+          {/* Page divider (blank space) */}
+          <section className="skill-board col-lg-5">
+          <h1>Get help!</h1>
           <table>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Time Offered</th>
-            </tr>
-         </thead>
-         <tbody>
-                {/* {Object.keys(this.props.skills).map(id => (
-                <TimeSkills key={this.props.skills.id} data={this.props.skills[id]}/>
+          <div className="row">
+              <thead>
+                <tr>
+                  <th scope="col">User</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Time Offered</th>
+                </tr>
+              </thead>
+          </div>
+{/* ToDo link each user to it's offering so that when they click on the user, the messaging 
+opens up directly and they can set up a meeting */}
+              <tbody>
+{/* complains that Object is undefined... but we should get the data from TimeBankItem...no? */}
+              {/* {Object.keys(this.props.items).map(id => (
+                <TimeBankItem key={this.props.items.id} data={this.props.items[id]}/>
                 ))} */}
-                </tbody>
-          </table>
-        </section>
+                <tr>
+                  <td>Ashley</td>
+                  <td>32</td>
+                  <td>Pluming</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Mark</td>
+                  <td>3</td>
+                  <td>Sewing</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>Thomas</td>
+                  <td>6</td>
+                  <td>Cleaning</td>
+                  <td>5</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </div>
       </div>
     );
