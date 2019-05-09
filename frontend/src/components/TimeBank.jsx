@@ -7,7 +7,7 @@ class TimeBank extends React.Component {
       <div className="container timeBanks">
         <h3 className="text-left">Timebank</h3>
         <div className="d-flex flex-row flex-container">
-          <div className="p-2 bg-light flex-item">
+          <div className="p-2 bg-light">
             <h2 className="timeBank text-left">What is a TimeBank?</h2>
             <h3 className="timeBank text-left"> It is a place where you can offer your skills, knowhow, time. </h3>
             <p className="text-left">
