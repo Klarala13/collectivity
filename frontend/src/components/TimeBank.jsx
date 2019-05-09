@@ -1,6 +1,7 @@
 import React from "react";
 // import TimeBankItem from "./TimeBankItem";
 
+
 class TimeBank extends React.Component {
   render() {
     return (
@@ -25,9 +26,8 @@ class TimeBank extends React.Component {
                 what our CV and bank account says ;)
               </p>
             </div>
-            </div>
-        </div>
-        <div className="p-2 bg-light flex-item ">
+
+            <div className="p-2 bg-light flex-item ">
               <form>
                 <div className="form-group p-2">
                   <h3 className="text-left">Insert your Skill here</h3>
@@ -93,6 +93,8 @@ opens up directly and they can set up a meeting */}
               </table>
             </div>
           </div>
+        </div>
+      </div>
     );
   }
 }
