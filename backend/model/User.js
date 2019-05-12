@@ -39,6 +39,8 @@ let UserSchema = new mongoose.Schema({
   },
   zip: {
     type: Number,
+    required: true,
+    minlength: 5,
     maxlength: 9
   },
   registrationDate: { 
