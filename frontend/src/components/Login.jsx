@@ -4,8 +4,7 @@ import Register from "./Register";
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
 
-  
-  return (
+    return (
     <div className="container">
       <div className="Login">
         <form

@@ -1,116 +1,123 @@
 import React, { useState } from "react";
+import Login from "./Login";
 //ToDo : function for if password === repassword password confirm
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
+function Register (props) {
+  const [isRegister, setRegister] = useState(true);
 
-    this.state = {
-      user: {
-        firstName: "",
-        lastName: "",
-        userName: "",
-        password: "",
-        confirmPassword: "",
-        email: ""
-      },
-      submitted: false
-    };
+  this.state = {
+    user: {
+      firstName: "",
+      lastName: "",
+      userName: "",
+      password: "",
+      confirmPassword: "",
+      email: ""
+    },
+    submitted: false
+    
+  };
+  // render(){
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  // handleSubmit(event) {
+  //   event.preventDefault();
 
-  handleChange(event) {
-    event.preventDefault();
-    const { name, value } = event.target;
-    const { user } = this.state;
-    this.setState({
-      user: {
-        ...user,
-        [name]: value
-      }
-    });
-  }
-  handleSubmit(event) {
-    event.preventDefault();
+  //   this.setState({ submitted: true });
+  //   const { user } = this.state;
+  //   const { dispatch } = this.props;
+  //   // if (user.password === user.repassword) &&
+  //   // if(user.firstName && user.lastName && user.username && user.password){
+  //   //   dispatch(userActions.register(user));
+  //   // }
+  // }
+  
+  // this.handleChange = this.handleChange.bind(this);
+  // this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.setState({ submitted: true });
-    const { user } = this.state;
-    const { dispatch } = this.props;
-    // if (user.password === user.repassword) &&
-    // if(user.firstName && user.lastName && user.username && user.password){
-    //   dispatch(userActions.register(user));
-    // }
-  }
-  render() {
-    const { registering } = this.props;
-    const { user, submitted } = this.state;
-    return (
-      <div className="container">
-        <span className="text-muted">
-          <form
-            onSubmit={event => props.onSubmit(event, isRegister)}
-            className="form-register"
-            className="col-lg-10"
-            name="form-group"
-          >
-            <h2>Register Here for a life full of Freestuff :) </h2>
-            <label htmlFor="firstName">First Name</label>
-            <input
-              type="text"
-              placeholder="Enter your First Name"
-              value={user.firstName}
-              onChange={this.handleChange}
+  return (
+    <div className="container">
+      <div className="Register">
+        <form
+          onSubmit={event => props.onSubmit(event, isRegister)}
+          className="form-register">
+          <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
+          <div className ="container">
+          <label htmlFor="firstName" className="sr-only"> First Name </label>
+          <input
+            onChange={props.onChange}
+            type="text"
+            id="firstName"
+            className="form-control"
+            placeholder="First Name"
+            value={user.firstName}
+            required
+            autoFocus             
+          />
+          <label htmlFor="lastName" className="sr-only">Last Name</label>
+          <input
+            onChange={props.onChange}
+            type="text"
+            id="lastName"
+            className="form-control"
+            placeholder="Last Name"
+            value={user.lastName}
+            required
+            autoFocus
+          />
+          <label htmlFor="email" className="sr-only">Email</label>
+          <input
+            onChange={props.onChange}
+            type="email"
+            id="email"
+            className="form-control"
+            placeholder="Enter your Email"
+            value={user.email}
+            required
+            autoFocus
+          />
+          <label htmlFor="password" className="sr-only">Password</label>
+          <input
+            onChange={props.onChange}
+            type="password"
+            id="password"
+            className="form-control"
+            placeholder="Password"
+            value={user.password}
+            required
+            autoFocus
+          />
+          <label htmlFor="password" className="sr-only">Re-Enter Password please</label>
+          <input
+            onChange={props.onChange}
+            type="password"
+            id="repassword"
+            className="form-control"
+            placeholder="Please re-enter your Password"
+            value={user.confirmPassword}
+            required
+            autoFocus
             />
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              placeholder="Enter your Last Name"
-              value={user.lastName}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="lastName">Email</label>
-            <input
-              placeholder="Enter your Email"
-              type="email"
-              value={user.email}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Enter Password</label>
-            <input
-              type="password"
-              placeholder="Enter your Password"
-              value={user.password}
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Re Enter Password please</label>
-            <input
-              type="password"
-              placeholder="Please re-enter your Password"
-              value={user.confirmPassword}
-              onChange={this.handleChange}
-            />
-            <input
-              className="btn btn-secondary"
+  
+          
+            <button
+              disabled={props.loading}
+              className={`${
+                isRegister ? "btn-outline-primary" : "btn-secondary"
+              } mb-3 btn btn-lg  btn-block`}
               label="Submit"
               primary={true}
-              onClick={event => props.onSubmit(event, isRegister)}
-              className="form-register"
-            />
-          </form>
-        </span>
+              //onClick={event => props.onSubmit(event, isRegister)}
+            >
+              {!props.loading ? (isRegister ? "Register" : "Sign in") : "Loading"}
+            </button>
+            <span className="text-muted " onClick={() => setRegister(!isRegister)}>
+              {!isRegister ? "Don't have an account? Register!" : < Login />}
+            </span>
+          </div>
+        </form>
       </div>
-              );
-            }
-        }
-        
-//         function mapStateToProps(state) {
-//             const { registering } = state.registration;
-//             return {
-//                 registering
-//             };
-//         }
-// const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
-  
+    </div>
+  );
+}
+
 export default Register;
-// export { connectedRegisterPage as RegisterPage };

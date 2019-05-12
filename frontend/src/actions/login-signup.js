@@ -41,7 +41,7 @@ export const logOut = () => async dispatch => {
   }
 };
 
-export const register = (signUpUser, routeTo) => async dispatch => {
+export const register = (register, routeTo) => async dispatch => {
   try {
     const result = await axios(window.collectivityBackend + "/login-signup", {
       method: "post",
