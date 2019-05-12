@@ -1,123 +1,263 @@
-import React, { useState } from "react";
 import Login from "./Login";
+// import { connect } from 'react-redux';
+import { loginSignup } from "../actions/loginSignup";
+import React, { Component } from "react";
 //ToDo : function for if password === repassword password confirm
 
-function Register (props) {
-  const [isRegister, setRegister] = useState(true);
-
-  this.state = {
-    user: {
-      firstName: "",
-      lastName: "",
-      userName: "",
-      password: "",
-      confirmPassword: "",
-      email: ""
-    },
-    submitted: false
-    
+class Register extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPass: "",
+    city: "",
+    zip: "",
+    agree: false,
+    firstNameValidError: false,
+    lastNameValidError: false,
+    emailValidError: false,
+    passwordValidError: false,
+    confirmPasswordValidError: false,
+    agreeValidError: false,
+    errors: {}
   };
-  // render(){
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
-
-  //   this.setState({ submitted: true });
-  //   const { user } = this.state;
-  //   const { dispatch } = this.props;
-  //   // if (user.password === user.repassword) &&
-  //   // if(user.firstName && user.lastName && user.username && user.password){
-  //   //   dispatch(userActions.register(user));
-  //   // }
-  // }
   
-  // this.handleChange = this.handleChange.bind(this);
-  // this.handleSubmit = this.handleSubmit.bind(this);
+  submitRegister = event => {
+    event.preventDefault();
 
-  return (
-    <div className="container">
+    const { firstName, lastName, email, password, confirmPass, city, zip } = this.state;
+    if (firstName === '') {
+      this.setState({ firstNameValidError: true });
+      return;
+    } else {
+      this.setState({ firstNameValidError: false });
+    }
+
+    if (lastName === '') {
+      this.setState({ lastNameValidError: true });
+      return;
+    } else {
+      this.setState({ lastNameValidError: false });
+    }
+
+    if (email === '') {
+      this.setState({ emailValidError: true });
+      return;
+    } else {
+      this.setState({ emailValidError: false });
+    }
+
+    if (password === '' || password.length < 8) {
+      this.setState({ passwordValidError: true });
+      return;
+    } else {
+      this.setState({ passwordValidError: false });
+    }
+
+    if (confirmPass === '' || confirmPass.length < 8) {
+      this.setState({ confirmPasswordValidError: true });
+      return;
+    } else {
+      this.setState({ confirmPasswordValidError: false });
+    }
+
+    if (city === "" || city.length < 3) {
+      this.setState({ cityValidError: true});
+      return;
+    } else {
+      this.setState({cityValidError: false});
+    }
+
+    if (zip === "" || zip.length < 5) {
+      this.setState({ zipValidError: true});
+      return;
+    } else {
+      this.setState({cityValidError: false});
+    }
+
+    if (this.state.agree === false) {
+      this.setState({ agreeValidError: true });
+      return;
+    } 
+    else {
+      this.setState({ agreeValidError: false });
+    }
+    if (email === '' || password === '' || confirmPass === '') {
+      return;
+    } else {
+      if (password === confirmPass) {
+        let newUser = {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          about: '',
+          country: '',
+          city: '',
+          zip: '',
+          phone: ''
+        };
+        this.props.register(newUser);
+      } else {
+        this.setState({
+          errors: { confirmPass: 'Please make sure password and confirm password match' }
+        });
+      }
+    }
+  };
+
+  onChangeHandler = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  toggleAgreement = () => {
+    this.setState({
+      agree: !this.state.agree
+    });
+  };
+
+  render() {
+    return (
+      <div className="container">
       <div className="Register">
         <form
-          onSubmit={event => props.onSubmit(event, isRegister)}
+          onSubmit={this.submitRegister}
           className="form-register">
-          <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
+        {/* ToDo Add failed registration message  */}
+          <h2 className="mb-2">{register ? "Register" : "Sign in"}</h2>
           <div className ="container">
           <label htmlFor="firstName" className="sr-only"> First Name </label>
           <input
-            onChange={props.onChange}
+            onChange={this.onChangeHandler}
             type="text"
             id="firstName"
             className="form-control"
             placeholder="First Name"
-            value={user.firstName}
+            invalid={this.state.firstNameValidError}
             required
-            autoFocus             
+            autoFocus
+            autoComplete="true"             
           />
           <label htmlFor="lastName" className="sr-only">Last Name</label>
           <input
-            onChange={props.onChange}
+            onChange={this.onChangeHandler}
             type="text"
             id="lastName"
             className="form-control"
             placeholder="Last Name"
-            value={user.lastName}
+            invalid={this.state.firstNameValidError}
             required
             autoFocus
+            autoComplete="true"  
           />
           <label htmlFor="email" className="sr-only">Email</label>
           <input
-            onChange={props.onChange}
+            onChange={this.onChangeHandler}
             type="email"
             id="email"
             className="form-control"
-            placeholder="Enter your Email"
-            value={user.email}
+            placeholder="example@example.com"
+            invalid={this.emailValidError}
             required
             autoFocus
+            autoComplete="true"
           />
           <label htmlFor="password" className="sr-only">Password</label>
           <input
-            onChange={props.onChange}
+            onChange={this.onChangeHandler}
             type="password"
             id="password"
             className="form-control"
-            placeholder="Password"
-            value={user.password}
+            placeholder="********"
+            invalid={this.state.passwordValidError}
             required
             autoFocus
           />
           <label htmlFor="password" className="sr-only">Re-Enter Password please</label>
           <input
-            onChange={props.onChange}
+            onChange={this.onChangeHandler}
             type="password"
-            id="repassword"
+            id="confirmPass"
             className="form-control"
-            placeholder="Please re-enter your Password"
-            value={user.confirmPassword}
+            placeholder="Confirm Password"
+            invalid={this.state.confirmPasswordValidError}
             required
             autoFocus
+          />
+          {this.state.errors && (
+            <div>
+                {this.state.errors.confirmPass}
+            </div>
+          )}
+          <label htmlFor="city" className="sr-only">City</label>
+          <input
+            onChange={this.onChangeHandler}
+            type="city"
+            id="city"
+            className="form-control"
+            placeholder="city"
+            invalid={this.state.cityValidError}
+            required
+            autoFocus
+            autoComplete="true"
+          />
+          <label htmlFor="city" className="sr-only">ZipCode</label>
+          <input
+            onChange={this.onChangeHandler}
+            type="zipcode"
+            id="zipcode"
+            className="form-control"
+            placeholder="zip code"
+            invalid={this.state.zipValidError}
+            required
+            autoFocus
+          />
+          <div class="form-check">
+            <h4>Agree to Terms and Conditions</h4>
+            <input 
+              type="checkbox" 
+              class="form-check-input" 
+              name="agree"
+              id="agree-check-box"
+              onClick={this.toggleAgreement}
+              invalid={this.state.agreeValidError}
             />
-  
-          
-            <button
-              disabled={props.loading}
-              className={`${
-                isRegister ? "btn-outline-primary" : "btn-secondary"
-              } mb-3 btn btn-lg  btn-block`}
-              label="Submit"
-              primary={true}
-              //onClick={event => props.onSubmit(event, isRegister)}
-            >
-              {!props.loading ? (isRegister ? "Register" : "Sign in") : "Loading"}
-            </button>
-            <span className="text-muted " onClick={() => setRegister(!isRegister)}>
-              {!isRegister ? "Don't have an account? Register!" : < Login />}
-            </span>
+            <label 
+              class="form-check-label" 
+              for="accept">Check to accept
+            </label>
+          </div>
+          <button
+            className="btn btn-danger"
+            label="Submit"
+            onClick={this.register}
+          >
+          Register
+          </button>
+          {/* <span className="text-muted " onClick={() => register(!register)}>
+            {!register ? "Don't have an account? Register!" : < Login />}
+          </span> */}
           </div>
         </form>
       </div>
     </div>
   );
 }
+}
+// const mapStateToProps = state => ({
+//   // loggedIn: state.reducer1.loggedIn,
+//   signUpFailedMessage: state.userReducer.signUpFailedMessage
+// });
 
+// export default connect(
+//   mapStateToProps,
+//   { isRegister }
+// )(Register);
 export default Register;
+  
+
+
