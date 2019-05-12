@@ -5,6 +5,7 @@ import React, { Component } from "react";
 //ToDo : function for if password === repassword password confirm
 
 class Register extends Component {
+
   state = {
     firstName: "",
     lastName: "",
@@ -99,7 +100,7 @@ class Register extends Component {
           zip: '',
           phone: ''
         };
-        this.props.register(newUser);
+       this.props.register(newUser);
       } else {
         this.setState({
           errors: { confirmPass: 'Please make sure password and confirm password match' }
@@ -107,7 +108,7 @@ class Register extends Component {
       }
     }
   };
-
+  
   onChangeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -238,9 +239,9 @@ class Register extends Component {
           >
           Register
           </button>
-          {/* <span className="text-muted " onClick={() => register(!register)}>
+          <span className="text-muted " onClick={() => register(!register)}>
             {!register ? "Don't have an account? Register!" : < Login />}
-          </span> */}
+          </span>
           </div>
         </form>
       </div>
@@ -255,7 +256,7 @@ class Register extends Component {
 
 // export default connect(
 //   mapStateToProps,
-//   { isRegister }
+//   { register }
 // )(Register);
 export default Register;
   
