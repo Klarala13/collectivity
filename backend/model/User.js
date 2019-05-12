@@ -26,6 +26,11 @@ let UserSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 20
   },
+  repassword:{
+	  type: String,
+	  required: true,
+	  minlength: 8,
+},
   city: {
     type: String,
     required: true,
