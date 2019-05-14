@@ -15,7 +15,7 @@ const app = express();
 const postgres = require("pg");
 const { Client } = require("pg");
 
-require('dotenv').config({ path: './.env' })
+require("dotenv").config({ path: "./.env" });
 console.log(process.env.DBUSER);
 
 const client = new Client({
@@ -27,26 +27,61 @@ const client = new Client({
 });
 client.connect();
 
-// promise
-client
-  .query("select * from public.user")
-  .then(res => {
-    if (
-      res.rowCount >= 1 &&
-      res.rows.filter(user => user.email === "admin@dci.de").length > 0
-    ) {
-      console.log("All users:", res.rows);
-    } else {
-      client.query(
-        `INSERT INTO public.user("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
-        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
-      );
-      console.log("Admin seeded");
-    }
-  })
-  .catch(e => console.error(e.stack));
 
-console.log("Hello from postgres"); 
+// promise
+
+async function seedAdmin () {
+  return client
+      .query("select * from public.user")
+      .then(res => {
+        console.log("Hey", res);
+        if (
+          res.rowCount >= 1 &&
+          res.rows.filter(user => user.email === "admin@dci.de").length > 0
+        ) {
+          console.log("All users:", res.rows);
+        } else {
+          client.query(
+            `INSERT INTO public.user("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
+          );
+          console.log("Admin seeded");
+        }
+      })
+      .catch(e => console.error(e.stack));
+}
+
+client.query("SELECT to_regclass('public.user')").then( async res => {
+  console.log("RES", res.rows);
+  if (res.rows[0].to_regclass !== null) {
+    const response = await seedAdmin();
+  } else {
+    client.query(
+      `CREATE TABLE public."user"
+      (
+          "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+          "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+          email character varying(20) COLLATE pg_catalog."default" NOT NULL,
+          password character varying(20) COLLATE pg_catalog."default" NOT NULL,
+          city character varying(20) COLLATE pg_catalog."default",
+          "zipCode" integer,
+          "registrationDate" date,
+          rating integer
+      )
+      WITH (
+          OIDS = FALSE
+      )
+      TABLESPACE pg_default;
+      
+      ALTER TABLE public."user"
+          OWNER to admin;
+      `
+    )
+    .then(() => seedAdmin())
+  }
+});
+
+console.log("Hello from postgres");
 
 app.use(setCorsHeaders);
 
