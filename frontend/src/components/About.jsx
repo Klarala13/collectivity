@@ -41,6 +41,7 @@ class About extends React.Component {
             className="btn btn-outline-primary"
             alt="donate money"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Donate
           </a>
@@ -98,7 +99,7 @@ class About extends React.Component {
             <p>
               {" "}
               Max
-              <a />
+            
             </p>
           </div>
           <div>
