@@ -1,6 +1,6 @@
 import Login from "./Login";
 // import { connect } from 'react-redux';
-import { loginSignup } from "../actions/loginSignup";
+//import { loginSignup } from "../actions/loginSignup";
 import React, { Component } from "react";
 //ToDo : function for if password === repassword password confirm
 
@@ -122,12 +122,13 @@ class Register extends Component {
   };
 
   render() {
+    const register = this.setState;
     return (
       <div className="container">
       <div className="Register">
         <form
           onSubmit={this.submitRegister}
-          className="form-register">
+          className="form-register">signUp
         {/* ToDo Add failed registration message  */}
           <h2 className="mb-2">{register ? "Register" : "Sign in"}</h2>
           <div className ="container">
