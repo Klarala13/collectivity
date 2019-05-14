@@ -73,6 +73,7 @@ class About extends React.Component {
                 href="https://elisemaschke.de/"
                 alt="Portfolio"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Contact
               </a>
@@ -87,6 +88,7 @@ class About extends React.Component {
                 href=""
                 alt="Portfolio"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Contact
               </a>
@@ -108,6 +110,7 @@ class About extends React.Component {
                 href="https://clarasanchez.de/"
                 alt="Portfolio"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Contact
               </a>
