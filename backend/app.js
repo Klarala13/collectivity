@@ -32,7 +32,7 @@ client.connect();
 
 async function seedAdmin () {
   return client
-      .query("select * from public.user")
+      .query("select * from public.users")
       .then(res => {
         console.log("Hey", res);
         if (
@@ -42,7 +42,7 @@ async function seedAdmin () {
           console.log("All users:", res.rows);
         } else {
           client.query(
-            `INSERT INTO public.user("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
+            `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
         VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
           );
           console.log("Admin seeded");
@@ -51,13 +51,13 @@ async function seedAdmin () {
       .catch(e => console.error(e.stack));
 }
 
-client.query("SELECT to_regclass('public.user')").then( async res => {
+client.query("SELECT to_regclass('public.users')").then( async res => {
   console.log("RES", res.rows);
   if (res.rows[0].to_regclass !== null) {
     const response = await seedAdmin();
   } else {
     client.query(
-      `CREATE TABLE public."user"
+      `CREATE TABLE public."users"
       (
           "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
           "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
@@ -73,7 +73,7 @@ client.query("SELECT to_regclass('public.user')").then( async res => {
       )
       TABLESPACE pg_default;
       
-      ALTER TABLE public."user"
+      ALTER TABLE public."users"
           OWNER to admin;
       `
     )
