@@ -6,9 +6,6 @@ class About extends React.Component {
   }
   scrollToAnchor = e => {
     e.preventDefault();
-    console.log(document.querySelector(e.target.attributes.href.value));
-
-    // .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     window.scroll({
       top:
         document.querySelector(e.target.attributes.href.value).offsetTop + 50,
@@ -22,14 +19,14 @@ class About extends React.Component {
       <div className="container">
         <div id="list-example" className="list-group bd-example">
           <div className="row">
-            <div className="col-4">
+            <div className="col-3 px-6">
               <div className="sticky-top top-100" id="list">
                 <a
                   className="list-group-item list-group-item-action"
                   href="#about"
                   onClick={this.scrollToAnchor}
                 >
-                  About it
+                  About
                 </a>
                 <a
                   className="list-group-item list-group-item-action"
@@ -75,18 +72,17 @@ class About extends React.Component {
                 </a>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-7">
               <div
                 data-spy="scroll"
                 data-target="#list"
                 data-offset="50"
                 className="scroll"
               >
-                <h4 id="about">About it</h4>
-                <p>
-                  {" "}
-                  Collectivity comes from Collective and Connecting. It is a
-                  platform for sharing skills/items to alienate us from
+                <h3 id="about">About</h3>
+                <p> 
+                  Collectivity comes from Collective and Connecting. 
+                  It is a platform for sharing skills/items to alienate us from
                   capitalism and consumption. You can share/ask for items
                   without an account in the Freebee section or you can create an
                   account and also offer/ask for some type of activity, for
@@ -94,7 +90,7 @@ class About extends React.Component {
                   X hrs/week. It is not reciprocate. The idea is that
                   COLLECTIVELY we are stronger. You don't have to give to take.{" "}
                 </p>
-                <h4 id="how">How It Works</h4>
+                <h3 id="how">How It Works</h3>
                 <p>
                   There are two main sections: Freebees (sharing of items) and
                   TimeBanks (sharing of skills). To participate in TimeBanks you
@@ -103,7 +99,7 @@ class About extends React.Component {
                   distribute the goodies, we geo-locate our users to facilitate
                   your access.{" "}
                 </p>
-                <h4 id="donation">Donations</h4>
+                <h3 id="donation">Donations</h3>
                 <p>
                   You can also collaborate in the project by making a small
                   donation to our crowdfunding, so we can pay for libraries,
@@ -118,14 +114,14 @@ class About extends React.Component {
                 >
                   Donate
                 </a>
-                <h4 id="rules">Rules</h4>
+                <h3 id="rules">Rules</h3>
                 <p>
                   {" "}
                   Once the transaction is done and the service was provided or
                   item returned, please rate the user according to punctuality,
                   state of the item returned, etc.
                 </p>
-                <h4 id="safety">Safety</h4>
+                <h3 id="safety">Safety</h3>
                 <p>
                   {" "}
                   Please, keep in mind that we cannot control who you meet or
@@ -134,9 +130,9 @@ class About extends React.Component {
                   problems, contact our team and we will try to find a solution
                   together.{" "}
                 </p>
-                <h4 id="whoMade">Who made it</h4>
+                <h3 id="whoMade">Who made it</h3>
                 <p>...</p>
-                <h4 id="ourTeam">Our awesome team</h4>
+                <h3 id="ourTeam">Our awesome team</h3>
                 <p>
                   {" "}
                   Elise Maschke (Front and Backend developer)

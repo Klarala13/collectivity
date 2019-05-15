@@ -19,6 +19,8 @@ h2 {
 }
 p {
   font-size: 1.5em;
+  padding-bottom: 1rem;
+  /* text-align: justify; */
 }
 
 /* navigation */
@@ -53,13 +55,13 @@ h2 {
   text-decoration: none;
 }
 /* make sidebar nav vertical */ 
-@media (min-width: 576px)
+/* @media (min-width: 576px)
 .bd-example {
     padding: 1.5rem;
     margin-right: 0;
     margin-left: 0;
     border-width: .2rem;
-}
+} */
 /* @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
