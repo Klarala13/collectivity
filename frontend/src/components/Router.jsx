@@ -4,6 +4,7 @@ import App from "./App";
 import TimeBank from "./TimeBank";
 
 import Login from "./Login";
+import Register from "./Register";
 import About from "./About";
 import Freebies from "./Freebies";
 import Help from "./Help";
@@ -19,6 +20,7 @@ const Router = () => (
         <Route path="/timebank" component={TimeBank} />
         <Route path="/freebies" component={Freebies} />
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
         <Route component={NotFound} />
