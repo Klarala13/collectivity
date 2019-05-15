@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
-
-    return (
+  const onSubmit = () => {
+    console.log("hey! thanks for registering!");
+  };
+  return (
     <div className="container">
       <div className="Login">
         <form
@@ -50,7 +53,17 @@ function Login(props) {
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? "Already account? Sign in" : < Register />}
+            {!isSignin ? (
+              "Already account? Sign in"
+            ) : (
+              <NavLink
+                to="/register"
+                activeClassName="active"
+                className="navbar-brand"
+              >
+              Register
+              </NavLink>
+            )}
           </span>
         </form>
       </div>
