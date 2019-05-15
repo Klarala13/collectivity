@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Register from "./Register";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);

@@ -1,8 +1,6 @@
-import Login from "./Login";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-//TODO CHANGE ALL THIS SHIT INTO FRONTEND VALIDATION AND PERIOD.
 export default props => {
   const handleSubmit = event => {
     event.preventDefault();
@@ -38,7 +36,7 @@ export default props => {
   // };
   const handleFirstName = e => {
     if (e.target.value.length > 3) {
-      this.setState({ firstName: true });
+      props.setState({ firstName: true });
     } else {
       this.setState({ firstName: false });
     }
@@ -50,6 +48,45 @@ export default props => {
       this.setState({ lastName: false });
     }
   };
+  const handleEmail = e => {
+    if (e.target.value.length > 3) {
+      this.setState({ email: true });
+    } else {
+      this.setState({ email: false });
+    }
+  }
+  const handlePassword = e => {
+    if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
+      this.setState({ password: true });
+    } else {
+      this.setState({ password: false });
+    }
+  }
+  const handleConfirmPass = e => {
+    if (
+      this.password === this.confirmPass &&
+      e.target.value.length
+    ) {
+      this.setState({ confirmPass: true });
+    } else {
+      this.setState({ confirmPass: false });
+    }
+  }
+  const handleCity = e => {
+    if (e.target.value.length > 3) {
+      this.setState({ city: true });
+    } else {
+      this.setState({ city: false });
+    }
+  }
+  const handleZip = e => {
+    if (/^\d+$/.test(e.target.value) > 4) {
+      this.setState({ zip: true });
+    } else {
+      this.setState({ zip: false });
+    }
+  }
+
   const [isRegister, setRegister] = useState(true);
   return (
     <div className="container">
@@ -92,15 +129,7 @@ export default props => {
               Email
             </label>
             <input
-              onChange={
-                (this.handleEmail = e => {
-                  if (e.target.value.length > 3) {
-                    this.setState({ email: true });
-                  } else {
-                    this.setState({ email: false });
-                  }
-                })
-              }
+              onChange={handleEmail}
               type="email"
               id="email"
               className="form-control"
@@ -113,15 +142,7 @@ export default props => {
               Password
             </label>
             <input
-              onChange={
-                (this.handlePassword = e => {
-                  if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
-                    this.setState({ password: true });
-                  } else {
-                    this.setState({ password: false });
-                  }
-                })
-              }
+              onChange={handlePassword}
               type="password"
               id="password"
               className="form-control"
@@ -133,18 +154,7 @@ export default props => {
               Re-Enter Password please
             </label>
             <input
-              onChange={
-                (this.handleConfirmPass = e => {
-                  if (
-                    this.password === this.confirmPass &&
-                    e.target.value.length
-                  ) {
-                    this.setState({ confirmPass: true });
-                  } else {
-                    this.setState({ confirmPass: false });
-                  }
-                })
-              }
+              onChange={handleConfirmPass}
               type="password"
               id="confirmPass"
               className="form-control"
@@ -156,15 +166,7 @@ export default props => {
               City
             </label>
             <input
-              onChange={
-                (this.handleCity = e => {
-                  if (e.target.value.length > 3) {
-                    this.setState({ city: true });
-                  } else {
-                    this.setState({ city: false });
-                  }
-                })
-              }
+              onChange={handleCity}
               type="city"
               id="city"
               className="form-control"
@@ -177,15 +179,7 @@ export default props => {
               ZipCode
             </label>
             <input
-              onChange={
-                (this.handleZip = e => {
-                  if (/^\d+$/.test(e.target.value) > 4) {
-                    this.setState({ zip: true });
-                  } else {
-                    this.setState({ zip: false });
-                  }
-                })
-              }
+              onChange={handleZip}
               type="zipcode"
               id="zipcode"
               className="form-control"
