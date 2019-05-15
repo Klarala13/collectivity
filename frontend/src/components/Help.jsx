@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "./Header";
-import NavBar from "./NavBar";
 
 class Help extends React.Component {
   componentDidMount() {
@@ -8,12 +6,7 @@ class Help extends React.Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <NavBar />
-        <Header />
-      </div>
-    );
+    return <div className="container">help</div>;
   }
 }
 

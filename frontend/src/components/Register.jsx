@@ -1,114 +1,227 @@
 import React, { useState } from "react";
-//ToDo : function for if password === repassword password confirm
-//       implement the diff fields from User controller
-class RegisterPage extends React.Component {
-  constructor(props) {
-    super(props);
+import { NavLink } from "react-router-dom";
 
-    this.state = {
-      user: {
-        firstName: "",
-        lastName: "",
-        userName: "",
-        password: "",
-        confirmPassword: "",
-        email: ""
-      },
-      submitted: false
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    const { name, value } = event.target;
-    const { user } = this.state;
-    this.setState({
-      user: {
-        ...user,
-        [name]: value
-      }
-    });
-  }
-
-  handleSubmit(event) {
+export default props => {
+  const handleSubmit = event => {
     event.preventDefault();
 
-    this.setState({ submitted: true });
-    const { user } = this.state;
-    const { dispatch } = this.props;
-    // if (user.password === user.repassword) &&
-    // if(user.firstName && user.lastName && user.username && user.password){
-    //   dispatch(userActions.register(user));
-    // }
+    const user = {
+      firstName: this.firstName.current.value,
+      lastName: this.lastName.current.value,
+      email: this.email.current.value,
+      password: this.password.current.value,
+      confirmPass: this.confirmPass.current.value,
+      city: this.city.current.value,
+      zip: this.zip.current.value
+      //agreement: this.checkboxes.current.value
+    };
+
+    const url = `http://localhost:3000/app`;
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(response => console.log("Success:", JSON.stringify(response)))
+      .catch(error => console.error("Error:", error));
+  };
+  //   toggleAgreement = () => {
+  //   this.setState({
+  //     agree: !this.state.agree
+  //   });
+  // };
+  const handleFirstName = e => {
+    if (e.target.value.length > 3) {
+      props.setState({ firstName: true });
+    } else {
+      this.setState({ firstName: false });
+    }
+  };
+  const handleLastName = e => {
+    if (e.target.value.length > 3) {
+      this.setState({ lastName: true });
+    } else {
+      this.setState({ lastName: false });
+    }
+  };
+  const handleEmail = e => {
+    if (e.target.value.length > 3) {
+      this.setState({ email: true });
+    } else {
+      this.setState({ email: false });
+    }
   }
-  render() {
-    const { registering } = this.props;
-    const { user, submitted } = this.state;
-    return (
-      <div className="container">
-        <span className="text-muted">
-          <form
-            className="col-lg-10"
-            name="form-group"
-            onSubmit={this.handleSubmit}
-          >
-            <h2>Register Here for a life full of Freestuff :) </h2>
-            <label htmlFor="firstName">First Name</label>
+  const handlePassword = e => {
+    if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
+      this.setState({ password: true });
+    } else {
+      this.setState({ password: false });
+    }
+  }
+  const handleConfirmPass = e => {
+    if (
+      this.password === this.confirmPass &&
+      e.target.value.length
+    ) {
+      this.setState({ confirmPass: true });
+    } else {
+      this.setState({ confirmPass: false });
+    }
+  }
+  const handleCity = e => {
+    if (e.target.value.length > 3) {
+      this.setState({ city: true });
+    } else {
+      this.setState({ city: false });
+    }
+  }
+  const handleZip = e => {
+    if (/^\d+$/.test(e.target.value) > 4) {
+      this.setState({ zip: true });
+    } else {
+      this.setState({ zip: false });
+    }
+  }
+
+  const [isRegister, setRegister] = useState(true);
+  return (
+    <div className="container">
+      <div className="Register">
+        <form
+          onSubmit={event => handleSubmit(event, isRegister)}
+          className="form-register"
+        >
+          Register
+          <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
+          <div className="container">
+            <label htmlFor="firstName" className="sr-only">
+              {" "}
+              First Name{" "}
+            </label>
             <input
+              onChange={handleFirstName}
               type="text"
-              placeholder="Enter your First Name"
-              value={user.firstName}
-              onChange={this.handleChange}
+              id="firstName"
+              className="form-control"
+              placeholder="First Name"
+              required
+              autoFocus
+              autoComplete="true"
             />
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName" className="sr-only">
+              Last Name
+            </label>
             <input
-              placeholder="Enter your Last Name"
-              value={user.lastName}
-              onChange={this.handleChange}
+              onChange={handleLastName}
+              type="text"
+              id="lastName"
+              className="form-control"
+              placeholder="Last Name"
+              required
+              autoFocus
+              autoComplete="true"
             />
-            <label htmlFor="lastName">Email</label>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
             <input
-              placeholder="Enter your Email"
+              onChange={handleEmail}
               type="email"
-              value={user.email}
-              onChange={this.handleChange}
+              id="email"
+              className="form-control"
+              placeholder="example@example.com"
+              required
+              autoFocus
+              autoComplete="true"
             />
-            <label htmlFor="password">Enter Password</label>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
             <input
+              onChange={handlePassword}
               type="password"
-              placeholder="Enter your Password"
-              value={user.password}
-              onChange={this.handleChange}
+              id="password"
+              className="form-control"
+              placeholder="********"
+              required
+              autoFocus
             />
-            <label htmlFor="password">Re Enter Password please</label>
+            <label htmlFor="password" className="sr-only">
+              Re-Enter Password please
+            </label>
             <input
+              onChange={handleConfirmPass}
               type="password"
-              placeholder="Please re-enter your Password"
-              value={user.confirmPassword}
-              onChange={this.handleChange}
+              id="confirmPass"
+              className="form-control"
+              placeholder="Confirm Password"
+              required
+              autoFocus
             />
+            <label htmlFor="city" className="sr-only">
+              City
+            </label>
             <input
-              className="btn btn-secondary"
+              onChange={handleCity}
+              type="city"
+              id="city"
+              className="form-control"
+              placeholder="city"
+              required
+              autoFocus
+              autoComplete="true"
+            />
+            <label htmlFor="city" className="sr-only">
+              ZipCode
+            </label>
+            <input
+              onChange={handleZip}
+              type="zipcode"
+              id="zipcode"
+              className="form-control"
+              placeholder="zip code"
+              required
+              autoFocus
+            />
+            <div className="form-check">
+              <h4>Agree to Terms and Conditions</h4>
+              <input
+                type="checkbox"
+                className="form-check-input"
+                name="agree"
+                id="agree-check-box"
+                //  onClick={this.toggleAgreement}
+              />
+              <label className="form-check-label" htmlFor="accept">
+                Check to accept
+              </label>
+            </div>
+            <button
+              className="btn btn-danger"
               label="Submit"
-              primary={true}
-              onClick={event => this.handleSubmit(event)}
-            />
-          </form>
-        </span>
+              onClick={this.register}
+            >
+              Register
+            </button>
+            <span
+              className="text-muted "
+              onClick={() => setRegister(!isRegister)}
+            > {!isRegister ? "Don't have an account? Register!" : 
+              (<NavLink to="/login"
+              activeClassName="active"
+              className="navbar-brand">
+              Login
+              </NavLink>
+              )}
+            </span>
+          </div>
+        </form>
       </div>
-              );
-            }
-        }
-        
-//         function mapStateToProps(state) {
-//             const { registering } = state.registration;
-//             return {
-//                 registering
-//             };
-//         }
-// const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
-  
-export default RegisterPage;
-// export { connectedRegisterPage as RegisterPage };
+    </div>
+  );
+};
+

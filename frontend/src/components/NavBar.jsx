@@ -10,8 +10,8 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div>
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg sticky-top nav-main">
+        <div className="container">
           <NavLink to="/" activeClassName="active" className="navbar-brand">
             LOGO
           </NavLink>
@@ -34,18 +34,18 @@ class NavBar extends Component {
                 <NavLink
                   to="/freebies"
                   activeClassName="active"
-                  className="mr-3"
+                  className="mr-4"
                 >
                   Freebies
                 </NavLink>
                 <NavLink
                   to="/timebank"
                   activeClassName="active"
-                  className="mr-3"
+                  className="mr-4"
                 >
                   Timebanks
                 </NavLink>
-                <NavLink to="/about" activeClassName="active" className="mr-3">
+                <NavLink to="/about" activeClassName="active" className="mr-4">
                   About
                 </NavLink>
               </div>
@@ -54,8 +54,8 @@ class NavBar extends Component {
               </NavLink>
             </nav>
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     );
   }
 }

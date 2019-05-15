@@ -4,6 +4,7 @@
   "description": "Front End of Project",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "npm-watch": "^0.6.0",
     "react": "^16.8",
@@ -23,7 +24,6 @@
   "author": "Klara",
   "license": "MIT",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Klarala13/collectivity/tree/master/frontend"
+    "type": "git"
   }
 }
