@@ -2,6 +2,21 @@ import React from "react";
 import Header from "./Header";
 
 class App extends React.Component {
+  constructor(props){
+    super(props)
+  
+  this.state = {
+    users:[],
+    input:{}
+  }
+};
+componentWillMount = () => {
+  fetch("http://0.0.0.0:5432/users")
+  .then(res => res.json())
+  .then(response => { 
+    this.setState({users: response});
+  })
+};
   render() {
     return (
       <div className="container">
