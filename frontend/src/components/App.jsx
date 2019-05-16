@@ -12,7 +12,7 @@ class App extends React.Component {
         </button>
         <p>OR</p>
         <button className="mb-3 btn btn-block btn-outline-primary">
-          go to Freebies
+          go to Freebiesss
         </button>
       </div>
       </div>
