@@ -1,5 +1,4 @@
 import axios from "axios";
-import { runInContext } from "vm";
 
 export const updateProfile = (newDataUser, id, route) => dispatch => {
   axios({
