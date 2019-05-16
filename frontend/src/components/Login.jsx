@@ -5,7 +5,8 @@ function Login(props) {
   const [isSignin, setSignin] = useState(true);
   const onSubmit = () => {
     console.log("hey! thanks for registering!");
-  };
+    console.log(onSubmit());
+  }
   return (
     <div className="container">
       <div className="Login">
