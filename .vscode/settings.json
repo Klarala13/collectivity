@@ -1,3 +1,4 @@
 {
-  "javascript.referencesCodeLens.enabled": true
+  "javascript.referencesCodeLens.enabled": true,
+  "eslint.enable": false
 }

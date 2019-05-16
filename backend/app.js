@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const logger = require("morgan");
 const createError = require("http-errors");
 
@@ -13,16 +12,76 @@ const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
 
-/**
- * Connect to DB
- */
-mongoose.connect("mongodb://localhost:27017/collectivity", {
-  useNewUrlParser: true,
-  useCreateIndex: true
+const postgres = require("pg");
+const { Client } = require("pg");
+
+require("dotenv").config({ path: "./.env" });
+console.log(process.env.DBUSER);
+
+const client = new Client({
+  user: process.env.DBUSER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.DBPORT
+});
+client.connect();
+
+
+// promise
+
+async function seedAdmin () {
+  return client
+      .query("select * from public.users")
+      .then(res => {
+        console.log("Hey", res);
+        if (
+          res.rowCount >= 1 &&
+          res.rows.filter(user => user.email === "admin@dci.de").length > 0
+        ) {
+          console.log("All users:", res.rows);
+        } else {
+          client.query(
+            `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
+          );
+          console.log("Admin seeded");
+        }
+      })
+      .catch(e => console.error(e.stack));
+}
+
+client.query("SELECT to_regclass('public.users')").then( async res => {
+  console.log("RES", res.rows);
+  if (res.rows[0].to_regclass !== null) {
+    const response = await seedAdmin();
+  } else {
+    client.query(
+      `CREATE TABLE public."users"
+      (
+          "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+          "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+          email character varying(20) COLLATE pg_catalog."default" NOT NULL,
+          password character varying(20) COLLATE pg_catalog."default" NOT NULL,
+          city character varying(20) COLLATE pg_catalog."default",
+          "zipCode" integer,
+          "registrationDate" date,
+          rating integer
+      )
+      WITH (
+          OIDS = FALSE
+      )
+      TABLESPACE pg_default;
+      
+      ALTER TABLE public."users"
+          OWNER to admin;
+      `
+    )
+    .then(() => seedAdmin())
+  }
 });
 
-// eslint-disable-next-line no-console
-mongoose.connection.on("error", console.error);
+console.log("Hello from postgres");
 
 app.use(setCorsHeaders);
 
