@@ -11,12 +11,14 @@ class App extends React.Component {
   }
 };
 componentWillMount = () => {
-  fetch("http://0.0.0.0:5432/users")
-  .then(res => res.json())
-  .then(response => { 
-    this.setState({users: response});
+  //fetching fake data to try shit out
+  fetch("./fakeData.json")
+  .then(response => {
+    this.setState({})
+    console.log(response);
   })
-};
+  }
+
   render() {
     return (
       <div className="container">
