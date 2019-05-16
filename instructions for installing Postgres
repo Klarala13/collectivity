@@ -1,0 +1,52 @@
+READ ME FOR INSTALLING POSTGRES(DB)
+
+Go online and download and install PgAdmin4
+
+We will use Docker, a package (image) manager that provides the same envioroment for everyone. No matter OS, versions, etc. 
+
+Go to 
+https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+Run 
+$ sudo apt-get update
+
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+$ sudo apt-key fingerprint 0EBFCD88
+
+$ pub   rsa4096 2017-02-22 [SCEA]
+
+$ 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+
+$ sudo add-apt-repository \
+>    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+>    $(lsb_release -cs) \
+>    stable"
+
+$ sudo apt-get update
+
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+$ sudo docker run hello-world
+
+$ sudo docker pull postgres
+
+$ mkdir -p $HOME/docker/volumes/postgres
+
+$ sudo docker run --rm   --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+
+$ sudo docker ps
+
+FROM THIS POINT WE CAN OPEN OUR INTERFACE PGADMIN4 and login with 
+user: pg-docker
+psd: docker
+port: 0.0.0.0 (external connection)
+      5432 (internal) 
+
