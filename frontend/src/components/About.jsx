@@ -1,4 +1,5 @@
 import React from "react";
+
 class About extends React.Component {
   componentDidMount() {
     document.title = "About Us";
@@ -12,6 +13,7 @@ class About extends React.Component {
       behavior: "smooth"
     });
   };
+
   render() {
     return (
       <div className="container">
