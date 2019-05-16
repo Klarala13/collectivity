@@ -27,7 +27,6 @@ const client = new Client({
 });
 client.connect();
 
-
 // promise
 
 async function seedAdmin () {
