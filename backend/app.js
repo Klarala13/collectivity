@@ -1,3 +1,4 @@
+require('dotenv').config({path: __dirname + '/.env'});
 const express = require("express");
 const logger = require("morgan");
 const createError = require("http-errors");
@@ -15,7 +16,6 @@ const app = express();
 const postgres = require("pg");
 const { Client } = require("pg");
 
-require("dotenv").config({ path: "./.env" });
 console.log(process.env.DBUSER);
 
 const client = new Client({
@@ -33,7 +33,8 @@ async function seedAdmin () {
   return client
       .query("select * from public.users")
       .then(res => {
-        console.log("Hey", res);
+        console.log("Hey", res.row);
+        console.log("User's name:", res.rows[0].lastName);
         if (
           res.rowCount >= 1 &&
           res.rows.filter(user => user.email === "admin@dci.de").length > 0
