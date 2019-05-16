@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default props => {
+
   const handleSubmit = event => {
     event.preventDefault();
 
-    const user = {
-      firstName: props.firstName,
-      lastName: props.lastName,
-      email: this.email.current.value,
-      password: this.password.current.value,
-      confirmPass: this.confirmPass.current.value,
-      city: this.city.current.value,
-      zip: this.zip.current.value
+    const user = this.props.input.user;
+
+    const input = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password,
+      confirmPass: user.confirmPass,
+      city: user.city,
+      zip: user.zip
       //agreement: this.checkboxes.current.value
     };
+    console.log(input);
 
-    const url = `http://localhost:3000/app`;
+    const url = `"http://0.0.0.0:5432/users"`;
 
     fetch(url, {
       method: "POST",
@@ -35,56 +39,56 @@ export default props => {
   //   });
   // };
   const handleFirstName = e => {
-    if (e.target.value.length > 3) {
-      this.setState({ firstName: true });
-    } else {
-      this.setState({ firstName: false });
-    }
+    // if (e.target.value.length > 3) {
+    //   this.setState({ firstName: true });
+    // } else {
+    //   this.setState({ firstName: false });
+    // }
   };
   const handleLastName = e => {
-    if (e.target.value.length > 3) {
-      this.setState({ lastName: true });
-    } else {
-      this.setState({ lastName: false });
-    }
+    // if (e.target.value.length > 3) {
+    //   this.setState({ lastName: true });
+    // } else {
+    //   this.setState({ lastName: false });
+    // }
   };
   const handleEmail = e => {
-    if (e.target.value.length > 3) {
-      this.setState({ email: true });
-    } else {
-      this.setState({ email: false });
-    }
+    // if (e.target.value.length > 3) {
+    //   this.setState({ email: true });
+    // } else {
+    //   this.setState({ email: false });
+    // }
   }
   const handlePassword = e => {
-    if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
-      this.setState({ password: true });
-    } else {
-      this.setState({ password: false });
-    }
+    // if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
+    //   this.setState({ password: true });
+    // } else {
+    //   this.setState({ password: false });
+    // }
   }
   const handleConfirmPass = e => {
-    if (
-      this.password === this.confirmPass &&
-      e.target.value.length
-    ) {
-      this.setState({ confirmPass: true });
-    } else {
-      this.setState({ confirmPass: false });
-    }
+    // if (
+    //   this.password === this.confirmPass &&
+    //   e.target.value.length
+    // ) {
+    //   this.setState({ confirmPass: true });
+    // } else {
+    //   this.setState({ confirmPass: false });
+    // }
   }
   const handleCity = e => {
-    if (e.target.value.length > 3) {
-      this.setState({ city: true });
-    } else {
-      this.setState({ city: false });
-    }
+    // if (e.target.value.length > 3) {
+    //   this.setState({ city: true });
+    // } else {
+    //   this.setState({ city: false });
+    // }
   }
   const handleZip = e => {
-    if (/^\d+$/.test(e.target.value) > 4) {
-      this.setState({ zip: true });
-    } else {
-      this.setState({ zip: false });
-    }
+    // if (/^\d+$/.test(e.target.value) > 4) {
+    //   this.setState({ zip: true });
+    // } else {
+    //   this.setState({ zip: false });
+    // }
   }
 
   const [isRegister, setRegister] = useState(true);
