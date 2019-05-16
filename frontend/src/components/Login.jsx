@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
   const onSubmit = () => {
-    console.log("hey! thanks for registering!");
     console.log(onSubmit());
   }
   return (
