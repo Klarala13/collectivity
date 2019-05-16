@@ -6,8 +6,8 @@ export default props => {
     event.preventDefault();
 
     const user = {
-      firstName: this.firstName.current.value,
-      lastName: this.lastName.current.value,
+      firstName: props.firstName,
+      lastName: props.lastName,
       email: this.email.current.value,
       password: this.password.current.value,
       confirmPass: this.confirmPass.current.value,
@@ -36,7 +36,7 @@ export default props => {
   // };
   const handleFirstName = e => {
     if (e.target.value.length > 3) {
-      props.setState({ firstName: true });
+      this.setState({ firstName: true });
     } else {
       this.setState({ firstName: false });
     }
