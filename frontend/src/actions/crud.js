@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const loadItems = () => async dispatch => {
   try{
     const result = await axios(window.collectivityBackend + "/itemList", {
@@ -41,7 +40,7 @@ export const addItem = (newItem, routeTo) => dispatch => {
       "Content-type": "application/json"
     }
   })
-  .then(reponse => {
+  .then(response => {
     if (Response.data.error == 0){
       dispatch({ type: "ADD_ITEM_DEMO"});
       routeTo.push("/");
