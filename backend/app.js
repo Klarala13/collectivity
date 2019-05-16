@@ -74,7 +74,7 @@ client.query("SELECT to_regclass('public.users')").then( async res => {
       TABLESPACE pg_default;
       
       ALTER TABLE public."users"
-          OWNER to admin;
+          OWNER to postgres;
       `
     )
     .then(() => seedAdmin())

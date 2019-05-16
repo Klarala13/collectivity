@@ -10,7 +10,7 @@ export const loadItems = () => async dispatch => {
         type: "LOAD_ITEMS",
         payload: result.data.items.reverse()
       });
-      console.log("itmes", result.data);
+      console.log("items", result.data);
     }
   }catch (e){
     console.log("error in loading items:" + e);
