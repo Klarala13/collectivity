@@ -111,6 +111,7 @@ class About extends React.Component {
                   className="btn btn-outline-primary"
                   alt="donate money"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Donate
                 </a>
@@ -141,6 +142,7 @@ class About extends React.Component {
                     href="https://elisemaschke.de/"
                     alt="Portfolio"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Contact
                   </a>
@@ -155,17 +157,13 @@ class About extends React.Component {
                     href=""
                     alt="Portfolio"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Contact
                   </a>
                 </p>
               </div>
               <div>
-                <p>
-                  {" "}
-                  Max
-                  <a />
-                </p>
               </div>
               <div>
                 <p className="card-text m-5">
@@ -176,6 +174,7 @@ class About extends React.Component {
                     href="https://clarasanchez.de/"
                     alt="Portfolio"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Contact
                   </a>
