@@ -1,60 +1,54 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 //This is the user schema, the things you need to be able to have an account
 //and be a user. These are the things we require in registrationSchema
 let UserSchema = new mongoose.Schema({
-  firstName: { 
-    type: String, 
+  firstName: {
+    type: String,
     required: true,
-    minlength: 4,
-    maxlength: 20
+    minlength: 4
   },
-  lastName: { 
-    type: String, 
+  lastName: {
+    type: String,
     required: true,
-    minlength: 4,
-    maxlength: 20
+    minlength: 4
   },
-  email: { 
-    type: String, 
+  email: {
+    type: String,
     required: true,
-    minlength: 8,
-    maxlength: 20 
+    minlength: 8
   },
-  password: { 
-    type: String, 
+  password: {
+    type: String,
     required: true,
-    minlength: 8,
-    maxlength: 20
+    minlength: 8
   },
-  repassword:{
-	  type: String,
-	  required: true,
-	  minlength: 8,
-},
+  repassword: {
+    type: String,
+    required: true,
+    minlength: 8
+  },
   city: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 20
+    minlength: 3
   },
   zip: {
     type: Number,
     required: true,
-    minlength: 5,
-    maxlength: 9
+    minlength: 5
   },
-  registrationDate: { 
+  registrationDate: {
     type: Date,
     default: Date.now,
     required: true
-  },
-  rating: {
-    type: Number,
-    // required: true
   }
+  // rating: {
+  //   type: Number
+  //   required: true
+  // }
 });
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre("save", function(next) {
   this.date = new Date();
   next();
 });
