@@ -10,9 +10,11 @@ class App extends React.Component {
     input:{}
   }
 };
+
 componentWillMount = () => {
+  const url = "./fakeData.json"
   //fetching fake data to try shit out
-  fetch("./fakeData.json")
+  fetch(url)
   .then(response => {
     this.setState({})
     console.log(response);
