@@ -5,8 +5,7 @@ export default props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const user = this.props.input.user;
-
+    const user = props.input.user;
     const input = {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -19,18 +18,8 @@ export default props => {
     };
     console.log(input);
 
-    const url = `"http://0.0.0.0:5432/users"`;
+    //const url = `"http://0.0.0.0:4000/users"`;
     //ToDo Make fetch to DB
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(response => console.log("Success:", JSON.stringify(response)))
-      .catch(error => console.error("Error:", error));
   };
   //   toggleAgreement = () => {
   //   this.setState({
@@ -38,64 +27,69 @@ export default props => {
   //   });
   // };
 
-  //ToDo: add Validation without state or passing state to parent component
   //ToDo: add passport
   //ToDo: add local storage
   //ToDo: add agreement for security
   const handleFirstName = e => {
-    // if (e.target.value.length > 3) {
-    //   this.setState({ firstName: true });
-    // } else {
-    //   this.setState({ firstName: false });
-    // }
+    setUser(e.target.value);
+    if (e.target.value.length > 3) {
+      // console.log(e.target.value);
+      return { firstName: true };
+    } else {
+      return { firstName: false };
+    }
   };
   const handleLastName = e => {
-    // if (e.target.value.length > 3) {
-    //   this.setState({ lastName: true });
-    // } else {
-    //   this.setState({ lastName: false });
-    // }
+    setUser(e.target.value);
+    if (e.target.value.length > 3) {
+      return { lastName: true };
+    } else {
+      return { lastName: false };
+    }
   };
   const handleEmail = e => {
-    // if (e.target.value.length > 3) {
-    //   this.setState({ email: true });
-    // } else {
-    //   this.setState({ email: false });
-    // }
+    setUser(e.target.value);
+    if (e.target.value.length > 3) {
+      return { email: true };
+    } else {
+      return { email: false };
+    }
   };
   const handlePassword = e => {
-    // if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
-    //   this.setState({ password: true });
-    // } else {
-    //   this.setState({ password: false });
-    // }
+    setUser(e.target.value);
+    if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
+      return { password: true };
+    } else {
+      return { password: false };
+    }
   };
   const handleConfirmPass = e => {
-    // if (
-    //   this.password === this.confirmPass &&
-    //   e.target.value.length
-    // ) {
-    //   this.setState({ confirmPass: true });
-    // } else {
-    //   this.setState({ confirmPass: false });
-    // }
+    setUser(e.target.value);
+    if (user.password === user.confirmPass && e.target.value.length > 7) {
+      return { confirmPass: true };
+    } else {
+      return { confirmPass: false };
+    }
   };
   const handleCity = e => {
-    // if (e.target.value.length > 3) {
-    //   this.setState({ city: true });
-    // } else {
-    //   this.setState({ city: false });
-    // }
+    setUser(e.target.value);
+    if (e.target.value.length > 3) {
+      return { city: true };
+    } else {
+      return { city: false };
+    }
   };
   const handleZip = e => {
-    // if (/^\d+$/.test(e.target.value) > 4) {
-    //   this.setState({ zip: true });
-    // } else {
-    //   this.setState({ zip: false });
-    // }
+    setUser(e.target.value);
+    if (/^\d+$/.test(e.target.value) > 4) {
+      return { zip: true };
+    } else {
+      return { zip: false };
+    }
   };
 
   const [isRegister, setRegister] = useState(true);
+  const [user, setUser] = useState("");
   return (
     <div className="container">
       <div className="Register">
@@ -114,6 +108,7 @@ export default props => {
               onChange={handleFirstName}
               type="text"
               id="firstName"
+              value={user}
               className="form-control"
               placeholder="First Name"
               required
@@ -127,6 +122,7 @@ export default props => {
               onChange={handleLastName}
               type="text"
               id="lastName"
+              value={user}
               className="form-control"
               placeholder="Last Name"
               required
@@ -140,6 +136,7 @@ export default props => {
               onChange={handleEmail}
               type="email"
               id="email"
+              value={user}
               className="form-control"
               placeholder="example@example.com"
               required
@@ -153,6 +150,7 @@ export default props => {
               onChange={handlePassword}
               type="password"
               id="password"
+              value={user.password}
               className="form-control"
               placeholder="********"
               required
@@ -165,6 +163,7 @@ export default props => {
               onChange={handleConfirmPass}
               type="password"
               id="confirmPass"
+              value={user.confirmPass}
               className="form-control"
               placeholder="Confirm Password"
               required
@@ -177,6 +176,7 @@ export default props => {
               onChange={handleCity}
               type="city"
               id="city"
+              value={user.city}
               className="form-control"
               placeholder="city"
               required
@@ -190,6 +190,7 @@ export default props => {
               onChange={handleZip}
               type="zipcode"
               id="zipcode"
+              value={user.zip}
               className="form-control"
               placeholder="zip code"
               required
@@ -211,7 +212,7 @@ export default props => {
             <button
               className="btn btn-danger"
               label="Submit"
-              onClick={this.register}
+              onClick={setRegister}
             >
               Register
             </button>
