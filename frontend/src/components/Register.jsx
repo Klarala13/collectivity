@@ -22,7 +22,7 @@ export default props => {
     //ToDo Make fetch to DB
   };
   //   toggleAgreement = () => {
-  //   this.setState({
+  //   useState({
   //     agree: !this.state.agree
   //   });
   // };
