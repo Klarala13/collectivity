@@ -3,9 +3,12 @@ import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
+
   const onSubmit = () => {
+    //check if this is how to redirect to the profile page
     console.log(onSubmit());
-  }
+    return <NavLink to="/profile">LogIn</NavLink>;
+  };
   return (
     <div className="container">
       <div className="Login">
@@ -48,7 +51,15 @@ function Login(props) {
                 isSignin ? "btn-outline-primary" : "btn-primary"
               } mb-3 btn btn-lg  btn-block`}
             >
-              {!props.loading ? (isSignin ? "Signin" : "Register") : "Loading"}
+              {!props.loading ? (
+                isSignin ? (
+                  <NavLink to="/profile">LogIn</NavLink>
+                ) : (
+                  "Register"
+                )
+              ) : (
+                "Loading"
+              )}
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
@@ -60,7 +71,7 @@ function Login(props) {
                 activeClassName="active"
                 className="navbar-brand"
               >
-              Register
+                Register
               </NavLink>
             )}
           </span>
