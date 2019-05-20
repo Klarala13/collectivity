@@ -31,8 +31,6 @@ async function seedAdmin() {
   return client
     .query("select * from public.users")
     .then(res => {
-   
-      console.log("User's name:", res.rows[0].lastName);
       if (
         res.rowCount >= 1 &&
         res.rows.filter(user => user.email === "admin@dci.de").length > 0
@@ -40,8 +38,8 @@ async function seedAdmin() {
         console.log("All users:", res.rows);
       } else {
         client.query(
-          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
-        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
+          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
         );
         console.log("Admin seeded");
       }
@@ -56,24 +54,25 @@ client.query("SELECT to_regclass('public.users')").then(async res => {
   } else {
     client
       .query(
-        `CREATE TABLE public."users"
-      (
-          "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-          "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-          email character varying(20) COLLATE pg_catalog."default" NOT NULL,
-          password character varying(20) COLLATE pg_catalog."default" NOT NULL,
-          city character varying(20) COLLATE pg_catalog."default",
-          "zipCode" integer,
-          "registrationDate" date,
-          rating integer
-      )
-      WITH (
-          OIDS = FALSE
-      )
-      TABLESPACE pg_default;
-      
-      ALTER TABLE public."users"
-          OWNER to postgres;
+        `CREATE TABLE public.users
+        (   "id" SERIAL PRIMARY KEY,
+            "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+            "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+            email character varying(20) COLLATE pg_catalog."default" NOT NULL,
+            password character varying(20) COLLATE pg_catalog."default" NOT NULL,
+            city character varying(20) COLLATE pg_catalog."default",
+            "zipCode" integer,
+            "registrationDate" date,
+            rating integer,
+            image character varying COLLATE pg_catalog."default"
+        )
+        WITH (
+            OIDS = FALSE
+        )
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public.users
+            OWNER to postgres;
       `
       )
       .then(() => seedAdmin());
@@ -88,7 +87,7 @@ app.use(logger("dev"));
 app.use(express.json());
 
 app.get("/", function(req, res) {
-  console.log("Welcome to Collectivity")
+  console.log("Welcome to Collectivity");
   res.json({
     message: "Welcome to Collectivity! We're very happy to see you here"
   });
