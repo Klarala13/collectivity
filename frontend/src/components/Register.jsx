@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default props => {
-
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -21,7 +20,7 @@ export default props => {
     console.log(input);
 
     const url = `"http://0.0.0.0:5432/users"`;
-
+    //ToDo Make fetch to DB
     fetch(url, {
       method: "POST",
       body: JSON.stringify(user),
@@ -38,6 +37,11 @@ export default props => {
   //     agree: !this.state.agree
   //   });
   // };
+
+  //ToDo: add Validation without state or passing state to parent component
+  //ToDo: add passport
+  //ToDo: add local storage
+  //ToDo: add agreement for security
   const handleFirstName = e => {
     // if (e.target.value.length > 3) {
     //   this.setState({ firstName: true });
@@ -58,14 +62,14 @@ export default props => {
     // } else {
     //   this.setState({ email: false });
     // }
-  }
+  };
   const handlePassword = e => {
     // if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
     //   this.setState({ password: true });
     // } else {
     //   this.setState({ password: false });
     // }
-  }
+  };
   const handleConfirmPass = e => {
     // if (
     //   this.password === this.confirmPass &&
@@ -75,21 +79,21 @@ export default props => {
     // } else {
     //   this.setState({ confirmPass: false });
     // }
-  }
+  };
   const handleCity = e => {
     // if (e.target.value.length > 3) {
     //   this.setState({ city: true });
     // } else {
     //   this.setState({ city: false });
     // }
-  }
+  };
   const handleZip = e => {
     // if (/^\d+$/.test(e.target.value) > 4) {
     //   this.setState({ zip: true });
     // } else {
     //   this.setState({ zip: false });
     // }
-  }
+  };
 
   const [isRegister, setRegister] = useState(true);
   return (
@@ -214,12 +218,18 @@ export default props => {
             <span
               className="text-muted "
               onClick={() => setRegister(!isRegister)}
-            > {!isRegister ? "Don't have an account? Register!" : 
-              (<NavLink to="/login"
-              activeClassName="active"
-              className="navbar-brand">
-              Login
-              </NavLink>
+            >
+              {" "}
+              {!isRegister ? (
+                "Don't have an account? Register!"
+              ) : (
+                <NavLink
+                  to="/login"
+                  activeClassName="active"
+                  className="navbar-brand"
+                >
+                  Login
+                </NavLink>
               )}
             </span>
           </div>
@@ -228,4 +238,3 @@ export default props => {
     </div>
   );
 };
-
