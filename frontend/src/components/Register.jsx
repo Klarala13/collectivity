@@ -1,105 +1,106 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+//import { Document } from "react-pdf";
 
 export default props => {
+  const [isRegister, setRegister] = useState(true);
+  // const [document, setDownload] = useState({
+  //   numPages: null,
+  //   pageNumber: 1
+  // });
+  const [user, setUser] = useState({});
+  const [valid, setValid] = useState({
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
+    confirmPass: false,
+    city: false,
+    zip: false,
+    check: false
+  });
+
+  // console.log(user, valid);
   const handleSubmit = e => {
     e.preventDefault();
-
-    const user = props.input.user;
-    const input = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      password: user.password,
-      confirmPass: user.confirmPass,
-      city: user.city,
-      zip: user.zip,
-      check: check.current.value
-    };
-    console.log(input);
+    console.log(handleSubmit());
   };
   //ToDo: add agreement for security
-  const disableSubmit = e => {
-    document.getElementById("check").disabled = true;
-    console.log(e);
-  };
-  const activateButton = element => {
-    if (element.checked) {
-      document.getElementById("check").disabled = false;
-    } else {
-      document.getElementById("check").disabled = true;
-    }
-  };
-
   //ToDo Make post to DB
   //ToDo: add passport
   //ToDo: add local storage
 
+  // const onDocumentLoadSuccess = ({ numPages }) => {
+  //   setDownload({ ...document, numPages });
+  // };
   const handleFirstName = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3) {
-      return { firstName: true };
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { firstName: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleLastName = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3) {
-      return { lastName: true };
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { lastName: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleEmail = e => {
-    setUser(e.target.value);
-    if (e.target.value.length > 3) {
-      return { email: true };
+    setUser({ ...user, [e.target.name]: e.target.value });
+    if (e.target.value.length > 8) {
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { email: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handlePassword = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
-      return { password: true };
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { password: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleConfirmPass = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (user.password === user.confirmPass && e.target.value.length > 7) {
-      return { confirmPass: true };
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { confirmPass: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleCity = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3) {
-      return { city: true };
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { city: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleZip = e => {
-    setUser(e.target.value);
+    setUser({ ...user, [e.target.name]: e.target.value });
     if (/^\d+$/.test(e.target.value) > 4) {
       return { zip: true };
     } else {
       return { zip: false };
     }
   };
+  const handleChange = e => {};
+  const handleCheckbox = e => {
+    console.log(e.target.checked);
+  };
+  const isValid = Object.values(valid).filter(v => !v).length !== 0;
+  // console.log(Object.values(valid).filter(v => !v));
 
-  const [isRegister, setRegister] = useState(true);
-  const [user, setUser] = useState("");
   return (
     <div className="container">
       <div className="Register">
         <form
-          onload={disableSubmit()}
-          onSubmit={event => handleSubmit(event, isRegister)}
+          onSubmit={event => handleChange(event, isRegister)}
           className="form-register"
         >
           Register
@@ -113,7 +114,8 @@ export default props => {
               onChange={handleFirstName}
               type="text"
               id="firstName"
-              value={user}
+              name="firstName"
+              value={user.firstName}
               className="form-control"
               placeholder="First Name"
               required
@@ -127,7 +129,8 @@ export default props => {
               onChange={handleLastName}
               type="text"
               id="lastName"
-              value={user}
+              name="lastName"
+              value={user.lastName}
               className="form-control"
               placeholder="Last Name"
               required
@@ -141,7 +144,8 @@ export default props => {
               onChange={handleEmail}
               type="email"
               id="email"
-              value={user}
+              name="email"
+              value={user.email}
               className="form-control"
               placeholder="example@example.com"
               required
@@ -155,6 +159,7 @@ export default props => {
               onChange={handlePassword}
               type="password"
               id="password"
+              name="password"
               value={user.password}
               className="form-control"
               placeholder="********"
@@ -168,6 +173,7 @@ export default props => {
               onChange={handleConfirmPass}
               type="password"
               id="confirmPass"
+              name="confirmPass"
               value={user.confirmPass}
               className="form-control"
               placeholder="Confirm Password"
@@ -181,6 +187,7 @@ export default props => {
               onChange={handleCity}
               type="city"
               id="city"
+              name="city"
               value={user.city}
               className="form-control"
               placeholder="city"
@@ -188,13 +195,14 @@ export default props => {
               autoFocus
               autoComplete="true"
             />
-            <label htmlFor="city" className="sr-only">
+            <label htmlFor="zip" className="sr-only">
               ZipCode
             </label>
             <input
               onChange={handleZip}
               type="zipcode"
               id="zipcode"
+              name="zipcode"
               value={user.zip}
               className="form-control"
               placeholder="zip code"
@@ -202,13 +210,24 @@ export default props => {
               autoFocus
             />
             <div className="form-check">
-              <h4>Agree to Terms and Conditions</h4>
+              <h4>Agree to Terms and Conditions</h4>{" "}
+              <i className="fas fa-download" />
+              {/* <span>
+                <Document
+                  file="Terms and Conditions.pdf"
+                  onClick={onDocumentLoadSuccess}
+                />
+                <Page pageNumber={pageNumber} />
+                <p>
+                  Page {pageNumber} of {numPages}
+                </p>
+              </span> */}
               <input
                 type="checkbox"
                 className="checkbox form-check-input"
-                name="terms"
                 id="check"
-                onChange={activateButton(this)}
+                name="check"
+                onChange={handleCheckbox}
               />
               <label className="form-check-label" htmlFor="accept">
                 Check to accept
@@ -218,27 +237,18 @@ export default props => {
               className="btn btn-danger"
               id="submit"
               label="Submit"
+              disabled={isValid}
               onClick={setRegister}
             >
               Register
             </button>
-            <span
-              className="text-muted "
-              onClick={() => setRegister(!isRegister)}
+            <NavLink
+              to="/login"
+              activeClassName="active"
+              className="navbar-brand"
             >
-              {" "}
-              {!isRegister ? (
-                "Don't have an account? Register!"
-              ) : (
-                <NavLink
-                  to="/login"
-                  activeClassName="active"
-                  className="navbar-brand"
-                >
-                  Login
-                </NavLink>
-              )}
-            </span>
+              "Already got an account? Login"
+            </NavLink>
           </div>
         </form>
       </div>
