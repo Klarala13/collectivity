@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+//checking merging shit
 export default props => {
-  const handleSubmit = event => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
 
     const user = props.input.user;
     const input = {
@@ -13,27 +13,31 @@ export default props => {
       password: user.password,
       confirmPass: user.confirmPass,
       city: user.city,
-      zip: user.zip
-      //agreement: this.checkboxes.current.value
+      zip: user.zip,
+      submit: check.current.value
     };
     console.log(input);
-
-    //const url = `"http://0.0.0.0:4000/users"`;
-    //ToDo Make fetch to DB
   };
-  //   toggleAgreement = () => {
-  //   useState({
-  //     agree: !this.state.agree
-  //   });
-  // };
 
+  const disableSubmit = e => {
+    document.getElementById("submit").disabled = true;
+    console.log(e);
+  };
+  const activateButton = element => {
+    if (element.checked) {
+      document.getElementById("submit").disabled = false;
+    } else {
+      document.getElementById("submit").disabled = true;
+    }
+  };
+
+  //ToDo Make post to DB
   //ToDo: add passport
   //ToDo: add local storage
   //ToDo: add agreement for security
   const handleFirstName = e => {
     setUser(e.target.value);
     if (e.target.value.length > 3) {
-      // console.log(e.target.value);
       return { firstName: true };
     } else {
       return { firstName: false };
@@ -94,6 +98,7 @@ export default props => {
     <div className="container">
       <div className="Register">
         <form
+          onload={disableSubmit()}
           onSubmit={event => handleSubmit(event, isRegister)}
           className="form-register"
         >
@@ -200,10 +205,10 @@ export default props => {
               <h4>Agree to Terms and Conditions</h4>
               <input
                 type="checkbox"
-                className="form-check-input"
-                name="agree"
-                id="agree-check-box"
-                //  onClick={this.toggleAgreement}
+                className="checkbox form-check-input"
+                name="terms"
+                id="terms"
+                onChange={activateButton(this)}
               />
               <label className="form-check-label" htmlFor="accept">
                 Check to accept
@@ -211,6 +216,7 @@ export default props => {
             </div>
             <button
               className="btn btn-danger"
+              id="submit"
               label="Submit"
               onClick={setRegister}
             >
