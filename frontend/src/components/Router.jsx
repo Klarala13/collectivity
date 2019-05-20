@@ -20,6 +20,7 @@ const Router = () => (
         <Route path="/timebank" component={TimeBank} />
         <Route path="/freebies" component={Freebies} />
         <Route path="/login" component={Login} />
+        <Route path="/profile" component={Help} />
         <Route path="/register" component={Register} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
