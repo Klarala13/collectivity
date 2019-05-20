@@ -4,7 +4,7 @@ Go online and download and install PgAdmin4
 
 We will use Docker, a package (image) manager that provides the same envioroment for everyone. No matter OS, versions, etc. 
 
-Go to 
+Go to (Reference page, you don't NEED to go there, but its usefull)
 https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 Run 
