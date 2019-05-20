@@ -9,6 +9,7 @@
     "npm-watch": "^0.6.0",
     "react": "^16.8",
     "react-dom": "^16.8",
+    "react-pdf": "^4.0.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4"
   },
