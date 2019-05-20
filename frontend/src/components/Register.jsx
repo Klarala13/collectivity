@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-//checking merging shit
+
 export default props => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -14,27 +14,27 @@ export default props => {
       confirmPass: user.confirmPass,
       city: user.city,
       zip: user.zip,
-      submit: check.current.value
+      check: check.current.value
     };
     console.log(input);
   };
-
+  //ToDo: add agreement for security
   const disableSubmit = e => {
-    document.getElementById("submit").disabled = true;
+    document.getElementById("check").disabled = true;
     console.log(e);
   };
   const activateButton = element => {
     if (element.checked) {
-      document.getElementById("submit").disabled = false;
+      document.getElementById("check").disabled = false;
     } else {
-      document.getElementById("submit").disabled = true;
+      document.getElementById("check").disabled = true;
     }
   };
 
   //ToDo Make post to DB
   //ToDo: add passport
   //ToDo: add local storage
-  //ToDo: add agreement for security
+
   const handleFirstName = e => {
     setUser(e.target.value);
     if (e.target.value.length > 3) {
@@ -207,7 +207,7 @@ export default props => {
                 type="checkbox"
                 className="checkbox form-check-input"
                 name="terms"
-                id="terms"
+                id="check"
                 onChange={activateButton(this)}
               />
               <label className="form-check-label" htmlFor="accept">
