@@ -16,7 +16,7 @@ export default props => {
     check: false
   });
 
-  // console.log(user, valid);
+  console.log(user, valid);
   const handleSubmit = e => {
     e.preventDefault();
     console.log(handleSubmit());
@@ -52,7 +52,7 @@ export default props => {
   };
   const handlePassword = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (/^(?=.*\d).{4,8}$/.test(e.target.value.length > 7)) {
+    if (e.target.value.length > 7) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -60,10 +60,11 @@ export default props => {
   };
   const handleConfirmPass = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (user.password === user.confirmPass && e.target.value.length > 7) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
+    // console.log(user.password === user.confirmPass);
+    if (user.password === user.confirmPass) {
       setValid({ ...valid, [e.target.name]: false });
+    } else {
+      setValid({ ...valid, [e.target.name]: true });
     }
   };
   const handleCity = e => {
@@ -76,18 +77,23 @@ export default props => {
   };
   const handleZip = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (/^\d+$/.test(e.target.value) > 4) {
-      return { zip: true };
+    //console.log(e.target.value);
+    if (e.target.value.length > 5) {
+      setValid({ ...valid, [e.target.name]: true });
     } else {
-      return { zip: false };
+      setValid({ ...valid, [e.target.name]: false });
     }
   };
   const handleChange = e => {};
   const handleCheckbox = e => {
-    console.log(e.target.checked);
+    if (e.target.checked) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
   };
-  const isValid = Object.values(valid).filter(v => !v).length !== 0;
-  // console.log(Object.values(valid).filter(v => !v));
+  const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
+  console.log(isDisabled);
 
   return (
     <div className="container">
@@ -192,9 +198,10 @@ export default props => {
             </label>
             <input
               onChange={handleZip}
-              type="zipcode"
-              id="zipcode"
-              name="zipcode"
+              type="number"
+              max="5"
+              id="zip"
+              name="zip"
               value={user.zip}
               className="form-control"
               placeholder="zip code"
@@ -203,8 +210,14 @@ export default props => {
             />
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
-              <div className={isHidden === false ? ".d-none" : ""}>
-                <a onClick={() => setHidden(!isHidden)}>Download</a>
+              <div>
+                {" "}
+                <a onClick={() => setHidden(!isHidden)}>
+                  {" "}
+                  Click HERE to see terms
+                </a>{" "}
+              </div>
+              <div className={isHidden === false ? "d-none" : ""}>
                 <div>
                   <div>
                     <b>COLLECTIVITY TERMS AND CONDITIONS</b>
@@ -298,7 +311,7 @@ export default props => {
               className="btn btn-danger"
               id="submit"
               label="Submit"
-              disabled={isValid}
+              disabled={isDisabled}
               onClick={setRegister}
             >
               Register
