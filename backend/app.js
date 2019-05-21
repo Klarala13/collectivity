@@ -1,21 +1,19 @@
+require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
 const logger = require("morgan");
 const createError = require("http-errors");
 
 const { setCorsHeaders } = require("./middleware/security");
 
-const indexRouter = require("./routes/index");
-const itemsRouter = require("./routes/items");
-const usersRouter = require("./routes/users");
-
 const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
 
+const usersRouter = require("./routes/users");
+
 const postgres = require("pg");
 const { Client } = require("pg");
 
-require("dotenv").config({ path: "./.env" });
 console.log(process.env.DBUSER);
 
 const client = new Client({
@@ -29,54 +27,55 @@ client.connect();
 
 // promise
 
-async function seedAdmin () {
+async function seedAdmin() {
   return client
-      .query("select * from public.users")
-      .then(res => {
-        console.log("Hey", res);
-        if (
-          res.rowCount >= 1 &&
-          res.rows.filter(user => user.email === "admin@dci.de").length > 0
-        ) {
-          console.log("All users:", res.rows);
-        } else {
-          client.query(
-            `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating") 
-        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5)`
-          );
-          console.log("Admin seeded");
-        }
-      })
-      .catch(e => console.error(e.stack));
+    .query("select * from public.users")
+    .then(res => {
+      if (
+        res.rowCount >= 1 &&
+        res.rows.filter(user => user.email === "admin@dci.de").length > 0
+      ) {
+        console.log("All users:", res.rows);
+      } else {
+        client.query(
+          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '123456', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
+        );
+        console.log("Admin seeded");
+      }
+    })
+    .catch(e => console.error(e.stack));
 }
 
-client.query("SELECT to_regclass('public.users')").then( async res => {
+client.query("SELECT to_regclass('public.users')").then(async res => {
   console.log("RES", res.rows);
   if (res.rows[0].to_regclass !== null) {
     const response = await seedAdmin();
   } else {
-    client.query(
-      `CREATE TABLE public."users"
-      (
-          "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-          "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-          email character varying(20) COLLATE pg_catalog."default" NOT NULL,
-          password character varying(20) COLLATE pg_catalog."default" NOT NULL,
-          city character varying(20) COLLATE pg_catalog."default",
-          "zipCode" integer,
-          "registrationDate" date,
-          rating integer
-      )
-      WITH (
-          OIDS = FALSE
-      )
-      TABLESPACE pg_default;
-      
-      ALTER TABLE public."users"
-          OWNER to postgres;
+    client
+      .query(
+        `CREATE TABLE public.users
+        (   "id" SERIAL PRIMARY KEY,
+            "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+            "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
+            email character varying(20) COLLATE pg_catalog."default" NOT NULL,
+            password character varying(20) COLLATE pg_catalog."default" NOT NULL,
+            city character varying(20) COLLATE pg_catalog."default",
+            "zipCode" integer,
+            "registrationDate" date,
+            rating integer,
+            image character varying COLLATE pg_catalog."default"
+        )
+        WITH (
+            OIDS = FALSE
+        )
+        TABLESPACE pg_default;
+        
+        ALTER TABLE public.users
+            OWNER to postgres;
       `
-    )
-    .then(() => seedAdmin())
+      )
+      .then(() => seedAdmin());
   }
 });
 
@@ -87,9 +86,35 @@ app.use(setCorsHeaders);
 app.use(logger("dev"));
 app.use(express.json());
 
-app.use("/", indexRouter);
+app.get("/", function(req, res) {
+  console.log("Welcome to Collectivity");
+  res.json({
+    message: "Welcome to Collectivity! We're very happy to see you here"
+  });
+});
+
 app.use("/users", usersRouter);
-app.use("/items", itemsRouter);
+// app.get("/users", async function(req, res, next) {
+//   console.log("users");
+//   try {
+//     const userQuery = "select * from public.users";
+//     await client.query(userQuery).then(response => {
+//       // console.log("query", userQuery);
+//       // console.log("res", res.rows);
+
+//       const user = response.rows[0];
+//       res.send(user);
+//     });
+//   } catch (e) {
+//     console.log("ERROR", e);
+//     next(e);
+//   }});
+app.get("/items", function(req, res) {
+  res.json({ message: "Item list" });
+});
+app.get("/services", function(req, res) {
+  res.json({ message: "Service list" });
+});
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {

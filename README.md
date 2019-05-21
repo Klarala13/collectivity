@@ -3,6 +3,31 @@ To initialize:
 - open frontend folder on terminal and run npm start
 - open backend folder on terminal and run npm run watch
 
+## DOCKER setup:
+
+Start backend: Open terminal: 
+`sudo docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 4000:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres`
+
+Check if pg-docker is already running:   
+`sudo docker ps -a`
+
+```
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d1a04c805227        postgres            "docker-entrypoint.s…"   6 minutes ago       Up 6 minutes        0.0.0.0:4000->5432/tcp   pg-docker
+
+```
+
+Stop container:
+
+`sudo docker stop <NAME/ID>`
+
+Remove container:
+
+`sudo docker rm <NAME/ID>`
+
+
+
+
 TO MAKE A SMALL DONATION TO OUR PLATFORM, FOLLOW THE LINK https://klarala13.github.io/collectivity/
 
 # collectivity
