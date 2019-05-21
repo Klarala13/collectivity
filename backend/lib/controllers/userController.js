@@ -1,15 +1,32 @@
 const shortid = require("shortid");
 const db = require("../../middleware/db");
-const user = require("../../model/User");
 
-exports.listUsers = (req, res) => {
-  const users = db.get("users").sortBy("username");
-  if (isEmpty(req.query)) {
-    res.json(users.value());
-  } else {
-    res.json(users.filter(filterBy(req.query)).value());
+console.log("DBUSER", process.env.DBUSER);
+
+const { Client } = require("pg");
+const client = new Client({
+  user: process.env.DBUSER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.DBPORT
+});
+client.connect();
+
+exports.listUsers = (req, res, next) => {
+  console.log(res);
+  try {
+    const userQuery = "select * from public.users";
+    client.query(userQuery).then(res => {
+      console.log("query", userQuery);
+      console.log("res", res.rows);
+
+      const user = res.rows[0];
+      res.send(user);
+    });
+  } catch (e) {
+    next(e);
   }
-  console.log(user);
 };
 
 exports.addUser = (req, res) => {
@@ -32,7 +49,6 @@ exports.getUser = (req, res) => {
     .value();
 
   res.json(user);
-
 };
 
 exports.updateUser = (req, res) => {
