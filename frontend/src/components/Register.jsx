@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-//import { Document } from "react-pdf";
 
 export default props => {
   const [isRegister, setRegister] = useState(true);
-  // const [document, setDownload] = useState({
-  //   numPages: null,
-  //   pageNumber: 1
-  // });
+  const [isHidden, setHidden] = useState(false);
   const [user, setUser] = useState({});
   const [valid, setValid] = useState({
     firstName: false,
@@ -30,9 +26,6 @@ export default props => {
   //ToDo: add passport
   //ToDo: add local storage
 
-  // const onDocumentLoadSuccess = ({ numPages }) => {
-  //   setDownload({ ...document, numPages });
-  // };
   const handleFirstName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3) {
@@ -103,7 +96,6 @@ export default props => {
           onSubmit={event => handleChange(event, isRegister)}
           className="form-register"
         >
-          Register
           <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
           <div className="container">
             <label htmlFor="firstName" className="sr-only">
@@ -211,17 +203,86 @@ export default props => {
             />
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
-              <i className="fas fa-download" />
-              {/* <span>
-                <Document
-                  file="Terms and Conditions.pdf"
-                  onClick={onDocumentLoadSuccess}
-                />
-                <Page pageNumber={pageNumber} />
-                <p>
-                  Page {pageNumber} of {numPages}
-                </p>
-              </span> */}
+              <div className={isHidden === false ? ".d-none" : ""}>
+                <a onClick={() => setHidden(!isHidden)}>Download</a>
+                <div>
+                  <div>
+                    <b>COLLECTIVITY TERMS AND CONDITIONS</b>
+                    These terms and conditions are an agreement between the
+                    Collectivity platform and you, the user. This agreement sets
+                    forth the general terms and conditions of your use of the
+                    collectivity.de website and any of its products or services
+                    (collectively, "Website" or "Services").
+                  </div>
+                  <div>
+                    <b>Accounts and membership</b> If you create an account on
+                    the website, you are responsible for maintaining the
+                    security of your account and you are fully responsible for
+                    all activities that occur under the account and any other
+                    actions taken in connection with it. Providing false contact
+                    information of any kind may result in the termination of
+                    your account. You must immediately notify us of any
+                    unauthorized uses of your account or any other breaches of
+                    security. We will not be liable for any acts or omissions by
+                    you, including any damages of any kind incurred as a result
+                    of such acts or omissions. We may suspend, disable, or
+                    delete your account (or any part thereof) if we determine
+                    that you have violated any provision of this Agreement or
+                    that your conduct or content would tend to damage our
+                    reputation and goodwill or might damage any other user. If
+                    we delete your account for the foregoing reasons, you may
+                    not re- register for our Services. We may block your email
+                    address and Internet protocol address to prevent further
+                    registration.
+                  </div>
+                  <div>
+                    <b>User content</b> We do not own any data, information or
+                    material ("Content") that you submit on the Website in the
+                    course of using the Service. You shall have sole
+                    responsibility for the accuracy, quality, integrity,
+                    legality, reliability, appropriateness, and intellectual
+                    property ownership or right to use of all submitted content.
+                    We may, but have no obligation to, monitor content on the
+                    website submitted or created using our services by you.
+                    Unless specifically permitted by you, your use of the
+                    website does not grant us the license to use, reproduce,
+                    adapt, modify, publish or distribute the content created by
+                    you or stored in your user account for commercial, marketing
+                    or any similar purpose. But you grant us permission to
+                    access, copy, distribute, store, transmit, reformat, display
+                    and perform the content of your user account solely as
+                    required for the purpose of providing the services to you.
+                    Backups We perform regular backups of the website and
+                    content, however, these backups are for our own
+                    administrative purposes only and are in no way guaranteed.
+                    You are responsible for maintaining your own backups of your
+                    data. We do not provide any sort of compensation for lost or
+                    incomplete data in the event that backups do not function
+                    properly. We will do our best to ensure complete and
+                    accurate backups, but assume no responsibility for this
+                    duty.Changes and amendments We reserve the right to modify
+                    this agreement or its policies relating to the website or
+                    services at any time, effective upon posting of an updated
+                    version of this agreement on the website. When we do, we
+                    will send you an email to notify you. Continued use of the
+                    website after any such changes shall constitute your consent
+                    to such changes.
+                  </div>
+                  <div>
+                    <b>
+                      {" "}
+                      Policy was created with WebsitePolicies.com. Acceptance of
+                      these terms You acknowledge that you have read this
+                      agreement and agree to all its terms and conditions.
+                    </b>
+                    By using the website or its services you agree to be bound
+                    by this agreement. If you do not agree to abide by the terms
+                    of this agreement, you are not authorized to use or access
+                    the website and its services. Please contact us if you have
+                    any questions regarding this agreement. May 20, 2019{" "}
+                  </div>
+                </div>
+              </div>
               <input
                 type="checkbox"
                 className="checkbox form-check-input"
