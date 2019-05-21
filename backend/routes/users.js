@@ -21,8 +21,8 @@ const listUsers = (req, res, next) => {
       console.log("query", userQuery);
       console.log("res", response.rows);
 
-      const user = response.rows[0];
-      res.send(user);
+      const users = response.rows[0];
+      res.send(users);
     });
   } catch (e) {
     console.log("ERROR", e);
@@ -30,6 +30,29 @@ const listUsers = (req, res, next) => {
   }
 };
 
-router.route("/").get(listUsers);
+const addUser = (req, res, next) => {
+  console.log("users");
+  try {
+    const {firstName, lastName, email, password, city, zipCode, registrationDate, rating, image} = req.body;
+      client.query(
+        `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
+      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${zipCode}', '${registrationDate}', '${rating}', '${image}' )`
+      );
+      console.log("New user seeded");
+      console.log("request", req.body);
+
+    const userQuery = "select * from public.users";
+    client.query(userQuery).then(response => {
+      const newUsers = response.rows;
+      res.send(newUsers);
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+    next(e);
+  }
+};
+
+router.route("/").get(listUsers)
+                 .post(addUser);
 
 module.exports = router;
