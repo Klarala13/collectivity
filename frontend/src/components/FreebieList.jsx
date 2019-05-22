@@ -8,14 +8,9 @@ class FreebieList extends Component {
   // const url = "http://0.0.0.0:4001/items";
   // const handleSubmit = e => {
   //   e.preventDefault();
-  //   console.log("newItem===", item);
-  //   fetch(url, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(item)
-  //   })
+  //   fetch(url)
   //     .then(response => response.json())
-  //     .then(response => console.log("Yay!", JSON.stringify(response)))
+  //     .then(data => console.log("Yay!", JSON.stringify(response)))
   //     .catch(error =>
   //       console.error("Uuuu, u fucked up! try again buddy", error)
   //     );

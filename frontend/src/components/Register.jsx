@@ -23,7 +23,6 @@ export default props => {
   const url = "http://0.0.0.0:4001/users";
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("newUser===", user);
     fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,31 +34,6 @@ export default props => {
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
-
-  //option 2
-  // setUser = element => {
-  //   this.setValid(element, true);
-  //   this.setState(state => ({
-  //     input: {
-  //       ...state.input,
-  //       user: {
-  //         ...state.input.user,
-  //         [element.name]: element.value
-  //       }
-  //     }
-  //   }));
-  // };
-
-  //option 3
-  // useEffect(() => {
-  //   fetch(url)
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       setRadios(data.radios);
-  //     });
-  // }, []);
-
-  //ToDo Make post to DB
 
   const handleFirstName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -118,12 +92,21 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleImage = e => {
+  const handleImage = (e, input) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.length >= 0) {
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        "#image"
+          .attr("src", e.target.result)
+          .width(150)
+          .height(200);
+      };
       setValid({ ...valid, [e.target.name]: true });
+      reader.readAsDataURL(input.files[0]);
     }
   };
+
   const handleCheckbox = e => {
     if (e.target.checked) {
       setValid({ ...valid, [e.target.name]: true });
@@ -245,12 +228,14 @@ export default props => {
             />
             <input
               onChange={handleImage}
-              type="img"
+              type="file"
               id="image"
+              alt="Your image"
+              src="#"
               name="image"
               value={user.image}
               className="form-control"
-              placeholder="image"
+              //  placeholder="image"
               autoFocus
             />
             <div className="form-check">
