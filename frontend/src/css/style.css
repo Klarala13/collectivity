@@ -130,7 +130,15 @@ p.text-left {
 }
 
 /* Profile */
-.rounded-circle{
-height: 10rem;
-width: 10rem;
+.card-deck{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
 }
+.rounded-circle{
+  height: 10rem;
+  width: 10rem;
+}
+
+
