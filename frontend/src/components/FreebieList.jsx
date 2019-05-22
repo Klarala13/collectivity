@@ -2,6 +2,25 @@ import React, { Component } from "react";
 import Item from "./FreebieItem";
 
 class FreebieList extends Component {
+  //ToDo: Add search field
+  //ToDo: Get request
+
+  // const url = "http://0.0.0.0:4001/items";
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   console.log("newItem===", item);
+  //   fetch(url, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(item)
+  //   })
+  //     .then(response => response.json())
+  //     .then(response => console.log("Yay!", JSON.stringify(response)))
+  //     .catch(error =>
+  //       console.error("Uuuu, u fucked up! try again buddy", error)
+  //     );
+  // };
+
   filteredItems = () => {
     const filtered = [];
 
