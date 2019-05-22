@@ -34,14 +34,29 @@ const addUser = (req, res, next) => {
   console.log("req.body", req.body);
   try {
     const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const {firstName, lastName, email, password, city, zipCode, image} = req.body;
-      client.query(
-        `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(zipCode)}', '${date}', '${image}' )`
-      );
-      console.log("New user seeded");
-      console.log("request", req.body);
+    const date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      city,
+      zipCode,
+      image
+    } = req.body;
+    client.query(
+      `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
+        zipCode
+      )}', '${date}', '${image}' )`
+    );
+    console.log("New user seeded");
+    console.log("request", req.body);
 
     const userQuery = "select * from public.users";
     client.query(userQuery).then(response => {
@@ -54,7 +69,9 @@ const addUser = (req, res, next) => {
   }
 };
 
-router.route("/").get(listUsers)
-                 .post(addUser);
+router
+  .route("/")
+  .get(listUsers)
+  .post(addUser);
 
 module.exports = router;
