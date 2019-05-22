@@ -5,10 +5,12 @@ class Profile extends Component {
     return (
       <div className="card-deck">
         <div className="card">
-          <img className="rounded-circle" src={Leena} alt="Logo" />
-          <div className="card-body">
-            <div className="card-title h3">card Title</div>
-            <p className="card-text">ghhgjuiuiikijjh</p>
+          <img className="rounded-circle center pt-4" src={Leena} alt="Logo" />
+          <div className="card-body text-center">
+            <div className="card-title h3">User Name</div>
+            <p className="card-text">Founder, Example</p>
+            <button type="button" className="btn btn-primary mx-auto" >Posts</button>
+            <button type="button" className="btn btn-primary mx-auto" >Orders</button>
             <div className="card-footer">
               <small className="text-muted">Last updat 30 min</small>
             </div>

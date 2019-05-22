@@ -2,7 +2,6 @@
 
 /* Global Styles */
 body {
-  margin: 1rem;
   height: 100vh;
   font-family: "Questrial", sans-serif;
 }
@@ -28,7 +27,7 @@ p {
 .navbar {
   font-size: 1.3rem;
   background-color: #f6f4f3;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 .flex-column {
   padding-left: 20px;
@@ -101,8 +100,11 @@ p.text-left {
 }
 /* form-signin */
 .form-signin {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   padding: 1rem;
-  width: 100%;
+  width: 80%;
   height: 100vh;
   text-align: center;
   justify-content: center;
@@ -134,11 +136,20 @@ p.text-left {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 25%;
+  justify-content: center;
 }
-.rounded-circle{
-  height: 10rem;
-  width: 10rem;
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.btn{
+  width: 100%;
 }
 
 

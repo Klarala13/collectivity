@@ -42,8 +42,8 @@ function Login(props) {
               type="submit"
               disabled={props.loading}
               className={`${
-                isSignin ? "btn-outline-primary" : "btn-primary"
-              } mb-3 btn btn-lg  btn-block`}
+                isSignin ? "btn-primary" : "btn-primary"
+              } btn-lg  btn-block`}
             >
               Login
             </button>
