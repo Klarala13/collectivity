@@ -38,7 +38,7 @@ const addUser = (req, res, next) => {
     const {firstName, lastName, email, password, city, zipCode, image} = req.body;
       client.query(
         `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${zipCode}', '${date}', '${image}' )`
+      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(zipCode)}', '${date}', '${image}' )`
       );
       console.log("New user seeded");
       console.log("request", req.body);
