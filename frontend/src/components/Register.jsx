@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+//ToDo: add passport
+//ToDo: add upload image option
+//ToDo: add local storage
 export default props => {
   const [isRegister, setRegister] = useState(true);
   const [isHidden, setHidden] = useState(false);
@@ -12,19 +14,26 @@ export default props => {
     password: false,
     confirmPass: false,
     city: false,
-    zip: false,
+    zipCode: false,
+    image: true,
     check: false
   });
+  //console.log("user, and is valid?", user, valid);
 
-  console.log(user, valid);
+  const url = "http://0.0.0.0:4001/users";
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(handleSubmit());
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(response => console.log("Yay!", JSON.stringify(response)))
+      .catch(error =>
+        console.error("Uuuu, u fucked up! try again buddy", error)
+      );
   };
-  //ToDo: add agreement for security
-  //ToDo Make post to DB
-  //ToDo: add passport
-  //ToDo: add local storage
 
   const handleFirstName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -75,16 +84,29 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleZip = e => {
+  const handleZipCode = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    //console.log(e.target.value);
-    if (e.target.value.length > 5) {
+    if (e.target.value.length > 4) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleChange = e => {};
+  const handleImage = (e, input) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+    if (input.files && input.files[0]) {
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        "#image"
+          .attr("src", e.target.result)
+          .width(150)
+          .height(200);
+      };
+      setValid({ ...valid, [e.target.name]: true });
+      reader.readAsDataURL(input.files[0]);
+    }
+  };
+
   const handleCheckbox = e => {
     if (e.target.checked) {
       setValid({ ...valid, [e.target.name]: true });
@@ -93,15 +115,12 @@ export default props => {
     }
   };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
-  console.log(isDisabled);
+  // console.log("disabled", isDisabled);
 
   return (
     <div className="container">
       <div className="Register">
-        <form
-          onSubmit={event => handleChange(event, isRegister)}
-          className="form-register"
-        >
+        <form onSubmit={handleSubmit} className="form-register" method="post">
           <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
           <div className="container">
             <label htmlFor="firstName" className="sr-only">
@@ -193,19 +212,30 @@ export default props => {
               autoFocus
               autoComplete="true"
             />
-            <label htmlFor="zip" className="sr-only">
+            <label htmlFor="zipCode" className="sr-only">
               ZipCode
             </label>
             <input
-              onChange={handleZip}
+              onChange={handleZipCode}
               type="number"
-              max="5"
-              id="zip"
-              name="zip"
-              value={user.zip}
+              id="zipCode"
+              name="zipCode"
+              value={user.zipCode}
               className="form-control"
               placeholder="zip code"
               required
+              autoFocus
+            />
+            <input
+              onChange={handleImage}
+              type="file"
+              id="image"
+              alt="Your image"
+              src="#"
+              name="image"
+              value={user.image}
+              className="form-control"
+              //  placeholder="image"
               autoFocus
             />
             <div className="form-check">

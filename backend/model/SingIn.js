@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { FullName } = require("./FullName");
 
 exports.SignInSchema = new mongoose.Schema({
-  userName: { 
-    type: String, 
+  userName: {
+    type: String,
     required: true,
     minlength: 4,
-    maxlength: 200 
+    maxlength: 200
   },
   password: {
     type: String,
@@ -14,39 +14,38 @@ exports.SignInSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 200
   },
-  email: { 
-    type: String, 
+  email: {
+    type: String,
     required: true,
     minlength: 8,
-    maxlength: 20 
-  },
-});
-exports.RegistrationSchema = new mongoose.Schema ({
-  userName:{
-    type: String, 
-    required: true,
-    minlength: 4,
     maxlength: 20
+  }
+});
+exports.RegistrationSchema = new mongoose.Schema({
+  userName: {
+    type: String,
+    required: true,
+    minlength: 4
   },
   name: {
     type: FullName,
     required: true
   },
-  password:{
-    type: String, 
+  password: {
+    type: String,
     required: true,
-    minlength: 8,
+    minlength: 8
   },
-  confirmPassword:{
-    type: String, 
+  confirmPassword: {
+    type: String,
     required: true,
-    minlength: 8,
+    minlength: 8
   },
-  email: { 
-    type: String, 
+  email: {
+    type: String,
     required: true,
     minlength: 8,
-    maxlength: 20 
+    maxlength: 20
   },
   city: {
     type: String,
@@ -55,16 +54,12 @@ exports.RegistrationSchema = new mongoose.Schema ({
     maxlength: 20
   },
   zip: Number,
-  phone: {
-    type: String,
-    minlength: 6
-  },
-  registrationDate: { 
+  registrationDate: {
     type: Date,
     default: Date.now
-  },
-})
-RegistrationSchema.pre('save', function(next) {
+  }
+});
+RegistrationSchema.pre("save", function(next) {
   this.date = new Date();
   next();
 });
