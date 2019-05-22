@@ -2,38 +2,28 @@ import React from "react";
 import Header from "./Header";
 
 class App extends React.Component {
-  constructor(props){
-    super(props)
-  
-  this.state = {
-    users:[],
-    input:{}
-  }
-};
+  constructor(props) {
+    super(props);
 
-componentWillMount = () => {
-  const url = "./fakeData.json"
-  //fetching fake data to try shit out
-  fetch(url)
-  .then(response => {
-    this.setState({})
-    console.log(response);
-  })
+    this.state = {
+      users: [],
+      input: {}
+    };
   }
 
   render() {
     return (
       <div className="container">
-      <Header />
-      <div className="app">
-        <button className="mb-3 btn btn-block btn-outline-primary">
-          Login/Register
-        </button>
-        <p>OR</p>
-        <button className="mb-3 btn btn-block btn-outline-primary">
-          go to Freebiesss
-        </button>
-      </div>
+        <Header />
+        <div className="app">
+          <button className="mb-3 btn btn-block btn-outline-primary">
+            Login/Register
+          </button>
+          <p>OR</p>
+          <button className="mb-3 btn btn-block btn-outline-primary">
+            go to Freebiesss
+          </button>
+        </div>
       </div>
     );
   }
