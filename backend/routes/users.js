@@ -31,12 +31,14 @@ const listUsers = (req, res, next) => {
 };
 
 const addUser = (req, res, next) => {
-  console.log("users");
+  console.log("req.body", req.body);
   try {
-    const {firstName, lastName, email, password, city, zipCode, registrationDate, rating, image} = req.body;
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const {firstName, lastName, email, password, city, zipCode, image} = req.body;
       client.query(
-        `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${zipCode}', '${registrationDate}', '${rating}', '${image}' )`
+        `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(zipCode)}', '${date}', '${image}' )`
       );
       console.log("New user seeded");
       console.log("request", req.body);
