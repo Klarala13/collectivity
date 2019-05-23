@@ -5,6 +5,8 @@ const multer = require("multer");
 const fs = require("fs");
 const upload = multer({ dest: "uploads/" });
 
+// Connection to postgreSQL
+
 const { Client } = require("pg");
 const client = new Client({
   user: process.env.DBUSER,
@@ -93,8 +95,8 @@ const addUser = (req, res, next) => {
 
     const userQuery = "select * from public.users";
     client.query(userQuery).then(response => {
-      const newUsers = response.rows;
-      res.send(newUsers);
+      const newUser = response.rows;
+      res.send(newUser);
     });
   } catch (e) {
     console.log("could not create New User", e);

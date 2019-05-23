@@ -12,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(setCorsHeaders);
 
 const usersRouter = require("./routes/users");
+const freebiesRouter = require("./routes/freebies")
+const timebanksRouter = require("./routes/timebanks")
 
 const { Client } = require("pg");
 
@@ -91,27 +93,8 @@ app.get("/", function(req, res) {
 });
 
 app.use("/users", usersRouter);
-// app.get("/users", async function(req, res, next) {
-//   console.log("users");
-//   try {
-//     const userQuery = "select * from public.users";
-//     await client.query(userQuery).then(response => {
-//       // console.log("query", userQuery);
-//       // console.log("res", res.rows);
-
-//       const user = response.rows[0];
-//       res.send(user);
-//     });
-//   } catch (e) {
-//     console.log("ERROR", e);
-//     next(e);
-//   }});
-app.get("/items", function(req, res) {
-  res.json({ message: "Item list" });
-});
-app.get("/services", function(req, res) {
-  res.json({ message: "Service list" });
-});
+app.use("/freebies", freebiesRouter);
+app.use("/timebanks", timebanksRouter);
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {
