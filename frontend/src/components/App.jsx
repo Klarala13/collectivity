@@ -16,11 +16,7 @@ class App extends React.Component {
       <div className="container">
         <Header />
         <div className="app">
-<<<<<<< HEAD
-          <button className="mb-3 btn btn-block btn-outline-primary">
-=======
           <button className="btn mb-2 btn-primary">
->>>>>>> Add Style
             Login/Register
           </button>
           <p>OR</p>
