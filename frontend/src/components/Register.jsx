@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { ImageUpload } from "./imageUpload/ImageUpload";
+
 //ToDo: add passport
 //ToDo: add upload image option
 //ToDo: add local storage
@@ -37,7 +39,7 @@ export default props => {
 
   const handleFirstName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3) {
+    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -45,7 +47,7 @@ export default props => {
   };
   const handleLastName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3) {
+    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -53,7 +55,7 @@ export default props => {
   };
   const handleEmail = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 8) {
+    if ((e.target.value.length > 8) && (e.target.value.length < 30)) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -61,7 +63,7 @@ export default props => {
   };
   const handlePassword = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 7) {
+    if ((e.target.value.length > 7) && (e.target.value.length < 20)) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -78,7 +80,7 @@ export default props => {
   };
   const handleCity = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3) {
+    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -92,21 +94,6 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleImage = (e, input) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-    if (input.files && input.files[0]) {
-      let reader = new FileReader();
-      reader.onload = function(e) {
-        "#image"
-          .attr("src", e.target.result)
-          .width(150)
-          .height(200);
-      };
-      setValid({ ...valid, [e.target.name]: true });
-      reader.readAsDataURL(input.files[0]);
-    }
-  };
-
   const handleCheckbox = e => {
     if (e.target.checked) {
       setValid({ ...valid, [e.target.name]: true });
@@ -226,18 +213,19 @@ export default props => {
               required
               autoFocus
             />
-            <input
+             < ImageUpload />
+            {/* <input
               onChange={handleImage}
               type="file"
               id="image"
-              alt="Your image"
+              alt="Your pic"
               src="#"
               name="image"
               value={user.image}
               className="form-control"
               //  placeholder="image"
               autoFocus
-            />
+            />  */}
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
               <div>
