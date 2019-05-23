@@ -56,22 +56,22 @@ client.query("SELECT to_regclass('public.users')").then(async res => {
     client
       .query(
         `CREATE TABLE public.users
-        (   "id" SERIAL PRIMARY KEY,
-            "firstName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-            "lastName" character varying(30) COLLATE pg_catalog."default" NOT NULL,
-            email character varying(20) COLLATE pg_catalog."default" NOT NULL,
-            password character varying(20) COLLATE pg_catalog."default" NOT NULL,
-            city character varying(20) COLLATE pg_catalog."default",
-            "zipCode" integer,
-            "registrationDate" date,
-            rating integer,
-            image character varying COLLATE pg_catalog."default"
+        (   "userId" SERIAL PRIMARY KEY,
+            "firstName" character varying(30) NOT NULL,
+            "lastName" character varying(30) NOT NULL,
+            "email" character varying(30) NOT NULL,
+            "password" character varying(20) NOT NULL,
+            "city" character varying(30),
+            "zipCode" integer NOT NULL,
+            "registrationDate" date NOT NULL,
+            "rating" integer,
+            "image" character varying
         )
         WITH (
-            OIDS = FALSE
-        )
-        TABLESPACE pg_default;
-        
+          OIDS = FALSE
+      )
+      TABLESPACE pg_default;
+
         ALTER TABLE public.users
             OWNER to postgres;
       `
