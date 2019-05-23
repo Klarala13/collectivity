@@ -16,12 +16,12 @@ class App extends React.Component {
       <div className="container">
         <Header />
         <div className="app">
-          <button className="btn btn-primary">
+          <button className="mb-3 btn btn-block btn-outline-primary">
             Login/Register
           </button>
           <p>OR</p>
-          <button className="btn btn-primary">
-            go to Freebies
+          <button className="mb-3 btn btn-block btn-outline-primary">
+            go to Freebiesss
           </button>
         </div>
       </div>

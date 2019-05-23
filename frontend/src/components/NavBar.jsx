@@ -10,7 +10,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg sticky-top">
+      <nav className="navbar navbar-expand-lg sticky-top nav-main">
         <div className="container">
           <NavLink to="/" activeClassName="active" className="navbar-brand">
             LOGO

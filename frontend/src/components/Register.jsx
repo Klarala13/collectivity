@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ImageUpload } from "./imageUpload/ImageUpload";
+import ImageUpload from "./imageUpload/ImageUpload";
 
 //ToDo: add passport
 //ToDo: add upload image option
@@ -214,7 +214,7 @@ export default props => {
               autoFocus
             />
              < ImageUpload />
-            {/* <input
+            {/* /* <input
               onChange={handleImage}
               type="file"
               id="image"
@@ -226,7 +226,7 @@ export default props => {
               //  placeholder="image"
               autoFocus
             />  */}
-            <div className="form-check">
+            <div className="form-check"> 
               <h4>Agree to Terms and Conditions</h4>{" "}
               <div>
                 {" "}

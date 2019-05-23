@@ -48,7 +48,7 @@ class TimeBank extends React.Component {
                   />
                   <button
                     type="submit"
-                    className="btn btn-primary mx-auto "
+                    className="btn btn-outline-primary "
                     onSubmit={this.handleSubmit}
                   >
                     Submit
