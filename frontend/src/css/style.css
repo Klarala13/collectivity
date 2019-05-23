@@ -6,7 +6,7 @@ body {
   font-family: "Questrial", sans-serif;
 }
 .container {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 h3,
@@ -20,7 +20,18 @@ h2 {
 p {
   font-size: 1.5em;
   padding-bottom: 1rem;
-  /* text-align: justify; */
+}
+/* app */
+.app {
+  width: 80%;
+  height: 100vh;
+  text-align: center; 
+  margin: auto;
+}
+
+
+.top-100 {
+  top: 100px;
 }
 
 /* navigation */
@@ -33,7 +44,6 @@ p {
   padding-left: 20px;
 }
 .btn {
-  margin: 2%;
   padding-left: 2%;
   padding-right: 2%;
 }
@@ -114,22 +124,7 @@ p.text-left {
   padding-right: 10rem;
   padding-bottom: 1rem;
 }
-/* app */
-.app {
-  padding: 1rem;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  justify-content: center;
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-bottom: 1rem;
-}
 
-
-.top-100 {
-  top: 100px;
-}
 
 /* Profile */
 .card-deck{

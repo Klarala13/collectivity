@@ -108,7 +108,7 @@ class About extends React.Component {
                 </p>
                 <a
                   href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
-                  className="btn btn-outline-primary"
+                  className="btn btn-primary mx-auto"
                   alt="donate money"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -138,7 +138,7 @@ class About extends React.Component {
                   {" "}
                   Elise Maschke (Front and Backend developer)
                   <a
-                    className="btn btn-primary"
+                    className="btn btn-primary mx-auto"
                     href="https://elisemaschke.de/"
                     alt="Portfolio"
                     target="_blank"
