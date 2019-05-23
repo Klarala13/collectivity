@@ -20,7 +20,22 @@ h2 {
 p {
   font-size: 1.5em;
   padding-bottom: 1rem;
+<<<<<<< HEAD
   /* text-align: justify; */
+=======
+}
+/* app */
+.app {
+  width: 60%;
+  height: 100vh;
+  text-align: center; 
+  margin: auto;
+}
+
+
+.top-100 {
+  top: 100px;
+>>>>>>> Add Style
 }
 
 /* navigation */
