@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import ImageUpload from "./imageUpload/ImageUpload";
 
 //ToDo: add passport
-//ToDo: add upload image option
 //ToDo: add local storage
 export default props => {
   const [isRegister, setRegister] = useState(true);
