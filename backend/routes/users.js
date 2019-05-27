@@ -22,8 +22,8 @@ const listUsers = (req, res, next) => {
   try {
     const userQuery = "select * from public.users";
     client.query(userQuery).then(response => {
-      console.log("query", userQuery);
-      console.log("res", response.rows);
+      //console.log("query", userQuery);
+      //console.log("res", response.rows);
 
       const users = response.rows[0];
       res.send(users);
@@ -39,7 +39,7 @@ const resizeImages = (req, res, next) => {
   const file = `${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename +
     "." +
     req.file.mimetype.split("/")[1]}`;
-  console.time("IMG");
+  //console.time("IMG");
   Jimp.read(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`)
     .then(pic => {
       return pic
@@ -48,10 +48,10 @@ const resizeImages = (req, res, next) => {
         .write(file); // save
     })
     .then(() => {
-      console.timeEnd("IMG");
+      // console.timeEnd("IMG");
 
       fs.unlinkSync(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`);
-      console.log("Done");
+      console.log("Resized and Stored image");
     })
     .catch(err => {
       console.error(err);
@@ -64,7 +64,7 @@ const signIn = (req, res, next) => {
 };
 
 const addUser = (req, res, next) => {
-  console.log("req.body", req.body);
+  //console.log("req.body", req.body);
   try {
     const today = new Date();
     const date =
@@ -88,8 +88,8 @@ const addUser = (req, res, next) => {
         zipCode
       )}', '${date}', '${image}' )`
     );
-    console.log("New user seeded");
-    console.log("request", req.body);
+    // console.log("New user seeded");
+    //console.log("request", req.body);
 
     const userQuery = "select * from public.users";
     client.query(userQuery).then(response => {
@@ -97,7 +97,7 @@ const addUser = (req, res, next) => {
       res.send(newUsers);
     });
   } catch (e) {
-    console.log("ERROR", e);
+    console.log("could not create New User", e);
     next(e);
   }
 };
