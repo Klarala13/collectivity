@@ -7,7 +7,11 @@ const client = new Client({
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.DBPORT
+  port: process.env.DBPORT,
+  CLIENT_ORIGIN:
+    process.env.NODE_ENV === "production"
+      ? "https://react-image-upload.surge.sh"
+      : "http://0.0.0.0:4001/users"
 });
 client.connect();
 
