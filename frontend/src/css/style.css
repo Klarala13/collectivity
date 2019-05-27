@@ -164,3 +164,20 @@ p.text-left {
 .top-100 {
   top: 100px;
 }
+
+.card-deck{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  justify-content: center;
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
