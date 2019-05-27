@@ -8,8 +8,10 @@
     "watch": "DEBUG=collectivity:* nodemon --inspect ./bin/www"
   },
   "dependencies": {
+    "body": "^5.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^7.0.0",
     "express": "~4.16.0",
     "express-validator": "^5.3.1",
     "faker": "^4.1.0",
@@ -18,9 +20,9 @@
     "lowdb": "^1.0.0",
     "mongoose": "^5.5.2",
     "morgan": "~1.9.0",
-    "shortid": "^2.2.14",
+    "parser": "^0.1.4",
     "pg": "^7.10.0",
-    "dotenv": "^7.0.0"
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

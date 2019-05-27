@@ -1,5 +1,8 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
+const bodyParser = require("body-parser");
+const { CLIENT_ORIGIN } = require("./backend/routes/users");
+// Put these statements before you define any routes.
 const logger = require("morgan");
 const createError = require("http-errors");
 
@@ -8,6 +11,8 @@ const { setCorsHeaders } = require("./middleware/security");
 const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 const usersRouter = require("./routes/users");
 
@@ -24,6 +29,20 @@ const client = new Client({
   port: process.env.DBPORT
 });
 client.connect();
+
+// cloudinary.config({
+//   cloud_name: process.env.CLOUD_NAME,
+//   api_key: process.env.API_KEY,
+//   api_secret: process.env.API_SECRET
+// });
+
+// app.use(
+//   cors({
+//     origin: CLIENT_ORIGIN
+//   })
+// );
+
+// app.use(formData.parse());
 
 // promise
 
