@@ -3,19 +3,14 @@ import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
-
-  const onSubmit = () => {
-    //check if this is how to redirect to the profile page
-    console.log(onSubmit());
-    return <NavLink to="/profile">LogIn</NavLink>;
+  const onSubmit = e => {
+    e.preventDefault();
+    props.history.push("/profile");
   };
   return (
     <div className="container">
       <div className="Login">
-        <form
-          onSubmit={event => props.onSubmit(event, isSignin)}
-          className="form-signin"
-        >
+        <form onSubmit={e => onSubmit(e)} className="form-signin">
           <h2 className="mb-2">{isSignin ? "Sign in" : "Register"}</h2>
           <label htmlFor="name" className="sr-only">
             Name
@@ -27,7 +22,6 @@ function Login(props) {
               id="name"
               className="form-control"
               placeholder="Name"
-              required
               autoFocus
             />
           </div>
@@ -41,25 +35,17 @@ function Login(props) {
               id="password"
               className="form-control"
               placeholder="Password"
-              required
             />
           </div>
           <div className="mb-3">
             <button
+              type="submit"
               disabled={props.loading}
               className={`${
-                isSignin ? "btn-outline-primary" : "btn-primary"
-              } mb-3 btn btn-lg  btn-block`}
+                isSignin ? "btn-primary" : "btn-primary"
+              } btn-lg  btn-block`}
             >
-              {!props.loading ? (
-                isSignin ? (
-                  <NavLink to="/profile">LogIn</NavLink>
-                ) : (
-                  "Register"
-                )
-              ) : (
-                "Loading"
-              )}
+              Login
             </button>
           </div>
           <span className="text-muted " onClick={() => setSignin(!isSignin)}>
