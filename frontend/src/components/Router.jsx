@@ -8,6 +8,7 @@ import Register from "./Register";
 import About from "./About";
 import Freebies from "./Freebies";
 import Help from "./Help";
+import Profile from "./Profile";
 import NavBar from "./NavBar";
 import NotFound from "./NotFound";
 
@@ -20,7 +21,7 @@ const Router = () => (
         <Route path="/timebank" component={TimeBank} />
         <Route path="/freebies" component={Freebies} />
         <Route path="/login" component={Login} />
-        <Route path="/profile" component={Help} />
+        <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
