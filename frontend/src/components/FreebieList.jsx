@@ -4,6 +4,8 @@ import Item from "./FreebieItem";
 class FreebieList extends Component {
   //ToDo: Add search field
   //ToDo: Get request
+  //Create the form for posting the FREEBIES
+  //Add validation, search f(inputting) ield, etc.
 
   // const url = "http://0.0.0.0:4001/items";
   // const handleSubmit = e => {

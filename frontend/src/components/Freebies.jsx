@@ -1,6 +1,7 @@
 import React from "react";
 import FreebieList from "./FreebieList";
 import FreebieFilter from "./FreebieFilter";
+//Add search field for freebies
 
 class Freebies extends React.Component {
   constructor(props) {
