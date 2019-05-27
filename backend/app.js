@@ -1,18 +1,18 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
 const bodyParser = require("body-parser");
-// Put these statements before you define any routes.
 const logger = require("morgan");
 const createError = require("http-errors");
+const { setCorsHeaders } = require("./middleware/security");
 const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(setCorsHeaders);
 
 const usersRouter = require("./routes/users");
 
-const postgres = require("pg");
 const { Client } = require("pg");
 
 // console.log(process.env);
@@ -35,7 +35,7 @@ async function seedAdmin() {
         res.rowCount >= 1 &&
         res.rows.filter(user => user.email === "admin@dci.de").length > 0
       ) {
-        console.log("All users:", res.rows);
+        
       } else {
         client.query(
           `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
@@ -48,7 +48,6 @@ async function seedAdmin() {
 }
 
 client.query("SELECT to_regclass('public.users')").then(async res => {
-  console.log("RES", res.rows);
   if (res.rows[0].to_regclass !== null) {
     const response = await seedAdmin();
   } else {
