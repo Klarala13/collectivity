@@ -1,13 +1,14 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-export default props => 
-  <div className='buttons fadein'>
-    <div className='button'>
-      <label htmlFor='image'>
-        <FontAwesomeIcon icon={faImage} color='#3B5998' size='2x' />
+export default props => (
+  <div className="buttons fadein">
+    <div className="button">
+      <label htmlFor="image">
+        <FontAwesomeIcon icon={faImage} color="black" size="2x" />
       </label>
-      <input type='file' id='image' onChange={props.onChange} /> 
+      <input type="file" id="image" onChange={props.onChange} />
     </div>
-    </div>
+  </div>
+);
