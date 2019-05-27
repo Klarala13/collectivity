@@ -1,5 +1,8 @@
 const express = require("express");
+var Jimp = require("jimp");
 const router = express.Router();
+var multer = require("multer");
+var upload = multer({ dest: "uploads/" });
 
 const { Client } = require("pg");
 const client = new Client({
@@ -7,11 +10,7 @@ const client = new Client({
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.DBPORT,
-  CLIENT_ORIGIN:
-    process.env.NODE_ENV === "production"
-      ? "https://react-image-upload.surge.sh"
-      : "http://0.0.0.0:4001/users"
+  port: process.env.DBPORT
 });
 client.connect();
 
@@ -32,6 +31,20 @@ const listUsers = (req, res, next) => {
     console.log("ERROR", e);
     next(e);
   }
+};
+//We need to resize images AFTER upload and BEFORE sending req.body
+const resizeImages = (req, res, next) => {
+  //console.log("TEST", req.file);
+  Jimp.read("lenna.png")
+    .then(lenna => {
+      return lenna
+        .resize(256, 256) // resize
+        .quality(60) // set JPEG quality
+        .write("lena-small-bw.jpg"); // save
+    })
+    .catch(err => {
+      console.error(err);
+    });
 };
 
 const addUser = (req, res, next) => {
@@ -76,6 +89,6 @@ const addUser = (req, res, next) => {
 router
   .route("/")
   .get(listUsers)
-  .post(addUser);
+  .post(upload.single("image"), resizeImages, addUser);
 
 module.exports = router;
