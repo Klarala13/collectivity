@@ -1,8 +1,9 @@
 const express = require("express");
-var Jimp = require("jimp");
+const Jimp = require("jimp");
 const router = express.Router();
-var multer = require("multer");
-var upload = multer({ dest: "uploads/" });
+const multer = require("multer");
+const fs = require("fs");
+const upload = multer({ dest: "uploads/" });
 
 const { Client } = require("pg");
 const client = new Client({
@@ -34,20 +35,30 @@ const listUsers = (req, res, next) => {
 };
 //We need to resize images AFTER upload and BEFORE sending req.body
 const resizeImages = (req, res, next) => {
-  //console.log("TEST", req.file);
-  Jimp.read("pic.png")
+  console.log("TEST", req.file);
+  const file = `${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename +
+    "." +
+    req.file.mimetype.split("/")[1]}`;
+  console.time("IMG");
+  Jimp.read(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`)
     .then(pic => {
       return pic
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
-        .write("pic-small-bw.jpg"); // save
+        .write(file); // save
+    })
+    .then(() => {
+      console.timeEnd("IMG");
+
+      fs.unlinkSync(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`);
+      console.log("Done");
     })
     .catch(err => {
       console.error(err);
     });
 };
 
-const signin = (req, res, next) => {
+const signIn = (req, res, next) => {
   console.log(req.body);
   res.json("Worked");
 };
@@ -91,9 +102,7 @@ const addUser = (req, res, next) => {
   }
 };
 
-router
-  .route("/signin")
-  .post(signin)
+router.route("/signin").post(signIn);
 router
   .route("/")
   .get(listUsers)
