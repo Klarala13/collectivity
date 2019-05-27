@@ -24,7 +24,6 @@ export default props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e);
     const files = Array.from(e.target.elements["image"].files);
     // this.setState({ uploading: true });
     const formData = new FormData();

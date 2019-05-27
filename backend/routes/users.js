@@ -35,12 +35,12 @@ const listUsers = (req, res, next) => {
 //We need to resize images AFTER upload and BEFORE sending req.body
 const resizeImages = (req, res, next) => {
   //console.log("TEST", req.file);
-  Jimp.read("lenna.png")
-    .then(lenna => {
-      return lenna
+  Jimp.read("pic.png")
+    .then(pic => {
+      return pic
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
-        .write("lena-small-bw.jpg"); // save
+        .write("pic-small-bw.jpg"); // save
     })
     .catch(err => {
       console.error(err);

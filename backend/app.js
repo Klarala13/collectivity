@@ -1,7 +1,6 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
 const bodyParser = require("body-parser");
-
 // Put these statements before you define any routes.
 const logger = require("morgan");
 const createError = require("http-errors");
@@ -42,7 +41,7 @@ async function seedAdmin() {
           `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
         VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
         );
-        console.log("Admin seeded");
+        //console.log("Admin seeded");
       }
     })
     .catch(e => console.error(e.stack));
