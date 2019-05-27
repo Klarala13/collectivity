@@ -34,6 +34,11 @@ const listUsers = (req, res, next) => {
   }
 };
 
+const signin = (req, res, next) => {
+  console.log(req.body);
+  res.json("Worked");
+};
+
 const addUser = (req, res, next) => {
   console.log("req.body", req.body);
   try {
@@ -73,6 +78,9 @@ const addUser = (req, res, next) => {
   }
 };
 
+router
+  .route("/signin")
+  .post(signin)
 router
   .route("/")
   .get(listUsers)

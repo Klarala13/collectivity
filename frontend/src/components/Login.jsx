@@ -3,9 +3,28 @@ import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const [isSignin, setSignin] = useState(true);
+  const [user, setUser] = useState({});
   const onSubmit = e => {
+    const url = "http://localhost:4001/users/signin";
     e.preventDefault();
-    props.history.push("/profile");
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log("Response from the signin method in the backend", response);
+        props.history.push("/profile");
+      })
+      .catch(error => console.error("Error:", error));
+  };
+
+  const handleChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
   return (
     <div className="container">
@@ -17,11 +36,12 @@ function Login(props) {
           </label>
           <div className="mb-3">
             <input
-              onChange={props.onChange}
-              type="text"
-              id="name"
+              onChange={handleChange}
+              type="email"
+              id="email"
+              name="email"
               className="form-control"
-              placeholder="Name"
+              placeholder="Email"
               autoFocus
             />
           </div>
@@ -30,9 +50,10 @@ function Login(props) {
           </label>
           <div className=" mb-3">
             <input
-              onChange={props.onChange}
+              onChange={handleChange}
               type="password"
               id="password"
+              name="password"
               className="form-control"
               placeholder="Password"
             />
