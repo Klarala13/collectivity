@@ -1,25 +1,22 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const express = require("express");
 const bodyParser = require("body-parser");
-const { CLIENT_ORIGIN } = require("./backend/routes/users");
+
 // Put these statements before you define any routes.
 const logger = require("morgan");
 const createError = require("http-errors");
-
-const { setCorsHeaders } = require("./middleware/security");
-
 const { genericErrors } = require("./lib/controllers/messageController");
 
 const app = express();
-app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const usersRouter = require("./routes/users");
 
 const postgres = require("pg");
 const { Client } = require("pg");
 
-console.log(process.env.DBUSER);
+// console.log(process.env);
 
 const client = new Client({
   user: process.env.DBUSER,
@@ -30,22 +27,7 @@ const client = new Client({
 });
 client.connect();
 
-// cloudinary.config({
-//   cloud_name: process.env.CLOUD_NAME,
-//   api_key: process.env.API_KEY,
-//   api_secret: process.env.API_SECRET
-// });
-
-// app.use(
-//   cors({
-//     origin: CLIENT_ORIGIN
-//   })
-// );
-
-// app.use(formData.parse());
-
 // promise
-
 async function seedAdmin() {
   return client
     .query("select * from public.users")
@@ -100,15 +82,13 @@ client.query("SELECT to_regclass('public.users')").then(async res => {
 
 console.log("Hello from postgres");
 
-app.use(setCorsHeaders);
-
 app.use(logger("dev"));
 app.use(express.json());
 
 app.get("/", function(req, res) {
   console.log("Welcome to Collectivity");
   res.json({
-    message: "Welcome to Collectivity! We're very happy to see you here"
+    message: "Welcome to Collectivity! We're very happy to see you here :)"
   });
 });
 
