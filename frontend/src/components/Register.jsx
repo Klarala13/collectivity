@@ -22,16 +22,34 @@ export default props => {
   });
   //console.log("user, and is valid?", user, valid);
 
-  const url = "http://0.0.0.0:4001/users";
   const handleSubmit = e => {
     e.preventDefault();
+    console.log(e);
+    const files = Array.from(e.target.elements["image"].files);
+    // this.setState({ uploading: true });
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+    formData.append("firstName", e.target.elements["firstName"].value);
+    formData.append("lastName", e.target.elements["lastName"].value);
+    formData.append("email", e.target.elements["email"].value);
+    formData.append("password", e.target.elements["password"].value);
+    formData.append("city", e.target.elements["city"].value);
+    formData.append("zipCode", e.target.elements["zipCode"].value);
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+    const url = "http://0.0.0.0:4001/users";
     fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user)
+      body: formData
     })
-      .then(response => response.json())
-      .then(response => console.log("Yay!", JSON.stringify(response)))
+      .then(res => res.json())
+      .then(res => {
+        console.log("Good job!", res);
+      })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
@@ -39,7 +57,7 @@ export default props => {
 
   const handleFirstName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
+    if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -47,7 +65,7 @@ export default props => {
   };
   const handleLastName = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
+    if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -55,7 +73,7 @@ export default props => {
   };
   const handleEmail = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if ((e.target.value.length > 8) && (e.target.value.length < 30)) {
+    if (e.target.value.length > 8 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -63,7 +81,7 @@ export default props => {
   };
   const handlePassword = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if ((e.target.value.length > 7) && (e.target.value.length < 20)) {
+    if (e.target.value.length > 7 && e.target.value.length < 20) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -80,7 +98,7 @@ export default props => {
   };
   const handleCity = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if ((e.target.value.length > 3) && (e.target.value.length < 30)) {
+    if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -213,7 +231,7 @@ export default props => {
               required
               autoFocus
             />
-             < ImageUpload />
+            <ImageUpload />
             {/* /* <input
               onChange={handleImage}
               type="file"
@@ -226,7 +244,7 @@ export default props => {
               //  placeholder="image"
               autoFocus
             />  */}
-            <div className="form-check"> 
+            <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
               <div>
                 {" "}
