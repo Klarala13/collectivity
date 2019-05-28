@@ -2,8 +2,12 @@ To initialize:
 
 - open frontend folder on terminal and run npm start
 - open backend folder on terminal and run npm run watch
+1. install dependencies
+2. run frontend
+3. run docker postgres container (see provide database container)
+4. run backend
 
-## DOCKER setup:
+## provide database container:
 
 Start backend: Open terminal: 
 `sudo docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 4000:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres`
