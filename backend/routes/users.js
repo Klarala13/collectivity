@@ -33,13 +33,13 @@ const listUsers = (req, res, next) => {
     next(e);
   }
 };
-//We need to resize images AFTER upload and BEFORE sending req.body
+
 const resizeImages = (req, res, next) => {
   console.log("TEST", req.file);
   const file = `${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename +
     "." +
     req.file.mimetype.split("/")[1]}`;
-  //console.time("IMG");
+  console.time("IMG");
   Jimp.read(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`)
     .then(pic => {
       return pic
@@ -48,10 +48,9 @@ const resizeImages = (req, res, next) => {
         .write(file); // save
     })
     .then(() => {
-      // console.timeEnd("IMG");
-
+      console.timeEnd("IMG");
       fs.unlinkSync(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`);
-      console.log("Resized and Stored image");
+      console.log("Resized and Stored image!");
     })
     .catch(err => {
       console.error(err);
