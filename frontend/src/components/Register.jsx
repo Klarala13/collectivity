@@ -126,21 +126,24 @@ export default props => {
               {" "}
               First Name{" "}
             </label>
+            <div className="mb-3" className="mb-3">
             <input
               onChange={handleFirstName}
               type="text"
               id="firstName"
               name="firstName"
               value={user.firstName}
-              className="form-control"
+              className="form-control "
               placeholder="First Name"
               required
               autoFocus
               autoComplete="true"
             />
+            </div>
             <label htmlFor="lastName" className="sr-only">
               Last Name
             </label>
+            <div className="mb-3" className="mb-3">
             <input
               onChange={handleLastName}
               type="text"
@@ -153,9 +156,11 @@ export default props => {
               autoFocus
               autoComplete="true"
             />
+            </div>
             <label htmlFor="email" className="sr-only">
               Email
             </label>
+            <div className="mb-3">
             <input
               onChange={handleEmail}
               type="email"
@@ -168,9 +173,11 @@ export default props => {
               autoFocus
               autoComplete="true"
             />
+            </div>
             <label htmlFor="password" className="sr-only">
               Password
             </label>
+            <div className="mb-3">
             <input
               onChange={handlePassword}
               type="password"
@@ -182,9 +189,11 @@ export default props => {
               required
               autoFocus
             />
+            </div>
             <label htmlFor="password" className="sr-only">
               Re-Enter Password please
             </label>
+            <div className="mb-3">
             <input
               onChange={handleConfirmPass}
               type="password"
@@ -196,9 +205,11 @@ export default props => {
               required
               autoFocus
             />
+            </div>
             <label htmlFor="city" className="sr-only">
               City
             </label>
+            <div className="mb-3">
             <input
               onChange={handleCity}
               type="city"
@@ -211,9 +222,11 @@ export default props => {
               autoFocus
               autoComplete="true"
             />
+            </div>
             <label htmlFor="zipCode" className="sr-only">
               ZipCode
             </label>
+            <div className="mb-3">
             <input
               onChange={handleZipCode}
               type="number"
@@ -225,15 +238,48 @@ export default props => {
               required
               autoFocus
             />
+            </div>
             <ImageUpload />
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
               <div>
+              <input
+                type="checkbox"
+                className="checkbox form-check-input"
+                id="check"
+                name="check"
+                onChange={handleCheckbox}
+              />
+              </div>
+              <label className="form-check-label" htmlFor="accept">
+                Check to accept
+              </label>
+            </div>
+            <div className="mb-3">
+            <button
+              className="btn btn-danger"
+              id="submit"
+              label="Submit"
+              disabled={isDisabled} 
+              onClick={setRegister}
+            >
+              Register
+            </button>
+            </div>
+            <div className="mb-3">
+            <NavLink
+              to="/login"
+              activeClassName="active"
+              className="navbar-brand"
+            >
+              "Already got an account? Login"
+            </NavLink>
+            </div>
+              <div className="form-check mb-3">
                 {" "}
-                <a onClick={() => setHidden(!isHidden)}>
-                  {" "}
+                <a className="blue" onClick={() => setHidden(!isHidden)}>
                   Click HERE to see terms
-                </a>{" "}
+                </a>
               </div>
               <div className={isHidden === false ? "d-none" : ""}>
                 <div>
@@ -314,33 +360,6 @@ export default props => {
                   </div>
                 </div>
               </div>
-              <input
-                type="checkbox"
-                className="checkbox form-check-input"
-                id="check"
-                name="check"
-                onChange={handleCheckbox}
-              />
-              <label className="form-check-label" htmlFor="accept">
-                Check to accept
-              </label>
-            </div>
-            <button
-              className="btn btn-danger"
-              id="submit"
-              label="Submit"
-              disabled={isDisabled}
-              onClick={setRegister}
-            >
-              Register
-            </button>
-            <NavLink
-              to="/login"
-              activeClassName="active"
-              className="navbar-brand"
-            >
-              "Already got an account? Login"
-            </NavLink>
           </div>
         </form>
       </div>
