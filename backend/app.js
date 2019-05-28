@@ -17,8 +17,10 @@ const timebanksRouter = require("./routes/timebanks");
 
 const { Client } = require("pg");
 
-// console.log(process.env);
-
+if(!process.env.IMAGE_UPLOAD_DIR) {
+  console.log("Buhh you need to put a IMAGE_UPLOAD_DIR environment varible in your .env")
+  process.exit(1)
+}
 const client = new Client({
   user: process.env.DBUSER,
   host: process.env.HOST,
@@ -28,7 +30,8 @@ const client = new Client({
 });
 client.connect();
 
-// promise
+// tables and seeding 
+
 async function seedAdmin() {
   return client
     .query("select * from public.users")
@@ -107,12 +110,12 @@ async function seedFreebies() {
 // Creation of freebies table
 
 client.query("SELECT to_regclass('public.freebies')").then(async res => {
-  console.log("RES", res.rows);
+  // console.log("RES", res.rows);
   // check if table freebies already exists
   if (res.rows[0].to_regclass !== null) {
     client.query("SELECT to_regclass('public.users')").then(async resp => {
       //check if table users exists for the foreign key
-      console.log("RESP", resp.rows);
+      // console.log("RESP", resp.rows);
       if (resp.rows[0].to_regclass !== null) {
         const response = await seedFreebies();
       }
@@ -218,6 +221,8 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
     );
   }
 });
+
+// Other stuff
 
 console.log("Hello from postgres");
 
