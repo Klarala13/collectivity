@@ -66,7 +66,7 @@ const signIn = (req, res, next) => {
 };
 
 const addUser = (req, res, next) => {
-  //console.log("req.body", req.body);
+console.log("req.body", req.body);
   try {
     const today = new Date();
     const date =
@@ -90,7 +90,7 @@ const addUser = (req, res, next) => {
         zipCode
       )}', '${date}', '${image}' )`
     );
-    // console.log("New user seeded");
+    console.log("New user seeded");
     //console.log("request", req.body);
 
     const userQuery = "select * from public.users";
