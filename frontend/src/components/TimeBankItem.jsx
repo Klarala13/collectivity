@@ -3,15 +3,17 @@ import TimeBank from "./TimeBank";
 
 class TimeBankItem extends Component {
   render() {
-  
     return (
       <div>
         <tr>
-          <th scope="row">{this.props.data.id}</th>
-          <td>{this.props.data.name}</td>
-          <td>{this.props.data.time}</td>
+          <th scope="row">{e.target.value.name}</th>
+          <td>{e.target.value.skill.description}</td>
+          <td>{e.target.value.skill.location}</td>
+          <td>{e.target.value.skill.category}</td>
+          <td>{e.target.value.skill.timeSpan}</td>
+          <td>{e.target.value.skill.isActive}</td>
         </tr>
-        <TimeBank data={skills} />
+        <TimeBank />
       </div>
     );
   }

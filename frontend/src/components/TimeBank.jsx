@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 
 //ToDo: Post request(on it)
-//Add validation, search field, etc.
+//Add validation
+//Make sure inputed skill shows in outputed table
 
 export default props => {
   const [skill, setSkill] = useState(true);
@@ -17,7 +18,6 @@ export default props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    //Check if DB table is called skills or skill
     const url = "http://0.0.0.0:4001/skills";
     fetch(url)
       .then(response => response.json())
@@ -48,15 +48,41 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  //   handleLocation( ) {
-
-  //   }
-  //   handleActive() {
-
-  //   }
-  //   handleTime(){
-
-  //   }
+  const handleLocation = e => {
+    setSkill({ ...skill, [e.target.name]: e.target.value });
+    if (e.target.value.length > 3) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+  };
+  const handleActive = e => {
+    if (e.target.checked) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+    const active = Object.values(valid).filter(v => !v).length !== 0;
+    console.log("active?", active);
+  };
+  const handleCategory = e => {
+    if (e.target.checked) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+    const selected = Object.values(valid).filter(s => !s).length !== 0;
+    console.log("selected category?", selected);
+  };
+  const handleTime = e => {
+    if (e.target.selected) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+    const selected = Object.values(valid).filter(s => !s).length !== 0;
+    console.log("selected?", selected);
+  };
 
   return (
     <div className="container">
@@ -80,7 +106,6 @@ export default props => {
               and bank account says ;)
             </p>
           </div>
-
           <div className="p-2 bg-light flex-item ">
             <form
               onSubmit={handleSubmit}
@@ -89,7 +114,6 @@ export default props => {
             >
               <div className="form-group p-2">
                 <h3 className="text-left">Insert your Skill here</h3>
-                <p>Post what you offer!</p>
                 <label>Skill</label>
                 <input
                   onChage={handleName}
@@ -117,62 +141,93 @@ export default props => {
                 />
                 <label>Location</label>
                 <input
-                  onChange={this.handleChange}
+                  onChange={handleLocation}
                   type="text"
+                  name="description"
+                  value={skill.location}
                   className="form-control mb-2"
                   id="location"
                   placeholder="Where can u perform"
                   required
                 />
-                <label>Category</label>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  className="form-control mb-2"
-                  id="category"
-                  placeholder="tags"
-                  required
-                />
-                <label>Time Span</label>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  className="form-control mb-2"
-                  id="time-offered"
-                  placeholder="Hrs/Week"
-                />
-                <label>Active</label>
-                <input
-                  onChange={this.handleChange}
-                  type="text"
-                  className="form-control mb-2"
-                  id="active"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="btn btn-outline-primary"
-                  id="submit"
-                  label="submit"
-                >
-                  Submit
-                </button>
+                <div className="category">
+                  <label>Category</label>
+                  <input
+                    onChange={handleCategory}
+                    type="text"
+                    name="category"
+                    value={skill.category}
+                    className="form-control mb-2"
+                    id="category"
+                    placeholder="Please choose a category"
+                    required
+                  />
+                  <select class="mdb-select md-form">
+                    <option value="" disabled selected>
+                      Choose your category
+                    </option>
+                    <option value="House+Garden">House+Garden</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Motors">Motors</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Art/Collectibles">Art/Collectibles</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Media">Media</option>
+                    <option value="Others">Others</option>
+                    <option value="Pets">Pets</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Time Span</label>
+                  <input
+                    onChange={handleTime}
+                    type="number"
+                    className="form-control mb-2"
+                    id="time-offered"
+                    placeholder="Hrs/Week"
+                    required
+                  />
+                </div>
+                <div className="form-check space-between">
+                  <label class="form-check-label" for="active">
+                    Activate
+                    <input
+                      onChange={handleActive}
+                      type="checkbox"
+                      className="checkbox form-check-input mr-5"
+                      id="active"
+                      required
+                      name="check"
+                    />
+                  </label>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="btn btn-outline-primary"
+                    id="submit"
+                    label="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
             </form>
-            <table>
+            {/* <table>
               <thead>
                 {/* //When submited, send the info to the table below */}
-                <tr>
+            {/* <tr>
                   <th scope="col">User</th>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Skill</th>
                   <th scope="col">Time Offered</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Ashley</td>
-                  <td>32</td>
+                  {e.target.value.skill.description}
                   <td>Pluming</td>
                   <td>2</td>
                 </tr>
@@ -189,7 +244,8 @@ export default props => {
                   <td>5</td>
                 </tr>
               </tbody>
-            </table>
+            </table> */}{" "}
+            */}
           </div>
         </div>
       </div>
