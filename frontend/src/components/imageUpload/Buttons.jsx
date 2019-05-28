@@ -8,7 +8,7 @@ export default props => (
       <label htmlFor="image" type="image" alt="profile pic">
         <FontAwesomeIcon icon={faImage} color="black" size="2x" />
       </label>
-      <input type="file" id="image" onChange={props.onChange} />
+      <input type="file" id="image" name="name" onChange={props.onChange} />
     </div>
   </div>
 );
