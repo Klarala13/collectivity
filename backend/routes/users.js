@@ -32,7 +32,7 @@ const listUsers = (req, res, next) => {
     next(e);
   }
 };
-//We need to resize images AFTER upload and BEFORE sending req.body
+
 const resizeImages = (req, res, next) => {
   console.log("TEST", req.file);
   const file = `${req.file.filename +
@@ -47,8 +47,7 @@ const resizeImages = (req, res, next) => {
         .write(`${process.env.IMAGE_UPLOAD_DIR}/${file}`); // save
     })
     .then(() => {
-      // console.timeEnd("IMG");
-
+      //  console.timeEnd("IMG");
       fs.unlinkSync(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`);
       console.log("Resized and Stored image");
 

@@ -23,13 +23,9 @@ export default props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const files = Array.from(e.target.elements["image"].files);
-    // this.setState({ uploading: true });
     const formData = new FormData();
 
-    files.forEach((file, i) => {
-      formData.append(i, file);
-    });
+    formData.append("image", e.target.elements["image"].files[0]);
     formData.append("firstName", e.target.elements["firstName"].value);
     formData.append("lastName", e.target.elements["lastName"].value);
     formData.append("email", e.target.elements["email"].value);
@@ -46,7 +42,7 @@ export default props => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log("Good job!", res);
+        //console.log("Good job!", res);
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)
@@ -230,18 +226,6 @@ export default props => {
               autoFocus
             />
             <ImageUpload />
-            {/* /* <input
-              onChange={handleImage}
-              type="file"
-              id="image"
-              alt="Your pic"
-              src="#"
-              name="image"
-              value={user.image}
-              className="form-control"
-              //  placeholder="image"
-              autoFocus
-            />  */}
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
               <div>
