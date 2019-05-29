@@ -6,7 +6,6 @@ const fs = require("fs");
 const upload = multer({ dest: "uploads/" });
 
 // Connection to postgreSQL
-
 const { Client } = require("pg");
 const client = new Client({
   user: process.env.DBUSER,
@@ -35,9 +34,7 @@ const listUsers = (req, res, next) => {
 
 const resizeImages = (req, res, next) => {
   console.log("TEST", req.file);
-  const file = `${req.file.filename +
-    "." +
-    req.file.mimetype.split("/")[1]}`;
+  const file = `${req.file.filename + "." + req.file.mimetype.split("/")[1]}`;
   //console.time("IMG");
   Jimp.read(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`)
     .then(pic => {
@@ -72,7 +69,7 @@ const addUser = (req, res, next) => {
     client.query(userQuery).then(response => {
       const newUser = response.rows;
       if (newUser.length === 0) {
-        console.log(req.body)
+        console.log(req.body);
         const today = new Date();
         const date =
           today.getFullYear() +
@@ -88,10 +85,13 @@ const addUser = (req, res, next) => {
           city,
           zipCode
         } = req.body;
-        console.log("XXXX", `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+        console.log(
+          "XXXX",
+          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
         VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
-              zipCode
-            )}', '${date}', '${req.filename}' )`)
+            zipCode
+          )}', '${date}', '${req.filename}' )`
+        );
         client
           .query(
             `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 

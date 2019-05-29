@@ -24,7 +24,6 @@ export default props => {
   const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData();
-
     formData.append("image", e.target.elements["image"].files[0]);
     formData.append("firstName", e.target.elements["firstName"].value);
     formData.append("lastName", e.target.elements["lastName"].value);
@@ -42,7 +41,7 @@ export default props => {
     })
       .then(res => res.json())
       .then(res => {
-        //console.log("Good job!", res);
+        console.log("Good job!", res);
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)
@@ -114,7 +113,7 @@ export default props => {
     }
   };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
-  // console.log("disabled", isDisabled);
+  console.log("disabled", isDisabled);
 
   return (
     <div className="container">
