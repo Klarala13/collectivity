@@ -24,7 +24,7 @@ const listUsers = (req, res, next) => {
       //console.log("query", userQuery);
       //console.log("res", response.rows);
 
-      const users = response.rows[0];
+      const users = response.rows;
       res.send(users);
     });
   } catch (e) {
