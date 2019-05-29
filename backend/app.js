@@ -18,7 +18,7 @@ const timebanksRouter = require("./routes/timebanks");
 const { Client } = require("pg");
 
 if(!process.env.IMAGE_UPLOAD_DIR) {
-  console.log("Buhh you need to put a IMAGE_UPLOAD_DIR environment varible in your .env")
+  console.log("Buhh you need to put a IMAGE_UPLOAD_DIR environment variable in your .env")
   process.exit(1)
 }
 const client = new Client({
