@@ -28,7 +28,8 @@ function Login(props) {
   };
   return (
     <div className="container">
-      <div className="Login">
+      <div className="row Login">
+        <div className="col-md-8 offset-md-2">
         <form onSubmit={e => onSubmit(e)} className="form-signin">
           <h2 className="mb-2">{isSignin ? "Sign in" : "Register"}</h2>
           <label htmlFor="name" className="sr-only">
@@ -75,7 +76,7 @@ function Login(props) {
             ) : (
               <NavLink
                 to="/register"
-                activeClassName="active"
+                activeClassName="active "
                 className="navbar-brand"
               >
                 Register
@@ -83,6 +84,7 @@ function Login(props) {
             )}
           </span>
         </form>
+        </div>
       </div>
     </div>
   );
