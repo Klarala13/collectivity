@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 //ToDo: Post request(on it)
-//Add validation
+//Disable button
 //Make sure inputed skill shows in outputed table
 
 export default props => {
@@ -11,9 +11,7 @@ export default props => {
     skill: false,
     description: false,
     location: false,
-    category: false,
-    timeSpan: false,
-    isActive: false
+    timeSpan: false
   });
 
   const handleSubmit = e => {
@@ -35,13 +33,27 @@ export default props => {
     setSkill({ ...skill, [e.target.name]: e.target.value });
     if (condition) {
       setValid({ ...valid, [e.target.name]: true });
-      console.log("", valid[e.target.name]);
     } else {
       setValid({ ...valid, [e.target.name]: false });
-      console.log("", valid[e.target.name]);
     }
   };
-  console.log("3", valid["skill"]);
+
+  const handleCheckbox = e => {
+    if (e.target.checked) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+  };
+  const handleDisable = e => {
+    if (Object.values(valid).filter(v => !v).length !== 0) {
+      setValid({ ...valid, [e.target.name]: true });
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+    }
+  };
+  console.log("isValid?", valid["skill"]);
+
   return (
     <div className="container">
       <div className="timeBanks">
@@ -111,31 +123,22 @@ export default props => {
                 <input
                   onChange={e => handleValid(e, e.target.value.length >= 3)}
                   type="text"
-                  name="description"
+                  name="location"
                   value={skill.location}
                   className="form-control mb-2"
                   id="location"
                   placeholder="Where can u perform"
                   required
                 />
-                <div className="category">
-                  <label>Category</label>
+                <div className="form-group category">
+                  <label htmlFor="select">Category</label>
                   <select
+                    className="mdb-select md-form form-control"
+                    name="select"
                     id="category"
-                    value={skill.category}
                     required
-                    // onSelect={selected =>
-                    //   handleValid(
-                    //     selected,
-                    //     e.target.selected,
-                    //     console.log(selected, e)(
-                    //       (selected =
-                    //         Object.values(valid).filter(s => !s).length !== 0)
-                    //     )
-                    //   )
-                    // }
-                    className="mdb-select md-form"
                   >
+                    <option value="">Make a selection</option>
                     <option value="House+Garden">House+Garden</option>
                     <option value="Fashion">Fashion</option>
                     <option value="Motors">Motors</option>
@@ -152,7 +155,7 @@ export default props => {
                 <div>
                   <label>Time Span</label>
                   <input
-                    onChange={handleValid}
+                    onChange={e => handleValid(e, e.target.value.length >= 1)}
                     type="number"
                     className="form-control mb-2"
                     id="time-offered"
@@ -160,27 +163,26 @@ export default props => {
                     required
                   />
                 </div>
-                <div className="form-check space-between">
-                  <label className="form-check-label" htmlFor="active">
-                    Activate
-                    <input
-                      onChange={handleValid}
-                      type="checkbox"
-                      className="checkbox form-check-input mr-5"
-                      id="active"
-                      required
-                      name="check"
-                    />
-                  </label>
-                </div>
-                <div>
+
+                <label className="form-check-label" htmlFor="accept">
+                  Activate
+                </label>
+                <input
+                  onChange={handleCheckbox}
+                  type="checkbox"
+                  className="checkbox form-check-input"
+                  id="check"
+                  required
+                  name="check"
+                />
+                <div className="mb-3">
                   <button
-                    type="submit"
-                    className="btn btn-outline-primary"
+                    className="btn btn-danger"
+                    onClick={handleDisable}
                     id="submit"
-                    label="submit"
+                    type="submit"
                   >
-                    Submit
+                    Post Skill
                   </button>
                 </div>
               </div>
