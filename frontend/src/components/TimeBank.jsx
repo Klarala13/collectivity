@@ -1,14 +1,14 @@
 //import React from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //ToDo: Post request(on it)
 //Add validation
 //Make sure inputed skill shows in outputed table
 
 export default props => {
-  const [skill, setSkill] = useState(true);
+  const [skill, setSkill] = useState(false);
   const [valid, setValid] = useState({
-    name: false,
+    skill: false,
     description: false,
     location: false,
     category: false,
@@ -31,49 +31,20 @@ export default props => {
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
+  const handleValid = (e, condition) => {
+    setSkill({ ...skill, [e.target.name]: e.target.value });
+    if (condition) {
+      setValid({ ...valid, [e.target.name]: true });
+      console.log("", valid[e.target.name]);
+    } else {
+      setValid({ ...valid, [e.target.name]: false });
+      console.log("", valid[e.target.name]);
+    }
+  };
+  useEffect(() => {
+    console.log("VALID", valid["skill"]);
+  }, [valid]);
 
-  const handleName = e => {
-    setSkill({ ...skill, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3 && e.target.value.length < 50) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
-  const handleDescription = e => {
-    setSkill({ ...skill, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3 && e.target.value.length < 300) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
-  const handleLocation = e => {
-    setSkill({ ...skill, [e.target.name]: e.target.value });
-    if (e.target.value.length > 3) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
-  const handleActive = e => {
-    if (e.target.checked) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-    const active = Object.values(valid).filter(v => !v).length !== 0;
-    console.log("active?", active);
-  };
-  const handleCategory = e => {
-    if (e.target.checked) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-    const selected = Object.values(valid).filter(s => !s).length !== 0;
-    console.log("selected category?", selected);
-  };
   const handleTime = e => {
     if (e.target.selected) {
       setValid({ ...valid, [e.target.name]: true });
@@ -83,7 +54,7 @@ export default props => {
     const selected = Object.values(valid).filter(s => !s).length !== 0;
     console.log("selected?", selected);
   };
-
+  console.log("3", valid["skill"]);
   return (
     <div className="container">
       <div className="timeBanks">
@@ -116,7 +87,12 @@ export default props => {
                 <h3 className="text-left">Insert your Skill here</h3>
                 <label>Skill</label>
                 <input
-                  onChage={handleName}
+                  onChange={e =>
+                    handleValid(
+                      e,
+                      e.target.value.length >= 3 && e.target.value.length <= 50
+                    )
+                  }
                   type="text"
                   name="skill"
                   value={skill.name}
@@ -129,7 +105,12 @@ export default props => {
                 />
                 <label>Description</label>
                 <input
-                  onChage={handleDescription}
+                  onChange={e =>
+                    handleValid(
+                      e,
+                      e.target.value.length >= 3 && e.target.value.length <= 300
+                    )
+                  }
                   type="text"
                   name="description"
                   value={skill.description}
@@ -141,7 +122,7 @@ export default props => {
                 />
                 <label>Location</label>
                 <input
-                  onChange={handleLocation}
+                  onChange={e => handleValid(e, e.target.value.length >= 3)}
                   type="text"
                   name="description"
                   value={skill.location}
@@ -152,20 +133,22 @@ export default props => {
                 />
                 <div className="category">
                   <label>Category</label>
-                  <input
-                    onChange={handleCategory}
-                    type="text"
-                    name="category"
-                    value={skill.category}
-                    className="form-control mb-2"
+                  <select
                     id="category"
-                    placeholder="Please choose a category"
+                    value={skill.category}
                     required
-                  />
-                  <select class="mdb-select md-form">
-                    <option value="" disabled selected>
-                      Choose your category
-                    </option>
+                    // onSelect={selected =>
+                    //   handleValid(
+                    //     selected,
+                    //     e.target.selected,
+                    //     console.log(selected, e)(
+                    //       (selected =
+                    //         Object.values(valid).filter(s => !s).length !== 0)
+                    //     )
+                    //   )
+                    // }
+                    className="mdb-select md-form"
+                  >
                     <option value="House+Garden">House+Garden</option>
                     <option value="Fashion">Fashion</option>
                     <option value="Motors">Motors</option>
@@ -182,7 +165,7 @@ export default props => {
                 <div>
                   <label>Time Span</label>
                   <input
-                    onChange={handleTime}
+                    onChange={handleValid}
                     type="number"
                     className="form-control mb-2"
                     id="time-offered"
@@ -191,10 +174,10 @@ export default props => {
                   />
                 </div>
                 <div className="form-check space-between">
-                  <label class="form-check-label" for="active">
+                  <label className="form-check-label" htmlFor="active">
                     Activate
                     <input
-                      onChange={handleActive}
+                      onChange={handleValid}
                       type="checkbox"
                       className="checkbox form-check-input mr-5"
                       id="active"
@@ -245,7 +228,6 @@ export default props => {
                 </tr>
               </tbody>
             </table> */}{" "}
-            */}
           </div>
         </div>
       </div>
