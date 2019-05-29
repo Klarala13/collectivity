@@ -35,9 +35,7 @@ const listUsers = (req, res, next) => {
 
 const resizeImages = (req, res, next) => {
   console.log("TEST", req.file);
-  const file = `${req.file.filename +
-    "." +
-    req.file.mimetype.split("/")[1]}`;
+  const file = `${req.file.filename + "." + req.file.mimetype.split("/")[1]}`;
   //console.time("IMG");
   Jimp.read(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`)
     .then(pic => {
@@ -60,8 +58,17 @@ const resizeImages = (req, res, next) => {
 };
 
 const signIn = (req, res, next) => {
-  console.log(req.body);
-  res.json("Worked");
+  try {
+    const userQuery = `select * from public.users WHERE email='${
+      req.body.email
+    }'`;
+    client.query(userQuery).then(response => {
+      console.log("user", response.rows);
+      res.send(response.rows[0]);
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
 };
 
 const addUser = (req, res, next) => {
@@ -72,7 +79,7 @@ const addUser = (req, res, next) => {
     client.query(userQuery).then(response => {
       const newUser = response.rows;
       if (newUser.length === 0) {
-        console.log(req.body)
+        console.log(req.body);
         const today = new Date();
         const date =
           today.getFullYear() +
@@ -88,10 +95,13 @@ const addUser = (req, res, next) => {
           city,
           zipCode
         } = req.body;
-        console.log("XXXX", `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+        console.log(
+          "XXXX",
+          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
         VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
-              zipCode
-            )}', '${date}', '${req.filename}' )`)
+            zipCode
+          )}', '${date}', '${req.filename}' )`
+        );
         client
           .query(
             `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
@@ -111,10 +121,11 @@ const addUser = (req, res, next) => {
   }
 };
 
-router.route("/signin").post(signIn);
 router
   .route("/")
   .get(listUsers)
   .post(upload.single("image"), resizeImages, addUser);
+
+router.route("/signin").post(signIn);
 
 module.exports = router;

@@ -7,6 +7,8 @@ function Login(props) {
     const url = "http://localhost:4001/users/signin";
     e.preventDefault();
 
+    console.log("Login info", user)
+
     fetch(url, {
       method: "POST",
       headers: {
@@ -72,7 +74,7 @@ function Login(props) {
                 activeClassName="active "
                 className="navbar-brand"
               >
-                New user then go to register
+                New user? Then go to register.
               </NavLink>
         </form>
         </div>
