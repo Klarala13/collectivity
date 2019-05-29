@@ -5,6 +5,8 @@ const multer = require("multer");
 const fs = require("fs");
 const upload = multer({ dest: "uploads/" });
 
+// Connection to postgreSQL
+
 const { Client } = require("pg");
 const client = new Client({
   user: process.env.DBUSER,
@@ -15,10 +17,7 @@ const client = new Client({
 });
 client.connect();
 
-console.log("DBUSER", process.env.DBUSER);
-
 const listUsers = (req, res, next) => {
-  console.log("users");
   try {
     const userQuery = "select * from public.users";
     client.query(userQuery).then(response => {
@@ -35,8 +34,8 @@ const listUsers = (req, res, next) => {
 };
 
 const resizeImages = (req, res, next) => {
-  //console.log("TEST", req.file);
-  const file = `${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename +
+  console.log("TEST", req.file);
+  const file = `${req.file.filename +
     "." +
     req.file.mimetype.split("/")[1]}`;
   //console.time("IMG");
@@ -45,12 +44,15 @@ const resizeImages = (req, res, next) => {
       return pic
         .resize(256, 256) // resize
         .quality(60) // set JPEG quality
-        .write(file); // save
+        .write(`${process.env.IMAGE_UPLOAD_DIR}/${file}`); // save
     })
     .then(() => {
       //  console.timeEnd("IMG");
       fs.unlinkSync(`${process.env.IMAGE_UPLOAD_DIR}/${req.file.filename}`);
-      console.log("Resized and Stored image!");
+      console.log("Resized and Stored image");
+
+      req.filename = file;
+      next();
     })
     .catch(err => {
       console.error(err);
@@ -63,37 +65,45 @@ const signIn = (req, res, next) => {
 };
 
 const addUser = (req, res, next) => {
-  //console.log("req.body", req.body);
   try {
-    const today = new Date();
-    const date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-    const {
-      firstName,
-      lastName,
-      email,
-      password,
-      city,
-      zipCode,
-      image
-    } = req.body;
-    client.query(
-      `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
-        zipCode
-      )}', '${date}', '${image}' )`
-    );
-    // console.log("New user seeded");
-    //console.log("request", req.body);
-
-    const userQuery = "select * from public.users";
+    const userQuery = `select * from public.users WHERE email='${
+      req.body.email
+    }'`;
     client.query(userQuery).then(response => {
-      const newUsers = response.rows;
-      res.send(newUsers);
+      const newUser = response.rows;
+      if (newUser.length === 0) {
+        console.log(req.body)
+        const today = new Date();
+        const date =
+          today.getFullYear() +
+          "-" +
+          (today.getMonth() + 1) +
+          "-" +
+          today.getDate();
+        const {
+          firstName,
+          lastName,
+          email,
+          password,
+          city,
+          zipCode
+        } = req.body;
+        console.log("XXXX", `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+        VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
+              zipCode
+            )}', '${date}', '${req.filename}' )`)
+        client
+          .query(
+            `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
+        VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
+              zipCode
+            )}', '${date}', '${req.filename}' )`
+          )
+          .then(res => {
+            console.log("New user seeded");
+          });
+        //console.log("request", req.body);
+      }
     });
   } catch (e) {
     console.log("could not create New User", e);
