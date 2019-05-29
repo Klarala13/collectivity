@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 //ToDo: Post request(on it)
-//Disable button
 //Make sure inputed skill shows in outputed table
 
 export default props => {
@@ -10,8 +9,7 @@ export default props => {
   const [valid, setValid] = useState({
     skill: false,
     description: false,
-    location: false,
-    timeSpan: false
+    location: false
   });
 
   const handleSubmit = e => {
@@ -45,14 +43,10 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleDisable = e => {
-    if (Object.values(valid).filter(v => !v).length !== 0) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
-  console.log("isValid?", valid["skill"]);
+  const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
+  //console.log("disabled", isDisabled);
+  //console.log("skill", skill);
+  //console.log("isValid?", valid["skill"]);
 
   return (
     <div className="container">
@@ -155,7 +149,6 @@ export default props => {
                 <div>
                   <label>Time Span</label>
                   <input
-                    onChange={e => handleValid(e, e.target.value.length >= 1)}
                     type="number"
                     className="form-control mb-2"
                     id="time-offered"
@@ -178,9 +171,10 @@ export default props => {
                 <div className="mb-3">
                   <button
                     className="btn btn-danger"
-                    onClick={handleDisable}
                     id="submit"
                     type="submit"
+                    disabled={isDisabled}
+                    onClick={setSkill}
                   >
                     Post Skill
                   </button>
