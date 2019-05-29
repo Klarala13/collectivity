@@ -127,11 +127,11 @@ p.text-left {
   padding-bottom: 1rem;
 }
 
-
 .top-100 {
   top: 100px;
 }
 
+/* profile */
 .card-deck{
   display: block;
   margin-left: auto;
@@ -148,6 +148,12 @@ p.text-left {
   margin-right: auto;
   width: 60%;
 }
+.profile-action{
+  justify-content: space-between;
+}
+.flex-item-1{ 
+  margin: 1em;
+}
 
 /* form-register */
 
@@ -155,14 +161,11 @@ p.text-left {
   padding: 1rem;
   width: 100%;
   height: 100vh;
-  /* text-align: center; */
-  /* justify-content: center; */
 }
 
 .form-check-input {
   position: absolute;
   margin-top: .3rem;
-  /* margin-right: 1rem; */
   margin-left: 0;
 }
 .form-check-label{
