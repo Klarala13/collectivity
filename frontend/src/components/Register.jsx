@@ -118,7 +118,9 @@ export default props => {
 
   return (
     <div className="container">
-      <div className="Register">
+     <div className="row">
+       <div className="col-md-8 offset-md-2">
+       <div className="Register">
         <form onSubmit={handleSubmit} className="form-register" method="post">
           <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
           <div className="container">
@@ -242,42 +244,9 @@ export default props => {
             <ImageUpload />
             <div className="form-check">
               <h4>Agree to Terms and Conditions</h4>{" "}
-              <div>
-              <input
-                type="checkbox"
-                className="checkbox form-check-input"
-                id="check"
-                name="check"
-                onChange={handleCheckbox}
-              />
-              </div>
-              <label className="form-check-label" htmlFor="accept">
-                Check to accept
-              </label>
-            </div>
-            <div className="mb-3">
-            <button
-              className="btn btn-danger"
-              id="submit"
-              label="Submit"
-              disabled={isDisabled} 
-              onClick={setRegister}
-            >
-              Register
-            </button>
-            </div>
-            <div className="mb-3">
-            <NavLink
-              to="/login"
-              activeClassName="active"
-              className="navbar-brand"
-            >
-              "Already got an account? Login"
-            </NavLink>
-            </div>
-              <div className="form-check mb-3">
+              <div className="mb-3">
                 {" "}
-                <a className="blue" onClick={() => setHidden(!isHidden)}>
+                <a href="#" className="text-primary" onClick={() => setHidden(!isHidden)}>
                   Click HERE to see terms
                 </a>
               </div>
@@ -360,9 +329,44 @@ export default props => {
                   </div>
                 </div>
               </div>
+              <div>
+              <input
+                type="checkbox"
+                className="checkbox form-check-input"
+                id="check"
+                name="check"
+                onChange={handleCheckbox}
+              />
+              </div>
+              <label className="form-check-label" htmlFor="accept">
+                Check to accept
+              </label>
+            </div>
+            <div className="mb-3">
+            <button
+              className="btn btn-danger"
+              id="submit"
+              type="submit"
+              disabled={isDisabled} 
+              onClick={setRegister}
+            >
+              Register
+            </button>
+            </div>
+            <div className="mb-3">
+            <NavLink
+              to="/login"
+              activeClassName="active"
+              className="navbar-brand"
+            >
+              "Already got an account? Login"
+            </NavLink>
+            </div>
           </div>
         </form>
       </div>
+       </div>
+     </div>
     </div>
   );
 };

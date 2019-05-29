@@ -117,11 +117,7 @@ p.text-left {
   text-align: center;
   justify-content: center;
 }
-.mb-3 {
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-bottom: 1rem;
-}
+
 /* app */
 .app {
   padding: 1rem;
@@ -165,10 +161,7 @@ p.text-left {
   /* text-align: center; */
   /* justify-content: center; */
 }
-a{
-color: blue;
-cursor: pointer;
-}
+
 .form-check-input {
   position: absolute;
   margin-top: .3rem;
