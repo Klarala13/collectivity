@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Login(props) {
-  const [isSignin, setSignin] = useState(true);
   const [user, setUser] = useState({});
   const onSubmit = e => {
     const url = "http://localhost:4001/users/signin";
@@ -31,7 +30,7 @@ function Login(props) {
       <div className="row Login">
         <div className="col-md-8 offset-md-2">
         <form onSubmit={e => onSubmit(e)} className="form-signin">
-          <h2 className="mb-2">{isSignin ? "Sign in" : "Register"}</h2>
+          <h2 className="mb-2">Sign in</h2>
           <label htmlFor="name" className="sr-only">
             Name
           </label>
@@ -68,19 +67,13 @@ function Login(props) {
               Login
             </button>
           </div>
-          <span className="text-muted " onClick={() => setSignin(!isSignin)}>
-            {!isSignin ? (
-              "Already account? Sign in"
-            ) : (
               <NavLink
                 to="/register"
                 activeClassName="active "
                 className="navbar-brand"
               >
-                Register
+                New user then go to register
               </NavLink>
-            )}
-          </span>
         </form>
         </div>
       </div>
