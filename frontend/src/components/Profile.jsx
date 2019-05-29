@@ -13,7 +13,7 @@ class Profile extends Component {
           <img className="rounded-circle center pt-4" src={Leena} alt="Logo" />
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
-              <div className="profile-messages flex-item">
+              <div className="profile-messages flex-item-1">
                 <a className="contact" href="#">
                   <span className="check">
                     <FontAwesomeIcon
@@ -24,7 +24,7 @@ class Profile extends Component {
                   </span>
                 </a>
               </div>
-              <div className="profile-follow flex-item">
+              <div className="profile-follow flex-item-1">
                 <a className="contact" href="#">
                   <span className="check">
                   <FontAwesomeIcon
