@@ -42,7 +42,7 @@ export default props => {
     })
       .then(res => res.json())
       .then(res => {
-        //console.log("Good job!", res);
+        console.log("Good job!", res);
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)

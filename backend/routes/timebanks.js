@@ -16,12 +16,12 @@ client.connect();
 const listTimebanks = (req, res, next) => {
   console.log("timebanks");
   try {
-    const timebankQuery = "select * from public.timebanks";
+    const timebankQuery = "select * from public.skills";
     client.query(timebankQuery).then(response => {
       console.log("query", timebankQuery);
       console.log("res", response.rows);
 
-      const timebanks = response.rows[0];
+      const timebanks = response.rows;
       res.send(timebanks);
     });
   } catch (e) {

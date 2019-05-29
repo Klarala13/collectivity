@@ -21,7 +21,7 @@ const listFreebies = (req, res, next) => {
       console.log("query", freebieQuery);
       console.log("res", response.rows);
 
-      const freebies = response.rows[0];
+      const freebies = response.rows;
       res.send(freebies);
     });
   } catch (e) {
