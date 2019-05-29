@@ -132,7 +132,7 @@ export default props => {
                   {" "}
                   First Name{" "}
                 </label>
-                <div className="mb-3" className="mb-3">
+                <div className="mb-3">
                   <input
                     onChange={handleFirstName}
                     type="text"
@@ -149,7 +149,7 @@ export default props => {
                 <label htmlFor="lastName" className="sr-only">
                   Last Name
                 </label>
-                <div className="mb-3" className="mb-3">
+                <div className="mb-3">
                   <input
                     onChange={handleLastName}
                     type="text"
@@ -251,7 +251,7 @@ export default props => {
                   <div className="mb-3">
                     {" "}
                     <a
-                      href="#"
+                      href=" #"
                       className="text-primary"
                       onClick={() => setHidden(!isHidden)}
                     >

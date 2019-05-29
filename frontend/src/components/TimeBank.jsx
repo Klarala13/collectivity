@@ -1,5 +1,5 @@
 //import React from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 //ToDo: Post request(on it)
 //Add validation
@@ -18,7 +18,7 @@ export default props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const url = "http://0.0.0.0:4001/skills";
+    const url = "http://0.0.0.0:4001/timebanks";
     fetch(url)
       .then(response => response.json())
       .then(data =>
@@ -40,19 +40,6 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
       console.log("", valid[e.target.name]);
     }
-  };
-  useEffect(() => {
-    console.log("VALID", valid["skill"]);
-  }, [valid]);
-
-  const handleTime = e => {
-    if (e.target.selected) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-    const selected = Object.values(valid).filter(s => !s).length !== 0;
-    console.log("selected?", selected);
   };
   console.log("3", valid["skill"]);
   return (
