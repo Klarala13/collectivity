@@ -49,12 +49,12 @@ const addTimebank = (req, res, next) => {
       category
     } = req.body;
     client.query(
-      `INSERT INTO public.timebanks("name", "description", "location", "active", "timeSpan", "category") 
-      VALUES ('${skill}', '${description}', '${Number(
-        location
-      )}', '${active}', '${timeSpan}', '${category}', '${date})`
+      `INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category") 
+      VALUES ('${skill}', '${description}', '${Number(location)}', '${Boolean(
+        active
+      )}', '${timeSpan}', '${category}')`
     );
-    console.log("New timebank seeded");
+    console.log("New skill seeded");
     console.log("request", req.body);
 
     const timebankQuery = "select * from public.timebanks";
