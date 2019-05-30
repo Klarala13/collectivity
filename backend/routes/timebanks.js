@@ -34,14 +34,28 @@ const addTimebank = (req, res, next) => {
   console.log("req.body", req.body);
   try {
     const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const {firstName, lastName, email, password, city, zipCode, image} = req.body;
-      client.query(
-      `INSERT INTO public.timebanks("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(zipCode)}', '${date}', '${image}' )`
-      );
-      console.log("New timebank seeded");
-      console.log("request", req.body);
+    const date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    const {
+      skill,
+      description,
+      location,
+      active,
+      timeSpan,
+      category
+    } = req.body;
+    client.query(
+      `INSERT INTO public.timebanks("name", "description", "location", "active", "timeSpan", "category") 
+      VALUES ('${skill}', '${description}', '${Number(
+        location
+      )}', '${active}', '${timeSpan}', '${category}', '${date})`
+    );
+    console.log("New timebank seeded");
+    console.log("request", req.body);
 
     const timebankQuery = "select * from public.timebanks";
     client.query(timebankQuery).then(response => {
@@ -54,7 +68,9 @@ const addTimebank = (req, res, next) => {
   }
 };
 
-router.route("/").get(listTimebanks)
-                 .post(addTimebank);
+router
+  .route("/")
+  .get(listTimebanks)
+  .post(addTimebank);
 
 module.exports = router;
