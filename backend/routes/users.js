@@ -57,8 +57,17 @@ const resizeImages = (req, res, next) => {
 };
 
 const signIn = (req, res, next) => {
-  console.log(req.body);
-  res.json("Worked");
+  try {
+    const userQuery = `select * from public.users WHERE email='${
+      req.body.email
+    }'`;
+    client.query(userQuery).then(response => {
+      console.log("user", response.rows);
+      res.send(response.rows[0]);
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
 };
 
 const addUser = (req, res, next) => {
@@ -111,10 +120,11 @@ const addUser = (req, res, next) => {
   }
 };
 
-router.route("/signin").post(signIn);
 router
   .route("/")
   .get(listUsers)
   .post(upload.single("image"), resizeImages, addUser);
+
+router.route("/signin").post(signIn);
 
 module.exports = router;
