@@ -7,7 +7,6 @@ function Login(props) {
     const url = "http://localhost:4001/users/signin";
     e.preventDefault();
 
-    console.log("Login info", user)
 
     fetch(url, {
       method: "POST",
@@ -19,9 +18,14 @@ function Login(props) {
       .then(response => response.json())
       .then(response => {
         console.log("Response from the signin method in the backend", response);
-        props.history.push("/profile");
+        if (response.status === 200) {
+          props.history.push("/profile");
+        } else {alert(response.message)}
       })
-      .catch(error => console.error("Error:", error));
+      .catch(error => {
+        console.error("Error:", error);
+        console.error("User not found. Please try again.");
+      });
   };
 
   const handleChange = e => {
@@ -31,52 +35,52 @@ function Login(props) {
     <div className="container">
       <div className="row Login">
         <div className="col-md-8 offset-md-2">
-        <form onSubmit={e => onSubmit(e)} className="form-signin">
-          <h2 className="mb-2">Sign in</h2>
-          <label htmlFor="name" className="sr-only">
-            Name
-          </label>
-          <div className="mb-3">
-            <input
-              onChange={handleChange}
-              type="email"
-              id="email"
-              name="email"
-              className="form-control"
-              placeholder="Email"
-              autoFocus
-            />
-          </div>
-          <label htmlFor="password" className="sr-only">
-            Password
-          </label>
-          <div className=" mb-3">
-            <input
-              onChange={handleChange}
-              type="password"
-              id="password"
-              name="password"
-              className="form-control"
-              placeholder="Password"
-            />
-          </div>
-          <div className="mb-3">
-            <button
-              type="submit"
-              disabled={props.loading}
-              className="btn-primary btn-lg btn-block"
-            >
-              Login
-            </button>
-          </div>
-              <NavLink
-                to="/register"
-                activeClassName="active "
-                className="navbar-brand"
+          <form onSubmit={e => onSubmit(e)} className="form-signin">
+            <h2 className="mb-2">Sign in</h2>
+            <label htmlFor="name" className="sr-only">
+              Name
+            </label>
+            <div className="mb-3">
+              <input
+                onChange={handleChange}
+                type="email"
+                id="email"
+                name="email"
+                className="form-control"
+                placeholder="Email"
+                autoFocus
+              />
+            </div>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
+            <div className=" mb-3">
+              <input
+                onChange={handleChange}
+                type="password"
+                id="password"
+                name="password"
+                className="form-control"
+                placeholder="Password"
+              />
+            </div>
+            <div className="mb-3">
+              <button
+                type="submit"
+                disabled={props.loading}
+                className="btn-primary btn-lg btn-block"
               >
-                New user? Then go to register.
-              </NavLink>
-        </form>
+                Login
+              </button>
+            </div>
+            <NavLink
+              to="/register"
+              activeClassName="active "
+              className="navbar-brand"
+            >
+              New user? Then go to register.
+            </NavLink>
+          </form>
         </div>
       </div>
     </div>
