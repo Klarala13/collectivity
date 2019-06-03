@@ -55,15 +55,22 @@ const resizeImages = (req, res, next) => {
       console.error(err);
     });
 };
-
+const responseObject = (status, message) => {
+  return { status, message };
+};
 const signIn = (req, res, next) => {
   try {
     const userQuery = `select * from public.users WHERE email='${
       req.body.email
     }'`;
     client.query(userQuery).then(response => {
-      console.log("user", response.rows);
-      res.send(response.rows[0]);
+      if (response.rows.length === 0) {
+        res.send(responseObject(404, "User not found"));
+      } else if (response.rows[0].password !== req.body.password) {
+        res.send(responseObject(401, "Wrong password"));
+      } else {
+        res.send(responseObject(200, "Success"));
+      }
     });
   } catch (e) {
     console.log("ERROR", e);
