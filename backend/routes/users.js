@@ -55,21 +55,84 @@ const resizeImages = (req, res, next) => {
       console.error(err);
     });
 };
-const responseObject = (status, message) => {
-  return { status, message };
+const responseObject = (status, message, data = {}) => {
+  return { status, message, data };
 };
+const jwt = require("jsonwebtoken");
+const app = require("../app");
+
+const isAuthenticated = (req, res, next) => {
+  const token = req.headers["authorization"];
+
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, "SUPERSECRET");
+
+      req.decoded = decoded;
+      //This actually makes this function to a middleware and forwards to the authenticated routes
+      next();
+    } catch (e) {
+      return res.json({
+        success: false,
+        message: "Failed to authenticate token."
+      });
+    }
+  } else {
+    return res.status(403).send({
+      success: false,
+      message: "No token provided."
+    });
+  }
+};
+
+const getUser = (req, res, next) => {
+  console.log("HELLO FROM getUser",req.decoded);
+  try {
+    const userQuery = `select * from public.users WHERE userId='${
+      req.decoded.userId
+    }'`;
+    client.query(userQuery).then(response => {
+      console.log("Here we go", response);
+      if (response.rows.length === 0) {
+        res.send(responseObject(404, "User not found"));
+      } else if (response.rows[0].password !== req.body.password) {
+        res.send(responseObject(401, "Wrong password"));
+      } else {
+        res.send(
+          responseObject(200, "Success")
+        );
+      }
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
+};
+
 const signIn = (req, res, next) => {
   try {
     const userQuery = `select * from public.users WHERE email='${
       req.body.email
     }'`;
     client.query(userQuery).then(response => {
+      console.log(response.rows);
       if (response.rows.length === 0) {
         res.send(responseObject(404, "User not found"));
       } else if (response.rows[0].password !== req.body.password) {
         res.send(responseObject(401, "Wrong password"));
       } else {
-        res.send(responseObject(200, "Success"));
+        const payload = {
+          email: response.rows[0].email,
+          userId: response.rows[0].userId
+
+        };
+        const token = jwt.sign(payload, "SUPERSECRET", {
+          expiresIn: 86400
+        });
+        res.send(
+          responseObject(200, "Success", {
+            token: token
+          })
+        );
       }
     });
   } catch (e) {
@@ -131,7 +194,7 @@ router
   .route("/")
   .get(listUsers)
   .post(upload.single("image"), resizeImages, addUser);
-
+router.route("/profile").get(isAuthenticated, getUser);
 router.route("/signin").post(signIn);
 
 module.exports = router;
