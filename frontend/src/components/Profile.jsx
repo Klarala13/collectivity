@@ -9,6 +9,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
 
+     this.state = { user: {}}
+
   }
   componentDidMount() {
     const url = "http://localhost:4001/users/profile";
@@ -22,12 +24,11 @@ class Profile extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("Response from the signin method in the backend", response);
+        console.log("Response from the profile method in the backend", response);
         if (response.status === 200) {
-          if (response.data.token) {
-            localStorage.setItem("token", response.data.token);
-            this.props.history.push("/profile");
-          }
+          // TODO set state with user info
+        console.log(response.data.user)
+        this.setState({user: response.data.user})
         } else {
           alert(response.message);
         }
@@ -69,7 +70,7 @@ class Profile extends Component {
             </div>
 
             <div className="card-title m-4">
-              <h4>User Name</h4>
+              <h4>{this.state.user.firstName}{this.state.user.lastName}</h4>
             </div>
             <button
               type="button"
