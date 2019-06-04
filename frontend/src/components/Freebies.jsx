@@ -11,6 +11,16 @@ class Freebies extends React.Component {
       filter: "All"
     };
   }
+
+  componentWillMount = () => {
+    fetch("http://localhost:4001/freebies")
+      .then(resp => resp.json())
+      .then(response => {
+        /* this.setState({ contacts: response }); */
+        console.log(response);
+      });
+  };
+
   setFilter = filter => {
     this.setState(state => {
       state.filter = filter;
