@@ -12,13 +12,13 @@ h3,
 h2 {
   text-align: center;
   font-weight: bold;
-  padding-bottom: 2%;
+  padding-bottom: 1%;
   color: #276fbf;
   text-decoration: none !important;
 }
 p {
-  font-size: 1.5em;
-  padding-bottom: 1rem;
+  font-size: 1.3em;
+  /* padding-bottom: 0.5rem; */
 }
 /* app */
 .app {
@@ -121,16 +121,11 @@ p.text-left {
 }
 
 /* app */
-.app {
-  padding: 1rem;
-  width: 100%;
+/* .app {
   height: 100vh;
   text-align: center;
   justify-content: center;
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-bottom: 1rem;
-}
+} */
 
 .top-100 {
   top: 100px;
@@ -155,6 +150,9 @@ p.text-left {
 }
 .profile-action{
   justify-content: space-between;
+}
+.profile-messages, .profile-follow{
+  background-color: white;
 }
 
 
