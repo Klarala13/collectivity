@@ -1,11 +1,11 @@
 To initialize:
 
-- open frontend folder on terminal and run npm start
-- open backend folder on terminal and run npm run watch
-1. install dependencies
+1. install dependencies and create a .env
 2. run frontend
+- open frontend folder on terminal and run npm start
 3. run docker postgres container (see provide database container)
 4. run backend
+- open backend folder on terminal and run npm run watch (in the beginning again and again so everything is created)
 
 ## provide database container:
 
@@ -24,6 +24,8 @@ d1a04c805227        postgres            "docker-entrypoint.s…"   6 minutes ago
 Stop container:
 
 `sudo docker stop <NAME/ID>`
+
+e.g. `sudo docker stop pg-docker`
 
 Remove container:
 
