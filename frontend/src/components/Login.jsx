@@ -19,6 +19,7 @@ function Login(props) {
       .then(response => {
         console.log("Response from the signin method in the backend", response);
         if (response.status === 200) {
+          console.log(props.history);
           props.history.push("/profile");
         } else {alert(response.message)}
       })
@@ -27,6 +28,7 @@ function Login(props) {
         console.error("User not found. Please try again.");
       });
   };
+
 
   const handleChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
