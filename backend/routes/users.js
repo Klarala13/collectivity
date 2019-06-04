@@ -88,18 +88,16 @@ const isAuthenticated = (req, res, next) => {
 const getUser = (req, res, next) => {
   console.log("HELLO FROM getUser",req.decoded);
   try {
-    const userQuery = `select * from public.users WHERE userId='${
-      req.decoded.userId
+    const userQuery = `select * from public.users WHERE email='${
+      req.decoded.email
     }'`;
     client.query(userQuery).then(response => {
-      console.log("Here we go", response);
+      console.log("Here we go", response.rows);
       if (response.rows.length === 0) {
         res.send(responseObject(404, "User not found"));
-      } else if (response.rows[0].password !== req.body.password) {
-        res.send(responseObject(401, "Wrong password"));
       } else {
         res.send(
-          responseObject(200, "Success")
+          responseObject(200, "Success", {user: response.rows[0]})
         );
       }
     });
@@ -113,6 +111,7 @@ const signIn = (req, res, next) => {
     const userQuery = `select * from public.users WHERE email='${
       req.body.email
     }'`;
+    console.log("email", req.body.email)
     client.query(userQuery).then(response => {
       console.log(response.rows);
       if (response.rows.length === 0) {
