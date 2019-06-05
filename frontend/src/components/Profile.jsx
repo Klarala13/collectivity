@@ -9,26 +9,28 @@ class Profile extends Component {
   constructor(props) {
     super(props);
 
-     this.state = { user: {}}
-
+    this.state = { user: {} };
   }
   componentDidMount() {
     const url = "http://localhost:4001/users/profile";
 
     fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "authorization": `${localStorage.getItem("token")}`
-        }
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${localStorage.getItem("token")}`
+      }
     })
       .then(response => response.json())
       .then(response => {
-        console.log("Response from the profile method in the backend", response);
+        console.log(
+          "Response from the profile method in the backend",
+          response
+        );
         if (response.status === 200) {
           // TODO set state with user info
-        console.log(response.data.user)
-        this.setState({user: response.data.user})
+          console.log(response.data.user);
+          this.setState({ user: response.data.user });
         } else {
           alert(response.message);
         }
@@ -46,7 +48,7 @@ class Profile extends Component {
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
               <div className="profile-messages m-2 flex-item">
-                <a className="contact" href="#">
+                <button className="contact" rel="noopener" href="#">
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faEnvelope}
@@ -54,10 +56,10 @@ class Profile extends Component {
                       size="2x"
                     />
                   </span>
-                </a>
+                </button>
               </div>
               <div className="profile-follow m-2 flex-item">
-                <a className="contact" href="#">
+                <button className="contact" href="#" rel="noopener noreferrer">
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faStar}
@@ -65,12 +67,15 @@ class Profile extends Component {
                       size="2x"
                     />
                   </span>
-                </a>
+                </button>
               </div>
             </div>
 
             <div className="card-title m-4">
-              <h4>{this.state.user.firstName}{this.state.user.lastName}</h4>
+              <h4>
+                {this.state.user.firstName}
+                {this.state.user.lastName}
+              </h4>
             </div>
             <button
               type="button"
