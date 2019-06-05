@@ -77,7 +77,7 @@ class Profile extends Component {
                 </button>
               </div>
             </div>
-            {this.state.popup && <Messaging />}
+            {this.state.popup && <Messaging togglePopup={this.togglePopup} />}
 
             <div className="card-title m-4">
               <h4>
