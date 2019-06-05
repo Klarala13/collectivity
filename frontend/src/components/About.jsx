@@ -23,7 +23,7 @@ class About extends React.Component {
       <div className="container">
         <div id="list-example" className="list-group bd-example">
           <div className="row">
-            <div className="col-3 px-6">
+            <div className="col-md-3 px-6">
               <div className="sticky-top top-100" id="list">
                 <a
                   className="list-group-item list-group-item-action"
@@ -67,22 +67,16 @@ class About extends React.Component {
                 >
                   Who made it
                 </a>
-                <a
-                  className="list-group-item list-group-item-action"
-                  href="#ourTeam"
-                  onClick={this.scrollToAnchor}
-                >
-                  Our awesome team
-                </a>
               </div>
             </div>
-            <div className="col-7">
+            <div className="col-md-7">
               <div
                 data-spy="scroll"
                 data-target="#list"
                 data-offset="50"
                 className="scroll"
               >
+                <div className="mb-5">
                 <h3 id="about">About</h3>
                 <p>
                   Collectivity comes from Collective and Connecting. It is a
@@ -94,6 +88,8 @@ class About extends React.Component {
                   X hrs/week. It is not reciprocate. The idea is that
                   COLLECTIVELY we are stronger. You don't have to give to take.{" "}
                 </p>
+                </div>
+              
                 <h3 id="how">How It Works</h3>
                 <p>
                   There are two main sections: Freebees (sharing of items) and
@@ -135,7 +131,6 @@ class About extends React.Component {
                   problems, contact our team and we will try to find a solution
                   together.{" "}
                 </p>
-                <h3 id="ourTeam">Our awesome team</h3>
                 <h3 id="whoMade">Who made it</h3>
                 <p>...</p>
                 <div className="row w-100">
