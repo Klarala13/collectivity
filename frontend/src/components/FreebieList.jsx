@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import Item from "./FreebieItem";
 
 class FreebieList extends Component {
-  //ToDo: Add search field
   //ToDo: Get request
   //Create the form for posting the FREEBIES
-  //Add validation, search f(inputting) ield, etc.
+  //Add validation, search (inputting)field, etc.
 
   // const url = "http://0.0.0.0:4001/items";
   // const handleSubmit = e => {
@@ -26,18 +25,21 @@ class FreebieList extends Component {
 
       if (
         this.props.filter === "All" ||
-        (this.props.filter === "House&Garden" && item.category === "House&Garden") ||
+        (this.props.filter === "House&Garden" &&
+          item.category === "House&Garden") ||
         (this.props.filter === "Fashion" && item.category === "Fashion") ||
         (this.props.filter === "Motors" && item.category === "Motors") ||
-        (this.props.filter === "Entertainment" && item.category === "Entertainment") ||
-        (this.props.filter === "Electronics" && item.category === "Electronics") ||
-        (this.props.filter === "Art/Collectibles" && item.category === "Art/Collectibles") ||
+        (this.props.filter === "Entertainment" &&
+          item.category === "Entertainment") ||
+        (this.props.filter === "Electronics" &&
+          item.category === "Electronics") ||
+        (this.props.filter === "Art/Collectibles" &&
+          item.category === "Art/Collectibles") ||
         (this.props.filter === "Sports" && item.category === "Sports") ||
         (this.props.filter === "Toys" && item.category === "Toys") ||
         (this.props.filter === "Media" && item.category === "Media") ||
         (this.props.filter === "Others" && item.category === "Others") ||
         (this.props.filter === "Pets" && item.category === "Pets")
-        
       ) {
         filtered.push(item);
       }
@@ -47,10 +49,24 @@ class FreebieList extends Component {
   };
   render() {
     return (
-      <div className="row">
-        {this.filteredItems().map(item => (
-                  <Item key={this.props.freebies.itemId} data={item} />
-                ))}
+      <div>
+        <div>
+          <h2 className="timeBank text-left">
+            <span>What is a Freebie?</span> <br />
+            It's an object you can get for free from another user
+          </h2>
+          <p className="text-left">
+            This project aims to minimize our consumption, which is why we want
+            to offer the possibility that you no longer have to acquire objects
+            but you can just get them from someone else. Have fun, be respectful
+            and responsible!
+          </p>
+        </div>
+        <div className="row">
+          {this.filteredItems().map(item => (
+            <Item key={this.props.freebies.itemId} data={item} />
+          ))}
+        </div>
       </div>
     );
   }
