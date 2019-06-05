@@ -1,4 +1,7 @@
 import React from "react";
+import clara from "../assets/clara.JPG";
+import elise from "../assets/elise.jpg";
+import Leena from "../assets/Leena.jpg";
 
 class About extends React.Component {
   componentDidMount() {
@@ -135,8 +138,12 @@ class About extends React.Component {
                 <h3 id="whoMade">Who made it</h3>
                 <p>...</p>
                 <div className="row w-100">
-                  <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img className="card-img-top" src="" alt="profile pic" />
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      src={elise}
+                      alt="profile pic"
+                    />
                     <div className="card-body">
                       <h5 className="card-title">Elise Maschke</h5>
                       <p className="card-text">Full Stack Developer</p>
@@ -149,8 +156,12 @@ class About extends React.Component {
                       </a>
                     </div>
                   </div>
-                  <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img className="card-img-top" alt="Profile pic" src="" />
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      alt="Profile pic"
+                      src={clara}
+                    />
                     <div className="card-body">
                       <h5 className="card-title">Clara Sanchez</h5>
                       <p className="card-text">Full Stack Developer</p>
@@ -166,8 +177,12 @@ class About extends React.Component {
                   </div>
                 </div>
                 <div className="row w-100">
-                  <div className="card col-lg-6" style={{ padding: "1em" }}>
-                    <img className="card-img-top" src="" alt="profile pic" />
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      src={Leena}
+                      alt="profile pic"
+                    />
                     <div className="card-body">
                       <h5 className="card-title">Max Meeks</h5>
                       <p className="card-text">Front End Developer</p>
