@@ -9,7 +9,10 @@ class Profile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { user: {} };
+    this.state = { user: {}, popup: false };
+  }
+  togglePopup() {
+    this.setState({popup: !this.state.popup})
   }
   componentDidMount() {
     const url = "http://localhost:4001/users/profile";
@@ -41,6 +44,7 @@ class Profile extends Component {
       });
   }
   render() {
+    console.log(this.props)
     return (
       <div className="card-deck">
         <div className="card">
@@ -48,7 +52,9 @@ class Profile extends Component {
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
               <div className="profile-messages m-2 flex-item">
-                <button className="contact" href="#">
+                <button onClick={e => {
+                    this.togglePopup(e)
+                  }} className="contact">
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faEnvelope}
@@ -56,9 +62,9 @@ class Profile extends Component {
                       size="2x"
                     />
                   </span>
-                  <Messaging />
                 </button>
               </div>
+
               <div className="profile-follow m-2 flex-item">
                 <button className="contact" href="#">
                   <span className="check">
@@ -66,11 +72,12 @@ class Profile extends Component {
                       icon={faStar}
                       className="text-primary"
                       size="2x"
-                    />
+                      />
                   </span>
                 </button>
               </div>
             </div>
+            {this.state.popup && <Messaging />}
 
             <div className="card-title m-4">
               <h4>
@@ -81,7 +88,7 @@ class Profile extends Component {
             <button
               type="button"
               className="btn btn-primary btn-block mb-2 mx-auto"
-            >
+              >
               Posts
             </button>
             <button type="button" className="btn btn-primary btn-block mx-auto">
