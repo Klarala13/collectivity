@@ -2,6 +2,7 @@ import React from "react";
 import clara from "../assets/clara.JPG";
 import elise from "../assets/elise.jpg";
 import Leena from "../assets/Leena.jpg";
+import max from "../assets/max.jpg";
 
 class About extends React.Component {
   componentDidMount() {
@@ -178,11 +179,7 @@ class About extends React.Component {
                 </div>
                 <div className="row w-100">
                   <div className="card col-lg-6">
-                    <img
-                      className="card-img-top"
-                      src={Leena}
-                      alt="profile pic"
-                    />
+                    <img className="card-img-top" src={max} alt="profile pic" />
                     <div className="card-body">
                       <h5 className="card-title">Max Meeks</h5>
                       <p className="card-text">Front End Developer</p>
@@ -195,8 +192,12 @@ class About extends React.Component {
                       </a>
                     </div>
                   </div>
-                  <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img className="card-img-top" alt="Profile pic" src={""} />
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      alt="Profile pic"
+                      src={Leena}
+                    />
                     <div className="card-body">
                       <h5 className="card-title"> Leena MK </h5>
                       <p className="card-text">
