@@ -17,10 +17,13 @@ const timebanksRouter = require("./routes/timebanks");
 
 const { Client } = require("pg");
 
-if(!process.env.IMAGE_UPLOAD_DIR) {
-  console.log("Buhh you need to put a IMAGE_UPLOAD_DIR environment variable in your .env")
-  process.exit(1)
-}
+if (!process.env.IMAGE_UPLOAD_DIR) {
+  console.log(
+    "Buhh you need to put a IMAGE_UPLOAD_DIR environment variable in your .env"
+  );
+  process.exit(1);
+} else {console.log("Hello from postgres")}
+
 const client = new Client({
   user: process.env.DBUSER,
   host: process.env.HOST,
@@ -30,7 +33,7 @@ const client = new Client({
 });
 client.connect();
 
-// tables and seeding 
+// tables and seeding
 
 async function seedAdmin() {
   return client
@@ -40,6 +43,7 @@ async function seedAdmin() {
         res.rowCount >= 1 &&
         res.rows.filter(user => user.email === "admin@dci.de").length > 0
       ) {
+        console.log("Admin seeded");
       } else {
         client.query(
           `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
@@ -88,12 +92,11 @@ async function seedFreebies() {
   return client
     .query("select * from public.freebies")
     .then(res => {
-      console.log("Let's seed some freebies");
       if (
         res.rowCount >= 1 &&
         res.rows.filter(freebie => freebie.item === "Ball").length > 0
       ) {
-        console.log("All freebies:", res.rows);
+        console.log("Freebies seeded");
       } else {
         client.query(
           `INSERT INTO public.freebies("item", "description", "image", "zipCode", "location", "category", "user") 
@@ -110,12 +113,10 @@ async function seedFreebies() {
 // Creation of freebies table
 
 client.query("SELECT to_regclass('public.freebies')").then(async res => {
-  // console.log("RES", res.rows);
   // check if table freebies already exists
   if (res.rows[0].to_regclass !== null) {
     client.query("SELECT to_regclass('public.users')").then(async resp => {
       //check if table users exists for the foreign key
-      // console.log("RESP", resp.rows);
       if (resp.rows[0].to_regclass !== null) {
         const response = await seedFreebies();
       }
@@ -147,7 +148,6 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
   }
 });
 
-console.log("Hello from postgres");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -163,15 +163,14 @@ async function seedSkills() {
   return client
     .query("select * from public.skills")
     .then(res => {
-      console.log("Let's seed some skills");
       if (
         res.rowCount >= 1 &&
         res.rows.filter(timebank => timebank.skill === "Cooking").length > 0
       ) {
-        console.log("All skills:", res.rows);
+        console.log("Skills seeded");
       } else {
         client.query(
-        `INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category", "user") 
+          `INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category", "user") 
         VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', 'true', '1.5', 'House&Garden', 1);
         INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category", "user") 
         VALUES ('Cleaning', 'I can clean super fast', 'My house', 'false', '0.5', 'House&Garden', 1)`
@@ -185,12 +184,10 @@ async function seedSkills() {
 // Creation of timebanks table
 
 client.query("SELECT to_regclass('public.skills')").then(async res => {
-  console.log("RES", res.rows);
   // check if table skills already exists
   if (res.rows[0].to_regclass !== null) {
     client.query("SELECT to_regclass('public.users')").then(async resp => {
       //check if table users exists for the foreign key
-      console.log("RESP", resp.rows);
       if (resp.rows[0].to_regclass !== null) {
         const response = await seedSkills();
       }
@@ -224,7 +221,6 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
 
 // Other stuff
 
-console.log("Hello from postgres");
 
 app.use(logger("dev"));
 app.use(express.json());

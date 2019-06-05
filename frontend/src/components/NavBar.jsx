@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 class NavBar extends Component {
   state = {
@@ -13,7 +14,7 @@ class NavBar extends Component {
       <nav className="navbar navbar-expand-lg sticky-top nav-main">
         <div className="container">
           <NavLink to="/" activeClassName="active" className="navbar-brand">
-            LOGO
+            <img className="logo2" src={logo} alt="logo"/>
           </NavLink>
           <button
             className="navbar-toggler"

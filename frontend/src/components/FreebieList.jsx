@@ -21,13 +21,23 @@ class FreebieList extends Component {
   filteredItems = () => {
     const filtered = [];
 
-    for (const id in this.props.items) {
-      const item = this.props.items[id];
+    for (const itemId in this.props.freebies) {
+      const item = this.props.freebies[itemId];
 
       if (
-        this.props.filter === "all" ||
-        (this.props.filter === "Motors" && item.tags === "Motors") ||
-        (this.props.filter === "Fashion" && item.tags === "Fashion")
+        this.props.filter === "All" ||
+        (this.props.filter === "House&Garden" && item.category === "House&Garden") ||
+        (this.props.filter === "Fashion" && item.category === "Fashion") ||
+        (this.props.filter === "Motors" && item.category === "Motors") ||
+        (this.props.filter === "Entertainment" && item.category === "Entertainment") ||
+        (this.props.filter === "Electronics" && item.category === "Electronics") ||
+        (this.props.filter === "Art/Collectibles" && item.category === "Art/Collectibles") ||
+        (this.props.filter === "Sports" && item.category === "Sports") ||
+        (this.props.filter === "Toys" && item.category === "Toys") ||
+        (this.props.filter === "Media" && item.category === "Media") ||
+        (this.props.filter === "Others" && item.category === "Others") ||
+        (this.props.filter === "Pets" && item.category === "Pets")
+        
       ) {
         filtered.push(item);
       }
@@ -37,21 +47,11 @@ class FreebieList extends Component {
   };
   render() {
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Header</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.filteredItems().map(item => (
-            <Item key={this.props.items.id} data={item} />
-          ))}
-        </tbody>
-      </table>
+      <div className="row">
+        {this.filteredItems().map(item => (
+                  <Item key={this.props.freebies.itemId} data={item} />
+                ))}
+      </div>
     );
   }
 }
