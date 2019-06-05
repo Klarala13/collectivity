@@ -1,4 +1,7 @@
 import React from "react";
+import clara from "../assets/clara.JPG";
+import elise from "../assets/elise.jpg";
+import Leena from "../assets/Leena.jpg";
 
 class About extends React.Component {
   componentDidMount() {
@@ -80,9 +83,9 @@ class About extends React.Component {
                 className="scroll"
               >
                 <h3 id="about">About</h3>
-                <p> 
-                  Collectivity comes from Collective and Connecting. 
-                  It is a platform for sharing skills/items to alienate us from
+                <p>
+                  Collectivity comes from Collective and Connecting. It is a
+                  platform for sharing skills/items to alienate us from
                   capitalism and consumption. You can share/ask for items
                   without an account in the Freebee section or you can create an
                   account and also offer/ask for some type of activity, for
@@ -131,54 +134,85 @@ class About extends React.Component {
                   problems, contact our team and we will try to find a solution
                   together.{" "}
                 </p>
+                <h3 id="ourTeam">Our awesome team</h3>
                 <h3 id="whoMade">Who made it</h3>
                 <p>...</p>
-                <h3 id="ourTeam">Our awesome team</h3>
-                <p>
-                  {" "}
-                  Elise Maschke (Front and Backend developer)
-                  <a
-                    className="btn btn-primary"
-                    href="https://elisemaschke.de/"
-                    alt="Portfolio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Contact
-                  </a>
-                </p>
-              </div>
-              <div className="team-link">
-                <p className="card-text m-5">
-                  {" "}
-                  Leena (designer)
-                  <a
-                    className="btn btn-primary"
-                    href=""
-                    alt="Portfolio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Contact
-                  </a>
-                </p>
-              </div>
-              <div>
-              </div>
-              <div>
-                <p className="card-text m-5">
-                  {" "}
-                  Clara Sanchez (Team leader, front and backend developer)
-                  <a
-                    className="btn btn-primary"
-                    href="https://clarasanchez.de/"
-                    alt="Portfolio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Contact
-                  </a>
-                </p>
+                <div className="row w-100">
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      src={elise}
+                      alt="profile pic"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Elise Maschke</h5>
+                      <p className="card-text">Full Stack Developer</p>
+                      <a
+                        href="https://elisemaschke.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Check out my portfolio!
+                      </a>
+                    </div>
+                  </div>
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      alt="Profile pic"
+                      src={clara}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Clara Sanchez</h5>
+                      <p className="card-text">Full Stack Developer</p>
+                      <a
+                        href="https://clarasanchez.de/"
+                        alt="Portfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Check out my portfolio!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="row w-100">
+                  <div className="card col-lg-6">
+                    <img
+                      className="card-img-top"
+                      src={Leena}
+                      alt="profile pic"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">Max Meeks</h5>
+                      <p className="card-text">Front End Developer</p>
+                      <a
+                        href="https://maximilianmeeks.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Check out my portfolio!
+                      </a>
+                    </div>
+                  </div>
+                  <div className="card col-lg-6" style={{ padding: "1rem" }}>
+                    <img className="card-img-top" alt="Profile pic" src={""} />
+                    <div className="card-body">
+                      <h5 className="card-title"> Leena MK </h5>
+                      <p className="card-text">
+                        Designer and Front End Developer
+                      </p>
+                      <a
+                        href="https://leenamk.com/"
+                        alt="Portfolio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Check out my portfolio!
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
