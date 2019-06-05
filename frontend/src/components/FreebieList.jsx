@@ -20,8 +20,8 @@ class FreebieList extends Component {
   filteredItems = () => {
     const filtered = [];
 
-    for (const itemId in this.props.freebies) {
-      const item = this.props.freebies[itemId];
+    for (const item_id in this.props.freebies) {
+      const item = this.props.freebies[item_id];
 
       if (
         this.props.filter === "All" ||
@@ -64,7 +64,7 @@ class FreebieList extends Component {
         </div>
         <div className="row">
           {this.filteredItems().map(item => (
-            <Item key={this.props.freebies.itemId} data={item} />
+            <Item key={this.props.freebies.item_id} data={item} />
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 const { check } = require("express-validator/check");
 
-exports.itemId = [
+exports.item_id = [
   check("id")
     .isMongoId()
     .withMessage("Invalid Item Id")

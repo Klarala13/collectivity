@@ -10,7 +10,7 @@ class TimeBankItem extends Component {
           <td>{e.target.value.skill.description}</td>
           <td>{e.target.value.skill.location}</td>
           <td>{e.target.value.skill.category}</td>
-          <td>{e.target.value.skill.timeSpan}</td>
+          <td>{e.target.value.skill.time_span}</td>
           <td>{e.target.value.skill.isActive}</td>
         </tr>
         <TimeBank />

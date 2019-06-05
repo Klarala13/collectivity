@@ -88,16 +88,63 @@ const isAuthenticated = (req, res, next) => {
 const getUser = (req, res, next) => {
   console.log("HELLO FROM getUser",req.decoded);
   try {
-    const userQuery = `select * from public.users WHERE email='${
-      req.decoded.email
+    const userQuery = `select * from public.users WHERE user_id='${
+      req.decoded.user_id
     }'`;
     client.query(userQuery).then(response => {
       console.log("Here we go", response.rows);
       if (response.rows.length === 0) {
         res.send(responseObject(404, "User not found"));
       } else {
+        const payload = response.rows[0];
+        delete payload.password;
+
         res.send(
-          responseObject(200, "Success", {user: response.rows[0]})
+          responseObject(200, "Success", {user: payload})
+        );
+      }
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
+};
+
+const getFreebiesByUser = (req, res, next) => {
+  console.log("getFreebiesByUser",req.decoded);
+  try {
+    const freebiesQuery = `select * from public.freebies WHERE user_id=${
+      req.decoded.user_id
+    }`;
+    console.log(freebiesQuery);
+    client.query(freebiesQuery).then(response => {
+      console.log("Here we go", response.rows, req.decoded);
+      if (response.rows.length === 0) {
+        res.send(responseObject(404, "No freebies yet."));
+      } else {
+        res.send(
+          responseObject(200, "Success", {freebies: response.rows})
+        );
+      }
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
+};
+
+const getSkillsByUser = (req, res, next) => {
+  console.log("getSkillsByUser",req.decoded);
+  try {
+    const skillsQuery = `select * from public.skills WHERE user_id=${
+      req.decoded.user_id
+    }`;
+    console.log(skillsQuery);
+    client.query(skillsQuery).then(response => {
+      console.log("Here we go", response.rows, req.decoded);
+      if (response.rows.length === 0) {
+        res.send(responseObject(404, "No skills yet."));
+      } else {
+        res.send(
+          responseObject(200, "Success", {skills: response.rows})
         );
       }
     });
@@ -121,7 +168,7 @@ const signIn = (req, res, next) => {
       } else {
         const payload = {
           email: response.rows[0].email,
-          userId: response.rows[0].userId
+          user_id: response.rows[0].user_id
 
         };
         const token = jwt.sign(payload, "SUPERSECRET", {
@@ -156,25 +203,25 @@ const addUser = (req, res, next) => {
           "-" +
           today.getDate();
         const {
-          firstName,
-          lastName,
+          first_name,
+          last_name,
           email,
           password,
           city,
-          zipCode
+          zip_code
         } = req.body;
         console.log(
           "XXXX",
-          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-        VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
-            zipCode
+          `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "image") 
+        VALUES ('${first_name}', '${last_name}', '${email}', '${password}', '${city}', '${Number(
+            zip_code
           )}', '${date}', '${req.filename}' )`
         );
         client
           .query(
-            `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-        VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(
-              zipCode
+            `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "image") 
+        VALUES ('${first_name}', '${last_name}', '${email}', '${password}', '${city}', '${Number(
+              zip_code
             )}', '${date}', '${req.filename}' )`
           )
           .then(res => {
@@ -194,6 +241,8 @@ router
   .get(listUsers)
   .post(upload.single("image"), resizeImages, addUser);
 router.route("/profile").get(isAuthenticated, getUser);
+router.route("/own_freebies").get(isAuthenticated, getFreebiesByUser);
+router.route("/own_skills").get(isAuthenticated, getSkillsByUser);
 router.route("/signin").post(signIn);
 
 module.exports = router;
