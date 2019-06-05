@@ -45,14 +45,15 @@ const addTimebank = (req, res, next) => {
       description,
       location,
       active,
-      timeSpan,
+      time_span,
       category
     } = req.body;
+    // TODO connect with user_id
     client.query(
-      `INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category") 
+      `INSERT INTO public.skills("skill", "description", "location", "active", "time_span", "category") 
       VALUES ('${skill}', '${description}', '${Number(
         location
-      )}', '${active}', '${timeSpan}', '${category}')`
+      )}', '${active}', '${time_span}', '${category}')`
     );
     console.log("New skill seeded");
     console.log("request", req.body);
