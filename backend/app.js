@@ -22,7 +22,9 @@ if (!process.env.IMAGE_UPLOAD_DIR) {
     "Buhh you need to put a IMAGE_UPLOAD_DIR environment variable in your .env"
   );
   process.exit(1);
-} else {console.log("Hello from postgres")}
+} else {
+  console.log("Hello from postgres");
+}
 
 const client = new Client({
   user: process.env.DBUSER,
@@ -46,8 +48,8 @@ async function seedAdmin() {
         console.log("Admin seeded");
       } else {
         client.query(
-          `INSERT INTO public.users("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "rating", "image") 
-        VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
+          `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "rating", "image")
+          VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
         );
         //console.log("Admin seeded");
       }
@@ -64,14 +66,14 @@ client.query("SELECT to_regclass('public.users')").then(async res => {
     client
       .query(
         `CREATE TABLE public.users
-        (   "userId" SERIAL PRIMARY KEY,
-            "firstName" character varying(30) NOT NULL,
-            "lastName" character varying(30) NOT NULL,
+        (   "user_id" SERIAL PRIMARY KEY,
+            "first_name" character varying(30) NOT NULL,
+            "last_name" character varying(30) NOT NULL,
             "email" character varying(30) NOT NULL,
             "password" character varying(20) NOT NULL,
             "city" character varying(30),
-            "zipCode" integer NOT NULL,
-            "registrationDate" date NOT NULL,
+            "zip_code" integer NOT NULL,
+            "registration_date" date NOT NULL,
             "rating" integer,
             "image" character varying
         )
@@ -148,7 +150,6 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
   }
 });
 
-
 app.use(logger("dev"));
 app.use(express.json());
 
@@ -220,7 +221,6 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
 });
 
 // Other stuff
-
 
 app.use(logger("dev"));
 app.use(express.json());
