@@ -25,9 +25,9 @@ const Router = () => (
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/about" component={About} />
+        <Route path="/messaging" component={Messaging} />
         <Route path="/help" component={Help} />
         <Route component={NotFound} />
-        <Route path="/messaging" component={Messaging} />
       </Switch>
     </div>
   </BrowserRouter>

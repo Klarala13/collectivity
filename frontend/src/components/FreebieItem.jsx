@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class Item extends Component {
   render() {
@@ -12,14 +13,14 @@ class Item extends Component {
         <div className="card-body">
           <h5 className="card-title">{this.props.data.item}</h5>
           <p className="card-text ellipsis">{this.props.data.description}</p>
-          <button
-            href="#"
-            className="btn btn-freebie"
-            rel="noopener noreferrer"
+          <NavLink
+            to="/messaging"
+            activeClassName="active"
+            className="mr-4 btn btn-freebie"
           >
-            Request Freebie
+            Request Freebies
             <i className="mx-2 fas fa-angle-double-right icon-align-middle" />
-          </button>
+          </NavLink>
         </div>
       </div>
     );
