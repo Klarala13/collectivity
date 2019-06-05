@@ -9,7 +9,8 @@ export default props => {
   const [valid, setValid] = useState({
     skill: false,
     description: false,
-    location: false
+    location: false,
+    active: false
   });
 
   const handleSubmit = e => {
@@ -18,13 +19,10 @@ export default props => {
     fetch(url)
       .then(response => response.json())
       .then(data =>
-        console.log(
-          "Yay! U submitted the shit out of the form!",
-          JSON.stringify(data)
-        )
+        console.log("Oh shit, i've just posted a skill!", JSON.stringify(data))
       )
       .catch(error =>
-        console.error("Uuuu, u fucked up! try again buddy", error)
+        console.error("Uuuu, I fucked up! Gotta try again!", error)
       );
   };
   const handleValid = (e, condition) => {

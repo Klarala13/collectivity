@@ -7,28 +7,30 @@ function Login(props) {
     const url = "http://localhost:4001/users/signin";
     e.preventDefault();
 
-
     fetch(url, {
       method: "POST",
+      body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(user)
+      }
     })
       .then(response => response.json())
       .then(response => {
         console.log("Response from the signin method in the backend", response);
         if (response.status === 200) {
-          console.log(props.history);
-          props.history.push("/profile");
-        } else {alert(response.message)}
+          if (response.data.token) {
+            localStorage.setItem("token", response.data.token);
+            props.history.push("/profile");
+          }
+        } else {
+          alert(response.message);
+        }
       })
       .catch(error => {
         console.error("Error:", error);
         console.error("User not found. Please try again.");
       });
   };
-
 
   const handleChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
