@@ -1,7 +1,7 @@
 import Leena from "../assets/Leena.jpg";
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Messaging from "./Messaging";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -48,7 +48,7 @@ class Profile extends Component {
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
               <div className="profile-messages m-2 flex-item">
-                <button className="contact" rel="noopener" href="#">
+                <button className="contact" href="#">
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faEnvelope}
@@ -56,10 +56,11 @@ class Profile extends Component {
                       size="2x"
                     />
                   </span>
+                  <Messaging />
                 </button>
               </div>
               <div className="profile-follow m-2 flex-item">
-                <button className="contact" href="#" rel="noopener noreferrer">
+                <button className="contact" href="#">
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faStar}
