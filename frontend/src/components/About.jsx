@@ -136,79 +136,65 @@ class About extends React.Component {
                 <p>...</p>
                 <div className="row w-100">
                   <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img
-                      className="card-img-top"
-                      src="http://lorempixel.com/400/200"
-                      alt="profile pic"
-                    />
+                    <img className="card-img-top" src="" alt="profile pic" />
                     <div className="card-body">
                       <h5 className="card-title">Elise Maschke</h5>
                       <p className="card-text">Full Stack Developer</p>
-                      <button
+                      <a
                         href="https://elisemaschke.de/"
-                        className="btn btn-outline-danger"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Check out my portfolio!
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img
-                      className="card-img-top"
-                      alt="Profile pic"
-                      src="./public/CVpic.JPG"
-                    />
+                    <img className="card-img-top" alt="Profile pic" src="" />
                     <div className="card-body">
                       <h5 className="card-title">Clara Sanchez</h5>
                       <p className="card-text">Full Stack Developer</p>
-                      <button
-                        src="https://clarasanchez.de/"
+                      <a
+                        href="https://clarasanchez.de/"
                         alt="Portfolio"
-                        className="btn btn-outline-danger"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Check out my portfolio!
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div className="row w-100">
                   <div className="card col-lg-6" style={{ padding: "1em" }}>
-                    <img
-                      className="card-img-top"
-                      src="http://lorempixel.com/400/200"
-                      alt="profile pic"
-                    />
+                    <img className="card-img-top" src="" alt="profile pic" />
                     <div className="card-body">
                       <h5 className="card-title">Max Meeks</h5>
                       <p className="card-text">Front End Developer</p>
-                      <button
+                      <a
                         href="https://maximilianmeeks.de/"
-                        className="btn btn-outline-danger"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Check out my portfolio!
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div className="card col-lg-6" style={{ padding: "1rem" }}>
-                    <img
-                      className="card-img-top"
-                      alt="Profile pic"
-                      src="http://lorempixel.com/400/200"
-                    />
+                    <img className="card-img-top" alt="Profile pic" src={""} />
                     <div className="card-body">
                       <h5 className="card-title"> Leena MK </h5>
-                      <p className="card-text">Designer</p>
-                      <button
+                      <p className="card-text">
+                        Designer and Front End Developer
+                      </p>
+                      <a
                         href="https://leenamk.com/"
                         alt="Portfolio"
-                        className="btn btn-outline-danger"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         Check out my portfolio!
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
