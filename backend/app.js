@@ -13,7 +13,7 @@ app.use(setCorsHeaders);
 
 const usersRouter = require("./routes/users");
 const freebiesRouter = require("./routes/freebies");
-const timebanksRouter = require("./routes/timebanks");
+const skillsRouter = require("./routes/skills");
 
 const { Client } = require("pg");
 
@@ -22,7 +22,9 @@ if (!process.env.IMAGE_UPLOAD_DIR) {
     "Buhh you need to put a IMAGE_UPLOAD_DIR environment variable in your .env"
   );
   process.exit(1);
-} else {console.log("Hello from postgres")}
+} else {
+  console.log("Hello from postgres");
+}
 
 const client = new Client({
   user: process.env.DBUSER,
@@ -148,7 +150,6 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
   }
 });
 
-
 app.use(logger("dev"));
 app.use(express.json());
 
@@ -165,15 +166,15 @@ async function seedSkills() {
     .then(res => {
       if (
         res.rowCount >= 1 &&
-        res.rows.filter(timebank => timebank.skill === "Cooking").length > 0
+        res.rows.filter(skill => skill.skill === "Cooking").length > 0
       ) {
         console.log("Skills seeded");
       } else {
         client.query(
-          `INSERT INTO public.skills("skill", "description", "location", "active", "time_span", "category", "user_id") 
-        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', 'true', '1.5', 'House&Garden', 1);
-        INSERT INTO public.skills("skill", "description", "location", "active", "time_span", "category", "user_id") 
-        VALUES ('Cleaning', 'I can clean super fast', 'My house', 'false', '0.5', 'House&Garden', 1)`
+          `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', '1.5', 'House&Garden', 1);
+        INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+        VALUES ('Cleaning', 'I can clean super fast', 'My house', '0.5', 'House&Garden', 1)`
         );
         console.log("Skills seeded");
       }
@@ -181,7 +182,7 @@ async function seedSkills() {
     .catch(e => console.error(e.stack));
 }
 
-// Creation of timebanks table
+// Creation of skills table
 
 client.query("SELECT to_regclass('public.skills')").then(async res => {
   // check if table skills already exists
@@ -199,7 +200,6 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
             "skill" character varying (50) NOT NULL,
             "description" character varying (300),
             "location" character varying,
-            "active" boolean NOT NULL,
             "time_span" real NOT NULL,
             "category" character varying NOT NULL 
             CHECK (category IN ('House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
@@ -221,7 +221,6 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
 
 // Other stuff
 
-
 app.use(logger("dev"));
 app.use(express.json());
 
@@ -234,7 +233,7 @@ app.get("/", function(req, res) {
 
 app.use("/users", usersRouter);
 app.use("/freebies", freebiesRouter);
-app.use("/timebanks", timebanksRouter);
+app.use("/skills", skillsRouter);
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {

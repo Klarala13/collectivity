@@ -13,16 +13,16 @@ const client = new Client({
 });
 client.connect();
 
-const listTimebanks = (req, res, next) => {
-  console.log("timebanks");
+const listSkills = (req, res, next) => {
+  console.log("Skills");
   try {
-    const timebankQuery = "select * from public.skills";
-    client.query(timebankQuery).then(response => {
-      console.log("query", timebankQuery);
+    const skillsQuery = "select * from public.skills";
+    client.query(skillsQuery).then(response => {
+      console.log("query", skillsQuery);
       console.log("res", response.rows);
 
-      const timebanks = response.rows;
-      res.send(timebanks);
+      const skills = response.rows;
+      res.send(skills);
     });
   } catch (e) {
     console.log("ERROR", e);
@@ -30,7 +30,7 @@ const listTimebanks = (req, res, next) => {
   }
 };
 
-const addTimebank = (req, res, next) => {
+const addSkill = (req, res, next) => {
   console.log("req.body", req.body);
   try {
     const today = new Date();
@@ -44,24 +44,24 @@ const addTimebank = (req, res, next) => {
       skill,
       description,
       location,
-      active,
       time_span,
-      category
+      category,
+      user_id
     } = req.body;
     // TODO connect with user_id
     client.query(
-      `INSERT INTO public.skills("skill", "description", "location", "active", "time_span", "category") 
-      VALUES ('${skill}', '${description}', '${Number(
-        location
-      )}', '${active}', '${time_span}', '${category}')`
+      `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+      VALUES ('${skill}', '${description}', '${location}', '${Number(
+        time_span
+      )}', '${category}', '${Number(user_id)}')`
     );
     console.log("New skill seeded");
     console.log("request", req.body);
 
-    const timebankQuery = "select * from public.timebanks";
-    client.query(timebankQuery).then(response => {
-      const newTimebank = response.rows;
-      res.send(newTimebank);
+    const skillsQuery = "select * from public.skills";
+    client.query(skillsQuery).then(response => {
+      const newSkill = response.rows;
+      res.send(newSkill);
     });
   } catch (e) {
     console.log("ERROR", e);
@@ -71,7 +71,7 @@ const addTimebank = (req, res, next) => {
 
 router
   .route("/")
-  .get(listTimebanks)
-  .post(addTimebank);
+  .get(listSkills)
+  .post(addSkill);
 
 module.exports = router;

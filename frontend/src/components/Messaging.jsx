@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 
 class Messaging extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   handleSubmit = e => {
     console.log(e.target["message"].value);
     e.preventDefault();
@@ -23,7 +23,7 @@ class Messaging extends Component {
       );
   };
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className="container messages">
         <form onSubmit={this.handleSubmit} action="">

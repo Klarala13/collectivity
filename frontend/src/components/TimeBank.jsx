@@ -9,22 +9,52 @@ export default props => {
   const [valid, setValid] = useState({
     skill: false,
     description: false,
+    category: true,
     location: false,
-    active: false
+    token: true
   });
 
   const handleSubmit = e => {
     e.preventDefault();
-    const url = "http://0.0.0.0:4001/timebanks";
-    fetch(url)
-      .then(response => response.json())
-      .then(data =>
-        console.log("Oh shit, i've just posted a skill!", JSON.stringify(data))
-      )
+    const url = "http://0.0.0.0:4001/skills";
+    const formData = new FormData();
+    formData.append("skill", e.target.elements["skill"].value);
+    formData.append("description", e.target.elements["description"].value);
+    formData.append("category", e.target.elements["category"].value);
+    formData.append("location", e.target.elements["location"].value);
+    formData.append("time_span", e.target.elements["time_span"].value);
+    formData.append("token", localStorage.getItem("token"));
+    for (const [key, value] of formData.entries()) {
+      console.log("key, value", key, value);
+    }
+    // console.log(
+    //   "formData",
+    //   "skill",
+    //   e.target.elements["skill"].value,
+    //   "description",
+    //   e.target.elements["description"].value,
+    //   "category",
+    //   e.target.elements["category"].value,
+    //   "location",
+    //   e.target.elements["location"].value,
+    //   "time_span",
+    //   e.target.elements["time_span"].value,
+    //   "token"
+    // );
+
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log("Good job! u posted ur skill!", res);
+      })
       .catch(error =>
-        console.error("Uuuu, I fucked up! Gotta try again!", error)
+        console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
+
   const handleValid = (e, condition) => {
     setSkill({ ...skill, [e.target.name]: e.target.value });
     if (condition) {
@@ -126,7 +156,7 @@ export default props => {
                   <label htmlFor="select">Category</label>
                   <select
                     className="mdb-select md-form form-control"
-                    name="select"
+                    name="category"
                     id="category"
                     required
                   >
@@ -149,7 +179,8 @@ export default props => {
                   <input
                     type="number"
                     className="form-control mb-2"
-                    id="time-offered"
+                    id="time_span"
+                    name="time_span"
                     placeholder="Hrs/Week"
                     required
                   />
@@ -181,34 +212,24 @@ export default props => {
             </form>
             {/* <table>
               <thead>
-                {/* //When submited, send the info to the table below */}
             {/* <tr>
                   <th scope="col">User</th>
-                  <th scope="col">Skill</th>
-                  <th scope="col">Time Offered</th>
+                  <th scope="col"> Skill</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Location</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Ashley</td>
-                  {e.target.value.skill.description}
-                  <td>Pluming</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>Mark</td>
-                  <td>3</td>
-                  <td>Sewing</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>Thomas</td>
-                  <td>6</td>
-                  <td>Cleaning</td>
-                  <td>5</td>
+                 <td>{user}</td>
+                  <td>{e.target.value.skill.skill}</td>
+                  <td>{e.target.value.skill.description}</td>
+                  <td>{e.target.value.skill.category}</td>
+                  <td>{e.target.value.skill.location</td>
                 </tr>
               </tbody>
-            </table> */}{" "}
+            </table> */}
           </div>
         </div>
       </div>
