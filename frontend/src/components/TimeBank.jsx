@@ -1,10 +1,10 @@
 //import React from "react";
 import React, { useState } from "react";
+import Skill from "./Skill";
 
-//ToDo: Post request(on it)
 //Make sure inputed skill shows in outputed table
 
-export default props => {
+const TimeBank = props => {
   const [skill, setSkill] = useState(false);
   const [valid, setValid] = useState({
     skill: false,
@@ -99,11 +99,7 @@ export default props => {
             </p>
           </div>
           <div className="p-2 bg-light flex-item ">
-            <form
-              onSubmit={handleSubmit}
-              className="form-register"
-              method="post"
-            >
+            <form onSubmit={handleSubmit} className="form-skill" method="post">
               <div className="form-group p-2">
                 <h3 className="text-left">Insert your Skill here</h3>
                 <label>Skill</label>
@@ -210,29 +206,18 @@ export default props => {
                 </div>
               </div>
             </form>
-            {/* <table>
-              <thead>
-            {/* <tr>
-                  <th scope="col">User</th>
-                  <th scope="col"> Skill</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Location</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                 <td>{user}</td>
-                  <td>{e.target.value.skill.skill}</td>
-                  <td>{e.target.value.skill.description}</td>
-                  <td>{e.target.value.skill.category}</td>
-                  <td>{e.target.value.skill.location</td>
-                </tr>
-              </tbody>
-            </table> */}
           </div>
         </div>
+
+        {/* {skill &&
+                skill.map((skill, index) => (
+                  <tr>
+                    <Skill key={index} data={skill} />
+                  </tr>
+                ))} */}
+        {skill && <Skill data={skill} />}
       </div>
     </div>
   );
 };
+export default TimeBank;
