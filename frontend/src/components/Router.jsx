@@ -11,7 +11,6 @@ import Help from "./Help";
 import Profile from "./Profile";
 import NavBar from "./NavBar";
 import NotFound from "./NotFound";
-import Messaging from "./Messaging";
 
 const Router = () => (
   <BrowserRouter>
@@ -25,7 +24,6 @@ const Router = () => (
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
         <Route path="/about" component={About} />
-        <Route path="/messaging" component={Messaging} />
         <Route path="/help" component={Help} />
         <Route component={NotFound} />
       </Switch>

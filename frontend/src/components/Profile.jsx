@@ -1,7 +1,6 @@
 import Leena from "../assets/Leena.jpg";
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Messaging from "./Messaging";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +11,7 @@ class Profile extends Component {
     this.state = { user: {}, popup: false };
   }
   togglePopup() {
-    this.setState({popup: !this.state.popup})
+    this.setState({ popup: !this.state.popup });
   }
   componentDidMount() {
     const url = "http://localhost:4001/users/";
@@ -47,62 +46,62 @@ class Profile extends Component {
         console.error("User not found. Please try again.");
       });
 
-      // fetch own freebies
+    // fetch own freebies
 
-      fetch(url + freebiesEndpoint, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `${localStorage.getItem("token")}`
+    fetch(url + freebiesEndpoint, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log(
+          "Response from the profile freebies method in the backend",
+          response
+        );
+        if (response.status === 200) {
+          console.log(response.data.freebies);
+          this.setState({ ownFreebies: response.data.freebies });
+        } else {
+          alert(response.message);
         }
       })
-        .then(response => response.json())
-        .then(response => {
-          console.log(
-            "Response from the profile freebies method in the backend",
-            response
-          );
-          if (response.status === 200) {
-            console.log(response.data.freebies);
-            this.setState({ ownFreebies: response.data.freebies });
-          } else {
-            alert(response.message);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          console.error("Freebies not found. Please try again.");
-        });
+      .catch(error => {
+        console.error("Error:", error);
+        console.error("Freebies not found. Please try again.");
+      });
 
-        // fetch own skills
+    // fetch own skills
 
-      fetch(url + skillsEndpoint, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `${localStorage.getItem("token")}`
+    fetch(url + skillsEndpoint, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log(
+          "Response from the profile skills method in the backend",
+          response
+        );
+        if (response.status === 200) {
+          console.log(response.data.skills);
+          this.setState({ ownSkills: response.data.skills });
+        } else {
+          alert(response.message);
         }
       })
-        .then(response => response.json())
-        .then(response => {
-          console.log(
-            "Response from the profile skills method in the backend",
-            response
-          );
-          if (response.status === 200) {
-            console.log(response.data.skills);
-            this.setState({ ownSkills: response.data.skills });
-          } else {
-            alert(response.message);
-          }
-        })
-        .catch(error => {
-          console.error("Error:", error);
-          console.error("Skills not found. Please try again.");
-        });
+      .catch(error => {
+        console.error("Error:", error);
+        console.error("Skills not found. Please try again.");
+      });
   }
   render() {
-    console.log(this.props)
+    console.log(this.props);
     const freebies = this.state.ownFreebies;
     console.log("Freebies", freebies);
     const skills = this.state.ownSkills;
@@ -114,9 +113,12 @@ class Profile extends Component {
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
               <div className="profile-messages m-2 flex-item">
-                <button onClick={e => {
-                    this.togglePopup(e)
-                  }} className="contact">
+                <button
+                  onClick={e => {
+                    this.togglePopup(e);
+                  }}
+                  className="contact"
+                >
                   <span className="check">
                     <FontAwesomeIcon
                       icon={faEnvelope}
@@ -134,13 +136,11 @@ class Profile extends Component {
                       icon={faStar}
                       className="text-primary"
                       size="2x"
-                      />
+                    />
                   </span>
                 </button>
               </div>
             </div>
-            {this.state.popup && <Messaging togglePopup={this.togglePopup} />}
-
             <div className="card-title m-4">
               <h4>
                 {this.state.user.first_name}
@@ -150,7 +150,7 @@ class Profile extends Component {
             <button
               type="button"
               className="btn btn-primary btn-block mb-2 mx-auto"
-              >
+            >
               Posts
             </button>
             <button type="button" className="btn btn-primary btn-block mx-auto">
@@ -162,9 +162,10 @@ class Profile extends Component {
           </div>
         </div>
         <div className="card">
-        <ul>
-        {this.state.ownFreebies && this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
-        </ul>
+          <ul>
+            {this.state.ownFreebies &&
+              this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+          </ul>
         </div>
       </div>
     );
