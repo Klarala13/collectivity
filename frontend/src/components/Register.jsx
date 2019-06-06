@@ -9,13 +9,13 @@ export default props => {
   const [isHidden, setHidden] = useState(false);
   const [user, setUser] = useState({});
   const [valid, setValid] = useState({
-    firstName: false,
-    lastName: false,
+    first_name: false,
+    last_name: false,
     email: false,
     password: false,
     confirmPass: false,
     city: false,
-    zipCode: false,
+    zip_code: false,
     image: true,
     check: false
   });
@@ -25,12 +25,12 @@ export default props => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", e.target.elements["image"].files[0]);
-    formData.append("firstName", e.target.elements["firstName"].value);
-    formData.append("lastName", e.target.elements["lastName"].value);
+    formData.append("first_name", e.target.elements["first_name"].value);
+    formData.append("last_name", e.target.elements["last_name"].value);
     formData.append("email", e.target.elements["email"].value);
     formData.append("password", e.target.elements["password"].value);
     formData.append("city", e.target.elements["city"].value);
-    formData.append("zipCode", e.target.elements["zipCode"].value);
+    formData.append("zip_code", e.target.elements["zip_code"].value);
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
@@ -127,7 +127,7 @@ export default props => {
             >
               <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
               <div className="container">
-                <label htmlFor="firstName" className="sr-only">
+                <label htmlFor="first_name" className="sr-only">
                   {" "}
                   First Name{" "}
                 </label>
@@ -135,9 +135,9 @@ export default props => {
                   <input
                     onChange={handleFirstName}
                     type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={user.firstName}
+                    id="first_name"
+                    name="first_name"
+                    value={user.first_name}
                     className="form-control "
                     placeholder="First Name"
                     required
@@ -145,16 +145,16 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="lastName" className="sr-only">
+                <label htmlFor="last_name" className="sr-only">
                   Last Name
                 </label>
                 <div className="mb-3">
                   <input
                     onChange={handleLastName}
                     type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={user.lastName}
+                    id="last_name"
+                    name="last_name"
+                    value={user.last_name}
                     className="form-control"
                     placeholder="Last Name"
                     required
@@ -228,16 +228,16 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="zipCode" className="sr-only">
+                <label htmlFor="zip_code" className="sr-only">
                   ZipCode
                 </label>
                 <div className="mb-3">
                   <input
                     onChange={handleZipCode}
                     type="number"
-                    id="zipCode"
-                    name="zipCode"
-                    value={user.zipCode}
+                    id="zip_code"
+                    name="zip_code"
+                    value={user.zip_code}
                     className="form-control"
                     placeholder="zip code"
                     required

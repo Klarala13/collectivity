@@ -17,7 +17,7 @@ const MessageSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  itemId: {
+  item_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item',
     required: true

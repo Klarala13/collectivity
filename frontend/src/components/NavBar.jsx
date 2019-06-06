@@ -11,7 +11,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg sticky-top nav-main">
+      <nav className="navbar navbar-light navbar-expand-lg sticky-top nav-main">
         <div className="container">
           <NavLink to="/" activeClassName="active" className="navbar-brand">
             <img className="logo2" src={logo} alt="logo"/>
@@ -50,7 +50,7 @@ class NavBar extends Component {
                   About
                 </NavLink>
               </div>
-              <NavLink to="/login" activeClassName="active" className="ml-auto">
+              <NavLink to="/login" activeClassName="active" className="ml-md-auto">
                 Login
               </NavLink>
             </nav>

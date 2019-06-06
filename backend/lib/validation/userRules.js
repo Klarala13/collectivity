@@ -1,20 +1,20 @@
 const { check } = require("express-validator/check");
 
-exports.userId = [
+exports.user_id = [
   check("id")
     .isMongoId()
     .withMessage("Invalid User Id")
 ];
 // city, zip, registration Date, rating
 exports.newUser= [
-  check("firstName")
+  check("first_name")
     .isString()
     .withMessage("A User's first name must be formatted as a string")
     .trim()
     .not()
     .isEmpty()
     .withMessage("Item name is required"),
-  check("lastName")
+  check("last_name")
    .isString()
     .withMessage("A User's last name must be formatted as a string")
     .trim()

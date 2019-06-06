@@ -30,31 +30,31 @@ const listFreebies = (req, res, next) => {
   }
 };
 
-const addFreebie = (req, res, next) => {
-  console.log("req.body", req.body);
-  try {
-    const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    const {firstName, lastName, email, password, city, zipCode, image} = req.body;
-      client.query(
-      `INSERT INTO public.freebies("firstName", "lastName", "email", "password", "city", "zipCode", "registrationDate", "image") 
-      VALUES ('${firstName}', '${lastName}', '${email}', '${password}', '${city}', '${Number(zipCode)}', '${date}', '${image}' )`
-      );
-      console.log("New freebie added");
-      console.log("request", req.body);
+// const addFreebie = (req, res, next) => {
+//   console.log("req.body", req.body);
+//   try {
+//     const today = new Date();
+//     const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+//     const {first_name, last_name, email, password, city, zip_code, image} = req.body;
+//       client.query(
+//       `INSERT INTO public.freebies("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "image") 
+//       VALUES ('${first_name}', '${last_name}', '${email}', '${password}', '${city}', '${Number(zip_code)}', '${date}', '${image}' )`
+//       );
+//       console.log("New freebie added");
+//       console.log("request", req.body);
 
-    const freebieQuery = "select * from public.freebies";
-    client.query(freebieQuery).then(response => {
-      const newFreebie = response.rows;
-      res.send(newFreebie);
-    });
-  } catch (e) {
-    console.log("ERROR", e);
-    next(e);
-  }
-};
+//     const freebieQuery = "select * from public.freebies";
+//     client.query(freebieQuery).then(response => {
+//       const newFreebie = response.rows;
+//       res.send(newFreebie);
+//     });
+//   } catch (e) {
+//     console.log("ERROR", e);
+//     next(e);
+//   }
+// };
 
 router.route("/").get(listFreebies)
-                 .post(addFreebie);
+                //  .post(addFreebie);
 
 module.exports = router;

@@ -75,22 +75,22 @@ export const loadImage = (imgDataUri, route) => dispatch => {
   dispatch ({ type: "LOAD_IMAGE", payload: imgDataUri });
   route.push("/insertFoundItem");
 }
-export const deleteUser = userId => dispatch => {
-  axios(window.collectivityBackend + "/deleteuser/" + userId, {
+export const deleteUser = user_id => dispatch => {
+  axios(window.collectivityBackend + "/deleteuser/" + user_id, {
     method: 'delete',
     withCredentials: true
   })
     .then(response => {
       if (response.data.error === 0) {
-        dispatch({ type: 'DELETE_USER', userId: userId });
+        dispatch({ type: 'DELETE_USER', user_id: user_id });
       }
     })
     .catch(error => {
       console.log(error);
     });
 };
-export const openUpdateModal = userId => dispatch => {
-  dispatch({ type: 'OPEN_UPDATE_MODAL', userId: userId });
+export const openUpdateModal = user_id => dispatch => {
+  dispatch({ type: 'OPEN_UPDATE_MODAL', user_id: user_id });
 };
 
 export const generateMarkers = () => dispatch => {

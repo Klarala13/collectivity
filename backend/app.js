@@ -13,7 +13,7 @@ app.use(setCorsHeaders);
 
 const usersRouter = require("./routes/users");
 const freebiesRouter = require("./routes/freebies");
-const timebanksRouter = require("./routes/timebanks");
+const skillsRouter = require("./routes/skills");
 
 const { Client } = require("pg");
 
@@ -48,8 +48,8 @@ async function seedAdmin() {
         console.log("Admin seeded");
       } else {
         client.query(
-          `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "rating", "image")
-          VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
+          `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "rating", "image") 
+        VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
         );
         //console.log("Admin seeded");
       }
@@ -101,9 +101,9 @@ async function seedFreebies() {
         console.log("Freebies seeded");
       } else {
         client.query(
-          `INSERT INTO public.freebies("item", "description", "image", "zipCode", "location", "category", "user") 
+          `INSERT INTO public.freebies("item", "description", "image", "zip_code", "location", "category", "user_id") 
         VALUES ('Ball', 'My old football', 'https://images.pexels.com/photos/1342252/pexels-photo-1342252.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', '12345', 'My house', 'Sports', 1);
-        INSERT INTO public.freebies("item", "description", "image", "zipCode", "location", "category", "user") 
+        INSERT INTO public.freebies("item", "description", "image", "zip_code", "location", "category", "user_id") 
         VALUES ('Cup', 'Colorful, not very used', 'https://images.pexels.com/photos/433199/pexels-photo-433199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', '12345', 'My house', 'House&Garden', 1)`
         );
         console.log("Freebies seeded");
@@ -126,17 +126,17 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
   } else {
     client.query(
       `CREATE TABLE public.freebies
-        (   "itemId" SERIAL PRIMARY KEY,
+        (   "item_id" SERIAL PRIMARY KEY,
             "item" character varying (30) NOT NULL,
             "description" character varying (300),
             "image" character varying,
-            "zipCode" integer,
+            "zip_code" integer,
             "location" character varying,
             "category" character varying NOT NULL 
             CHECK (category IN ('House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
-            "user" integer NOT NULL,
-            CONSTRAINT "User" FOREIGN KEY ("user")
-            REFERENCES public.users ("userId") MATCH SIMPLE
+            "user_id" integer NOT NULL,
+            CONSTRAINT "user_fkey" FOREIGN KEY ("user_id")
+            REFERENCES public.users ("user_id") MATCH SIMPLE
         )
         WITH (
           OIDS = FALSE
@@ -166,15 +166,15 @@ async function seedSkills() {
     .then(res => {
       if (
         res.rowCount >= 1 &&
-        res.rows.filter(timebank => timebank.skill === "Cooking").length > 0
+        res.rows.filter(skill => skill.skill === "Cooking").length > 0
       ) {
         console.log("Skills seeded");
       } else {
         client.query(
-          `INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category", "user") 
-        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', 'true', '1.5', 'House&Garden', 1);
-        INSERT INTO public.skills("skill", "description", "location", "active", "timeSpan", "category", "user") 
-        VALUES ('Cleaning', 'I can clean super fast', 'My house', 'false', '0.5', 'House&Garden', 1)`
+          `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', '1.5', 'House&Garden', 1);
+        INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+        VALUES ('Cleaning', 'I can clean super fast', 'My house', '0.5', 'House&Garden', 1)`
         );
         console.log("Skills seeded");
       }
@@ -182,7 +182,7 @@ async function seedSkills() {
     .catch(e => console.error(e.stack));
 }
 
-// Creation of timebanks table
+// Creation of skills table
 
 client.query("SELECT to_regclass('public.skills')").then(async res => {
   // check if table skills already exists
@@ -196,17 +196,16 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
   } else {
     client.query(
       `CREATE TABLE public.skills
-        (   "skillId" SERIAL PRIMARY KEY,
+        (   "skill_id" SERIAL PRIMARY KEY,
             "skill" character varying (50) NOT NULL,
             "description" character varying (300),
             "location" character varying,
-            "active" boolean NOT NULL,
-            "timeSpan" real NOT NULL,
+            "time_span" real NOT NULL,
             "category" character varying NOT NULL 
             CHECK (category IN ('House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
-            "user" integer NOT NULL,
-            CONSTRAINT "User" FOREIGN KEY ("user")
-            REFERENCES public.users ("userId") MATCH SIMPLE
+            "user_id" integer NOT NULL,
+            CONSTRAINT "user_fkey" FOREIGN KEY ("user_id")
+            REFERENCES public.users ("user_id") MATCH SIMPLE
         )
         WITH (
           OIDS = FALSE
@@ -234,7 +233,7 @@ app.get("/", function(req, res) {
 
 app.use("/users", usersRouter);
 app.use("/freebies", freebiesRouter);
-app.use("/timebanks", timebanksRouter);
+app.use("/skills", skillsRouter);
 
 // Catch any route that is not recognized
 app.use((req, res, next) => {
