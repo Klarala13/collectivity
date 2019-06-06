@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import Skill from "./Skill";
 
-//Make sure inputed skill shows in outputed table
-
 const TimeBank = props => {
   const [skill, setSkill] = useState(false);
   const [valid, setValid] = useState({
@@ -11,7 +9,7 @@ const TimeBank = props => {
     description: false,
     category: true,
     location: false,
-    time_span: false,
+    time_span: true,
     token: true
   });
 
@@ -174,6 +172,7 @@ const TimeBank = props => {
                     className="form-control mb-2"
                     id="time_span"
                     name="time_span"
+                    value={skill.time_span}
                     placeholder="Hrs/Week"
                     required
                   />
@@ -193,12 +192,6 @@ const TimeBank = props => {
             </form>
           </div>
         </div>
-        {/* {skill &&
-                skill.map((skill, index) => (
-                  <tr>
-                    <Skill key={index} data={skill} />
-                  </tr>
-                ))} */}
         {skill && <Skill data={skill} />}
       </div>
     </div>

@@ -12,17 +12,19 @@ class Skill extends Component {
               <th scope="col">Description</th>
               <th scope="col">Category</th>
               <th scope="col">Location</th>
-              <th scope="col">TimeSpan</th>
+              {/* <th scope="col">Time Span</th> */}
             </tr>
           </thead>
-          <tr>
-            {/* <td>{user}</td>  */}
-            {/* <td>{data.name}</td> */}
-            <td>{data.description}</td>
-            <td>{data.skill}</td>
-            <td>{data.location}</td>
-            {/* <td>{data.time_span}</td> */}
-          </tr>
+          <tbody>
+            <tr>
+              {/* <td>{user}</td>  */}
+              <td>{data.skill}</td>
+              <td>{data.description}</td>
+              <td>{data.skill}</td>
+              <td>{data.location}</td>
+              {/* <td>{data.time_span}</td> */}
+            </tr>
+          </tbody>
         </table>
       </div>
     );
