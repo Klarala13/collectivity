@@ -110,7 +110,7 @@ class Profile extends Component {
     return (
       <div className="card-deck">
         <div className="card">
-          <img className="rounded-circle center pt-4" src={Leena} alt="Logo" />
+          <img className="rounded-circle center pt-4" src={this.state.user.image} alt="Logo" />
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
               <div className="profile-messages m-2 flex-item">
@@ -143,7 +143,7 @@ class Profile extends Component {
 
             <div className="card-title m-4">
               <h4>
-                {this.state.user.first_name}
+                {this.state.user.first_name}&nbsp;
                 {this.state.user.last_name}
               </h4>
             </div>
@@ -161,9 +161,12 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="card" hidden>
         <ul>
         {this.state.ownFreebies && this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+        </ul>
+        <ul>
+        {this.state.ownSkills && this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
         </ul>
         </div>
       </div>
