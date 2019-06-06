@@ -26,24 +26,17 @@ const TimeBank = props => {
     for (const [key, value] of formData.entries()) {
       console.log("key, value", key, value);
     }
-    // console.log(
-    //   "formData",
-    //   "skill",
-    //   e.target.elements["skill"].value,
-    //   "description",
-    //   e.target.elements["description"].value,
-    //   "category",
-    //   e.target.elements["category"].value,
-    //   "location",
-    //   e.target.elements["location"].value,
-    //   "time_span",
-    //   e.target.elements["time_span"].value,
-    //   "token"
-    // );
+    console.log(
+      formData.entries()
+    );
 
     fetch(url, {
       method: "POST",
-      body: formData
+      body: JSON.stringify({skill: "test"}), 
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": `${localStorage.getItem("token")}`
+      }
     })
       .then(res => res.json())
       .then(res => {
