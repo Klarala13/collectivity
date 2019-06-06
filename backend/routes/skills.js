@@ -33,7 +33,6 @@ const listSkills = (req, res, next) => {
 
 const addSkill = (req, res, next) => {
   console.log("req.body", req.body);
-
     const {
       skill,
       description,
@@ -42,7 +41,7 @@ const addSkill = (req, res, next) => {
       category
     } = req.body;
 
-    const token = req.headers["authorization"];
+  const token = req.headers["authorization"];
 
   console.log("Token", token);
 
@@ -53,12 +52,14 @@ const addSkill = (req, res, next) => {
       req.decoded = decoded;
 
       const user_id = req.decoded.user_id;
+
+      console.log(user_id);
     
       client.query(
         `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
         VALUES ('${skill}', '${description}', '${location}', '${Number(
           time_span
-        )}', '${category}', '${Number(user_id)}')`
+        )}', '${category}', '${user_id}')`
       );
       console.log("New skill added");
   
