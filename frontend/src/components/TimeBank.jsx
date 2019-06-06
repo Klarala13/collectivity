@@ -25,10 +25,9 @@ const TimeBank = props => {
     formData.append("token", localStorage.getItem("token"));
     const skillObj = {};
     for (const [key, value] of formData.entries()) {
-      console.log(key);
       skillObj[key] = value;
     }
-    console.log(skillObj);
+    // console.log(skillObj);
     fetch(url, {
       method: "POST",
       body: JSON.stringify(skillObj),
