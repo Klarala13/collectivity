@@ -1,4 +1,4 @@
-import Leena from "../assets/Leena.jpg";
+
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Messaging from "./Messaging";
@@ -113,31 +113,13 @@ class Profile extends Component {
           <img className="rounded-circle center pt-4" src={this.state.user.image} alt="Logo" />
           <div className="card-body text-center">
             <div className="d-flex flex-row flex-container-2">
-              <div className="profile-messages m-2 flex-item">
-                <button onClick={e => {
-                    this.togglePopup(e)
-                  }} className="contact">
-                  <span className="check">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="text-primary"
-                      size="2x"
-                    />
-                  </span>
-                </button>
-              </div>
-
-              <div className="profile-follow m-2 flex-item">
-                <button className="contact" href="#">
-                  <span className="check">
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-primary"
-                      size="2x"
-                      />
-                  </span>
-                </button>
-              </div>
+            <div className="rating">
+	<input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i className="fas fa-1x fa-star"></i></label>
+	<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i className="fas fa-1x fa-star"></i></label>
+	<input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i className="fas fa-1x fa-star"></i></label>
+	<input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i className="fas fa-1x fa-star"></i></label>
+	<input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i className="fas fa-1x fa-star"></i></label>
+</div>
             </div>
             {this.state.popup && <Messaging togglePopup={this.togglePopup} />}
 
@@ -147,12 +129,9 @@ class Profile extends Component {
                 {this.state.user.last_name}
               </h4>
             </div>
-            <button
-              type="button"
-              className="btn btn-primary btn-block mb-2 mx-auto"
-              >
-              Posts
-            </button>
+            <div >
+              <a href="mailto:someone@yoursite.com"  className="btn btn-primary btn-block mb-2 mx-auto">Send Email</a>  
+              </div>
             <button type="button" className="btn btn-primary btn-block mx-auto">
               Orders
             </button>
