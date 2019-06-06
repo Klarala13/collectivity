@@ -44,7 +44,10 @@ export default props => {
 
     fetch(url, {
       method: "POST",
-      body: formData
+      body: formData,
+      headers: {
+        "authorization": `${localStorage.getItem("token")}`
+      }
     })
       .then(res => res.json())
       .then(res => {

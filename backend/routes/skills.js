@@ -39,9 +39,10 @@ const addSkill = (req, res, next) => {
       description,
       location,
       time_span,
-      category,
-      token
+      category
     } = req.body;
+
+    const token = req.headers["authorization"];
 
   console.log("Token", token);
 
