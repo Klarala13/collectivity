@@ -1,16 +1,17 @@
 //import React from "react";
 import React, { useState } from "react";
+import Skill from "./Skill";
 
-//ToDo: Post request(on it)
 //Make sure inputed skill shows in outputed table
 
-export default props => {
+const TimeBank = props => {
   const [skill, setSkill] = useState(false);
   const [valid, setValid] = useState({
     skill: false,
     description: false,
     category: true,
     location: false,
+    time_span: false,
     token: true
   });
 
@@ -67,13 +68,6 @@ export default props => {
     }
   };
 
-  const handleCheckbox = e => {
-    if (e.target.checked) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
   //console.log("disabled", isDisabled);
   //console.log("skill", skill);
@@ -102,11 +96,7 @@ export default props => {
             </p>
           </div>
           <div className="p-2 bg-light flex-item ">
-            <form
-              onSubmit={handleSubmit}
-              className="form-register"
-              method="post"
-            >
+            <form onSubmit={handleSubmit} className="form-skill" method="post">
               <div className="form-group p-2">
                 <h3 className="text-left">Insert your Skill here</h3>
                 <label>Skill</label>
@@ -188,18 +178,6 @@ export default props => {
                     required
                   />
                 </div>
-
-                <label className="form-check-label" htmlFor="accept">
-                  Activate
-                </label>
-                <input
-                  onChange={handleCheckbox}
-                  type="checkbox"
-                  className="checkbox form-check-input"
-                  id="check"
-                  required
-                  name="check"
-                />
                 <div className="mb-3">
                   <button
                     className="btn btn-danger"
@@ -213,29 +191,17 @@ export default props => {
                 </div>
               </div>
             </form>
-            {/* <table>
-              <thead>
-            {/* <tr>
-                  <th scope="col">User</th>
-                  <th scope="col"> Skill</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Location</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                 <td>{user}</td>
-                  <td>{e.target.value.skill.skill}</td>
-                  <td>{e.target.value.skill.description}</td>
-                  <td>{e.target.value.skill.category}</td>
-                  <td>{e.target.value.skill.location</td>
-                </tr>
-              </tbody>
-            </table> */}
           </div>
         </div>
+        {/* {skill &&
+                skill.map((skill, index) => (
+                  <tr>
+                    <Skill key={index} data={skill} />
+                  </tr>
+                ))} */}
+        {skill && <Skill data={skill} />}
       </div>
     </div>
   );
 };
+export default TimeBank;
