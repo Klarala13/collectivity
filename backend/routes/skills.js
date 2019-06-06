@@ -53,7 +53,7 @@ const addSkill = (req, res, next) => {
       `INSERT INTO public.skills("skill", "description", "location", "time_span", "category") 
       VALUES ('${skill}', '${description}', '${Number(
         location
-      )}', '${active}', '${time_span}', '${category}')`
+      )}', '${time_span}', '${category}')`
     );
     console.log("New skill seeded");
     console.log("request", req.body);
