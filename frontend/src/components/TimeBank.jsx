@@ -9,24 +9,21 @@ export default props => {
   const [valid, setValid] = useState({
     skill: false,
     description: false,
-    location: false,
-    active: false
+    location: false
   });
 
   const handleSubmit = e => {
     e.preventDefault();
+    const url = "http://0.0.0.0:4001/skills";
     const formData = new FormData();
     formData.append("skill", e.target.elements["skill"].value);
     formData.append("description", e.target.elements["description"].value);
-    formData.append("email", e.target.elements["email"].value);
-    formData.append("password", e.target.elements["password"].value);
-    formData.append("city", e.target.elements["city"].value);
-    formData.append("zip_code", e.target.elements["zip_code"].value);
+    formData.append("location", e.target.elements["location"].value);
+    formData.append("time_span", e.target.elements["time_span"].value);
     for (const [key, value] of formData.entries()) {
       console.log(key, value);
     }
 
-    const url = "http://0.0.0.0:4001/skills";
     fetch(url, {
       method: "POST",
       body: formData
