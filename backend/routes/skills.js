@@ -44,16 +44,16 @@ const addSkill = (req, res, next) => {
       skill,
       description,
       location,
-      active,
       time_span,
-      category
+      category, 
+      user_id
     } = req.body;
     // TODO connect with user_id
     client.query(
-      `INSERT INTO public.skills("skill", "description", "location", "time_span", "category") 
-      VALUES ('${skill}', '${description}', '${Number(
-        location
-      )}', '${time_span}', '${category}')`
+      `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
+      VALUES ('${skill}', '${description}', '${Number(location)}', '${Number(
+        time_span
+      )}', '${category}', '${Number(user_id)}')`
     );
     console.log("New skill seeded");
     console.log("request", req.body);
