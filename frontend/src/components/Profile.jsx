@@ -132,9 +132,9 @@ class Profile extends Component {
             <div >
               <a href="mailto:someone@yoursite.com"  className="btn btn-primary btn-block mb-2 mx-auto">Send Email</a>  
               </div>
-            <button type="button" className="btn btn-primary btn-block mx-auto">
-              Orders
-            </button>
+            <div className="btn btn-primary mb-2 btn-block mx-auto address">
+            <h5><i className="fas fa-map-marker-alt"></i>Address: <a href="#">Italy</a></h5>
+            </div>
             <div className="card-footer">
               <small className="text-muted">Last updat 30 min</small>
             </div>

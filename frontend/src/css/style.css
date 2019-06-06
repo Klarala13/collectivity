@@ -154,13 +154,13 @@ p.text-left {
 .rating {
 	direction: rtl;
 	unicode-bidi: bidi-override;
-	color: #ddd; /* Personal choice */
+	color: #ddd;
 }
 .rating {
   width: 20rem;
 	direction: rtl;
 	unicode-bidi: bidi-override;
-	color: #ddd; /* Personal choice */
+	color: #ddd; 
 }
 .rating input {
 	display: none;
@@ -169,8 +169,30 @@ p.text-left {
 .rating label:hover ~ label,
 .rating input:checked + label,
 .rating input:checked + label ~ label {
-	color: #ffc107; /* Personal color choice. Lifted from Bootstrap 4 */
+	color: #ffc107; 
 }
+.fa-map-marker-alt{
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+  margin-right: 10px;
+}
+.address:hover:before{
+  visibility: visible;
+  transform: scaleX(1);
+  
+}
+.address a{
+  color: #529ef5;
+  
+}
+.address a:hover{
+  color: white!important;
+  text-decoration:none;
+}
+/* .address:hover{
+  transform: scale(1.05);
+} */
 
 
 /* form-register */
