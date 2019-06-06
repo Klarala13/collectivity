@@ -11,6 +11,7 @@ const TimeBank = props => {
     description: false,
     category: true,
     location: false,
+    time_span: false,
     token: true
   });
 
@@ -64,13 +65,6 @@ const TimeBank = props => {
     }
   };
 
-  const handleCheckbox = e => {
-    if (e.target.checked) {
-      setValid({ ...valid, [e.target.name]: true });
-    } else {
-      setValid({ ...valid, [e.target.name]: false });
-    }
-  };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
   //console.log("disabled", isDisabled);
   //console.log("skill", skill);
@@ -181,18 +175,6 @@ const TimeBank = props => {
                     required
                   />
                 </div>
-
-                <label className="form-check-label" htmlFor="accept">
-                  Activate
-                </label>
-                <input
-                  onChange={handleCheckbox}
-                  type="checkbox"
-                  className="checkbox form-check-input"
-                  id="check"
-                  required
-                  name="check"
-                />
                 <div className="mb-3">
                   <button
                     className="btn btn-danger"
@@ -208,7 +190,6 @@ const TimeBank = props => {
             </form>
           </div>
         </div>
-
         {/* {skill &&
                 skill.map((skill, index) => (
                   <tr>
