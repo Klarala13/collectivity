@@ -15,16 +15,31 @@ export default props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const url = "http://0.0.0.0:4001/timebanks";
-    fetch(url)
-      .then(response => response.json())
-      .then(data =>
-        console.log("Oh shit, i've just posted a skill!", JSON.stringify(data))
-      )
+    const formData = new FormData();
+    formData.append("skill", e.target.elements["skill"].value);
+    formData.append("description", e.target.elements["description"].value);
+    formData.append("email", e.target.elements["email"].value);
+    formData.append("password", e.target.elements["password"].value);
+    formData.append("city", e.target.elements["city"].value);
+    formData.append("zip_code", e.target.elements["zip_code"].value);
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
+    const url = "http://0.0.0.0:4001/skills";
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log("Good job! U are registered!", res);
+      })
       .catch(error =>
-        console.error("Uuuu, I fucked up! Gotta try again!", error)
+        console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
+
   const handleValid = (e, condition) => {
     setSkill({ ...skill, [e.target.name]: e.target.value });
     if (condition) {
