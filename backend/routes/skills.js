@@ -45,13 +45,13 @@ const addSkill = (req, res, next) => {
       description,
       location,
       time_span,
-      category, 
+      category,
       user_id
     } = req.body;
     // TODO connect with user_id
     client.query(
       `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
-      VALUES ('${skill}', '${description}', '${Number(location)}', '${Number(
+      VALUES ('${skill}', '${description}', '${location}', '${Number(
         time_span
       )}', '${category}', '${Number(user_id)}')`
     );
