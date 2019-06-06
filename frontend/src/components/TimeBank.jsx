@@ -23,19 +23,18 @@ const TimeBank = props => {
     formData.append("location", e.target.elements["location"].value);
     formData.append("time_span", e.target.elements["time_span"].value);
     formData.append("token", localStorage.getItem("token"));
+    const skillObj = {};
     for (const [key, value] of formData.entries()) {
-      console.log("key, value", key, value);
+      console.log(key);
+      skillObj[key] = value;
     }
-    console.log(
-      formData.entries()
-    );
-
+    console.log(skillObj);
     fetch(url, {
       method: "POST",
-      body: JSON.stringify({skill: "test"}), 
+      body: JSON.stringify(skillObj),
       headers: {
         "Content-Type": "application/json",
-        "authorization": `${localStorage.getItem("token")}`
+        authorization: `${localStorage.getItem("token")}`
       }
     })
       .then(res => res.json())
