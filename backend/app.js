@@ -45,13 +45,13 @@ async function seedAdmin() {
         res.rowCount >= 1 &&
         res.rows.filter(user => user.email === "admin@dci.de").length > 0
       ) {
-        console.log("Admin seeded");
+        console.log("Admin in the table");
       } else {
         client.query(
           `INSERT INTO public.users("first_name", "last_name", "email", "password", "city", "zip_code", "registration_date", "rating", "image") 
         VALUES ('The', 'Admin', 'admin@dci.de', '12345678', 'Berlin', 10234, '2019-05-04', 5, 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')`
         );
-        //console.log("Admin seeded");
+        console.log("Admin seeded");
       }
     })
     .catch(e => console.error(e.stack));
@@ -86,7 +86,8 @@ client.query("SELECT to_regclass('public.users')").then(async res => {
             OWNER to postgres;
       `
       )
-      .then(() => seedAdmin());
+      .then(() => { console.log("User table created")
+        seedAdmin()});
   }
 });
 
@@ -98,13 +99,13 @@ async function seedFreebies() {
         res.rowCount >= 1 &&
         res.rows.filter(freebie => freebie.item === "Ball").length > 0
       ) {
-        console.log("Freebies seeded");
+        console.log("Freebies in the table");
       } else {
         client.query(
           `INSERT INTO public.freebies("item", "description", "image", "zip_code", "location", "category", "user_id") 
         VALUES ('Ball', 'My old football', 'https://images.pexels.com/photos/1342252/pexels-photo-1342252.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', '12345', 'My house', 'Sports', 1);
         INSERT INTO public.freebies("item", "description", "image", "zip_code", "location", "category", "user_id") 
-        VALUES ('Cup', 'Colorful, not very used', 'https://images.pexels.com/photos/433199/pexels-photo-433199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', '12345', 'My house', 'House&Garden', 1)`
+        VALUES ('Cup', 'Colorful, not very used', 'https://images.pexels.com/photos/433199/pexels-photo-433199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260', '12345', 'My house', 'House_Garden', 1)`
         );
         console.log("Freebies seeded");
       }
@@ -133,7 +134,7 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
             "zip_code" integer,
             "location" character varying,
             "category" character varying NOT NULL 
-            CHECK (category IN ('House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
+            CHECK (category IN ('House_Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art_Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
             "user_id" integer NOT NULL,
             CONSTRAINT "user_fkey" FOREIGN KEY ("user_id")
             REFERENCES public.users ("user_id") MATCH SIMPLE
@@ -147,6 +148,7 @@ client.query("SELECT to_regclass('public.freebies')").then(async res => {
             OWNER to postgres;
       `
     );
+    console.log("Freebies table created")
   }
 });
 
@@ -168,13 +170,13 @@ async function seedSkills() {
         res.rowCount >= 1 &&
         res.rows.filter(skill => skill.skill === "Cooking").length > 0
       ) {
-        console.log("Skills seeded");
+        console.log("Skills in the table");
       } else {
         client.query(
           `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
-        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', '1.5', 'House&Garden', 1);
+        VALUES ('Cooking', 'I can cook all kinds of german dishes', 'Your house', '1.5', 'House_Garden', 1);
         INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
-        VALUES ('Cleaning', 'I can clean super fast', 'My house', '0.5', 'House&Garden', 1)`
+        VALUES ('Cleaning', 'I can clean super fast', 'My house', '0.5', 'House_Garden', 1)`
         );
         console.log("Skills seeded");
       }
@@ -216,6 +218,7 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
             OWNER to postgres;
       `
     );
+    console.log("Skills table created")
   }
 });
 
