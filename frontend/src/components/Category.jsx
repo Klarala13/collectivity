@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-const category = React.forwardRef((props, ref) => (
-  <option ref={ref} {...props} />
-));
+// const category = React.forwardRef((props, ref) => (
+//   <option ref={ref} {...props} />
+// ));
 class Category extends Component {
   render() {
     return (
