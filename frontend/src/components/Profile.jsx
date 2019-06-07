@@ -110,9 +110,9 @@ class Profile extends Component {
     return (
       <div className="card-deck">
         <div className="card">
-          <img className="rounded-circle center pt-4" src={this.state.user.image} alt="Logo" />
+          <img className="center pt-4" src={this.state.user.image} alt="Logo" />
           <div className="card-body text-center">
-            <div className="d-flex flex-row flex-container-2">
+            <div className="d-flex flex-container-2">
             <div className="rating">
 	<input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i className="fas fa-1x fa-star"></i></label>
 	<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i className="fas fa-1x fa-star"></i></label>
