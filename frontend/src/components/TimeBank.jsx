@@ -1,5 +1,5 @@
-//import React from "react";
 import React, { useState } from "react";
+import Category from "./Category";
 import Skill from "./Skill";
 
 const TimeBank = props => {
@@ -53,7 +53,6 @@ const TimeBank = props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
   //console.log("disabled", isDisabled);
   //console.log("skill", skill);
@@ -131,61 +130,35 @@ const TimeBank = props => {
                   placeholder="Where can u perform"
                   required
                 />
-                <div className="form-group category">
-                  <label htmlFor="select">Category</label>
-                  <select
-                    className="mdb-select md-form form-control"
-                    name="category"
-                    // value={skill.category}
-                    id="category"
-                    required
-                  >
-                    <option value="">Make a selection</option>
-                    <option value="House and Garden">House and Garden</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Motors">Motors</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Art or Collectibles">
-                      Art or Collectibles
-                    </option>
-                    <option value="Sports">Sports</option>
-                    <option value="Toys">Toys</option>
-                    <option value="Media">Media</option>
-                    <option value="Others">Others</option>
-                    <option value="Pets">Pets</option>
-                  </select>
-                </div>
-                <div>
-                  <label>Time Span</label>
-                  <input
-                    type="number"
-                    className="form-control mb-2"
-                    id="time_span"
-                    step=".01"
-                    name="time_span"
-                    value={skill.time_span}
-                    placeholder="Hrs/Week"
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <button
-                    className="btn btn-danger"
-                    id="submit"
-                    type="submit"
-                    disabled={isDisabled}
-                    onClick={setSkill}
-                  >
-                    Post Skill
-                  </button>
-                </div>
+                <Category />
+                <label>Time Span</label>
+                <input
+                  type="number"
+                  className="form-control mb-2"
+                  id="time_span"
+                  step=".01"
+                  name="time_span"
+                  value={skill.time_span}
+                  placeholder="Hrs/Week"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <button
+                  className="btn btn-danger"
+                  id="submit"
+                  type="submit"
+                  disabled={isDisabled}
+                  onClick={setSkill}
+                >
+                  Post Skill
+                </button>
               </div>
             </form>
           </div>
         </div>
-        {skill && <Skill data={skill} />}
       </div>
+      {skill && <Skill data={skill} />}
     </div>
   );
 };
