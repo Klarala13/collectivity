@@ -202,7 +202,7 @@ client.query("SELECT to_regclass('public.skills')").then(async res => {
             "location" character varying,
             "time_span" real NOT NULL,
             "category" character varying NOT NULL 
-            CHECK (category IN ('House&Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art/Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
+            CHECK (category IN ('House_Garden', 'Fashion', 'Motors', 'Entertainment', 'Electronics', 'Art_Collectibles', 'Sports', 'Toys', 'Media', 'Pets', 'Others')),
             "user_id" integer NOT NULL,
             CONSTRAINT "user_fkey" FOREIGN KEY ("user_id")
             REFERENCES public.users ("user_id") MATCH SIMPLE
