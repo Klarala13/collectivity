@@ -44,14 +44,17 @@ const TimeBank = props => {
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
-  const displayData = e => {
-    const url = "http://0.0.0.0:4001/skills";
+  // const displayData = e => {
+  //   e.preventDefault();
+  //   const url = "http://0.0.0.0:4001/skills";
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => console.log("Yay! got my skills!", JSON.stringify(data)))
-      .catch(error => console.error("Uuuu, u know nothing John Snow", error));
-  };
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(data =>
+  //       console.log("Yay! got my skills!", data, JSON.stringify(data))
+  //     )
+  //     .catch(error => console.error("Uuuu, u know nothing John Snow", error));
+  // };
 
   const handleValid = (e, condition) => {
     setSkill({ ...skill, [e.target.name]: e.target.value });
@@ -66,12 +69,6 @@ const TimeBank = props => {
   //console.log("disabled", isDisabled);
   //console.log("skill", skill);
   //console.log("isValid?", valid["skill"]);
-
-  const onSubmit = e => {
-    e.preventDefault();
-    handleSubmit();
-    displayData();
-  };
 
   return (
     <div className="container">
@@ -97,10 +94,11 @@ const TimeBank = props => {
           </div>
           <div className="p-2 bg-light flex-item ">
             <form
-              onSubmit={event => {
-                handleSubmit();
-                displayData();
-              }}
+              onSubmit={handleSubmit}
+              // onSubmit={() => {
+              //   handleSubmit();
+              //   displayData();
+              // }}
               className="form-skill"
               method="post"
             >
@@ -157,16 +155,19 @@ const TimeBank = props => {
                   <select
                     className="mdb-select md-form form-control"
                     name="category"
+                    // value={skill.category}
                     id="category"
                     required
                   >
                     <option value="">Make a selection</option>
-                    <option value="House+Garden">House+Garden</option>
+                    <option value="House and Garden">House and Garden</option>
                     <option value="Fashion">Fashion</option>
                     <option value="Motors">Motors</option>
                     <option value="Entertainment">Entertainment</option>
                     <option value="Electronics">Electronics</option>
-                    <option value="Art/Collectibles">Art/Collectibles</option>
+                    <option value="Art or Collectibles">
+                      Art or Collectibles
+                    </option>
                     <option value="Sports">Sports</option>
                     <option value="Toys">Toys</option>
                     <option value="Media">Media</option>

@@ -7,7 +7,7 @@ class Skill extends Component {
         <table className="w-100">
           <thead>
             <tr>
-              {/* <th scope="col">User</th> */}
+              <th scope="col">User</th>
               <th scope="col"> Skill</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
@@ -17,10 +17,10 @@ class Skill extends Component {
           </thead>
           <tbody>
             <tr>
-              {/* <td>{user}</td>  */}
+              <td>{data.data_id}</td>
               <td>{data.skill}</td>
               <td>{data.description}</td>
-              <td>{data.skill}</td>
+              <td>{data.category}</td>
               <td>{data.location}</td>
               {/* <td>{data.time_span}</td> */}
             </tr>
