@@ -33,12 +33,12 @@ const listFreebies = (req, res, next) => {
 
 const getFreebieById = (req, res, next) => {
   console.log("freebies");
-  console.log("body: ", req.body)
+  console.log("req.body: ", req.body)
   try {
     const freebieQuery = `select * from public.freebies where item_id=${req.body.item_id}`;
     client.query(freebieQuery).then(response => {
-      console.log(response.rows)
-      const singleItem = response.rows;
+      console.log("response", response.rows)
+      const singleItem = response.rows[0];
       res.send(singleItem);
     });
   } catch (e) {
@@ -48,6 +48,8 @@ const getFreebieById = (req, res, next) => {
 };
 
 const getFreebieUser = (req, res, next) => {
+  console.log("hello");
+  console.log("item", singleItem); 
   try {
     const userQuery = `select * from public.users WHERE user_id='${
       req.body.user_id
@@ -111,6 +113,6 @@ router
   .route("/")
   .get(listFreebies)
   .post(addFreebie);
-router.route("/one").post(getFreebieById, getFreebieUser)
+router.route("/one").post(getFreebieById).get(getFreebieUser)
 
 module.exports = router;
