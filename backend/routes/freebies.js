@@ -32,6 +32,7 @@ const listFreebies = (req, res, next) => {
 
 const getFreebieById = (req, res, next) => {
   console.log("freebies");
+  console.log("body: ", req.body)
   try {
     const freebieQuery = `select * from public.freebies where item_id=${req.body.item_id}`;
     client.query(freebieQuery).then(response => {
@@ -86,6 +87,6 @@ router
   .route("/")
   .get(listFreebies)
   .post(addFreebie);
-router.route("/one").get(getFreebieById)
+router.route("/one").post(getFreebieById)
 
 module.exports = router;
