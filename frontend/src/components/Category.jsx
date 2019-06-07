@@ -4,7 +4,13 @@ const option = React.forwardRef((props, ref) => (
   <option ref={ref} {...props} />
 ));
 class Category extends Component {
-  catRef = React.createRef();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      catRef: React.createRef()
+    };
+  }
 
   render() {
     return (

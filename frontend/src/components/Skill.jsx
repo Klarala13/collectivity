@@ -20,7 +20,7 @@ class Skill extends Component {
               <td>{data.data_id}</td>
               <td>{data.skill}</td>
               <td>{data.description}</td>
-              <td>{data.category}</td>
+              <td>{this.props.category}</td>
               <td>{data.location}</td>
               {/* <td>{data.time_span}</td> */}
             </tr>
