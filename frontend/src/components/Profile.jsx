@@ -108,45 +108,82 @@ class Profile extends Component {
     console.log("Skills", skills);
     return (
       <div className="card-deck">
-      <div className="card">
-        <img className="center pt-4" src={this.state.user.image} alt="Logo" />
-        <div className="card-body text-center">
-          <div className="d-flex flex-container-2">
-          <div className="rating">
-<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-5"><i className="fas fa-1x fa-star"></i></label>
-<input id="rating-4" type="radio" name="rating" value="4" checked /><label for="rating-4"><i className="fas fa-1x fa-star"></i></label>
-<input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i className="fas fa-1x fa-star"></i></label>
-<input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i className="fas fa-1x fa-star"></i></label>
-<input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i className="fas fa-1x fa-star"></i></label>
-</div>
-          </div>
-
-          <div className="card-title m-4">
-            <h4>
-              {this.state.user.first_name}&nbsp;
-              {this.state.user.last_name}
-            </h4>
-          </div>
-          <div >
-            <a href="mailto:someone@yoursite.com"  className="btn btn-primary btn-block mb-2 mx-auto">Send Email</a>  
+        <div className="card">
+          <img className="center pt-4" src={this.state.user.image} alt="Logo" />
+          <div className="card-body text-center">
+            <div className="d-flex flex-container-2">
+              <div className="rating">
+                <input
+                  id="rating-4"
+                  type="radio"
+                  name="rating"
+                  value="4"
+                  checked
+                />
+                <label for="rating-5">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input
+                  id="rating-4"
+                  type="radio"
+                  name="rating"
+                  value="4"
+                  checked
+                />
+                <label for="rating-4">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-3" type="radio" name="rating" value="3" />
+                <label for="rating-3">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-2" type="radio" name="rating" value="2" />
+                <label for="rating-2">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-1" type="radio" name="rating" value="1" />
+                <label for="rating-1">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+              </div>
             </div>
-          <div className="btn btn-primary mb-2 btn-block mx-auto address">
-          <h5><i className="fas fa-map-marker-alt"></i>Address: <a href="#">Italy</a></h5>
-          </div>
-          <div className="card-footer">
-            <small className="text-muted">Last updat 30 min</small>
+
+            <div className="card-title m-4">
+              <h4>
+                {this.state.user.first_name}&nbsp;
+                {this.state.user.last_name}
+              </h4>
+            </div>
+            <div>
+              <a
+                href="mailto:someone@yoursite.com"
+                className="btn btn-primary btn-block mb-2 mx-auto"
+              >
+                Send Email
+              </a>
+            </div>
+            <div className="btn btn-primary mb-2 btn-block mx-auto address">
+              <h5>
+                <i className="fas fa-map-marker-alt" />Address:{" "}
+                <a href="#">Italy</a>
+              </h5>
+            </div>
+            <div className="card-footer">
+              <small className="text-muted">Last updat 30 min</small>
+            </div>
           </div>
         </div>
+        <div className="card" hidden>
+          <ul>
+            {this.state.ownFreebies &&
+              this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+          </ul>
+          <ul>
+            {this.state.ownSkills &&
+              this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
+          </ul>
+        </div>
       </div>
-      <div className="card" hidden>
-      <ul>
-      {this.state.ownFreebies && this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
-      </ul>
-      <ul>
-      {this.state.ownSkills && this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
-      </ul>
-      </div>
-    </div>
     );
   }
 }
