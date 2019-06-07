@@ -48,24 +48,17 @@ const getFreebieById = (req, res, next) => {
 };
 
 const getFreebieUser = (req, res, next) => {
-  console.log("hello");
-  console.log("item", singleItem); 
+
+  console.log("req.body", req.body);
   try {
     const userQuery = `select * from public.users WHERE user_id='${
       req.body.user_id
     }'`;
     client.query(userQuery).then(response => {
-      console.log("Here we go", response.rows);
-      if (response.rows.length === 0) {
-        res.send(responseObject(404, "User not found"));
-      } else {
-        const payload = response.rows[0];
-        delete payload.password;
-
-        res.send(
-          responseObject(200, "Success", {user: payload})
-        );
-      }
+      console.log("User: ", response.rows);
+        const user = response.rows[0];
+        delete user.password;
+        res.send(user)
     });
   } catch (e) {
     console.log("ERROR", e);
@@ -113,6 +106,7 @@ router
   .route("/")
   .get(listFreebies)
   .post(addFreebie);
-router.route("/one").post(getFreebieById).get(getFreebieUser)
+router.route("/one").post(getFreebieById)
+router.route("/user").post(getFreebieUser)
 
 module.exports = router;
