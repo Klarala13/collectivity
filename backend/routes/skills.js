@@ -66,8 +66,8 @@ const addSkill = (req, res, next) => {
   
       const skillsQuery = "select * from public.skills";
       client.query(skillsQuery).then(response => {
-        const newSkill = response.rows;
-        res.send(newSkill);
+        const PlusNewSkill = response.rows;
+        res.send(PlusNewSkill);
       });
     } catch (e) {
       console.log("ERROR", e);
