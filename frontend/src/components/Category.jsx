@@ -9,7 +9,7 @@ class Category extends Component {
       <div className="form-group category">
         <label htmlFor="select">Category</label>
         <select
-          className="mdb-select md-form form-control"
+          className="mdb-select md-form center form-control"
           name="category"
           id="category"
           required
