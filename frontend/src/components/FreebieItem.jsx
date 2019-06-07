@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import FreebieItemPage from "./FreebieItemPage";
+
 
 class Item extends Component {
   render() {
@@ -13,14 +15,18 @@ class Item extends Component {
         <div className="card-body">
           <h5 className="card-title">{this.props.data.item}</h5>
           <p className="card-text ellipsis">{this.props.data.description}</p>
-          <NavLink
-            to="/messaging"
-            activeClassName="active"
-            className="mr-4 btn btn-freebie"
-          >
-            Request Freebies
-            <i className="mx-2 fas fa-angle-double-right icon-align-middle" />
-          </NavLink>
+          <div className="row">
+            <div className="col-6 d-flex justify-content-center">
+              <Link to={`/freebie/${this.props.data.item_id}`}/* {{ pathname: "/freebie", search: `?id=${this.props.data.item_id}`}} */ activeClassName="active">
+                <i class="fas fa-info-circle text-primary fa-2x" data-toggle="tooltip" data-placement="top" title="More Info"></i>
+              </Link>
+            </div>
+            <div className="col-6 d-flex justify-content-center">
+              <a href={'mailto:' + this.props.data.user} target="_blank">
+                <i className="far fa-envelope text-primary fa-2x" data-toggle="tooltip" data-placement="top" title="Contact User"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     );

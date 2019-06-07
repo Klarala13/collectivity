@@ -44,6 +44,14 @@ const TimeBank = props => {
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
+  const displayData = e => {
+    const url = "http://0.0.0.0:4001/skills";
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log("Yay! got my skills!", JSON.stringify(data)))
+      .catch(error => console.error("Uuuu, u know nothing John Snow", error));
+  };
 
   const handleValid = (e, condition) => {
     setSkill({ ...skill, [e.target.name]: e.target.value });
@@ -58,6 +66,12 @@ const TimeBank = props => {
   //console.log("disabled", isDisabled);
   //console.log("skill", skill);
   //console.log("isValid?", valid["skill"]);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    handleSubmit();
+    displayData();
+  };
 
   return (
     <div className="container">
@@ -82,7 +96,14 @@ const TimeBank = props => {
             </p>
           </div>
           <div className="p-2 bg-light flex-item ">
-            <form onSubmit={handleSubmit} className="form-skill" method="post">
+            <form
+              onSubmit={event => {
+                handleSubmit();
+                displayData();
+              }}
+              className="form-skill"
+              method="post"
+            >
               <div className="form-group p-2">
                 <h3 className="text-left">Insert your Skill here</h3>
                 <label>Skill</label>
@@ -159,6 +180,7 @@ const TimeBank = props => {
                     type="number"
                     className="form-control mb-2"
                     id="time_span"
+                    step=".01"
                     name="time_span"
                     value={skill.time_span}
                     placeholder="Hrs/Week"

@@ -50,18 +50,6 @@ class FreebieList extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h2 className="timeBank text-left">
-            <span>What is a Freebie?</span> <br />
-            It's an object you can get for free from another user
-          </h2>
-          <p className="text-left">
-            This project aims to minimize our consumption, which is why we want
-            to offer the possibility that you no longer have to acquire objects
-            but you can just get them from someone else. Have fun, be respectful
-            and responsible!
-          </p>
-        </div>
         <div className="row">
           {this.filteredItems().map(item => (
             <Item key={this.props.freebies.item_id} data={item} />

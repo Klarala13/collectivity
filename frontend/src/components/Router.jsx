@@ -11,6 +11,7 @@ import Help from "./Help";
 import Profile from "./Profile";
 import NavBar from "./NavBar";
 import NotFound from "./NotFound";
+import FreebieItemPage from "./FreebieItemPage";
 
 const Router = () => (
   <BrowserRouter>
@@ -20,6 +21,7 @@ const Router = () => (
         <Route exact path="/" component={App} />
         <Route path="/timebank" component={TimeBank} />
         <Route path="/freebies" component={Freebies} />
+        <Route path="/freebie/:item_id" component={FreebieItemPage} />
         <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
         <Route path="/register" component={Register} />
