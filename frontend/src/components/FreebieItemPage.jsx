@@ -27,7 +27,7 @@ constructor(props){
     })
     .then(res => res.json())
     .then(res => {
-      this.setState({ singleFreebie: res[0] });
+      this.setState({ singleFreebie: res });
     })
     
     }
