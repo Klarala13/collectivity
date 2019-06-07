@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const app = require("../app");
 
 // Connection to postgreSQL
 
@@ -46,6 +47,29 @@ const getFreebieById = (req, res, next) => {
   }
 };
 
+const getFreebieUser = (req, res, next) => {
+  try {
+    const userQuery = `select * from public.users WHERE user_id='${
+      req.body.user_id
+    }'`;
+    client.query(userQuery).then(response => {
+      console.log("Here we go", response.rows);
+      if (response.rows.length === 0) {
+        res.send(responseObject(404, "User not found"));
+      } else {
+        const payload = response.rows[0];
+        delete payload.password;
+
+        res.send(
+          responseObject(200, "Success", {user: payload})
+        );
+      }
+    });
+  } catch (e) {
+    console.log("ERROR", e);
+  }
+};
+
 const addFreebie = (req, res, next) => {
   console.log("req.body", req.body);
   try {
@@ -87,6 +111,6 @@ router
   .route("/")
   .get(listFreebies)
   .post(addFreebie);
-router.route("/one").post(getFreebieById)
+router.route("/one").post(getFreebieById, getFreebieUser)
 
 module.exports = router;
