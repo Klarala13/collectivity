@@ -37,8 +37,8 @@ const getFreebieById = (req, res, next) => {
   try {
     const freebieQuery = `select * from public.freebies where item_id=${req.body.item_id}`;
     client.query(freebieQuery).then(response => {
-      console.log("response", response.rows)
-      const singleItem = response.rows[0];
+      console.log(response.rows)
+      const singleItem = response.rows;
       res.send(singleItem);
     });
   } catch (e) {
