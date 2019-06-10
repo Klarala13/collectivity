@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class Skill extends Component {
+class SkillTable extends Component {
   render() {
     const { data } = this.props;
     return (
@@ -20,7 +20,7 @@ class Skill extends Component {
               <td>{data.data_id}</td>
               <td>{data.skill}</td>
               <td>{data.description}</td>
-              <td>{data.categoryRef.current}</td>
+              <td>{this.props.category}</td>
               <td>{data.location}</td>
               {/* <td>{data.time_span}</td> */}
             </tr>
@@ -30,4 +30,4 @@ class Skill extends Component {
     );
   }
 }
-export default Skill;
+export default SkillTable;

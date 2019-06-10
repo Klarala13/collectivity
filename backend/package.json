@@ -10,7 +10,7 @@
   "dependencies": {
     "body": "^5.1.0",
     "cloudinary": "^1.14.0",
-    "cookie-parser": "~1.4.3",
+    "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^7.0.0",
@@ -22,14 +22,14 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "lowdb": "^1.0.0",
-    "mongoose": "^5.5.2",
+    "mongoose": "^5.5.13",
     "morgan": "~1.9.0",
     "multer": "^1.4.1",
     "parser": "^0.1.4",
-    "pg": "^7.10.0",
+    "pg": "^7.11.0",
     "shortid": "^2.2.14"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.19.1"
   }
 }

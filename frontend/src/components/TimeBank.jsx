@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Category from "./Category";
-import Skill from "./Skill";
+import SkillTable from "./SkillTable";
 
 const TimeBank = props => {
   const [skill, setSkill] = useState(false);
@@ -158,7 +158,7 @@ const TimeBank = props => {
           </div>
         </div>
       </div>
-      {skill && <Skill data={skill} />}
+      {skill && <SkillTable data={skill} />}
     </div>
   );
 };

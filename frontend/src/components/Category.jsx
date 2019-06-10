@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 
-// const category = React.forwardRef((props, ref) => (
+// const option = React.forwardRef((props, ref) => (
 //   <option ref={ref} {...props} />
 // ));
 class Category extends Component {
+  // constructor(props) {
+  //   super(props);
+
+  //   this.state = {
+  //     catRef: React.createRef(option)
+  //   };
+  // }
+
   render() {
+    const option = this.props;
+    console.log(option);
     return (
       <div className="form-group category">
         <label htmlFor="select">Category</label>
@@ -15,33 +25,37 @@ class Category extends Component {
           required
         >
           <option value="">Make a selection</option>
-          <option value="House_Garden" ref="House_Garden">
+          <option value="House_Garden" ref={this.props}>
             House_Garden
           </option>
-          <option value="Fashion">Fashion</option>
-          <option value="Motors">Motors</option>
-          <option value="Entertainment" ref="Entertainment">
+          <option value="Fashion" ref={this.catRef}>
+            Fashion
+          </option>
+          <option value="Motors" ref={this.catRef}>
+            Motors
+          </option>
+          <option value="Entertainment" ref={this.catRef}>
             Entertainment
           </option>
-          <option value="Electronics" ref="Electronics">
+          <option value="Electronics" ref={this.catRef}>
             Electronics
           </option>
-          <option value="Art_Collectibles" ref="Art_Collectibles">
+          <option value="Art_Collectibles" ref={this.catRef}>
             Art_Collectibles
           </option>
-          <option value="Sports" ref="Sports">
+          <option value="Sports" ref={this.catRef}>
             Sports
           </option>
-          <option value="Toys" ref="Toys">
+          <option value="Toys" ref={this.catRef}>
             Toys
           </option>
-          <option value="Media" ref="Media">
+          <option value="Media" ref={this.catRef}>
             Media
           </option>
-          <option value="Others" ref="Others">
+          <option value="Others" ref={this.catRef}>
             Others
           </option>
-          <option value="Pets" ref="Pets">
+          <option value="Pets" ref={this.catRef}>
             Pets
           </option>
         </select>

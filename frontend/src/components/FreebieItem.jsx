@@ -18,7 +18,7 @@ class Item extends Component {
             <div className="col-6 d-flex justify-content-center">
               <Link
                 to={`/freebie/${this.props.data.item_id}`}
-                /* {{ pathname: "/freebie", search: `?id=${this.props.data.item_id}`}} */ activeClassName="active"
+                /* {{ pathname: "/freebie", search: `?id=${this.props.data.item_id}`}} */
               >
                 <i
                   class="fas fa-info-circle text-primary fa-2x"
