@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 
-const option = React.forwardRef((props, ref) => (
-  <option ref={ref} {...props} />
-));
+// const option = React.forwardRef((props, ref) => (
+//   <option ref={ref} {...props} />
+// ));
 class Category extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      catRef: React.createRef()
-    };
-  }
+  //   this.state = {
+  //     catRef: React.createRef(option)
+  //   };
+  // }
 
   render() {
+    const option = this.props;
+    console.log(option);
     return (
       <div className="form-group category">
         <label htmlFor="select">Category</label>
@@ -23,7 +25,7 @@ class Category extends Component {
           required
         >
           <option value="">Make a selection</option>
-          <option value="House_Garden" ref={this.catRef}>
+          <option value="House_Garden" ref={this.props}>
             House_Garden
           </option>
           <option value="Fashion" ref={this.catRef}>
