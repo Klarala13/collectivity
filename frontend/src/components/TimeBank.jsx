@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import Category from "./Category";
 import SkillTable from "./SkillTable";
 
 const TimeBank = props => {
