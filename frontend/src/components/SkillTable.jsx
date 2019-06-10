@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-class Skill extends Component {
+class SkillTable extends Component {
   render() {
     const { data } = this.props;
     return (
@@ -30,4 +30,4 @@ class Skill extends Component {
     );
   }
 }
-export default Skill;
+export default SkillTable;
