@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Category from "./Category";
+// import Category from "./Category";
 import SkillTable from "./SkillTable";
 
 const TimeBank = props => {
@@ -27,7 +27,7 @@ const TimeBank = props => {
     for (const [key, value] of formData.entries()) {
       skillObj[key] = value;
     }
-    // console.log(skillObj);
+    console.log(skillObj);
     fetch(url, {
       method: "POST",
       body: JSON.stringify(skillObj),
@@ -54,9 +54,9 @@ const TimeBank = props => {
     }
   };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
-  //console.log("disabled", isDisabled);
-  //console.log("skill", skill);
-  //console.log("isValid?", valid["skill"]);
+  // console.log("disabled", isDisabled);
+  // console.log("skill", skill);
+  // console.log("isValid?", valid["skill"]);
 
   return (
     <div className="container">
@@ -130,7 +130,51 @@ const TimeBank = props => {
                   placeholder="Where can u perform"
                   required
                 />
-                <Category />
+                {/* <Category /> */}
+                <div className="form-group category">
+                  <label htmlFor="select">Category</label>
+                  <select
+                    className="mdb-select md-form center form-control"
+                    name="category"
+                    id="category"
+                    required
+                  >
+                    <option value="">Make a selection</option>
+                    <option value="House_Garden" ref={this.catRef}>
+                      House_Garden
+                    </option>
+                    <option value="Fashion" ref={this.catRef}>
+                      Fashion
+                    </option>
+                    <option value="Motors" ref={this.catRef}>
+                      Motors
+                    </option>
+                    <option value="Entertainment" ref={this.catRef}>
+                      Entertainment
+                    </option>
+                    <option value="Electronics" ref={this.catRef}>
+                      Electronics
+                    </option>
+                    <option value="Art_Collectibles" ref={this.catRef}>
+                      Art_Collectibles
+                    </option>
+                    <option value="Sports" ref={this.catRef}>
+                      Sports
+                    </option>
+                    <option value="Toys" ref={this.catRef}>
+                      Toys
+                    </option>
+                    <option value="Media" ref={this.catRef}>
+                      Media
+                    </option>
+                    <option value="Others" ref={this.catRef}>
+                      Others
+                    </option>
+                    <option value="Pets" ref={this.catRef}>
+                      Pets
+                    </option>
+                  </select>
+                </div>
                 <label>Time Span</label>
                 <input
                   type="number"
@@ -149,7 +193,7 @@ const TimeBank = props => {
                   id="submit"
                   type="submit"
                   disabled={isDisabled}
-                  onClick={setSkill}
+                  onChange={setSkill}
                 >
                   Post Skill
                 </button>
@@ -158,7 +202,7 @@ const TimeBank = props => {
           </div>
         </div>
       </div>
-      {skill && <SkillTable data={skill} />}
+      <SkillTable />
     </div>
   );
 };
