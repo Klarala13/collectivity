@@ -118,10 +118,10 @@ const TimeBank = props => {
                   autoFocus
                   autoComplete="true"
                 />
-                <label>Location</label>
+                <label>Zip Code</label>
                 <input
                   onChange={e => handleValid(e, e.target.value.length >= 3)}
-                  type="text"
+                  type="number"
                   name="location"
                   value={skill.location}
                   className="form-control mb-2"
@@ -129,7 +129,6 @@ const TimeBank = props => {
                   placeholder="Where can u perform"
                   required
                 />
-                {/* <Category /> */}
                 <div className="form-group category">
                   <label htmlFor="select">Category</label>
                   <select
@@ -139,39 +138,17 @@ const TimeBank = props => {
                     required
                   >
                     <option value="">Make a selection</option>
-                    <option value="House_Garden" ref={this.catRef}>
-                      House_Garden
-                    </option>
-                    <option value="Fashion" ref={this.catRef}>
-                      Fashion
-                    </option>
-                    <option value="Motors" ref={this.catRef}>
-                      Motors
-                    </option>
-                    <option value="Entertainment" ref={this.catRef}>
-                      Entertainment
-                    </option>
-                    <option value="Electronics" ref={this.catRef}>
-                      Electronics
-                    </option>
-                    <option value="Art_Collectibles" ref={this.catRef}>
-                      Art_Collectibles
-                    </option>
-                    <option value="Sports" ref={this.catRef}>
-                      Sports
-                    </option>
-                    <option value="Toys" ref={this.catRef}>
-                      Toys
-                    </option>
-                    <option value="Media" ref={this.catRef}>
-                      Media
-                    </option>
-                    <option value="Others" ref={this.catRef}>
-                      Others
-                    </option>
-                    <option value="Pets" ref={this.catRef}>
-                      Pets
-                    </option>
+                    <option value="House_Garden">House_Garden</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Motors">Motors</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Art_Collectibles">Art_Collectibles</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Media">Media</option>
+                    <option value="Others">Others</option>
+                    <option value="Pets">Pets</option>
                   </select>
                 </div>
                 <label>Time Span</label>
@@ -188,7 +165,7 @@ const TimeBank = props => {
               </div>
               <div className="mb-3">
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-primary"
                   id="submit"
                   type="submit"
                   disabled={isDisabled}

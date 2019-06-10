@@ -13,25 +13,20 @@ class SkillTable extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(
-          "Response from the profile method in the backend",
-          response
-        );
+        console.log("Response from the skill method in the backend", response);
         this.setState({ skills: response });
         console.log("state", this.state);
       })
       .catch(error => {
         console.error("Error:", error);
-        console.error("User not found. Please try again.");
       });
   }
 
   render() {
-    // const { data } = this.props;
     return (
       <div className="container">
         <div className="row">
-          <table className="w-100">
+          <table className="w-100 table">
             <thead>
               <tr>
                 <th scope="col">User</th>
@@ -43,16 +38,15 @@ class SkillTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {console.log("hello", this.state)}
               {this.state.skills.map(baby => {
                 return (
                   <tr>
                     <td>The Admin</td>
                     <td>{baby.skill}</td>
-                    <td>{baby.description}</td>
+                    <td style={{ width: "300px" }}>{baby.description}</td>
                     <td>{baby.category}</td>
                     <td>{baby.location}</td>
-                    <td>{baby.time_span}</td>
+                    <td className="text-center">{baby.time_span}</td>
                   </tr>
                 );
               })}
