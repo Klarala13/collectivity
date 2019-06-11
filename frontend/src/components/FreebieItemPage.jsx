@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UserCard from "./UserCard";
 
 class FreebieItemPage extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class FreebieItemPage extends Component {
   }
 
   render() {
+
     return (
       <div className="container">
         <div className="row mb-5">
@@ -75,56 +77,14 @@ class FreebieItemPage extends Component {
             </div>
           </div>
           <div className="d-none d-lg-block col-lg-4">
-            <div className="card" style={{ width: "18rem" }}>
-              <h2 className="py-3 mb-0">User Info</h2>
-              <img
-                className="rounded-circle center"
-                src={this.state.singleUser.image}
-                alt="Card user"
-              />
-              <div className="card-body">
-                <h5 className="card-title font-weight-bold">
-                  {this.state.singleUser.first_name}{" "}
-                  {this.state.singleUser.last_name}
-                </h5>
-                <p className="card-text">
-                  City: {this.state.singleUser.city} <br />
-                  ZIP-Code: {this.state.singleUser.zip_code} <br />
-                  {/* Active Since: {activeSince} <br/> */}
-                </p>
-                <div className="col-12 d-flex justify-content-center">
-                  <a
-                    href={"mailto:" + this.state.singleUser.email}
-                    target="_blank"
-                  >
-                    <i
-                      className="far fa-envelope text-primary fa-2x"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Contact User"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <UserCard singleUser={this.state.singleUser} freebies={true}/>
           </div>
         </div>
         <div className="container">
           <h1>{this.state.singleFreebie.item}</h1>
           <p>{this.state.singleFreebie.description}</p>
-
-          <div className="d-block d-lg-none">
-            <h2>User Info</h2>
-            <p>
-              {this.state.singleUser.first_name}{" "}
-              {this.state.singleUser.last_name}
-            </p>
-            <img
-              className="rounded-circle center pt-4"
-              src={this.state.singleUser.image}
-              alt="First slide"
-            />
-            <p>ZIP Code: {this.state.singleFreebie.zip_code}</p>
+          <div className="d-block d-lg-none mt-5">
+            <UserCard singleUser={this.state.singleUser} freebies={true}/>
           </div>
         </div>
       </div>
