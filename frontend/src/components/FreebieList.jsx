@@ -2,20 +2,8 @@ import React, { Component } from "react";
 import Item from "./FreebieItem";
 
 class FreebieList extends Component {
-  //ToDo: Get request
   //Create the form for posting the FREEBIES
   //Add validation, search (inputting)field, etc.
-
-  // const url = "http://0.0.0.0:4001/items";
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then(data => console.log("Yay!", JSON.stringify(response)))
-  //     .catch(error =>
-  //       console.error("Uuuu, u fucked up! try again buddy", error)
-  //     );
-  // };
 
   filteredItems = () => {
     const filtered = [];
