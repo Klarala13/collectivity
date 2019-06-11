@@ -8,7 +8,7 @@ export default props => (
       <label htmlFor="image" type="image" alt="profile pic">
         <FontAwesomeIcon
           icon={faImage}
-          color="blue"
+          color="gray"
           className="m-1 p-1"
           size="3x"
         />
