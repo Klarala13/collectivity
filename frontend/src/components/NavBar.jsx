@@ -58,7 +58,7 @@ class NavBar extends Component {
               <span onClick={() => {
                     this.props.push("/profile")
                     window.location.reload();}}>
-                Logged in as &nbsp;
+                Logged in as: &nbsp;
                 {Auth.getProfile().first_name}&nbsp;
                 {Auth.getProfile().last_name}
               </span>
