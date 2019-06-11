@@ -3,12 +3,12 @@ import React, { Component } from "react";
 class FreebieFilter extends Component {
   filters = [
     "All",
-    "House&Garden",
+    "House_Garden",
     "Fashion",
     "Motors",
     "Entertainment",
     "Electronics",
-    "Art/Collectibles",
+    "Art_Collectibles",
     "Sports",
     "Toys",
     "Media",
