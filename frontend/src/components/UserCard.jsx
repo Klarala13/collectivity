@@ -30,30 +30,30 @@ class UserCard extends Component{
                 />
                 <span className="w-100 text-center mt-3">joined on {parsedDate}</span>
                 <div className="card-body">
-                <div className="container">
-                    <table className="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <th scope="row" className="text-right">City</th>
-                                <td className="text-center">{this.props.singleUser.city} ({this.props.singleUser.zip_code})</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div className="container">
+                        <table className="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" className="text-right">City</th>
+                                    <td className="text-center">{this.props.singleUser.city} ({this.props.singleUser.zip_code})</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div className="col-12 d-flex justify-content-center">
-                    <a
-                    href={"mailto:" + this.props.singleUser.email}
-                    target="_blank"
-                    >
-                    <i
-                        className="far fa-envelope text-primary fa-2x"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Contact User"
-                    />
-                    </a>
-                </div>
+                    <div className="col-12 d-flex justify-content-center">
+                        <a
+                        href={"mailto:" + this.props.singleUser.email}
+                        target="_blank"
+                        >
+                        <i
+                            className="far fa-envelope text-primary fa-2x"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Contact User"
+                        />
+                        </a>
+                    </div>
                 </div>
             </div>
         )
