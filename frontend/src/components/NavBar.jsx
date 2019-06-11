@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 
 class NavBar extends Component {
   state = {
@@ -14,7 +14,7 @@ class NavBar extends Component {
       <nav className="navbar navbar-light navbar-expand-lg sticky-top nav-main">
         <div className="container">
           <NavLink to="/" activeClassName="active" className="navbar-brand">
-            <img className="logo2" src={logo} alt="logo"/>
+            <img className="logo2" src={logo} alt="logo" />
           </NavLink>
           <button
             className="navbar-toggler"
@@ -50,9 +50,16 @@ class NavBar extends Component {
                   About
                 </NavLink>
               </div>
-              <NavLink to="/login" activeClassName="active" className="ml-md-auto">
+              <NavLink
+                to="/login"
+                activeClassName="active"
+                className="ml-md-auto"
+              >
                 Login
               </NavLink>
+              {/* <NavLink to="/" activeClassName="active" className="ml-md-auto">
+                LogOut
+              </NavLink> */}
             </nav>
           </div>
         </div>
