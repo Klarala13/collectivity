@@ -13,16 +13,16 @@ class FreebieList extends Component {
 
       if (
         this.props.filter === "All" ||
-        (this.props.filter === "House&Garden" &&
-          item.category === "House&Garden") ||
+        (this.props.filter === "House_Garden" &&
+          item.category === "House_Garden") ||
         (this.props.filter === "Fashion" && item.category === "Fashion") ||
         (this.props.filter === "Motors" && item.category === "Motors") ||
         (this.props.filter === "Entertainment" &&
           item.category === "Entertainment") ||
         (this.props.filter === "Electronics" &&
           item.category === "Electronics") ||
-        (this.props.filter === "Art/Collectibles" &&
-          item.category === "Art/Collectibles") ||
+        (this.props.filter === "Art_Collectibles" &&
+          item.category === "Art_Collectibles") ||
         (this.props.filter === "Sports" && item.category === "Sports") ||
         (this.props.filter === "Toys" && item.category === "Toys") ||
         (this.props.filter === "Media" && item.category === "Media") ||
