@@ -1,8 +1,9 @@
-
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import AuthService from "./AuthService";
+const Auth = AuthService.getInstance();
 
 class Profile extends Component {
   constructor(props) {
@@ -14,91 +15,27 @@ class Profile extends Component {
     this.setState({ popup: !this.state.popup });
   }
   componentDidMount() {
-    const url = "http://localhost:4001/users/";
-    const userEndpoint = "profile";
-    const freebiesEndpoint = "own_freebies";
-    const skillsEndpoint = "own_skills";
-
-    // fetch user
-
-    fetch(url + userEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    Auth.fetch(`/profile`).then(response => {
+      if (response.status === 200) {
+        this.setState({ user: response.data.user });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.user);
-          this.setState({ user: response.data.user });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("User not found. Please try again.");
-      });
-
-    // fetch own freebies
-
-    fetch(url + freebiesEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    });
+    Auth.fetch(`/own_freebies`).then(response => {
+      if (response.status === 200) {
+        this.setState({ ownFreebies: response.data.freebies });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile freebies method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.freebies);
-          this.setState({ ownFreebies: response.data.freebies });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("Freebies not found. Please try again.");
-      });
-
-    // fetch own skills
-
-    fetch(url + skillsEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    });
+    Auth.fetch(`/own_skills`).then(response => {
+      if (response.status === 200) {
+        this.setState({ ownSkills: response.data.skills });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile skills method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.skills);
-          this.setState({ ownSkills: response.data.skills });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("Skills not found. Please try again.");
-      });
+    });
   }
   render() {
     console.log(this.props);
@@ -164,8 +101,8 @@ class Profile extends Component {
             </div>
             <div className="btn btn-primary mb-2 btn-block mx-auto address">
               <h5>
-                <i className="fas fa-map-marker-alt" />Address:{" "}
-                <a href="#">Italy</a>
+                <i className="fas fa-map-marker-alt" />
+                Address: <a href="#">Italy</a>
               </h5>
             </div>
             <div className="card-footer text-center">

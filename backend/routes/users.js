@@ -169,6 +169,8 @@ const signIn = (req, res, next) => {
       } else {
         const payload = {
           email: response.rows[0].email,
+          first_name: response.rows[0].first_name,
+          last_name: response.rows[0].last_name,
           user_id: response.rows[0].user_id
 
         };

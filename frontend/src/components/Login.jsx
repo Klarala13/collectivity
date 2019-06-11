@@ -21,6 +21,7 @@ function Login(props) {
           if (response.data.token) {
             localStorage.setItem("token", response.data.token);
             props.history.push("/profile");
+            window.location.reload()
           }
         } else {
           alert(response.message);
