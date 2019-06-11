@@ -268,6 +268,10 @@ export default props => {
                         or services (collectively, "Website" or "Services").
                       </div>
                       <div>
+                        <b>Data Usage</b> We have asked you for your email but
+                        you will <b>never</b> receive newsletters or other info
+                        from us. Your email will be used by other users to
+                        contact you in regards to the items/skills you share.
                         <b>Accounts and membership</b> If you create an account
                         on the website, you are responsible for maintaining the
                         security of your account and you are fully responsible
