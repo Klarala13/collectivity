@@ -272,6 +272,8 @@ export default props => {
                         you will <b>never</b> receive newsletters or other info
                         from us. Your email will be used by other users to
                         contact you in regards to the items/skills you share.
+                      </div>
+                      <div>
                         <b>Accounts and membership</b> If you create an account
                         on the website, you are responsible for maintaining the
                         security of your account and you are fully responsible
@@ -358,9 +360,9 @@ export default props => {
                     Check to accept
                   </label>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 p-3 m-1">
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-secondary"
                     id="submit"
                     type="submit"
                     disabled={isDisabled}

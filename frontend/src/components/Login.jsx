@@ -16,7 +16,7 @@ function Login(props) {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("Response from the signin method in the backend", response);
+        // console.log("Response from the signIn method in the backend", response);
         if (response.status === 200) {
           if (response.data.token) {
             localStorage.setItem("token", response.data.token);

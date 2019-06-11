@@ -70,8 +70,7 @@ h2 {
 
 /* header */
 .header,
-.about,
-.header {
+.about{
   text-align: center;
   width: 100%;
   /* scroll-snap-align: center; */
@@ -111,18 +110,20 @@ p.text-left {
 .skill-board{
   display: inline-block;
 }
+
+.bd-border {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+  }
+
 /* form-signin */
 .form-signin {
   padding: 1rem;
   text-align: center;
 }
 
-/* app */
-/* .app {
-  height: 100vh;
-  text-align: center;
-  justify-content: center;
-} */
 
 .top-100 {
   top: 100px;
@@ -171,6 +172,11 @@ p.text-left {
 .rating input:checked + label ~ label {
 	color: #ffc107; 
 }
+
+.rating-star{
+margin: 0 0.2rem
+}
+
 .fa-map-marker-alt{
   font-size: 1rem;
   color: white;

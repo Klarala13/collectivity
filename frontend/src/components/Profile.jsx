@@ -44,11 +44,12 @@ class Profile extends Component {
     const skills = this.state.ownSkills;
     console.log("Skills", skills);
     return (
-      <div className="card-deck">
-        <div className="card">
+      <div className="row">
+        <div className="col-md-4 offset-md-4">
+          <div className="card">
           <img className="center pt-4" src={this.state.user.image} alt="Logo" />
           <div className="card-body m-4">
-            <div className="d-flex m-4 text-center">
+            <div className="d-flex justify-content-center text-center">
               <div className="rating">
                 <input
                   id="rating-4"
@@ -119,6 +120,7 @@ class Profile extends Component {
             {this.state.ownSkills &&
               this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
           </ul>
+        </div>
         </div>
       </div>
     );
