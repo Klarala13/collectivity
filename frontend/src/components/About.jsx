@@ -89,7 +89,7 @@ class About extends React.Component {
                   COLLECTIVELY we are stronger. You don't have to give to take.{" "}
                 </p>
                 </div>
-              
+                <div className="mb-5">
                 <h3 id="how">How It Works</h3>
                 <p>
                   There are two main sections: Freebees (sharing of items) and
@@ -99,6 +99,8 @@ class About extends React.Component {
                   distribute the goodies, we geo-locate our users to facilitate
                   your access.{" "}
                 </p>
+                </div>
+                <div className="mb-5">
                 <h3 id="donation">Donations</h3>
                 <p>
                   You can also collaborate in the project by making a small
@@ -106,15 +108,19 @@ class About extends React.Component {
                   servers and other technologies that allow our project to move
                   forward!
                 </p>
+                <div className="text-center">
                 <a
                   href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
-                  className="btn btn-primary mx-auto"
+                  className="btn btn-primary btn-block mx-auto"
                   alt="donate money"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Donate
                 </a>
+                </div>
+                </div>
+                <div className="mb-5">
                 <h3 id="rules">Rules</h3>
                 <p>
                   {" "}
@@ -122,6 +128,8 @@ class About extends React.Component {
                   item returned, please rate the user according to punctuality,
                   state of the item returned, etc.
                 </p>
+                </div>
+                <div className="mb-5">
                 <h3 id="safety">Safety</h3>
                 <p>
                   {" "}
@@ -131,8 +139,8 @@ class About extends React.Component {
                   problems, contact our team and we will try to find a solution
                   together.{" "}
                 </p>
-                <h3 id="whoMade">Who made it</h3>
-                <p>...</p>
+                </div>
+                <h3 className="mb-4" id="whoMade">Who made it</h3>
                 <div className="row w-100">
                   <div className="card col-lg-6">
                     <img
@@ -194,9 +202,9 @@ class About extends React.Component {
                       src={Leena}
                     />
                     <div className="card-body">
-                      <h5 className="card-title"> Leena MK </h5>
+                      <h5 className="card-title"> Leena Mkarem </h5>
                       <p className="card-text">
-                        Designer and Front End Developer
+                       Front End Developer and Designer 
                       </p>
                       <a
                         href="https://leenamk.com/"
