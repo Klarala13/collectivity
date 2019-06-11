@@ -41,20 +41,6 @@ class SkillTable extends Component {
   //   return filtered;
   // };
 
-  componentDidMount() {
-    fetch("http://localhost:4001/skills", {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log("Response from the skill method in the backend", response);
-        this.setState({ skills: response });
-        //console.log("state", this.state);
-      })
-      .catch(error => {
-        console.error("Error:", error);
-      });
-  }
   // setFilter = filter => {
   //   this.setState(state => {
   //     state.filter = filter;
@@ -63,6 +49,8 @@ class SkillTable extends Component {
   // };
 
   render() {
+    console.log("skills", this.state.skills);
+
     return (
       <div className="container">
         <div className="row">

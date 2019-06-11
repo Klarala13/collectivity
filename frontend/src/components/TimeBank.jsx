@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SkillTable from "./SkillTable";
 
 const TimeBank = props => {
+  useEffect(() => {
+    fetch("http://localhost:4001/skills", {
+      method: "GET"
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log("Response from the skill method in the backend", response);
+        setSkills({ skills: response });
+        //console.log("state", this.state);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  }, []);
   const [skill, setSkill] = useState(false);
+  const [skills, setSkills] = useState([]);
   const [valid, setValid] = useState({
     skill: false,
     description: false,
@@ -11,7 +26,7 @@ const TimeBank = props => {
     time_span: true,
     token: true
   });
-
+  //Need to turn res object INTO AN ARRAY BECAUSE PUSH IS AN ARRAY METHOD
   const handleSubmit = e => {
     e.preventDefault();
     const url = "http://0.0.0.0:4001/skills";
@@ -38,6 +53,7 @@ const TimeBank = props => {
       .then(res => res.json())
       .then(res => {
         console.log("Good job! u posted ur skill!", res);
+        setSkills(skills.push(res));
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)
@@ -178,7 +194,7 @@ const TimeBank = props => {
           </div>
         </div>
       </div>
-      <SkillTable />
+      <SkillTable skills={skills} />
     </div>
   );
 };
