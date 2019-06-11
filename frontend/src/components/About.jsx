@@ -77,19 +77,24 @@ class About extends React.Component {
                 className="scroll"
               >
                 <div className="mb-5">
-                <h3 id="about">About</h3>
-                <p>
-                  Collectivity comes from Collective and Connecting. It is a
-                  platform for sharing skills/items to alienate us from
-                  capitalism and consumption. You can share/ask for items
-                  without an account in the Freebee section or you can create an
-                  account and also offer/ask for some type of activity, for
-                  example, if you are a plummer, you can offer your services for
-                  X hrs/week. It is not reciprocate. The idea is that
-                  COLLECTIVELY we are stronger. You don't have to give to take.{" "}
-                </p>
+                  <h3 id="about">About</h3>
+                  <p>
+                    Collectivity comes from Collective and Connecting. It is a
+                    platform for sharing skills/items to alienate us from
+                    capitalism and consumption. You can share/ask for items
+                    without an account in the Freebee section or you can create
+                    an account and also offer/ask for some type of activity, for
+                    example, if you are a plummer, you can offer your services
+                    for X hrs/week. It is not reciprocate. The idea is that
+                    COLLECTIVELY we are stronger. You don't have to give to
+                    take.{" "}
+                  </p>
                 </div>
+<<<<<<< HEAD
                 <div className="mb-5">
+=======
+
+>>>>>>> 50080b22c9d9170d00bcc0a1cb5445f0c87a4ece
                 <h3 id="how">How It Works</h3>
                 <p>
                   There are two main sections: Freebees (sharing of items) and
@@ -139,12 +144,16 @@ class About extends React.Component {
                   problems, contact our team and we will try to find a solution
                   together.{" "}
                 </p>
+<<<<<<< HEAD
                 </div>
                 <h3 className="mb-4" id="whoMade">Who made it</h3>
+=======
+                <h3 id="whoMade">Who made it</h3>
+>>>>>>> 50080b22c9d9170d00bcc0a1cb5445f0c87a4ece
                 <div className="row w-100">
-                  <div className="card col-lg-6">
+                  <div className="card col-lg-5 m-2">
                     <img
-                      className="card-img-top"
+                      className="card-img-top p-3"
                       src={elise}
                       alt="profile pic"
                     />
@@ -160,9 +169,9 @@ class About extends React.Component {
                       </a>
                     </div>
                   </div>
-                  <div className="card col-lg-6">
+                  <div className="card col-lg-5 m-2">
                     <img
-                      className="card-img-top"
+                      className="card-img-top p-3"
                       alt="Profile pic"
                       src={clara}
                     />
@@ -181,8 +190,12 @@ class About extends React.Component {
                   </div>
                 </div>
                 <div className="row w-100">
-                  <div className="card col-lg-6">
-                    <img className="card-img-top" src={max} alt="profile pic" />
+                  <div className="card col-lg-5 m-2">
+                    <img
+                      className="card-img-top p-3"
+                      src={max}
+                      alt="profile pic"
+                    />
                     <div className="card-body">
                       <h5 className="card-title">Max Meeks</h5>
                       <p className="card-text">Front End Developer</p>
@@ -195,11 +208,12 @@ class About extends React.Component {
                       </a>
                     </div>
                   </div>
-                  <div className="card col-lg-6">
+                  <div className="card col-lg-5 m-2">
                     <img
-                      className="card-img-top"
+                      className="card-img-top p-3"
                       alt="Profile pic"
                       src={Leena}
+                      style={{ width: "320px", height: "230px" }}
                     />
                     <div className="card-body">
                       <h5 className="card-title"> Leena Mkarem </h5>
