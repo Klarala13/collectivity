@@ -1,4 +1,4 @@
-import Leena from "../assets/Leena.jpg";
+
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
@@ -109,62 +109,78 @@ class Profile extends Component {
     return (
       <div className="card-deck">
         <div className="card">
-          <img className="rounded-circle center pt-4" src={Leena} alt="Logo" />
-          <div className="card-body text-center">
-            <div className="d-flex flex-row flex-container-2">
-              <div className="profile-messages m-2 flex-item">
-                <button
-                  onClick={e => {
-                    this.togglePopup(e);
-                  }}
-                  className="contact"
-                >
-                  <span className="check">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="text-primary"
-                      size="2x"
-                    />
-                  </span>
-                </button>
-              </div>
-
-              <div className="profile-follow m-2 flex-item">
-                <button className="contact" href="#">
-                  <span className="check">
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      className="text-primary"
-                      size="2x"
-                    />
-                  </span>
-                </button>
+          <img className="center pt-4" src={this.state.user.image} alt="Logo" />
+          <div className="card-body m-4">
+            <div className="d-flex m-4 text-center">
+              <div className="rating">
+                <input
+                  id="rating-4"
+                  type="radio"
+                  name="rating"
+                  value="4"
+                  checked
+                />
+                <label for="rating-5">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input
+                  id="rating-4"
+                  type="radio"
+                  name="rating"
+                  value="4"
+                  checked
+                />
+                <label for="rating-4">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-3" type="radio" name="rating" value="3" />
+                <label for="rating-3">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-2" type="radio" name="rating" value="2" />
+                <label for="rating-2">
+                  <i className="fas fa-1x fa-star" />
+                </label>
+                <input id="rating-1" type="radio" name="rating" value="1" />
+                <label for="rating-1">
+                  <i className="fas fa-1x fa-star" />
+                </label>
               </div>
             </div>
-            <div className="card-title m-4">
+
+            <div className="card-title m-4 text-center">
               <h4>
-                {this.state.user.first_name}
+                {this.state.user.first_name}&nbsp;
                 {this.state.user.last_name}
               </h4>
             </div>
-            <button
-              type="button"
-              className="btn btn-primary btn-block mb-2 mx-auto"
-            >
-              Posts
-            </button>
-            <button type="button" className="btn btn-primary btn-block mx-auto">
-              Orders
-            </button>
-            <div className="card-footer">
+            <div>
+              <a
+                href="mailto:someone@yoursite.com"
+                className="btn btn-primary btn-block mb-2 mx-auto"
+              >
+                Send Email
+              </a>
+            </div>
+            <div className="btn btn-primary mb-2 btn-block mx-auto address">
+              <h5>
+                <i className="fas fa-map-marker-alt" />Address:{" "}
+                <a href="#">Italy</a>
+              </h5>
+            </div>
+            <div className="card-footer text-center">
               <small className="text-muted">Last updat 30 min</small>
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="card" hidden>
           <ul>
             {this.state.ownFreebies &&
               this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+          </ul>
+          <ul>
+            {this.state.ownSkills &&
+              this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
           </ul>
         </div>
       </div>
