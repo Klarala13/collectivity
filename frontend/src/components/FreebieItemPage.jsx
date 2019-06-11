@@ -60,30 +60,16 @@ class FreebieItemPage extends Component {
       <div className="container">
         <div className="row mb-5">
           <div className="col-lg-8">
-            <div
-              id="carouselExampleSlidesOnly"
-              className="carousel slide"
-              data-ride="carousel"
-            >
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    className="d-block w-100"
-                    src={this.state.singleFreebie.image}
-                    alt="First slide"
-                  />
-                </div>
-              </div>
-            </div>
+            <img
+                className="d-block mb-5"
+                src={this.state.singleFreebie.image}
+                alt={this.state.singleFreebie.item}
+                style={{ width: "500px" }}
+              />
+            <h1>{this.state.singleFreebie.item}</h1>
+            <p>{this.state.singleFreebie.description}</p>
           </div>
-          <div className="d-none d-lg-block col-lg-4">
-            <UserCard singleUser={this.state.singleUser} freebies={true}/>
-          </div>
-        </div>
-        <div className="container">
-          <h1>{this.state.singleFreebie.item}</h1>
-          <p>{this.state.singleFreebie.description}</p>
-          <div className="d-block d-lg-none mt-5">
+          <div className="col-lg-4">
             <UserCard singleUser={this.state.singleUser} freebies={true}/>
           </div>
         </div>
