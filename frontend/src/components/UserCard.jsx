@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dateformat from "dateformat";
+import Rating from "./Rating";
 
 class UserCard extends Component{
     render() {
@@ -28,7 +29,7 @@ class UserCard extends Component{
                 src={this.props.singleUser.image}
                 alt="Card user"
                 />
-                <span className="w-100 text-center mt-3">joined on {parsedDate}</span>
+                <Rating rating={this.props.singleUser.rating}/>
                 <div className="card-body">
                     <div className="container">
                         <table className="table table-borderless">
@@ -36,6 +37,10 @@ class UserCard extends Component{
                                 <tr>
                                     <th scope="row" className="text-right">City</th>
                                     <td className="text-center">{this.props.singleUser.city} ({this.props.singleUser.zip_code})</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" className="text-right">Joined</th>
+                                    <td className="text-center">{parsedDate}</td>
                                 </tr>
                             </tbody>
                         </table>

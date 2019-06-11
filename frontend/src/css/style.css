@@ -164,6 +164,11 @@ p.text-left {
 .rating input:checked + label ~ label {
 	color: #ffc107; 
 }
+
+.rating-star{
+margin: 0 0.2rem
+}
+
 .fa-map-marker-alt{
   font-size: 1rem;
   color: white;
