@@ -1,8 +1,4 @@
-
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 class Profile extends Component {
   constructor(props) {
@@ -164,8 +160,11 @@ class Profile extends Component {
             </div>
             <div className="btn btn-primary mb-2 btn-block mx-auto address">
               <h5>
-                <i className="fas fa-map-marker-alt" />Address:{" "}
-                <a href="#">Italy</a>
+                <i className="fas fa-map-marker-alt" />
+                Address:{" "}
+                <a href="#" rel="noopener noreferrer">
+                  Italy
+                </a>
               </h5>
             </div>
             <div className="card-footer text-center">
