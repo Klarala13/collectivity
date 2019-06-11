@@ -110,8 +110,8 @@ class Profile extends Component {
       <div className="card-deck">
         <div className="card">
           <img className="center pt-4" src={this.state.user.image} alt="Logo" />
-          <div className="card-body text-center">
-            <div className="d-flex flex-container-2">
+          <div className="card-body m-4">
+            <div className="d-flex m-4 text-center">
               <div className="rating">
                 <input
                   id="rating-4"
@@ -148,7 +148,7 @@ class Profile extends Component {
               </div>
             </div>
 
-            <div className="card-title m-4">
+            <div className="card-title m-4 text-center">
               <h4>
                 {this.state.user.first_name}&nbsp;
                 {this.state.user.last_name}
@@ -168,7 +168,7 @@ class Profile extends Component {
                 <a href="#">Italy</a>
               </h5>
             </div>
-            <div className="card-footer">
+            <div className="card-footer text-center">
               <small className="text-muted">Last updat 30 min</small>
             </div>
           </div>
