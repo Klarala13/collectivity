@@ -9,7 +9,7 @@ const TimeBank = props => {
       .then(response => response.json())
       .then(response => {
         console.log("Response from the skill method in the backend", response);
-        setSkills({ skills: response });
+        setSkills(response);
         //console.log("state", this.state);
       })
       .catch(error => {
@@ -53,7 +53,7 @@ const TimeBank = props => {
       .then(res => res.json())
       .then(res => {
         console.log("Good job! u posted ur skill!", res);
-        setSkills(skills.push(res));
+        setSkills(res);
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)

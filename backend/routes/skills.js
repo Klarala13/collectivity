@@ -34,19 +34,13 @@ const listSkills = (req, res, next) => {
 
 const addSkill = (req, res, next) => {
   console.log("req.body", req.body);
-    const {
-      skill,
-      description,
-      location,
-      time_span,
-      category
-    } = req.body;
+  const { skill, description, location, time_span, category } = req.body;
 
   const token = req.headers["authorization"];
 
   console.log("Token", token);
 
-     if (token) {
+  if (token) {
     try {
       const decoded = jwt.verify(token, "SUPERSECRET");
 
@@ -55,7 +49,7 @@ const addSkill = (req, res, next) => {
       const user_id = req.decoded.user_id;
 
       console.log(user_id);
-    
+
       client.query(
         `INSERT INTO public.skills("skill", "description", "location", "time_span", "category", "user_id") 
         VALUES ('${skill}', '${description}', '${location}', '${Number(
@@ -63,7 +57,7 @@ const addSkill = (req, res, next) => {
         )}', '${category}', '${user_id}')`
       );
       console.log("New skill added");
-  
+
       const skillsQuery = "select * from public.skills";
       client.query(skillsQuery).then(response => {
         const PlusNewSkill = response.rows;
