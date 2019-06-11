@@ -1,56 +1,65 @@
 import React, { Component } from 'react';
 
 class Rating extends Component{
+    constructor(props){
+        super(props);
+        this.ratingOne = React.createRef();
+        this.ratingTwo = React.createRef();
+        this.ratingThree = React.createRef();
+        this.ratingFour = React.createRef();
+        this.ratingFive = React.createRef();
+    }
+    
     render() {
         if(this.props.rating === 0) {
-            document.getElementById("rating-1").style.color = "#ddd"
-            document.getElementById("rating-2").style.color = "#ddd"
-            document.getElementById("rating-3").style.color = "#ddd"
-            document.getElementById("rating-4").style.color = "#ddd"
-            document.getElementById("rating-5").style.color = "#ddd"
+            this.ratingOne.current.style.color = "#ddd"
+            this.ratingTwo.current.style.color = "#ddd"
+            this.ratingThree.current.style.color = "#ddd"
+            this.ratingFour.current.style.color = "#ddd"
+            this.ratingFive.current.style.color = "#ddd"
         }
         if(this.props.rating === 1) {
-            document.getElementById("rating-1").style.color = "#ffc107"
-            document.getElementById("rating-2").style.color = "#ddd"
-            document.getElementById("rating-3").style.color = "#ddd"
-            document.getElementById("rating-4").style.color = "#ddd"
-            document.getElementById("rating-5").style.color = "#ddd"
+            this.ratingOne.current.style.color = "#ffc107"
+            this.ratingTwo.current.style.color = "#ddd"
+            this.ratingThree.current.style.color = "#ddd"
+            this.ratingFour.current.style.color = "#ddd"
+            this.ratingFive.current.style.color = "#ddd"
         }
         if(this.props.rating === 2) {
-            document.getElementById("rating-1").style.color = "#ffc107"
-            document.getElementById("rating-2").style.color = "#ffc107"
-            document.getElementById("rating-3").style.color = "#ddd"
-            document.getElementById("rating-4").style.color = "#ddd"
-            document.getElementById("rating-5").style.color = "#ddd"
+            this.ratingOne.current.style.color = "#ffc107"
+            this.ratingTwo.current.style.color = "#ffc107"
+            this.ratingThree.current.style.color = "#ddd"
+            this.ratingFour.current.style.color = "#ddd"
+            this.ratingFive.current.style.color = "#ddd"
         }
         if(this.props.rating === 3) {
-            document.getElementById("rating-1").style.color = "#ffc107"
-            document.getElementById("rating-2").style.color = "#ffc107"
-            document.getElementById("rating-3").style.color = "#ffc107"
-            document.getElementById("rating-4").style.color = "#ddd"
-            document.getElementById("rating-5").style.color = "#ddd"
+            this.ratingOne.current.style.color = "#ffc107"
+            this.ratingTwo.current.style.color = "#ffc107"
+            this.ratingThree.current.style.color = "#ffc107"
+            this.ratingFour.current.style.color = "#ddd"
+            this.ratingFive.current.style.color = "#ddd"
         }
         if(this.props.rating === 4) {
-            document.getElementById("rating-1").style.color = "#ffc107"
-            document.getElementById("rating-2").style.color = "#ffc107"
-            document.getElementById("rating-3").style.color = "#ffc107"
-            document.getElementById("rating-4").style.color = "#ffc107"
-            document.getElementById("rating-5").style.color = "#ddd"
+            this.ratingOne.current.style.color = "#ffc107"
+            this.ratingTwo.current.style.color = "#ffc107"
+            this.ratingThree.current.style.color = "#ffc107"
+            this.ratingFour.current.style.color = "#ffc107"
+            this.ratingFive.current.style.color = "#ddd"
         }
         if(this.props.rating === 5) {
-            document.getElementById("rating-1").style.color = "#ffc107"
-            document.getElementById("rating-2").style.color = "#ffc107"
-            document.getElementById("rating-3").style.color = "#ffc107"
-            document.getElementById("rating-4").style.color = "#ffc107"
-            document.getElementById("rating-5").style.color = "#ffc107"
+            this.ratingOne.current.style.color = "#ffc107"
+            this.ratingTwo.current.style.color = "#ffc107"
+            this.ratingThree.current.style.color = "#ffc107"
+            this.ratingFour.current.style.color = "#ffc107"
+            this.ratingFive.current.style.color = "#ffc107"
         }
         return(
             <div className="d-flex justify-content-center mt-3">
-                <i id="rating-1" className="fas fa-1x fa-star rating-star" />
-                <i id="rating-2" className="fas fa-1x fa-star rating-star" />
-                <i id="rating-3" className="fas fa-1x fa-star rating-star" />
-                <i id="rating-4" className="fas fa-1x fa-star rating-star" />
-                <i id="rating-5" className="fas fa-1x fa-star rating-star" />
+                <i ref={this.ratingOne} className="fas fa-1x fa-star rating-star" />
+                <i ref={this.ratingTwo} className="fas fa-1x fa-star rating-star" />
+                <i ref={this.ratingThree} className="fas fa-1x fa-star rating-star" />
+                <i ref={this.ratingFour} className="fas fa-1x fa-star rating-star" />
+                <i ref={this.ratingFive} className="fas fa-1x fa-star rating-star" />
             </div>
         )
     }
