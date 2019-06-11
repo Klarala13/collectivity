@@ -5,11 +5,11 @@ class UserCard extends Component{
     render() {
         function propsHandler(props){
             if (props.freebies) {
-                return <p className="pl-3 pt-3">Who owns this item?</p>
+                return <span className="text-center pt-3">Who owns this item?</span>
             }
     
             if (props.timebanks) {
-                return <p className="pl-3 pt-3">Who is offering this skill?</p>
+                return <span className="text-center pt-3">Who is offering this skill?</span>
             }
         }
 
@@ -19,7 +19,7 @@ class UserCard extends Component{
         return (
             <div className="card" style={{ width: "18rem" }}>
                 {propsHandler(this.props)}
-                <h2 className="py-3 mb-0">
+                <h2 className="py-3 mb-0 card-title">
                 {this.props.singleUser.first_name}{" "}
                 {this.props.singleUser.last_name}
                 </h2>
@@ -30,26 +30,30 @@ class UserCard extends Component{
                 />
                 <span className="w-100 text-center mt-3">joined on {parsedDate}</span>
                 <div className="card-body">
-                <h5 className="card-title font-weight-bold">
+                    <div className="container">
+                        <table className="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" className="text-right">City</th>
+                                    <td className="text-center">{this.props.singleUser.city} ({this.props.singleUser.zip_code})</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                </h5>
-                <p className="card-text">
-                    City: {this.props.singleUser.city} <br />
-                    ZIP-Code: {this.props.singleUser.zip_code} <br />
-                </p>
-                <div className="col-12 d-flex justify-content-center">
-                    <a
-                    href={"mailto:" + this.props.singleUser.email}
-                    target="_blank"
-                    >
-                    <i
-                        className="far fa-envelope text-primary fa-2x"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Contact User"
-                    />
-                    </a>
-                </div>
+                    <div className="col-12 d-flex justify-content-center">
+                        <a
+                        href={"mailto:" + this.props.singleUser.email}
+                        target="_blank"
+                        >
+                        <i
+                            className="far fa-envelope text-primary fa-2x"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Contact User"
+                        />
+                        </a>
+                    </div>
                 </div>
             </div>
         )
