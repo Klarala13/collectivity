@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Category from "./Category";
 import SkillTable from "./SkillTable";
 
 const TimeBank = props => {
@@ -27,7 +26,7 @@ const TimeBank = props => {
     for (const [key, value] of formData.entries()) {
       skillObj[key] = value;
     }
-    // console.log(skillObj);
+    console.log(skillObj);
     fetch(url, {
       method: "POST",
       body: JSON.stringify(skillObj),
@@ -54,9 +53,9 @@ const TimeBank = props => {
     }
   };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
-  //console.log("disabled", isDisabled);
-  //console.log("skill", skill);
-  //console.log("isValid?", valid["skill"]);
+  // console.log("disabled", isDisabled);
+  // console.log("skill", skill);
+  // console.log("isValid?", valid["skill"]);
 
   return (
     <div className="container">
@@ -119,10 +118,10 @@ const TimeBank = props => {
                   autoFocus
                   autoComplete="true"
                 />
-                <label>Location</label>
+                <label>Zip Code</label>
                 <input
                   onChange={e => handleValid(e, e.target.value.length >= 3)}
-                  type="text"
+                  type="number"
                   name="location"
                   value={skill.location}
                   className="form-control mb-2"
@@ -130,7 +129,28 @@ const TimeBank = props => {
                   placeholder="Where can u perform"
                   required
                 />
-                <Category />
+                <div className="form-group category">
+                  <label htmlFor="select">Category</label>
+                  <select
+                    className="mdb-select md-form center form-control"
+                    name="category"
+                    id="category"
+                    required
+                  >
+                    <option value="">Make a selection</option>
+                    <option value="House_Garden">House_Garden</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Motors">Motors</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Art_Collectibles">Art_Collectibles</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Media">Media</option>
+                    <option value="Others">Others</option>
+                    <option value="Pets">Pets</option>
+                  </select>
+                </div>
                 <label>Time Span</label>
                 <input
                   type="number"
@@ -145,11 +165,11 @@ const TimeBank = props => {
               </div>
               <div className="mb-3">
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-primary"
                   id="submit"
                   type="submit"
                   disabled={isDisabled}
-                  onClick={setSkill}
+                  onChange={setSkill}
                 >
                   Post Skill
                 </button>
@@ -158,7 +178,7 @@ const TimeBank = props => {
           </div>
         </div>
       </div>
-      {skill && <SkillTable data={skill} />}
+      <SkillTable />
     </div>
   );
 };
