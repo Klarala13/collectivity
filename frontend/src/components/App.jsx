@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import { NavLink } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -16,13 +17,13 @@ class App extends React.Component {
       <div className="container">
         <Header />
         <div className="app">
-          <button className="btn btn-primary">
-            Login/Register
-          </button>
-          <p>OR</p>
-          <button className="btn btn-primary">
-            go to Freebies
-          </button>
+          <NavLink
+                to="/login"
+                activeClassName="app"
+                className="btn btn-primary"
+              >
+                Login / Register
+              </NavLink>
         </div>
       </div>
     );
