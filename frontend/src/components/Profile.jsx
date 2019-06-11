@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import AuthService from "./AuthService";
 const Auth = AuthService.getInstance();
 
@@ -47,44 +44,48 @@ class Profile extends Component {
       <div className="row">
         <div className="col-md-4 offset-md-4">
           <div className="card">
-          <img className="center pt-4" src={this.state.user.image} alt="Logo" />
-          <div className="card-body m-4">
-            <div className="d-flex justify-content-center text-center">
-              <div className="rating">
-                <input
-                  id="rating-4"
-                  type="radio"
-                  name="rating"
-                  value="4"
-                  checked
-                />
-                <label for="rating-5">
-                  <i className="fas fa-1x fa-star" />
-                </label>
-                <input
-                  id="rating-4"
-                  type="radio"
-                  name="rating"
-                  value="4"
-                  checked
-                />
-                <label for="rating-4">
-                  <i className="fas fa-1x fa-star" />
-                </label>
-                <input id="rating-3" type="radio" name="rating" value="3" />
-                <label for="rating-3">
-                  <i className="fas fa-1x fa-star" />
-                </label>
-                <input id="rating-2" type="radio" name="rating" value="2" />
-                <label for="rating-2">
-                  <i className="fas fa-1x fa-star" />
-                </label>
-                <input id="rating-1" type="radio" name="rating" value="1" />
-                <label for="rating-1">
-                  <i className="fas fa-1x fa-star" />
-                </label>
+            <img
+              className="center pt-4"
+              src={this.state.user.image}
+              alt="Logo"
+            />
+            <div className="card-body m-4">
+              <div className="d-flex justify-content-center text-center">
+                <div className="rating">
+                  <input
+                    id="rating-4"
+                    type="radio"
+                    name="rating"
+                    value="4"
+                    checked
+                  />
+                  <label for="rating-5">
+                    <i className="fas fa-1x fa-star" />
+                  </label>
+                  <input
+                    id="rating-4"
+                    type="radio"
+                    name="rating"
+                    value="4"
+                    checked
+                  />
+                  <label for="rating-4">
+                    <i className="fas fa-1x fa-star" />
+                  </label>
+                  <input id="rating-3" type="radio" name="rating" value="3" />
+                  <label for="rating-3">
+                    <i className="fas fa-1x fa-star" />
+                  </label>
+                  <input id="rating-2" type="radio" name="rating" value="2" />
+                  <label for="rating-2">
+                    <i className="fas fa-1x fa-star" />
+                  </label>
+                  <input id="rating-1" type="radio" name="rating" value="1" />
+                  <label for="rating-1">
+                    <i className="fas fa-1x fa-star" />
+                  </label>
+                </div>
               </div>
-            </div>
 
             <div className="card-title m-4 text-center">
               <h4>
@@ -110,17 +111,16 @@ class Profile extends Component {
               <small className="text-muted">Last updat 30 min</small>
             </div>
           </div>
-        </div>
-        <div className="card" hidden>
-          <ul>
-            {this.state.ownFreebies &&
-              this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
-          </ul>
-          <ul>
-            {this.state.ownSkills &&
-              this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
-          </ul>
-        </div>
+          <div className="card" hidden>
+            <ul>
+              {this.state.ownFreebies &&
+                this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+            </ul>
+            <ul>
+              {this.state.ownSkills &&
+                this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
+            </ul>
+          </div>
         </div>
       </div>
     );
