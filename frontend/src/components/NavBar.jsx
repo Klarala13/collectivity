@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-
+import AuthService from "./AuthService";
+const Auth = AuthService.getInstance();
 class NavBar extends Component {
-  state = {
-    open: false
-  };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      open: false
+    };
+  }
   navToList = () => this.setState({ open: !this.state.open });
 
   render() {
+    console.log("i render" , this.props)
     return (
       <nav className="navbar navbar-light navbar-expand-lg sticky-top nav-main">
         <div className="container">
@@ -50,16 +55,29 @@ class NavBar extends Component {
                   About
                 </NavLink>
               </div>
-              <NavLink
-                to="/login"
-                activeClassName="active"
-                className="ml-md-auto"
-              >
-                Login
-              </NavLink>
-              {/* <NavLink to="/" activeClassName="active" className="ml-md-auto">
-                LogOut
-              </NavLink> */}
+              <span>
+                Logged in as &nbsp;
+                {Auth.getProfile().first_name}&nbsp;
+                {Auth.getProfile().last_name}
+              </span>
+              {!Auth.loggedIn() ? (
+                <NavLink
+                  to="/login"
+                  activeClassName="active"
+                  className="ml-md-auto"
+                >
+                  Login
+                </NavLink>
+              ) : (
+                <a
+                  onClick={() => {
+                    Auth.logOut();
+                    this.props.push("/")
+                    window.location.reload();}}
+                >
+                  Logout
+                </a>
+              )}
             </nav>
           </div>
         </div>

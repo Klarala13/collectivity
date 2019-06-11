@@ -11,6 +11,7 @@
     "bootstrap": "^4.3.1",
     "dateformat": "^3.0.3",
     "i": "^0.3.6",
+    "jwt-decode": "^2.2.0",
     "npm": "^6.9.0",
     "npm-watch": "^0.6.0",
     "query-string": "^6.6.0",
