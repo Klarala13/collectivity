@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 class Profile extends Component {
   constructor(props) {
     super(props);
