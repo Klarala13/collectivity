@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AuthService from "./AuthService";
+const Auth = AuthService.getInstance();
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -10,91 +12,27 @@ class Profile extends Component {
     this.setState({ popup: !this.state.popup });
   }
   componentDidMount() {
-    const url = "http://localhost:4001/users/";
-    const userEndpoint = "profile";
-    const freebiesEndpoint = "own_freebies";
-    const skillsEndpoint = "own_skills";
-
-    // fetch user
-
-    fetch(url + userEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    Auth.fetch(`/profile`).then(response => {
+      if (response.status === 200) {
+        this.setState({ user: response.data.user });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.user);
-          this.setState({ user: response.data.user });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("User not found. Please try again.");
-      });
-
-    // fetch own freebies
-
-    fetch(url + freebiesEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    });
+    Auth.fetch(`/own_freebies`).then(response => {
+      if (response.status === 200) {
+        this.setState({ ownFreebies: response.data.freebies });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile freebies method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.freebies);
-          this.setState({ ownFreebies: response.data.freebies });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("Freebies not found. Please try again.");
-      });
-
-    // fetch own skills
-
-    fetch(url + skillsEndpoint, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
+    });
+    Auth.fetch(`/own_skills`).then(response => {
+      if (response.status === 200) {
+        this.setState({ ownSkills: response.data.skills });
+      } else {
+        alert(response.message);
       }
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(
-          "Response from the profile skills method in the backend",
-          response
-        );
-        if (response.status === 200) {
-          console.log(response.data.skills);
-          this.setState({ ownSkills: response.data.skills });
-        } else {
-          alert(response.message);
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        console.error("Skills not found. Please try again.");
-      });
+    });
   }
   render() {
     console.log(this.props);
@@ -164,28 +102,25 @@ class Profile extends Component {
                 </a>
               </div>
               <div className="btn btn-primary mb-2 btn-block mx-auto address">
-                <h6>
+                <h5>
                   <i className="fas fa-map-marker-alt" />
-                  Address:{" "}
-                  <a href="#" rel="noopener noreferrer">
-                    Italy
-                  </a>
-                </h6>
+                  Address: <a href="#">Italy</a>
+                </h5>
               </div>
               <div className="card-footer text-center">
                 <small className="text-muted">Last updat 30 min</small>
               </div>
             </div>
-          </div>
-          <div className="card" hidden>
-            <ul>
-              {this.state.ownFreebies &&
-                this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
-            </ul>
-            <ul>
-              {this.state.ownSkills &&
-                this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
-            </ul>
+            <div className="card" hidden>
+              <ul>
+                {this.state.ownFreebies &&
+                  this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
+              </ul>
+              <ul>
+                {this.state.ownSkills &&
+                  this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
