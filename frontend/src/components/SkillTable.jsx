@@ -50,9 +50,9 @@ class SkillTable extends Component {
 
     return (
       <div className="container">
-        <div className="row">
-          <table className="w-100 table">
-            <thead>
+        <div className="bd-border table-light">
+          <table className="table">
+            <thead className="bg-light">
               <tr>
                 <th scope="col">User</th>
                 <th scope="col">Skill</th>
