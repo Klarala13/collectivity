@@ -42,6 +42,7 @@ export default props => {
       .then(res => res.json())
       .then(res => {
         console.log("Good job! U are registered!", res);
+        alert("You've registered!");
       })
       .catch(error =>
         console.error("Uuuu, u fucked up! try again buddy", error)
