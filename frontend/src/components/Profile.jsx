@@ -162,13 +162,13 @@ class Profile extends Component {
               </a>
             </div>
             <div className="btn btn-primary mb-2 btn-block mx-auto address">
-              <h5>
+              <h6>
                 <i className="fas fa-map-marker-alt" />
                 Address:{" "}
                 <a href="#" rel="noopener noreferrer">
                   Italy
                 </a>
-              </h5>
+              </h6>
             </div>
             <div className="card-footer text-center">
               <small className="text-muted">Last updat 30 min</small>
