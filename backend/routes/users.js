@@ -5,7 +5,6 @@ const multer = require("multer");
 const fs = require("fs");
 const upload = multer({ dest: "uploads/" });
 
-
 // Connection to postgreSQL
 const { Client } = require("pg");
 const client = new Client({
@@ -87,7 +86,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 const getUser = (req, res, next) => {
-  console.log("HELLO FROM getUser",req.decoded);
+  console.log("HELLO FROM getUser", req.decoded);
   try {
     const userQuery = `select * from public.users WHERE user_id='${
       req.decoded.user_id
@@ -100,9 +99,7 @@ const getUser = (req, res, next) => {
         const payload = response.rows[0];
         delete payload.password;
 
-        res.send(
-          responseObject(200, "Success", {user: payload})
-        );
+        res.send(responseObject(200, "Success", { user: payload }));
       }
     });
   } catch (e) {
@@ -111,7 +108,7 @@ const getUser = (req, res, next) => {
 };
 
 const getFreebiesByUser = (req, res, next) => {
-  console.log("getFreebiesByUser",req.decoded);
+  console.log("getFreebiesByUser", req.decoded);
   try {
     const freebiesQuery = `select * from public.freebies WHERE user_id=${
       req.decoded.user_id
@@ -122,9 +119,7 @@ const getFreebiesByUser = (req, res, next) => {
       if (response.rows.length === 0) {
         res.send(responseObject(404, "No freebies yet."));
       } else {
-        res.send(
-          responseObject(200, "Success", {freebies: response.rows})
-        );
+        res.send(responseObject(200, "Success", { freebies: response.rows }));
       }
     });
   } catch (e) {
@@ -133,7 +128,7 @@ const getFreebiesByUser = (req, res, next) => {
 };
 
 const getSkillsByUser = (req, res, next) => {
-  console.log("getSkillsByUser",req.decoded);
+  console.log("getSkillsByUser", req.decoded);
   try {
     const skillsQuery = `select * from public.skills WHERE user_id=${
       req.decoded.user_id
@@ -144,9 +139,7 @@ const getSkillsByUser = (req, res, next) => {
       if (response.rows.length === 0) {
         res.send(responseObject(404, "No skills yet."));
       } else {
-        res.send(
-          responseObject(200, "Success", {skills: response.rows})
-        );
+        res.send(responseObject(200, "Success", { skills: response.rows }));
       }
     });
   } catch (e) {
@@ -159,7 +152,7 @@ const signIn = (req, res, next) => {
     const userQuery = `select * from public.users WHERE email='${
       req.body.email
     }'`;
-    console.log("email", req.body.email)
+    console.log("email", req.body.email);
     client.query(userQuery).then(response => {
       console.log(response.rows);
       if (response.rows.length === 0) {
@@ -169,8 +162,9 @@ const signIn = (req, res, next) => {
       } else {
         const payload = {
           email: response.rows[0].email,
+          first_name: response.rows[0].first_name,
+          last_name: response.rows[0].last_name,
           user_id: response.rows[0].user_id
-
         };
         const token = jwt.sign(payload, "SUPERSECRET", {
           expiresIn: 86400
