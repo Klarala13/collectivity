@@ -110,6 +110,14 @@ p.text-left {
 .skill-board{
   display: inline-block;
 }
+
+.bd-border {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+  }
+
 /* form-signin */
 .form-signin {
   padding: 1rem;
