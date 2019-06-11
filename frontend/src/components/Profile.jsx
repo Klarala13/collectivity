@@ -101,11 +101,13 @@ class Profile extends Component {
                   Send Email
                 </a>
               </div>
-              <div className="btn btn-primary mb-2 btn-block mx-auto address">
-                <h5>
-                  <i className="fas fa-map-marker-alt" />
-                  Address: <a href="#">Italy</a>
-                </h5>
+              <div className="">
+                <h6>
+                  <button className="btn btn-primary mb-2 btn-block mx-auto address">
+                    <i className="fas fa-map-marker-alt" />
+                    Address: Italy
+                  </button>
+                </h6>
               </div>
               <div className="card-footer text-center">
                 <small className="text-muted">Last updat 30 min</small>
