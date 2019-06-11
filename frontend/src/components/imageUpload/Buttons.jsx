@@ -4,7 +4,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 export default props => (
   <div className="buttons fadein">
-    <div className="button m-1 p-3">
+    <div className="button m-1 p-1">
       <label htmlFor="image" type="image" alt="profile pic">
         <FontAwesomeIcon
           icon={faImage}
