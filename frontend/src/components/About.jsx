@@ -90,127 +90,145 @@ class About extends React.Component {
                     take.{" "}
                   </p>
                 </div>
-
-                <h3 id="how">How It Works</h3>
-                <p>
-                  There are two main sections: Freebees (sharing of items) and
-                  TimeBanks (sharing of skills). To participate in TimeBanks you
-                  must be registered. To be rated and boost the confidence other
-                  users have in you, you must be registered. To better
-                  distribute the goodies, we geo-locate our users to facilitate
-                  your access.{" "}
-                </p>
-                <h3 id="donation">Donations</h3>
-                <p>
-                  You can also collaborate in the project by making a small
-                  donation to our crowdfunding, so we can pay for libraries,
-                  servers and other technologies that allow our project to move
-                  forward!
-                </p>
-                <a
-                  href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
-                  className="btn btn-primary mx-auto"
-                  alt="donate money"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Donate
-                </a>
-                <h3 id="rules">Rules</h3>
-                <p>
-                  {" "}
-                  Once the transaction is done and the service was provided or
-                  item returned, please rate the user according to punctuality,
-                  state of the item returned, etc.
-                </p>
-                <h3 id="safety">Safety</h3>
-                <p>
-                  {" "}
-                  Please, keep in mind that we cannot control who you meet or
-                  where. If you are not sure about a user, try to meet in public
-                  places or ensure a safe situation. If you encounter any
-                  problems, contact our team and we will try to find a solution
-                  together.{" "}
-                </p>
-                <h3 id="whoMade">Who made it</h3>
+                <div className="mb-5">
+                  <h3 id="how">How It Works</h3>
+                  <p>
+                    There are two main sections: Freebees (sharing of items) and
+                    TimeBanks (sharing of skills). To participate in TimeBanks
+                    you must be registered. To be rated and boost the confidence
+                    other users have in you, you must be registered. To better
+                    distribute the goodies, we geo-locate our users to
+                    facilitate your access.{" "}
+                  </p>
+                </div>
+                <div className="mb-5">
+                  <h3 id="donation">Donations</h3>
+                  <p>
+                    You can also collaborate in the project by making a small
+                    donation to our crowdfunding, so we can pay for libraries,
+                    servers and other technologies that allow our project to
+                    move forward!
+                  </p>
+                  <div className="text-center">
+                    <a
+                      href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
+                      className="btn btn-primary btn-block mx-auto"
+                      alt="donate money"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Donate
+                    </a>
+                  </div>
+                </div>
+                <div className="mb-5">
+                  <h3 id="rules">Rules</h3>
+                  <p>
+                    {" "}
+                    Once the transaction is done and the service was provided or
+                    item returned, please rate the user according to
+                    punctuality, state of the item returned, etc.
+                  </p>
+                </div>
+                <div className="mb-5">
+                  <h3 id="safety">Safety</h3>
+                  <p>
+                    {" "}
+                    Please, keep in mind that we cannot control who you meet or
+                    where. If you are not sure about a user, try to meet in
+                    public places or ensure a safe situation. If you encounter
+                    any problems, contact our team and we will try to find a
+                    solution together.{" "}
+                  </p>
+                </div>
+                <h3 className="mb-4" id="whoMade">
+                  Who made it
+                </h3>
                 <div className="row w-100">
-                  <div className="card col-lg-5 m-2">
-                    <img
-                      className="card-img-top p-3"
-                      src={elise}
-                      alt="profile pic"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Elise Maschke</h5>
-                      <p className="card-text">Full Stack Developer</p>
-                      <a
-                        href="https://elisemaschke.de/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Check out my portfolio!
-                      </a>
+                  <div className=" col-lg-6 py-3 ">
+                    <div className="card">
+                      <img
+                        className="card-img-top"
+                        src={elise}
+                        alt="profile pic"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">Elise Maschke</h5>
+                        <p className="card-text">Full Stack Developer</p>
+                        <a
+                          href="https://elisemaschke.de/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Check out my portfolio!
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="card col-lg-5 m-2">
-                    <img
-                      className="card-img-top p-3"
-                      alt="Profile pic"
-                      src={clara}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Clara Sanchez</h5>
-                      <p className="card-text">Full Stack Developer</p>
-                      <a
-                        href="https://clarasanchez.de/"
-                        alt="Portfolio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Check out my portfolio!
-                      </a>
+                  <div className=" col-lg-6 py-3 ">
+                    <div className="card">
+                      <img
+                        className="card-img-top"
+                        alt="Profile pic"
+                        src={clara}
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">Clara Sanchez</h5>
+                        <p className="card-text">Full Stack Developer</p>
+                        <a
+                          href="https://clarasanchez.de/"
+                          alt="Portfolio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Check out my portfolio!
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="row w-100">
-                  <div className="card col-lg-5 m-2">
-                    <img
-                      className="card-img-top p-3"
-                      src={max}
-                      alt="profile pic"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">Max Meeks</h5>
-                      <p className="card-text">Front End Developer</p>
-                      <a
-                        href="https://maximilianmeeks.de/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Check out my portfolio!
-                      </a>
+                  <div className=" col-lg-6 py-3 ">
+                    <div className="card">
+                      <img
+                        className="card-img-top"
+                        src={max}
+                        alt="profile pic"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">Max Meeks</h5>
+                        <p className="card-text">Front End Developer</p>
+                        <a
+                          href="https://maximilianmeeks.de/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Check out my portfolio!
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="card col-lg-5 m-2">
-                    <img
-                      className="card-img-top p-3"
-                      alt="Profile pic"
-                      src={Leena}
-                      style={{ width: "320px", height: "230px" }}
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title"> Leena MK </h5>
-                      <p className="card-text">
-                        Designer and Front End Developer
-                      </p>
-                      <a
-                        href="https://leenamk.com/"
-                        alt="Portfolio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Check out my portfolio!
-                      </a>
+                  <div className=" col-lg-6 py-3 ">
+                    <div className="card">
+                      <img
+                        className="card-img-top"
+                        alt="Profile pic"
+                        src={Leena}
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title"> Leena Mkarem </h5>
+                        <p className="card-text">
+                          Front End Developer and Designer
+                        </p>
+                        <a
+                          href="https://leenamk.com/"
+                          alt="Portfolio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Check out my portfolio!
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
