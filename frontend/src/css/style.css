@@ -70,8 +70,7 @@ h2 {
 
 /* header */
 .header,
-.about,
-.header {
+.about{
   text-align: center;
   width: 100%;
   /* scroll-snap-align: center; */
@@ -117,12 +116,6 @@ p.text-left {
   text-align: center;
 }
 
-/* app */
-/* .app {
-  height: 100vh;
-  text-align: center;
-  justify-content: center;
-} */
 
 .top-100 {
   top: 100px;
