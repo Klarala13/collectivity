@@ -54,7 +54,8 @@ class NavBar extends Component {
                   About
                 </NavLink>
               </div>
-              <span onClick={() => {
+              <span className="cursor-pointer"
+                    onClick={() => {
                     this.props.push("/profile")
                     window.location.reload();}}>
                 Logged in as: &nbsp;
@@ -65,12 +66,12 @@ class NavBar extends Component {
                 <NavLink
                   to="/login"
                   activeClassName="active"
-                  className="ml-md-auto"
+                  className="ml-md-auto "
                 >
                   Login
                 </NavLink>
               ) : (
-                <a
+                <a className="cursor-pointer"
                   onClick={() => {
                     Auth.logOut();
                     this.props.push("/")
