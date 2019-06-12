@@ -173,7 +173,7 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Password (8 char long)</label>
                 <div className="mb-3">
                   <input
                     onChange={handlePassword}
