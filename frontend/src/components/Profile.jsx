@@ -109,28 +109,31 @@ class Profile extends Component {
                   </button>
                 </h6>
               </div>
+              
+              <div className="row m-4">
+                <div className="col-6">
+                  <h5>Your freebies:</h5>
+                  <ul>
+                    {this.state.ownFreebies &&
+                      this.state.ownFreebies.map(freeby => (
+                        <li>{freeby.item}</li>
+                      ))}
+                  </ul>
+                </div>
+                <div className="col-6">
+                  <h5>Your timebanks:</h5>
+                  <ul>
+                    {this.state.ownSkills &&
+                      this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
+                  </ul>
+                </div>
+              </div>
+           
               <div className="card-footer text-center">
                 <small className="text-muted">Last updat 30 min</small>
               </div>
             </div>
-            <div className="card">
-            <div className="row m-4">
-            <div className="col-6">
-            <h5>Your freebies:</h5>
-              <ul>
-                {this.state.ownFreebies &&
-                  this.state.ownFreebies.map(freeby => <li>{freeby.item}</li>)}
-              </ul>
-              </div>
-              <div className="col-6">
-              <h5>Your timebanks:</h5>
-              <ul>
-                {this.state.ownSkills &&
-                  this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
-              </ul>
-              </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
