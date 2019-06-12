@@ -35,18 +35,18 @@ export default props => {
       console.log(key, value);
     }
     const url = "http://0.0.0.0:4001/users";
-    fetch(url, {
-      method: "POST",
-      body: formData
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log("Good job! U are registered!", res);
-        alert("You've registered!");
+    try {
+      fetch(url, {
+        method: "POST",
+        body: formData
       })
-      .catch(error =>
-        console.error("Uuuu, u fucked up! try again buddy", error)
-      );
+        .then(res => res.json())
+        .then(res => {
+          console.log("Good job! U are registered!", res);
+        });
+    } catch (error) {
+      console.error("Uuuu, u fucked up! try again buddy", error);
+    }
   };
 
   const handleFirstName = e => {
@@ -128,10 +128,7 @@ export default props => {
             >
               <h2 className="mb-2">{isRegister ? "Register" : "Sign in"}</h2>
               <div className="container">
-                <label htmlFor="first_name" className="sr-only">
-                  {" "}
-                  First Name{" "}
-                </label>
+                <label htmlFor="first_name">First Name</label>
                 <div className="mb-3">
                   <input
                     onChange={handleFirstName}
@@ -146,9 +143,7 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="last_name" className="sr-only">
-                  Last Name
-                </label>
+                <label htmlFor="last_name">Last Name</label>
                 <div className="mb-3">
                   <input
                     onChange={handleLastName}
@@ -163,9 +158,7 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
+                <label htmlFor="email">Email</label>
                 <div className="mb-3">
                   <input
                     onChange={handleEmail}
@@ -180,9 +173,7 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
+                <label htmlFor="password">Password</label>
                 <div className="mb-3">
                   <input
                     onChange={handlePassword}
@@ -196,9 +187,7 @@ export default props => {
                     autoFocus
                   />
                 </div>
-                <label htmlFor="password" className="sr-only">
-                  Re-Enter Password please
-                </label>
+                <label htmlFor="password">Re-Enter Password please</label>
                 <div className="mb-3">
                   <input
                     onChange={handleConfirmPass}
@@ -212,9 +201,7 @@ export default props => {
                     autoFocus
                   />
                 </div>
-                <label htmlFor="city" className="sr-only">
-                  City
-                </label>
+                <label htmlFor="city">City</label>
                 <div className="mb-3">
                   <input
                     onChange={handleCity}
@@ -229,9 +216,7 @@ export default props => {
                     autoComplete="true"
                   />
                 </div>
-                <label htmlFor="zip_code" className="sr-only">
-                  ZipCode
-                </label>
+                <label htmlFor="zip_code">ZipCode</label>
                 <div className="mb-3">
                   <input
                     onChange={handleZipCode}
@@ -247,9 +232,8 @@ export default props => {
                 </div>
                 <ImageUpload />
                 <div className="form-check">
-                  <h4>Agree to Terms and Conditions</h4>{" "}
+                  <h4>Agree to Terms and Conditions</h4>
                   <div className="mb-3">
-                    {" "}
                     <a
                       href=" #"
                       className="text-primary"
