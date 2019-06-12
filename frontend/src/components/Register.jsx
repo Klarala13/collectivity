@@ -75,7 +75,11 @@ export default props => {
   };
   const handlePassword = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    if (e.target.value.length > 7 && e.target.value.length < 20) {
+    if (
+      e.target.value.length > 7 &&
+      e.target.value.length < 20
+      //&& "^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$"
+    ) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
@@ -114,7 +118,7 @@ export default props => {
     }
   };
   const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
-  console.log("disabled", isDisabled);
+  // console.log("disabled", isDisabled);
 
   return (
     <div className="container">
