@@ -39,10 +39,13 @@ export default props => {
       fetch(url, {
         method: "POST",
         body: formData
-      })
-        .then(res => res.json())
-        .then(res => {
-          console.log("Good job! U are registered!", res);
+      }).then(res => res.json())
+        .then( res => {
+          if (res.success) {
+            console.log("Good job! U are registered!");
+            props.history.push("/login");
+            window.location.reload()
+          } else {alert(res.message)}
         });
     } catch (error) {
       console.error("Uuuu, u fucked up! try again buddy", error);

@@ -219,15 +219,26 @@ const addUser = (req, res, next) => {
               zip_code
             )}', '${date}', '${req.filename}' )`
           )
-          .then(res => {
-            console.log("New user seeded");
+          .then( () => {
+            console.log("New user added");
+            return res.json({
+              success: true,
+              message: "User registered successfully."
+            });
           });
-        //console.log("request", req.body);
+      } else {
+        return res.json({
+          success: false,
+          message: "User already there."
+        });
       }
     });
   } catch (e) {
-    console.log("could not create New User", e);
-    next(e);
+    console.error(e);
+    return res.json({
+      success: false,
+      message: "Failed to register user."
+    });
   }
 };
 
