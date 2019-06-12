@@ -46,7 +46,7 @@ class Profile extends Component {
           <div className="card">
             <img
               className="center pt-4"
-              src={`https://avatars.dicebear.com/v2/avataaars/${this.state.user.email}.svg`}
+              src={this.state.user.image}
               alt="Logo"
             />
             <div className="card-body m-4">
