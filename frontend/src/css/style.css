@@ -226,3 +226,7 @@ margin: 0 0.2rem
 .icon-align-middle{
   vertical-align: middle;
 }
+
+.cursor-pointer:hover{
+  cursor: pointer;
+}
