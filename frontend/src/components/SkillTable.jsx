@@ -46,7 +46,7 @@ class SkillTable extends Component {
   // };
 
   render() {
-    console.log("skills", this.props.skills);
+    // console.log("skills", this.props.skills);
 
     return (
       <div className="container">

@@ -35,11 +35,11 @@ class Profile extends Component {
     });
   }
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     const freebies = this.state.ownFreebies;
-    console.log("Freebies", freebies);
+    //  console.log("Freebies", freebies);
     const skills = this.state.ownSkills;
-    console.log("Skills", skills);
+    //  console.log("Skills", skills);
     return (
       <div className="row">
         <div className="col-md-4 offset-md-4">
@@ -109,7 +109,7 @@ class Profile extends Component {
                   </button>
                 </h6>
               </div>
-              
+
               <div className="row m-4">
                 <div className="col-6">
                   <h5>Your freebies:</h5>
@@ -128,12 +128,11 @@ class Profile extends Component {
                   </ul>
                 </div>
               </div>
-           
+
               <div className="card-footer text-center">
                 <small className="text-muted">Last updat 30 min</small>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
