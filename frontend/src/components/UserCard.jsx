@@ -25,7 +25,7 @@ class UserCard extends Component{
                 {this.props.singleUser.last_name}
                 </h2>
                 <img
-                className="center"
+                className="center mb-3"
                 src={this.props.singleUser.image}
                 alt="Card user"
                 />

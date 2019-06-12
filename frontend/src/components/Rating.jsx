@@ -54,7 +54,7 @@ class Rating extends Component{
             this.ratingFive.current.style.color = "#ffc107"
         }
         return(
-            <div className="d-flex justify-content-center mt-3">
+            <div className="d-flex justify-content-center">
                 <i ref={this.ratingOne} className="fas fa-1x fa-star rating-star" />
                 <i ref={this.ratingTwo} className="fas fa-1x fa-star rating-star" />
                 <i ref={this.ratingThree} className="fas fa-1x fa-star rating-star" />
