@@ -14,7 +14,6 @@ class NavBar extends Component {
   navToList = () => this.setState({ open: !this.state.open });
 
   render() {
-    console.log("i render" , this.props)
     return (
       <nav className="navbar navbar-light navbar-expand-lg sticky-top nav-main">
         <div className="container">

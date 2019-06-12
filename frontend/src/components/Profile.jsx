@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthService from "./AuthService";
+import Rating from "./Rating";
 const Auth = AuthService.getInstance();
 
 class Profile extends Component {
@@ -46,47 +47,11 @@ class Profile extends Component {
           <div className="card">
             <img
               className="center pt-4"
-              src={`https://avatars.dicebear.com/v2/avataaars/${this.state.user.email}.svg`}
+              src={this.state.user.image}
               alt="Logo"
             />
             <div className="card-body m-4">
-              <div className="d-flex justify-content-center text-center">
-                <div className="rating">
-                  <input
-                    id="rating-4"
-                    type="radio"
-                    name="rating"
-                    value="4"
-                    checked
-                  />
-                  <label for="rating-5">
-                    <i className="fas fa-1x fa-star" />
-                  </label>
-                  <input
-                    id="rating-4"
-                    type="radio"
-                    name="rating"
-                    value="4"
-                    checked
-                  />
-                  <label for="rating-4">
-                    <i className="fas fa-1x fa-star" />
-                  </label>
-                  <input id="rating-3" type="radio" name="rating" value="3" />
-                  <label for="rating-3">
-                    <i className="fas fa-1x fa-star" />
-                  </label>
-                  <input id="rating-2" type="radio" name="rating" value="2" />
-                  <label for="rating-2">
-                    <i className="fas fa-1x fa-star" />
-                  </label>
-                  <input id="rating-1" type="radio" name="rating" value="1" />
-                  <label for="rating-1">
-                    <i className="fas fa-1x fa-star" />
-                  </label>
-                </div>
-              </div>
-
+            <Rating rating={this.state.user.rating}/>
               <div className="card-title m-4 text-center">
                 <h4>
                   {this.state.user.first_name}&nbsp;
@@ -95,7 +60,8 @@ class Profile extends Component {
               </div>
               <div>
                 <a
-                  href="mailto:someone@yoursite.com"
+                  href={"mailto:" + this.state.user.email}
+                  target="_blank"
                   className="btn btn-primary btn-block mb-2 mx-auto"
                 >
                   Send Email
@@ -105,7 +71,7 @@ class Profile extends Component {
                 <h6>
                   <button className="btn btn-primary mb-2 btn-block mx-auto address">
                     <i className="fas fa-map-marker-alt" />
-                    Address: Italy
+                    Address: {this.state.user.city}
                   </button>
                 </h6>
               </div>
@@ -130,7 +96,7 @@ class Profile extends Component {
               </div>
 
               <div className="card-footer text-center">
-                <small className="text-muted">Last updat 30 min</small>
+                <small className="text-muted">Last updated 30 min ago</small>
               </div>
             </div>
           </div>
