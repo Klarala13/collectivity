@@ -21,7 +21,7 @@ class Item extends Component {
                 /* {{ pathname: "/freebie", search: `?id=${this.props.data.item_id}`}} */
               >
                 <i
-                  class="fas fa-info-circle text-primary fa-2x"
+                  className="fas fa-info-circle text-primary fa-2x"
                   data-toggle="tooltip"
                   data-placement="top"
                   title="More Info"
