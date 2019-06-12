@@ -10,7 +10,7 @@ const TimeBank = props => {
       .then(response => {
         console.log("Response from the skill method in the backend", response);
         setSkills(response);
-        //console.log("state", this.state);
+        console.log("state", this.state);
       })
       .catch(error => {
         console.error("Error:", error);
