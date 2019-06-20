@@ -1,3 +1,7 @@
+# Collectivity
+
+![alt coder girls](./frontend/src/assets/collectivity.png)
+
 To initialize:
 
 1. install dependencies and create a .env
