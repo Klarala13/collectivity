@@ -1,5 +1,4 @@
-
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import App from "./App";
@@ -18,7 +17,7 @@ import FreebieItemPage from "./FreebieItemPage";
 const history = createBrowserHistory();
 
 const Router = () => (
-  <BrowserRouter  history={history}>
+  <BrowserRouter history={history}>
     <NavBar {...history} />
     <div className="py-5">
       <Switch>
