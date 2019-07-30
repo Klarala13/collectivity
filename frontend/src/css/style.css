@@ -1,8 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Questrial");
+/* @import url("https://fonts.googleapis.com/css?family=Questrial"); */
+@import url("https://fonts.googleapis.com/css?family=Allura|Lato&display=swap");
 /* Global Styles */
 body {
   height: 100vh;
-  font-family: "Questrial", sans-serif;
+  font-family: "Lato", sans-serif;
+}
+h1 {
+  font-family: "Allura", cursive;
 }
 .container {
   width: 100%;
@@ -24,10 +28,9 @@ p {
 .app {
   width: 60%;
   height: 100vh;
-  text-align: center; 
+  text-align: center;
   margin: auto;
 }
-
 
 .top-100 {
   top: 100px;
@@ -41,7 +44,7 @@ p {
 a.navbar-brand {
   margin: 0%;
 }
-.logo2{
+.logo2 {
   height: 20%;
   width: 60%;
 }
@@ -70,7 +73,7 @@ h2 {
 
 /* header */
 .header,
-.about{
+.about {
   text-align: center;
   width: 100%;
   /* scroll-snap-align: center; */
@@ -107,16 +110,16 @@ p.text-left {
   padding: 1.5rem;
   color: #183059;
 }
-.skill-board{
+.skill-board {
   display: inline-block;
 }
 
 .bd-border {
-    padding: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: .2rem;
-  }
+  padding: 1.5rem;
+  margin-right: 0;
+  margin-left: 0;
+  border-width: 0.2rem;
+}
 
 /* form-signin */
 .form-signin {
@@ -124,20 +127,19 @@ p.text-left {
   text-align: center;
 }
 
-
 .top-100 {
   top: 100px;
 }
 
 /* profile */
-.card-deck{
+.card-deck {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 25%;
   justify-content: center;
 }
-.card{
+.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .center {
@@ -146,60 +148,59 @@ p.text-left {
   margin-right: auto;
   width: 60%;
 }
-.profile-action{
+.profile-action {
   justify-content: space-between;
 }
-.profile-messages, .profile-follow{
+.profile-messages,
+.profile-follow {
   background-color: white;
 }
 .rating {
-	direction: rtl;
-	unicode-bidi: bidi-override;
-	color: #ddd;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  color: #ddd;
 }
 .rating {
   width: 20rem;
-	direction: rtl;
-	unicode-bidi: bidi-override;
-	color: #ddd; 
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  color: #ddd;
 }
 .rating input {
-	display: none;
+  display: none;
 }
 .rating label:hover,
 .rating label:hover ~ label,
 .rating input:checked + label,
 .rating input:checked + label ~ label {
-	color: #ffc107; 
+  color: #ffc107;
 }
 
-.rating-star{
-margin: 0 0.2rem
+.rating-star {
+  margin: 0 0.2rem;
 }
 
-.fa-map-marker-alt{
+.fa-map-marker-alt {
   font-size: 1rem;
   color: white;
   font-weight: 600;
   margin-right: 10px;
 }
-.address:hover:before{
+.address:hover:before {
   visibility: visible;
   transform: scaleX(1);
-  
 }
-.address a{
+.address a {
   color: #529ef5;
-  
 }
-.address a:hover{
-  color: white!important;
-  text-decoration:none;
+.address a:hover {
+  color: white !important;
+  text-decoration: none;
 }
 
 /* form-register */
 
-.form-register{
+.form-register {
   padding: 1rem;
   width: 100%;
   height: 100vh;
@@ -207,13 +208,12 @@ margin: 0 0.2rem
 
 .form-check-input {
   position: absolute;
-  margin-top: .3rem;
+  margin-top: 0.3rem;
   margin-left: 0;
 }
-.form-check-label{
+.form-check-label {
   margin-left: 2rem;
 }
-
 
 /*  ellipsis to handle long card texts and display "..."  */
 
@@ -223,10 +223,10 @@ margin: 0 0.2rem
   overflow: hidden;
 }
 
-.icon-align-middle{
+.icon-align-middle {
   vertical-align: middle;
 }
 
-.cursor-pointer:hover{
+.cursor-pointer:hover {
   cursor: pointer;
 }
