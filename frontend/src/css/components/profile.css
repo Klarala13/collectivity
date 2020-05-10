@@ -1,0 +1,64 @@
+/* profile */
+.card-deck {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  justify-content: center;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.profile-action {
+  justify-content: space-between;
+}
+.profile-messages,
+.profile-follow {
+  background-color: white;
+}
+.rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  color: #ddd;
+}
+.rating {
+  width: 20rem;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  color: #ddd;
+}
+.rating input {
+  display: none;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+  color: #ffc107;
+}
+.rating-star {
+  margin: 0 0.2rem;
+}
+.fa-map-marker-alt {
+  font-size: 1rem;
+  color: white;
+  font-weight: 600;
+  margin-right: 10px;
+}
+.address:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+.address a {
+  color: #f052f5;
+}
+.address a:hover {
+  color: white !important;
+  text-decoration: none;
+}

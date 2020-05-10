@@ -11,5 +11,6 @@ import "./css/components/about.css";
 import "./css/components/nav.css";
 import "./css/components/freebies.css";
 import "./css/components/timeBanks.css";
+import "./css/components/profile.css";
 
 render(<Router />, document.querySelector("#main"));
