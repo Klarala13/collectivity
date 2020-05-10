@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Questrial');
+@import url("https://fonts.googleapis.com/css?family=Questrial");
 /* Global Styles */
 /* body {
   margin: 1rem;
@@ -15,7 +15,7 @@ h2 {
   font-weight: bold;
   padding-top: 5%;
   padding-bottom: 2%;
-  color: #276fbf;
+  color: #423d42;
   text-decoration: none !important;
 }
 
@@ -32,6 +32,6 @@ h2 {
 }
 
 .nav a {
-  color: #183059 !important;
+  color: rgb(80, 2, 80);
   text-decoration: none;
 }

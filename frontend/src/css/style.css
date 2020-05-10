@@ -17,7 +17,7 @@ h2 {
   text-align: center;
   font-weight: bold;
   padding-bottom: 1%;
-  color: #276fbf;
+  color: rgb(80, 2, 80);
   text-decoration: none !important;
 }
 p {
@@ -67,7 +67,7 @@ h2 {
 }
 
 .nav a {
-  color: #183059 !important;
+  color: black !important;
   text-decoration: none;
 }
 
@@ -82,7 +82,7 @@ h2 {
 /* TimeBank */
 .timeBank {
   background-color: #f6f4f3;
-  color: #183059;
+  color: rgb(80, 2, 80);
   font-size: 1.5em;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -103,12 +103,12 @@ h2.timeBank {
   font-weight: bold;
   line-height: 1.5rem;
   padding: 1.5rem;
-  color: #276fbf;
+  color: rgb(66, 63, 66);
 }
 p.text-left {
   font-size: 1.2rem;
   padding: 1.5rem;
-  color: #183059;
+  color: rgb(80, 2, 80);
 }
 .skill-board {
   display: inline-block;
@@ -191,7 +191,7 @@ p.text-left {
   transform: scaleX(1);
 }
 .address a {
-  color: #529ef5;
+  color: #f052f5;
 }
 .address a:hover {
   color: white !important;
