@@ -4,7 +4,7 @@ import ImageUpload from "./imageUpload/ImageUpload";
 
 //ToDo: add passport
 //ToDo: add local storage
-export default props => {
+export default (props) => {
   const [isRegister, setRegister] = useState(true);
   const [isHidden, setHidden] = useState(false);
   const [user, setUser] = useState({});
@@ -17,11 +17,11 @@ export default props => {
     city: false,
     zip_code: false,
     image: true,
-    check: false
+    check: false,
   });
   //console.log("user, and is valid?", user, valid);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", e.target.elements["image"].files[0]);
@@ -38,21 +38,24 @@ export default props => {
     try {
       fetch(url, {
         method: "POST",
-        body: formData
-      }).then(res => res.json())
-        .then( res => {
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((res) => {
           if (res.success) {
             console.log("Good job! U are registered!");
             props.history.push("/login");
-            window.location.reload()
-          } else {alert(res.message)}
+            window.location.reload();
+          } else {
+            alert(res.message);
+          }
         });
     } catch (error) {
       console.error("Uuuu, u fucked up! try again buddy", error);
     }
   };
 
-  const handleFirstName = e => {
+  const handleFirstName = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
@@ -60,7 +63,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleLastName = e => {
+  const handleLastName = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
@@ -68,7 +71,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleEmail = e => {
+  const handleEmail = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 8 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
@@ -76,7 +79,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handlePassword = e => {
+  const handlePassword = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (
       e.target.value.length > 7 &&
@@ -88,7 +91,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleConfirmPass = e => {
+  const handleConfirmPass = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     // console.log(user.password === user.confirmPass);
     if (user.password === user.confirmPass) {
@@ -97,7 +100,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: true });
     }
   };
-  const handleCity = e => {
+  const handleCity = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 3 && e.target.value.length < 30) {
       setValid({ ...valid, [e.target.name]: true });
@@ -105,7 +108,7 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleZipCode = e => {
+  const handleZipCode = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     if (e.target.value.length > 4) {
       setValid({ ...valid, [e.target.name]: true });
@@ -113,14 +116,14 @@ export default props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const handleCheckbox = e => {
+  const handleCheckbox = (e) => {
     if (e.target.checked) {
       setValid({ ...valid, [e.target.name]: true });
     } else {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
+  const isDisabled = Object.values(valid).filter((v) => !v).length !== 0;
   // console.log("disabled", isDisabled);
 
   return (
@@ -354,7 +357,7 @@ export default props => {
                 </div>
                 <div className="mb-3 p-3 m-1">
                   <button
-                    className="btn btn-secondary"
+                    className="btn btn-outline-dark"
                     id="submit"
                     type="submit"
                     disabled={isDisabled}

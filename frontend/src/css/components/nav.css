@@ -1,0 +1,17 @@
+/* navigation */
+.navbar {
+  font-size: 1.3rem;
+  background-color: #f6f4f3;
+}
+a.navbar-brand {
+  margin: 0%;
+}
+.logo2 {
+  height: 20%;
+  width: 60%;
+}
+.btn {
+  margin: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+}

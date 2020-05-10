@@ -13,21 +13,21 @@ class Profile extends Component {
     this.setState({ popup: !this.state.popup });
   }
   componentDidMount() {
-    Auth.fetch(`/profile`).then(response => {
+    Auth.fetch(`/profile`).then((response) => {
       if (response.status === 200) {
         this.setState({ user: response.data.user });
       } else {
         alert(response.message);
       }
     });
-    Auth.fetch(`/own_freebies`).then(response => {
+    Auth.fetch(`/own_freebies`).then((response) => {
       if (response.status === 200) {
         this.setState({ ownFreebies: response.data.freebies });
       } else {
         alert(response.message);
       }
     });
-    Auth.fetch(`/own_skills`).then(response => {
+    Auth.fetch(`/own_skills`).then((response) => {
       if (response.status === 200) {
         this.setState({ ownSkills: response.data.skills });
       } else {
@@ -51,7 +51,7 @@ class Profile extends Component {
               alt="Logo"
             />
             <div className="card-body m-4">
-            <Rating rating={this.state.user.rating}/>
+              <Rating rating={this.state.user.rating} />
               <div className="card-title m-4 text-center">
                 <h4>
                   {this.state.user.first_name}&nbsp;
@@ -62,14 +62,14 @@ class Profile extends Component {
                 <a
                   href={"mailto:" + this.state.user.email}
                   target="_blank"
-                  className="btn btn-primary btn-block mb-2 mx-auto"
+                  className="btn btn-outline-dark btn-block mb-2 mx-auto"
                 >
                   Send Email
                 </a>
               </div>
               <div className="">
                 <h6>
-                  <button className="btn btn-primary mb-2 btn-block mx-auto address">
+                  <button className="btn btn-outline-dark mb-2 btn-block mx-auto address">
                     <i className="fas fa-map-marker-alt" />
                     Address: {this.state.user.city}
                   </button>
@@ -81,7 +81,7 @@ class Profile extends Component {
                   <h5>Your freebies:</h5>
                   <ul>
                     {this.state.ownFreebies &&
-                      this.state.ownFreebies.map(freeby => (
+                      this.state.ownFreebies.map((freeby) => (
                         <li>{freeby.item}</li>
                       ))}
                   </ul>
@@ -90,7 +90,9 @@ class Profile extends Component {
                   <h5>Your timebanks:</h5>
                   <ul>
                     {this.state.ownSkills &&
-                      this.state.ownSkills.map(skill => <li>{skill.skill}</li>)}
+                      this.state.ownSkills.map((skill) => (
+                        <li>{skill.skill}</li>
+                      ))}
                   </ul>
                 </div>
               </div>

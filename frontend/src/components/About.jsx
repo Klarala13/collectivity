@@ -8,13 +8,13 @@ class About extends React.Component {
   componentDidMount() {
     document.title = "About Us";
   }
-  scrollToAnchor = e => {
+  scrollToAnchor = (e) => {
     e.preventDefault();
     window.scroll({
       top:
         document.querySelector(e.target.attributes.href.value).offsetTop + 50,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
@@ -112,7 +112,7 @@ class About extends React.Component {
                   <div className="text-center">
                     <a
                       href="https://www.gofundme.com/building-collectivity?teamInvite=1eVWURWMKKO7HEmkfCoH5z0AgambJoINkcxodQKFreD2CtdWhPcvjMYIHuvJMeVD"
-                      className="btn btn-primary btn-block mx-auto"
+                      className="btn btn-dark btn-block mx-auto"
                       alt="donate money"
                       target="_blank"
                       rel="noopener noreferrer"

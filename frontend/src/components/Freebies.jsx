@@ -8,20 +8,20 @@ class Freebies extends React.Component {
 
     this.state = {
       filter: "All",
-      freebies: []
+      freebies: [],
     };
   }
 
   componentWillMount = () => {
     fetch("http://localhost:4001/freebies")
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         this.setState({ freebies: res });
       });
   };
 
-  setFilter = filter => {
-    this.setState(state => {
+  setFilter = (filter) => {
+    this.setState((state) => {
       state.filter = filter;
       return state;
     });
@@ -41,8 +41,9 @@ class Freebies extends React.Component {
             but you can just get them from someone else. Have fun, be respectful
             and responsible!
           </p>
-          <button className="btn-primary btn-lg mb-5">
-            <i className="fas fa-plus text-light mr-2" />Add Freebie
+          <button className="btn btn-outline-dark btn-lg mb-5">
+            <i className="fas fa-plus text-light mr-2" />
+            Add Freebie
           </button>
         </div>
         <div className="row">

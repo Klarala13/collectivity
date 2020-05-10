@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import SkillTable from "./SkillTable";
 
-const TimeBank = props => {
+const TimeBank = (props) => {
   useEffect(() => {
     fetch("http://localhost:4001/skills", {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(response => {
+      .then((response) => response.json())
+      .then((response) => {
         console.log("Response from the skill method in the backend", response);
         setSkills(response);
         console.log("state", this.state);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error:", error);
       });
   }, []);
@@ -24,10 +24,10 @@ const TimeBank = props => {
     category: true,
     location: false,
     time_span: true,
-    token: true
+    token: true,
   });
   //Need to turn res object INTO AN ARRAY BECAUSE PUSH IS AN ARRAY METHOD
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const url = "http://0.0.0.0:4001/skills";
     const formData = new FormData();
@@ -47,15 +47,15 @@ const TimeBank = props => {
       body: JSON.stringify(skillObj),
       headers: {
         "Content-Type": "application/json",
-        authorization: `${localStorage.getItem("token")}`
-      }
+        authorization: `${localStorage.getItem("token")}`,
+      },
     })
-      .then(res => res.json())
-      .then(res => {
+      .then((res) => res.json())
+      .then((res) => {
         console.log("Good job! u posted ur skill!", res);
         setSkills(res);
       })
-      .catch(error =>
+      .catch((error) =>
         console.error("Uuuu, u fucked up! try again buddy", error)
       );
   };
@@ -68,7 +68,7 @@ const TimeBank = props => {
       setValid({ ...valid, [e.target.name]: false });
     }
   };
-  const isDisabled = Object.values(valid).filter(v => !v).length !== 0;
+  const isDisabled = Object.values(valid).filter((v) => !v).length !== 0;
   // console.log("disabled", isDisabled);
   // console.log("skill", skill);
   // console.log("isValid?", valid["skill"]);
@@ -101,7 +101,7 @@ const TimeBank = props => {
                 <h3 className="text-left">Insert your Skill here</h3>
                 <label>Skill</label>
                 <input
-                  onChange={e =>
+                  onChange={(e) =>
                     handleValid(
                       e,
                       e.target.value.length >= 3 && e.target.value.length <= 50
@@ -119,7 +119,7 @@ const TimeBank = props => {
                 />
                 <label>Description</label>
                 <input
-                  onChange={e =>
+                  onChange={(e) =>
                     handleValid(
                       e,
                       e.target.value.length >= 3 && e.target.value.length <= 300
@@ -136,7 +136,7 @@ const TimeBank = props => {
                 />
                 <label>Zip Code</label>
                 <input
-                  onChange={e => handleValid(e, e.target.value.length >= 3)}
+                  onChange={(e) => handleValid(e, e.target.value.length >= 3)}
                   type="number"
                   name="location"
                   value={skill.location}
@@ -181,7 +181,7 @@ const TimeBank = props => {
               </div>
               <div className="mb-3">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-dark"
                   id="submit"
                   type="submit"
                   disabled={isDisabled}

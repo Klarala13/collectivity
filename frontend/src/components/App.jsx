@@ -8,7 +8,7 @@ class App extends React.Component {
 
     this.state = {
       users: [],
-      input: {}
+      input: {},
     };
   }
 
@@ -17,13 +17,9 @@ class App extends React.Component {
       <div className="container">
         <Header />
         <div className="app">
-          <NavLink
-                to="/login"
-                activeClassName="app"
-                className="btn btn-primary"
-              >
-                Login / Register
-              </NavLink>
+          <NavLink to="/login" activeClassName="app" className="btn btn-dark">
+            Login / Register
+          </NavLink>
         </div>
       </div>
     );
