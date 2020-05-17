@@ -1,5 +1,5 @@
-/* @import url("https://fonts.googleapis.com/css?family=Questrial"); */
 @import url("https://fonts.googleapis.com/css?family=Allura|Lato&display=swap");
+
 /* Global Styles */
 body {
   height: 100vh;
@@ -8,20 +8,16 @@ body {
 h1 {
   font-family: "Allura", cursive;
 }
-.container {
-  width: 100%;
-  height: 100%;
-}
-h3,
-h2 {
-  text-align: center;
-  font-weight: bold;
-  padding-bottom: 1%;
-  color: rgb(80, 2, 80);
-  text-decoration: none !important;
-}
 p {
   font-size: 1.3em;
+}
+a {
+  color: rgb(80, 2, 80);
+  font-size: large;
+}
+a:hover {
+  color: rgb(43, 41, 41);
+  text-decoration: none;
 }
 /* app */
 .app {
@@ -29,57 +25,4 @@ p {
   height: 100vh;
   text-align: center;
   margin: auto;
-}
-.top-100 {
-  top: 100px;
-}
-
-/* header */
-.header,
-.about {
-  text-align: center;
-  width: 100%;
-  /* scroll-snap-align: center; */
-}
-
-/* form-signin */
-.form-signin {
-  padding: 1rem;
-  text-align: center;
-}
-
-.top-100 {
-  top: 100px;
-}
-
-/* form-register */
-.form-register {
-  padding: 1rem;
-  width: 100%;
-  height: 100vh;
-}
-
-.form-check-input {
-  position: absolute;
-  margin-top: 0.3rem;
-  margin-left: 0;
-}
-.form-check-label {
-  margin-left: 2rem;
-}
-
-/*  ellipsis to handle long card texts and display "..."  */
-
-.ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.icon-align-middle {
-  vertical-align: middle;
-}
-
-.cursor-pointer:hover {
-  cursor: pointer;
 }

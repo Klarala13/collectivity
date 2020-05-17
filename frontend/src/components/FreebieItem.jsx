@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import FreebieItemPage from "./FreebieItemPage";
+import FreebieItemPage from "./FreebieItemPage";
 
 class Item extends Component {
   render() {

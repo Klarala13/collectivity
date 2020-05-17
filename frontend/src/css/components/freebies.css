@@ -1,0 +1,10 @@
+/*  ellipsis to handle long card texts and display "..."  */
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.icon-align-middle {
+  vertical-align: middle;
+}

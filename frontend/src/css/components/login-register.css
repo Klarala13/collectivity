@@ -1,0 +1,14 @@
+/* form-register */
+.form-register {
+  padding: 1rem;
+  width: 100%;
+  height: 100vh;
+}
+.form-check-input {
+  position: absolute;
+  margin-top: 0.3rem;
+  margin-left: 0;
+}
+.form-check-label {
+  margin-left: 2rem;
+}

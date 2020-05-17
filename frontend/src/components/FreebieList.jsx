@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Item from "./FreebieItem";
 
 class FreebieList extends Component {
-  //Create the form for posting the FREEBIES
   //Add validation, search (inputting)field, etc.
 
   filteredItems = () => {
@@ -39,7 +38,7 @@ class FreebieList extends Component {
     return (
       <div>
         <div className="row">
-          {this.filteredItems().map(item => (
+          {this.filteredItems().map((item) => (
             <Item key={this.props.freebies.item_id} data={item} />
           ))}
         </div>

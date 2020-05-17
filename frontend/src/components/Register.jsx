@@ -241,20 +241,16 @@ export default (props) => {
                   />
                 </div>
                 <ImageUpload />
-                <div className="form-check">
+                <div className="form-check text-center">
                   <h4>Agree to Terms and Conditions</h4>
                   <div className="mb-3">
-                    <a
-                      href=" #"
-                      className="text-primary"
-                      onClick={() => setHidden(!isHidden)}
-                    >
+                    <a href=" #" onClick={() => setHidden(!isHidden)}>
                       Click HERE to see terms
                     </a>
                   </div>
                   <div className={isHidden === false ? "d-none" : ""}>
                     <div>
-                      <div>
+                      <div className="text-left">
                         <b>COLLECTIVITY TERMS AND CONDITIONS</b>
                         These terms and conditions are an agreement between the
                         Collectivity platform and you, the user. This agreement
@@ -342,7 +338,7 @@ export default (props) => {
                       </div>
                     </div>
                   </div>
-                  <div>
+                  <div className="d-inline-flex">
                     <input
                       type="checkbox"
                       className="checkbox form-check-input"
@@ -350,14 +346,14 @@ export default (props) => {
                       name="check"
                       onChange={handleCheckbox}
                     />
+                    <label className="form-check-label" htmlFor="accept">
+                      Check to accept
+                    </label>
                   </div>
-                  <label className="form-check-label" htmlFor="accept">
-                    Check to accept
-                  </label>
                 </div>
                 <div className="mb-3 p-3 m-1">
                   <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-lg btn-block btn-dark"
                     id="submit"
                     type="submit"
                     disabled={isDisabled}
@@ -370,9 +366,9 @@ export default (props) => {
                   <NavLink
                     to="/login"
                     activeClassName="active"
-                    className="navbar-brand"
+                    className="nav-link text-center"
                   >
-                    "Already got an account? Login"
+                    Already got an account? Login then!
                   </NavLink>
                 </div>
               </div>

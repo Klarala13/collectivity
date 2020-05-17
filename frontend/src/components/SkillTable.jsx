@@ -46,7 +46,7 @@ class SkillTable extends Component {
   // };
 
   render() {
-    // console.log("skills", this.props.skills);
+    console.log("skills", this.props.skills);
 
     return (
       <div className="container">
@@ -79,7 +79,7 @@ class SkillTable extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.skills.map(baby => {
+              {this.props.skills.map((baby) => {
                 return (
                   <tr>
                     <td>The Admin</td>

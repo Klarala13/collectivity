@@ -42,6 +42,7 @@ const TimeBank = (props) => {
       skillObj[key] = value;
     }
     console.log(skillObj);
+
     fetch(url, {
       method: "POST",
       body: JSON.stringify(skillObj),
@@ -74,15 +75,15 @@ const TimeBank = (props) => {
   // console.log("isValid?", valid["skill"]);
 
   return (
-    <div className="container">
-      <div className="timeBanks">
-        <h3 className="text-left">Timebank</h3>
+    <div className="container timeBanks">
+      <div className="row text-left">
+        <h2>Timebank</h2>
         <div className="d-flex flex-row flex-container">
           <div className="p-2 bg-light flex-item">
-            <h2 className="timeBank text-left">
+            <h3 className="timeBank text-left">
               <span>What is a TimeBank?</span> <br />
               It is a place where you can offer your skills, knowhow, time.
-            </h2>
+            </h3>
             <p className="text-left">
               We all have abilities, things we like to do, special skills... and
               you don't need to have material things to be able to share with
@@ -98,7 +99,7 @@ const TimeBank = (props) => {
           <div className="p-2 bg-light flex-item ">
             <form onSubmit={handleSubmit} className="form-skill" method="post">
               <div className="form-group p-2">
-                <h3 className="text-left">Insert your Skill here</h3>
+                <h4 className="text-left">Insert your Skill here</h4>
                 <label>Skill</label>
                 <input
                   onChange={(e) =>

@@ -80,8 +80,8 @@ function Login(props) {
             </div>
             <NavLink
               to="/register"
-              activeClassName="active "
-              className="navbar-brand"
+              activeClassName="active"
+              className="text-center nav-link"
             >
               New user? Then go to register.
             </NavLink>
